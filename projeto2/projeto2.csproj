@@ -72,6 +72,12 @@
     <Compile Include="FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="novonomedepois\Cliente\View\FrmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="novonomedepois\Cliente\View\FrmClientes.Designer.cs">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="novonomedepois\Produto\Controller\ProdutoController.cs" />
     <Compile Include="novonomedepois\Produto\DAO\ProdutoDao.cs" />
     <Compile Include="novonomedepois\Produto\Model\Produto.cs" />
@@ -91,6 +97,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="novonomedepois\Cliente\View\FrmClientes.resx">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="novonomedepois\Produto\View\FrmCadastroDeProduto.resx">
       <DependentUpon>FrmCadastroDeProduto.cs</DependentUpon>
@@ -151,6 +160,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\clipboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3d-printing-software.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\network.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="novonomedepois\Cliente\Controller\" />
+    <Folder Include="novonomedepois\Cliente\DAO\" />
+    <Folder Include="novonomedepois\Cliente\Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

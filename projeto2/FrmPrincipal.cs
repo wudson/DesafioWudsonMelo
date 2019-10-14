@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using projeto2.novonomedepois.Cliente.View;
 using projeto2.novonomedepois.Produto.View;
 
 namespace projeto2
@@ -18,9 +12,14 @@ namespace projeto2
             InitializeComponent();
         }
 
-        private void btnProdutos_Click(object sender, EventArgs e)
+        private void BtnProdutos_Click(object sender, EventArgs e)
         {
             new FrmProdutos().ShowDialog();
+        }
+
+        private void BtnClientes_Click(object sender, EventArgs e)
+        {
+            new FrmClientes().ShowDialog();
         }
     }
 }
