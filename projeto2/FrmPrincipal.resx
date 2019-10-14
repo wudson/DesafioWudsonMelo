@@ -117,20 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clipboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clipboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnProdutos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
 </root>

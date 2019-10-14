@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using projeto2.novonomedepois.Produto.View;
 
 namespace projeto2
 {
@@ -14,7 +13,7 @@ namespace projeto2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmProdutos());
+            Application.Run(new FrmPrincipal());
         }
     }
 }

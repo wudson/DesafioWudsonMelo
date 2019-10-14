@@ -59,14 +59,8 @@ namespace projeto2.novonomedepois.Produto.View
 
         private void GridDadosProduto_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var lbtnEditar = tblBotoes.GetControlFromPosition(2, 0);
-            lbtnEditar.Enabled = true;
-            lbtnEditar.BackColor = Color.RoyalBlue;
-
-            var lbtnExcluir = tblBotoes.GetControlFromPosition(3, 0);
-            lbtnExcluir.Enabled = true;
-            lbtnExcluir.BackColor = Color.RoyalBlue;
-
+            btnExcluir.Enabled = true;
+            btnEditar.Enabled = true;
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
@@ -93,13 +87,8 @@ namespace projeto2.novonomedepois.Produto.View
 
         private void DesativarBotoes()
         {
-            var lbtnEditar = tblBotoes.GetControlFromPosition(2, 0);
-            lbtnEditar.Enabled = false;
-            lbtnEditar.BackColor = Color.LightSteelBlue;
-
-            var lbtnExcluir = tblBotoes.GetControlFromPosition(3, 0);
-            lbtnExcluir.Enabled = false;
-            lbtnExcluir.BackColor = Color.LightSteelBlue;
+            btnExcluir.Enabled = false;
+            btnEditar.Enabled = false;
         }
     }
 }

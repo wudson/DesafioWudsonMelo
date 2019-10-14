@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using projeto2.novonomedepois.Produto.DAO;
 
 namespace projeto2.novonomedepois.Produto.Controller
