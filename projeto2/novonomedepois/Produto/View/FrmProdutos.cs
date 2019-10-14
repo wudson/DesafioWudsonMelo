@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using projeto2.Models;
+using projeto2.novonomedepois.Produto.Controller;
 
-namespace projeto2
+namespace projeto2.novonomedepois.Produto.View
 {
-    public partial class FormProdutos : Form
+    public partial class FrmProdutos : Form
     {
-        public FormProdutos()
+        public FrmProdutos()
         {
             InitializeComponent();
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
         {
-            new FormCadastroProdutos().ShowDialog();
+            new FrmCadastroDeProduto().ShowDialog();
             AtualizarGridDadosProduto();
         }
 
@@ -25,8 +25,8 @@ namespace projeto2
 
         private void AtualizarGridDadosProduto()
         {
-            var produto = new Produto();
-            var produtos = produto.Listar();
+            
+            var produtos = new ProdutoController().BuscarTodosOsDados();
 
             gridDadosProduto.DataSource = produtos;
             if (gridDadosProduto.CurrentRow != null) gridDadosProduto.CurrentRow.Selected = false;
@@ -51,9 +51,10 @@ namespace projeto2
         {
             if (e.RowIndex <= -1) return;
             var idProdutoLinhaAtual = int.Parse(gridDadosProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
-            var produto = new Produto().Buscar(idProdutoLinhaAtual);
+            var produto = new ProdutoController().BuscarDado(idProdutoLinhaAtual);
 
-            new FrmEditarProduto(produto).ShowDialog();
+            new FrmCadastroDeProduto(produto).ShowDialog();
+            AtualizarGridDadosProduto();
         }
 
         private void GridDadosProduto_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -71,9 +72,9 @@ namespace projeto2
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             var idProdutoLinhaAtual = int.Parse(gridDadosProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
-            var produto = new Produto().Buscar(idProdutoLinhaAtual);
+            var produto = new ProdutoController().BuscarDado(idProdutoLinhaAtual);
 
-            new FrmEditarProduto(produto).ShowDialog();
+            new FrmCadastroDeProduto(produto).ShowDialog();
             AtualizarGridDadosProduto();
         }
 
@@ -84,7 +85,7 @@ namespace projeto2
 
             var idProdutoLinhaAtual = int.Parse(gridDadosProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
 
-            MessageBox.Show(new Produto().Excluir(idProdutoLinhaAtual)
+            MessageBox.Show(new ProdutoController().ExcluirDado(idProdutoLinhaAtual)
                 ? @"Produto excluido com sucesso!"
                 : @"Problemas ao excluir produto!");
             AtualizarGridDadosProduto();

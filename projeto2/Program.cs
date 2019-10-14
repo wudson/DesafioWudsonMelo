@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
+using projeto2.novonomedepois.Produto.View;
 
 namespace projeto2
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormProdutos());
+            Application.Run(new FrmProdutos());
         }
     }
 }

@@ -2,18 +2,10 @@
 using System.Data;
 using FirebirdSql.Data.FirebirdClient;
 
-namespace projeto2.Models
+namespace projeto2.novonomedepois.Produto.DAO
 {
-    public class Produto
+    public class ProdutoDao
     {
-        public int IdProduto { get; set; }
-        public string NomeProduto { get; set; }
-        public string GrupoProduto { get; set; }
-        public string MarcaProduto { get; set; }
-        public int QuantidadeEstoqueProduto { get; set; }
-        public double ValorCompraProduto { get; set; }
-        public double ValorVendaProduto { get; set; }
-        public string FornecedorProduto { get; set; }
 
         public bool Cadastrar(Produto produto)
         {
@@ -22,7 +14,9 @@ namespace projeto2.Models
             try
             {
                 conn.Open();
-                const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO, QUANTIDADE_ESTOQUE_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO, FORNECEDOR_PRODUTO) Values(@nome, @grupo, @marca, @estoque, @compra, @venda, @fornecedor)";
+                const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO, 
+                                    QUANTIDADE_ESTOQUE_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO, FORNECEDOR_PRODUTO) 
+                                    Values(@nome, @grupo, @marca, @estoque, @compra, @venda, @fornecedor)";
 
                 var cmd = new FbCommand(mSql, conn);
 

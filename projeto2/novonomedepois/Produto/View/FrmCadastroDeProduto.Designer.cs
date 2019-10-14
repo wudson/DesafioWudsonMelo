@@ -1,6 +1,6 @@
-﻿namespace projeto2
+﻿namespace projeto2.novonomedepois.Produto.View
 {
-    partial class FormCadastroProdutos
+    partial class FrmCadastroDeProduto
     {
         /// <summary>
         /// Required designer variable.
@@ -28,41 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.nomeProduto = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.grupoProduto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.marcaProduto = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.estoqueProduto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.vendaProduto = new System.Windows.Forms.TextBox();
+            this.txtValorDeVenda = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.compraProduto = new System.Windows.Forms.TextBox();
+            this.txtValorDeCompra = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.fornecedorProduto = new System.Windows.Forms.TextBox();
+            this.txtFornecedor = new System.Windows.Forms.TextBox();
             this.btnSalvarCadastroProduto = new System.Windows.Forms.Button();
             this.btnCancelarCadastroProduto = new System.Windows.Forms.Button();
             this.pnlControl = new System.Windows.Forms.Panel();
+            this.txtGrupo = new System.Windows.Forms.ComboBox();
+            this.txtMarca = new System.Windows.Forms.ComboBox();
+            this.txtIdProduto = new System.Windows.Forms.TextBox();
+            this.txtQuantidadeEmEstoque = new System.Windows.Forms.TextBox();
             this.pnlControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // nomeProduto
+            // txtNome
             // 
-            this.nomeProduto.Location = new System.Drawing.Point(40, 72);
-            this.nomeProduto.Name = "nomeProduto";
-            this.nomeProduto.Size = new System.Drawing.Size(543, 20);
-            this.nomeProduto.TabIndex = 0;
+            this.txtNome.Location = new System.Drawing.Point(40, 72);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(543, 20);
+            this.txtNome.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(40, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Nome do Produto";
+            this.label2.Text = "Produto";
             // 
             // label3
             // 
@@ -73,13 +74,6 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Grupo";
             // 
-            // grupoProduto
-            // 
-            this.grupoProduto.Location = new System.Drawing.Point(40, 140);
-            this.grupoProduto.Name = "grupoProduto";
-            this.grupoProduto.Size = new System.Drawing.Size(177, 20);
-            this.grupoProduto.TabIndex = 2;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -89,60 +83,46 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Marca";
             // 
-            // marcaProduto
-            // 
-            this.marcaProduto.Location = new System.Drawing.Point(223, 140);
-            this.marcaProduto.Name = "marcaProduto";
-            this.marcaProduto.Size = new System.Drawing.Size(177, 20);
-            this.marcaProduto.TabIndex = 4;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(406, 121);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 13);
+            this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Quantidade em Estoque";
-            // 
-            // estoqueProduto
-            // 
-            this.estoqueProduto.Location = new System.Drawing.Point(406, 140);
-            this.estoqueProduto.Name = "estoqueProduto";
-            this.estoqueProduto.Size = new System.Drawing.Size(177, 20);
-            this.estoqueProduto.TabIndex = 8;
+            this.label5.Text = "Estoque";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(309, 199);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Valor de Venda";
+            this.label6.Text = "Valor de venda";
             // 
-            // vendaProduto
+            // txtValorDeVenda
             // 
-            this.vendaProduto.Location = new System.Drawing.Point(309, 218);
-            this.vendaProduto.Name = "vendaProduto";
-            this.vendaProduto.Size = new System.Drawing.Size(274, 20);
-            this.vendaProduto.TabIndex = 12;
+            this.txtValorDeVenda.Location = new System.Drawing.Point(309, 218);
+            this.txtValorDeVenda.Name = "txtValorDeVenda";
+            this.txtValorDeVenda.Size = new System.Drawing.Size(274, 20);
+            this.txtValorDeVenda.TabIndex = 12;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(40, 199);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 13);
+            this.label7.Size = new System.Drawing.Size(84, 13);
             this.label7.TabIndex = 11;
-            this.label7.Text = "Valor de Compra";
+            this.label7.Text = "Valor de compra";
             // 
-            // compraProduto
+            // txtValorDeCompra
             // 
-            this.compraProduto.Location = new System.Drawing.Point(40, 218);
-            this.compraProduto.Name = "compraProduto";
-            this.compraProduto.Size = new System.Drawing.Size(263, 20);
-            this.compraProduto.TabIndex = 10;
+            this.txtValorDeCompra.Location = new System.Drawing.Point(40, 218);
+            this.txtValorDeCompra.Name = "txtValorDeCompra";
+            this.txtValorDeCompra.Size = new System.Drawing.Size(263, 20);
+            this.txtValorDeCompra.TabIndex = 10;
             // 
             // label1
             // 
@@ -153,12 +133,12 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Fornecedor";
             // 
-            // fornecedorProduto
+            // txtFornecedor
             // 
-            this.fornecedorProduto.Location = new System.Drawing.Point(40, 292);
-            this.fornecedorProduto.Name = "fornecedorProduto";
-            this.fornecedorProduto.Size = new System.Drawing.Size(543, 20);
-            this.fornecedorProduto.TabIndex = 14;
+            this.txtFornecedor.Location = new System.Drawing.Point(40, 292);
+            this.txtFornecedor.Name = "txtFornecedor";
+            this.txtFornecedor.Size = new System.Drawing.Size(543, 20);
+            this.txtFornecedor.TabIndex = 14;
             // 
             // btnSalvarCadastroProduto
             // 
@@ -186,21 +166,22 @@
             // 
             // pnlControl
             // 
+            this.pnlControl.Controls.Add(this.txtGrupo);
+            this.pnlControl.Controls.Add(this.txtMarca);
+            this.pnlControl.Controls.Add(this.txtIdProduto);
             this.pnlControl.Controls.Add(this.btnCancelarCadastroProduto);
             this.pnlControl.Controls.Add(this.label2);
             this.pnlControl.Controls.Add(this.btnSalvarCadastroProduto);
-            this.pnlControl.Controls.Add(this.nomeProduto);
+            this.pnlControl.Controls.Add(this.txtNome);
             this.pnlControl.Controls.Add(this.label1);
-            this.pnlControl.Controls.Add(this.grupoProduto);
-            this.pnlControl.Controls.Add(this.fornecedorProduto);
+            this.pnlControl.Controls.Add(this.txtFornecedor);
             this.pnlControl.Controls.Add(this.label3);
             this.pnlControl.Controls.Add(this.label6);
-            this.pnlControl.Controls.Add(this.marcaProduto);
-            this.pnlControl.Controls.Add(this.vendaProduto);
+            this.pnlControl.Controls.Add(this.txtValorDeVenda);
             this.pnlControl.Controls.Add(this.label4);
             this.pnlControl.Controls.Add(this.label7);
-            this.pnlControl.Controls.Add(this.estoqueProduto);
-            this.pnlControl.Controls.Add(this.compraProduto);
+            this.pnlControl.Controls.Add(this.txtQuantidadeEmEstoque);
+            this.pnlControl.Controls.Add(this.txtValorDeCompra);
             this.pnlControl.Controls.Add(this.label5);
             this.pnlControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlControl.Location = new System.Drawing.Point(0, 0);
@@ -208,13 +189,55 @@
             this.pnlControl.Size = new System.Drawing.Size(620, 450);
             this.pnlControl.TabIndex = 18;
             // 
-            // FormCadastroProdutos
+            // txtGrupo
+            // 
+            this.txtGrupo.FormattingEnabled = true;
+            this.txtGrupo.Items.AddRange(new object[] {
+            "Grupo1",
+            "Grupo2",
+            "Grupo3"});
+            this.txtGrupo.Location = new System.Drawing.Point(40, 140);
+            this.txtGrupo.Name = "txtGrupo";
+            this.txtGrupo.Size = new System.Drawing.Size(177, 21);
+            this.txtGrupo.TabIndex = 2;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.FormattingEnabled = true;
+            this.txtMarca.Items.AddRange(new object[] {
+            "Marca1",
+            "Marca2",
+            "Marca3"});
+            this.txtMarca.Location = new System.Drawing.Point(223, 140);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(177, 21);
+            this.txtMarca.TabIndex = 7;
+            // 
+            // txtIdProduto
+            // 
+            this.txtIdProduto.Location = new System.Drawing.Point(40, 12);
+            this.txtIdProduto.Name = "txtIdProduto";
+            this.txtIdProduto.ReadOnly = true;
+            this.txtIdProduto.Size = new System.Drawing.Size(177, 20);
+            this.txtIdProduto.TabIndex = 18;
+            this.txtIdProduto.Text = "0";
+            this.txtIdProduto.Visible = false;
+            // 
+            // txtQuantidadeEmEstoque
+            // 
+            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(406, 140);
+            this.txtQuantidadeEmEstoque.Multiline = true;
+            this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
+            this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(177, 20);
+            this.txtQuantidadeEmEstoque.TabIndex = 8;
+            // 
+            // FrmCadastroDeProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 450);
             this.Controls.Add(this.pnlControl);
-            this.Name = "FormCadastroProdutos";
+            this.Name = "FrmCadastroDeProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Produtos";
             this.Load += new System.EventHandler(this.FormCadastroProdutos_Load);
@@ -226,22 +249,23 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox nomeProduto;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox grupoProduto;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox marcaProduto;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox estoqueProduto;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox vendaProduto;
+        private System.Windows.Forms.TextBox txtValorDeVenda;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox compraProduto;
+        private System.Windows.Forms.TextBox txtValorDeCompra;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox fornecedorProduto;
+        private System.Windows.Forms.TextBox txtFornecedor;
         private System.Windows.Forms.Button btnSalvarCadastroProduto;
         private System.Windows.Forms.Button btnCancelarCadastroProduto;
         private System.Windows.Forms.Panel pnlControl;
+        private System.Windows.Forms.TextBox txtIdProduto;
+        private System.Windows.Forms.ComboBox txtMarca;
+        private System.Windows.Forms.ComboBox txtGrupo;
+        private System.Windows.Forms.TextBox txtQuantidadeEmEstoque;
     }
 }

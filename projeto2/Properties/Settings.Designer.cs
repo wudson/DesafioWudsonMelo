@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace projeto2.Properties
+namespace projeto2.novonomedepois.Produto.View.Properties
 {
 
 

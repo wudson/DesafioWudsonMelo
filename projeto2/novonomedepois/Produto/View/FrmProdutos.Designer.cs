@@ -1,6 +1,6 @@
-﻿namespace projeto2
+﻿namespace projeto2.novonomedepois.Produto.View
 {
-    partial class FormProdutos
+    partial class FrmProdutos
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -159,7 +159,7 @@
             this.ClientSize = new System.Drawing.Size(703, 450);
             this.Controls.Add(this.pnlcontrol);
             this.Controls.Add(this.tblBotoes);
-            this.Name = "FormProdutos";
+            this.Name = "FrmProdutos";
             this.Text = "Produtos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tblBotoes.ResumeLayout(false);
