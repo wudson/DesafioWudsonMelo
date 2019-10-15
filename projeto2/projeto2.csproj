@@ -66,45 +66,58 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexao.cs" />
+    <Compile Include="Feature\Cliente\Controller\ClienteController.cs" />
+    <Compile Include="Feature\Cliente\DAO\ClienteDao.cs" />
+    <Compile Include="Feature\Cliente\Model\Cliente.cs" />
+    <Compile Include="Feature\Interfaces\ICrudDao.cs" />
+    <Compile Include="Feature\Produto\Model\Produto.cs" />
+    <Compile Include="FrmEntrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEntrar.Designer.cs">
+      <DependentUpon>FrmEntrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="novonomedepois\Cliente\View\FrmClientes.cs">
+    <Compile Include="Feature\Cliente\View\FrmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="novonomedepois\Cliente\View\FrmClientes.Designer.cs">
+    <Compile Include="Feature\Cliente\View\FrmClientes.Designer.cs">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="novonomedepois\Produto\Controller\ProdutoController.cs" />
-    <Compile Include="novonomedepois\Produto\DAO\ProdutoDao.cs" />
-    <Compile Include="novonomedepois\Produto\Model\Produto.cs" />
-    <Compile Include="novonomedepois\Produto\View\FrmProdutos.cs">
+    <Compile Include="Feature\Produto\Controller\ProdutoController.cs" />
+    <Compile Include="Feature\Produto\DAO\ProdutoDao.cs" />
+    <Compile Include="Feature\Produto\View\FrmProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="novonomedepois\Produto\View\FrmProdutos.Designer.cs">
+    <Compile Include="Feature\Produto\View\FrmProdutos.Designer.cs">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="novonomedepois\Produto\View\FrmCadastroDeProduto.cs">
+    <Compile Include="Feature\Produto\View\FrmCadastroDeProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="novonomedepois\Produto\View\FrmCadastroDeProduto.Designer.cs">
+    <Compile Include="Feature\Produto\View\FrmCadastroDeProduto.Designer.cs">
       <DependentUpon>FrmCadastroDeProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmEntrar.resx">
+      <DependentUpon>FrmEntrar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="novonomedepois\Cliente\View\FrmClientes.resx">
+    <EmbeddedResource Include="Feature\Cliente\View\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="novonomedepois\Produto\View\FrmCadastroDeProduto.resx">
+    <EmbeddedResource Include="Feature\Produto\View\FrmCadastroDeProduto.resx">
       <DependentUpon>FrmCadastroDeProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="novonomedepois\Produto\View\FrmProdutos.resx">
+    <EmbeddedResource Include="Feature\Produto\View\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -167,10 +180,6 @@
   <ItemGroup>
     <None Include="Resources\network.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="novonomedepois\Cliente\Controller\" />
-    <Folder Include="novonomedepois\Cliente\DAO\" />
-    <Folder Include="novonomedepois\Cliente\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

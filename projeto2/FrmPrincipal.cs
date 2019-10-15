@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using projeto2.novonomedepois.Cliente.View;
-using projeto2.novonomedepois.Produto.View;
+using projeto2.Feature.Cliente.View;
+using projeto2.Feature.Produto.View;
 
 namespace projeto2
 {

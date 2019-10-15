@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace projeto2.novonomedepois.Cliente.View
+namespace projeto2.Feature.Cliente.View
 {
     public partial class FrmClientes : Form
     {

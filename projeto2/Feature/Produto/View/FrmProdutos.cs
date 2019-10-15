@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
-using projeto2.novonomedepois.Produto.Controller;
+using projeto2.Feature.Produto.Controller;
 
-namespace projeto2.novonomedepois.Produto.View
+namespace projeto2.Feature.Produto.View
 {
     public partial class FrmProdutos : Form
     {
@@ -28,8 +27,8 @@ namespace projeto2.novonomedepois.Produto.View
             
             var produtos = new ProdutoController().BuscarTodosOsDados();
 
-            gridDadosProduto.DataSource = produtos;
-            if (gridDadosProduto.CurrentRow != null) gridDadosProduto.CurrentRow.Selected = false;
+            dgvProduto.DataSource = produtos;
+            if (dgvProduto.CurrentRow != null) dgvProduto.CurrentRow.Selected = false;
 
             DesativarBotoes();
             RenomearCabecalhoDadosProduto();
@@ -37,20 +36,20 @@ namespace projeto2.novonomedepois.Produto.View
 
         private void RenomearCabecalhoDadosProduto()
         {
-            gridDadosProduto.Columns[0].HeaderText = @"ID";
-            gridDadosProduto.Columns[1].HeaderText = @"Produto";
-            gridDadosProduto.Columns[2].HeaderText = @"Fornecedor";
-            gridDadosProduto.Columns[3].HeaderText = @"Valor Compra";
-            gridDadosProduto.Columns[4].HeaderText = @"Valor Venda";
-            gridDadosProduto.Columns[5].HeaderText = @"Grupo";
-            gridDadosProduto.Columns[6].HeaderText = @"Marca";
-            gridDadosProduto.Columns[7].HeaderText = @"Estoque";
+            dgvProduto.Columns[0].HeaderText = @"ID";
+            dgvProduto.Columns[1].HeaderText = @"Produto";
+            dgvProduto.Columns[2].HeaderText = @"Fornecedor";
+            dgvProduto.Columns[3].HeaderText = @"Valor Compra";
+            dgvProduto.Columns[4].HeaderText = @"Valor Venda";
+            dgvProduto.Columns[5].HeaderText = @"Grupo";
+            dgvProduto.Columns[6].HeaderText = @"Marca";
+            dgvProduto.Columns[7].HeaderText = @"Estoque";
         }
 
         private void GridDadosProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex <= -1) return;
-            var idProdutoLinhaAtual = int.Parse(gridDadosProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
+            var idProdutoLinhaAtual = int.Parse(dgvProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
             var produto = new ProdutoController().BuscarDado(idProdutoLinhaAtual);
 
             new FrmCadastroDeProduto(produto).ShowDialog();
@@ -65,7 +64,7 @@ namespace projeto2.novonomedepois.Produto.View
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            var idProdutoLinhaAtual = int.Parse(gridDadosProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
+            var idProdutoLinhaAtual = int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
             var produto = new ProdutoController().BuscarDado(idProdutoLinhaAtual);
 
             new FrmCadastroDeProduto(produto).ShowDialog();
@@ -77,7 +76,7 @@ namespace projeto2.novonomedepois.Produto.View
             var result = MessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
 
-            var idProdutoLinhaAtual = int.Parse(gridDadosProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
+            var idProdutoLinhaAtual = int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
 
             MessageBox.Show(new ProdutoController().ExcluirDado(idProdutoLinhaAtual)
                 ? @"Produto excluido com sucesso!"
@@ -89,6 +88,11 @@ namespace projeto2.novonomedepois.Produto.View
         {
             btnExcluir.Enabled = false;
             btnEditar.Enabled = false;
+        }
+
+        private void FrmProdutos_Load(object sender, EventArgs e)
+        {
+            AtualizarGridDadosProduto();
         }
     }
 }

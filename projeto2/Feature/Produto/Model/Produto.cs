@@ -1,4 +1,4 @@
-﻿namespace projeto2.novonomedepois.Produto
+﻿namespace projeto2.Feature.Produto
 {
     public class Produto
     {
@@ -10,7 +10,5 @@
         public double ValorCompraProduto { get; set; }
         public double ValorVendaProduto { get; set; }
         public string FornecedorProduto { get; set; }
-
     }
 }
-

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Data;
 using FirebirdSql.Data.FirebirdClient;
+using projeto2.Feature.Interfaces;
 
-namespace projeto2.novonomedepois.Produto.DAO
+namespace projeto2.Feature.Produto.DAO
 {
-    public class ProdutoDao
+    public class ProdutoDao : ICrudDao
     {
 
         public bool Cadastrar(Produto produto)
@@ -39,7 +40,7 @@ namespace projeto2.novonomedepois.Produto.DAO
 
         }
 
-        internal Produto Buscar(int idProduto)
+        public Produto Buscar(int idProduto)
         {
             var conn = Conexao.GetInstancia();
             try
@@ -72,7 +73,7 @@ namespace projeto2.novonomedepois.Produto.DAO
             }
         }
 
-        internal bool Excluir(int idProduto)
+        public bool Excluir(int idProduto)
         {
 
             var conn = Conexao.GetInstancia();

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
-using projeto2.novonomedepois.Produto.Controller;
+using projeto2.Feature.Produto.Controller;
 
-namespace projeto2.novonomedepois.Produto.View
+namespace projeto2.Feature.Produto.View
 {
     public partial class FrmCadastroDeProduto : Form
     {
 
-        private readonly Produto _produto;
+        private readonly Feature.Produto.Produto _produto;
 
-        public FrmCadastroDeProduto(Produto produto)
+        public FrmCadastroDeProduto(Feature.Produto.Produto produto)
         {
             InitializeComponent();
             _produto = produto;
@@ -24,7 +24,7 @@ namespace projeto2.novonomedepois.Produto.View
 
         private void BtnSalvarCadastroProduto_Click(object sender, EventArgs e)
         {
-            var produto = new Produto
+            var produto = new Feature.Produto.Produto
             {
                 IdProduto = int.Parse(txtIdProduto.Text),
                 NomeProduto = txtNome.Text,

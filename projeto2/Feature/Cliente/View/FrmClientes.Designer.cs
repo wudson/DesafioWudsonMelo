@@ -1,4 +1,4 @@
-﻿namespace projeto2.novonomedepois.Cliente.View
+﻿namespace projeto2.Feature.Cliente.View
 {
     partial class FrmClientes
     {

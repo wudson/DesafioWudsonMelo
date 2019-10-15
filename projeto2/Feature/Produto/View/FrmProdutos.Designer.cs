@@ -1,4 +1,4 @@
-﻿namespace projeto2.novonomedepois.Produto.View
+﻿namespace projeto2.Feature.Produto.View
 {
     partial class FrmProdutos
     {
@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridDadosProduto = new System.Windows.Forms.DataGridView();
+            this.dgvProduto = new System.Windows.Forms.DataGridView();
             this.pnlcontrol = new System.Windows.Forms.Panel();
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
             this.btnExcluir = new System.Windows.Forms.PictureBox();
             this.btnEditar = new System.Windows.Forms.PictureBox();
             this.btnListar = new System.Windows.Forms.PictureBox();
             this.btnCadastrar = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDadosProduto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).BeginInit();
             this.pnlcontrol.SuspendLayout();
             this.tblBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnExcluir)).BeginInit();
@@ -44,35 +44,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCadastrar)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridDadosProduto
+            // dgvProduto
             // 
-            this.gridDadosProduto.AllowUserToAddRows = false;
-            this.gridDadosProduto.AllowUserToDeleteRows = false;
-            this.gridDadosProduto.AllowUserToResizeColumns = false;
-            this.gridDadosProduto.AllowUserToResizeRows = false;
-            this.gridDadosProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDadosProduto.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gridDadosProduto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridDadosProduto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.gridDadosProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDadosProduto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridDadosProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gridDadosProduto.Location = new System.Drawing.Point(0, 75);
-            this.gridDadosProduto.Name = "gridDadosProduto";
-            this.gridDadosProduto.ReadOnly = true;
-            this.gridDadosProduto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.gridDadosProduto.RowTemplate.ReadOnly = true;
-            this.gridDadosProduto.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDadosProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDadosProduto.Size = new System.Drawing.Size(703, 375);
-            this.gridDadosProduto.TabIndex = 3;
-            this.gridDadosProduto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDadosProduto_CellDoubleClick);
-            this.gridDadosProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridDadosProduto_CellMouseClick);
+            this.dgvProduto.AllowUserToAddRows = false;
+            this.dgvProduto.AllowUserToDeleteRows = false;
+            this.dgvProduto.AllowUserToResizeColumns = false;
+            this.dgvProduto.AllowUserToResizeRows = false;
+            this.dgvProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProduto.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvProduto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProduto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvProduto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgvProduto.Location = new System.Drawing.Point(0, 75);
+            this.dgvProduto.Name = "dgvProduto";
+            this.dgvProduto.ReadOnly = true;
+            this.dgvProduto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvProduto.RowTemplate.ReadOnly = true;
+            this.dgvProduto.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProduto.Size = new System.Drawing.Size(703, 375);
+            this.dgvProduto.TabIndex = 3;
+            this.dgvProduto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDadosProduto_CellDoubleClick);
+            this.dgvProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridDadosProduto_CellMouseClick);
             // 
             // pnlcontrol
             // 
             this.pnlcontrol.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnlcontrol.Controls.Add(this.gridDadosProduto);
+            this.pnlcontrol.Controls.Add(this.dgvProduto);
             this.pnlcontrol.Controls.Add(this.tblBotoes);
             this.pnlcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlcontrol.Location = new System.Drawing.Point(0, 0);
@@ -159,7 +159,8 @@
             this.Name = "FrmProdutos";
             this.Text = "Produtos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.gridDadosProduto)).EndInit();
+            this.Load += new System.EventHandler(this.FrmProdutos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).EndInit();
             this.pnlcontrol.ResumeLayout(false);
             this.tblBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnExcluir)).EndInit();
@@ -171,7 +172,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView gridDadosProduto;
+        private System.Windows.Forms.DataGridView dgvProduto;
         private System.Windows.Forms.Panel pnlcontrol;
         private System.Windows.Forms.PictureBox btnExcluir;
         private System.Windows.Forms.PictureBox btnEditar;

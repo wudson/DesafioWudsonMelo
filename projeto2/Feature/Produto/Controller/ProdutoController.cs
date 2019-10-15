@@ -1,7 +1,7 @@
 ﻿using System.Data;
-using projeto2.novonomedepois.Produto.DAO;
+using projeto2.Feature.Produto.DAO;
 
-namespace projeto2.novonomedepois.Produto.Controller
+namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {

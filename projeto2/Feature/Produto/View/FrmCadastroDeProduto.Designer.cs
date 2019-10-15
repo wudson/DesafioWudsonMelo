@@ -1,4 +1,4 @@
-﻿namespace projeto2.novonomedepois.Produto.View
+﻿namespace projeto2.Feature.Produto.View
 {
     partial class FrmCadastroDeProduto
     {
