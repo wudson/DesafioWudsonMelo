@@ -26,7 +26,6 @@ namespace projeto2.Feature.Produto.View
         {
             
             var produtos = new ProdutoController().BuscarTodosOsDados();
-
             dgvProduto.DataSource = produtos;
             if (dgvProduto.CurrentRow != null) dgvProduto.CurrentRow.Selected = false;
 
@@ -77,7 +76,6 @@ namespace projeto2.Feature.Produto.View
             if (!result.Equals(DialogResult.OK)) return;
 
             var idProdutoLinhaAtual = int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
-
             MessageBox.Show(new ProdutoController().ExcluirDado(idProdutoLinhaAtual)
                 ? @"Produto excluido com sucesso!"
                 : @"Problemas ao excluir produto!");

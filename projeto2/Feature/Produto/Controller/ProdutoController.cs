@@ -5,7 +5,7 @@ namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
-        internal DataTable BuscarTodosOsDados() => new ProdutoDao().Listar();
+        public DataTable BuscarTodosOsDados() => new ProdutoDao().Listar();
 
         public Produto BuscarDado(int idProduto) => new ProdutoDao().Buscar(idProduto);
 

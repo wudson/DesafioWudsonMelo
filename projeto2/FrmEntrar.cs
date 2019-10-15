@@ -16,7 +16,6 @@ namespace projeto2
             var principal = new FrmPrincipal();
             principal.Closed += (s, args) => Close();
             principal.Show();
-
         }
     }
 }

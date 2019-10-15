@@ -7,24 +7,21 @@ namespace projeto2.Feature.Produto.View
 {
     public partial class FrmCadastroDeProduto : Form
     {
+        private readonly Produto _produto;
 
-        private readonly Feature.Produto.Produto _produto;
-
-        public FrmCadastroDeProduto(Feature.Produto.Produto produto)
+        public FrmCadastroDeProduto(Produto produto)
         {
             InitializeComponent();
             _produto = produto;
-
         }
         public FrmCadastroDeProduto()
         {
             InitializeComponent();
         }
 
-
         private void BtnSalvarCadastroProduto_Click(object sender, EventArgs e)
         {
-            var produto = new Feature.Produto.Produto
+            var produto = new Produto
             {
                 IdProduto = int.Parse(txtIdProduto.Text),
                 NomeProduto = txtNome.Text,

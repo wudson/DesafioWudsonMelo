@@ -7,11 +7,9 @@ namespace projeto2.Feature.Produto.DAO
 {
     public class ProdutoDao : ICrudDao
     {
-
         public bool Cadastrar(Produto produto)
         {
             var conn = Conexao.GetInstancia();
-
             try
             {
                 conn.Open();
@@ -20,7 +18,6 @@ namespace projeto2.Feature.Produto.DAO
                                     Values(@nome, @grupo, @marca, @estoque, @compra, @venda, @fornecedor)";
 
                 var cmd = new FbCommand(mSql, conn);
-
                 cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
                 cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = produto.GrupoProduto;
                 cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = produto.MarcaProduto;
@@ -36,8 +33,6 @@ namespace projeto2.Feature.Produto.DAO
             {
                 conn.Close();
             }
-
-
         }
 
         public Produto Buscar(int idProduto)
@@ -49,7 +44,6 @@ namespace projeto2.Feature.Produto.DAO
                 const string mSql = "Select * from PRODUTO where ID_PRODUTO = @id";
 
                 var cmd = new FbCommand(mSql, conn);
-
                 cmd.Parameters.Add("@id", FbDbType.Integer).Value = idProduto;
 
                 var dataReader = cmd.ExecuteReader();
@@ -75,7 +69,6 @@ namespace projeto2.Feature.Produto.DAO
 
         public bool Excluir(int idProduto)
         {
-
             var conn = Conexao.GetInstancia();
             try
             {
@@ -114,14 +107,12 @@ namespace projeto2.Feature.Produto.DAO
         public bool Alterar(Produto produto)
         {
             var conn = Conexao.GetInstancia();
-
             try
             {
                 conn.Open();
                 const string mSql = @"Update PRODUTO set NOME_PRODUTO = @nome, GRUPO_PRODUTO = @grupo, MARCA_PRODUTO = @marca, QUANTIDADE_ESTOQUE_PRODUTO = @estoque, VALOR_COMPRA_PRODUTO = @compra, VALOR_VENDA_PRODUTO = @venda, FORNECEDOR_PRODUTO = @fornecedor WHERE ID_PRODUTO = @id";
 
                 var cmd = new FbCommand(mSql, conn);
-
                 cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
                 cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = produto.GrupoProduto;
                 cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = produto.MarcaProduto;

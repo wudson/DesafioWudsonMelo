@@ -9,7 +9,6 @@ namespace projeto2
         private const string StringConexao =
             "User = SYSDBA; Password=masterkey;Database=C:/Users/Wudso/Documents/IBExpert_Portable/banco.fdb;DataSource=localhost; Pooling=true;";
 
-
         public static FbConnection GetInstancia() => InstanciaFireBird ?? CriaConexao();
 
         public static FbConnection CriaConexao() => InstanciaFireBird = new FbConnection(StringConexao);
