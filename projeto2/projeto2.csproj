@@ -68,9 +68,16 @@
     <Compile Include="Conexao.cs" />
     <Compile Include="Feature\Cliente\Controller\ClienteController.cs" />
     <Compile Include="Feature\Cliente\DAO\ClienteDao.cs" />
-    <Compile Include="Feature\Cliente\Model\Cliente.cs" />
+    <Compile Include="Feature\Cliente\Model\ClienteModel.cs" />
+    <Compile Include="Feature\Cliente\View\FrmCadastroDeCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Cliente\View\FrmCadastroDeCliente.Designer.cs">
+      <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Interfaces\ICrudDao.cs" />
-    <Compile Include="Feature\Pessoa\Pessoa.cs" />
+    <Compile Include="Feature\Pessoa\DAO\PessoaDao.cs" />
+    <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
     <Compile Include="FrmEntrar.cs">
       <SubType>Form</SubType>
@@ -106,6 +113,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Feature\Cliente\View\FrmCadastroDeCliente.resx">
+      <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEntrar.resx">
       <DependentUpon>FrmEntrar.cs</DependentUpon>
     </EmbeddedResource>

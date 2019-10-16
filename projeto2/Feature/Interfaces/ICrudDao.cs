@@ -4,10 +4,10 @@ namespace projeto2.Feature.Interfaces
 {
     public interface ICrudDao
     {
-        bool Cadastrar(Produto.Produto produto);
-        Produto.Produto Buscar(int idProduto);
-        bool Excluir(int idProduto);
+        bool Cadastrar(object obj);
+        object Buscar(int id);
+        bool Excluir(int id);
         DataTable Listar();
-        bool Alterar(Produto.Produto produto);
+        bool Alterar(object obj);
     }
 }

@@ -7,8 +7,9 @@ namespace projeto2.Feature.Produto.DAO
 {
     public class ProdutoDao : ICrudDao
     {
-        public bool Cadastrar(Produto produto)
+        public bool Cadastrar(object obj)
         {
+            var produto = (Produto) obj;
             var conn = Conexao.GetInstancia();
             try
             {
@@ -35,7 +36,7 @@ namespace projeto2.Feature.Produto.DAO
             }
         }
 
-        public Produto Buscar(int idProduto)
+        public object Buscar(int idProduto)
         {
             var conn = Conexao.GetInstancia();
             try
@@ -50,14 +51,14 @@ namespace projeto2.Feature.Produto.DAO
                 var produto = new Produto();
                 while (dataReader.Read())
                 {
-                    produto.IdProduto = Convert.ToInt32(dataReader[0]);
-                    produto.NomeProduto = dataReader[1].ToString();
-                    produto.FornecedorProduto = dataReader[2].ToString();
-                    produto.ValorCompraProduto = Convert.ToDouble(dataReader[3]);
-                    produto.ValorVendaProduto = Convert.ToDouble(dataReader[4]);
-                    produto.GrupoProduto = dataReader[5].ToString();
-                    produto.MarcaProduto = dataReader[6].ToString();
-                    produto.QuantidadeEstoqueProduto = Convert.ToInt32(dataReader[7]);
+                    produto.IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]);
+                    produto.NomeProduto = dataReader["NOME_PRODUTO"].ToString();
+                    produto.FornecedorProduto = dataReader["FORNECEDOR_PRODUTO"].ToString();
+                    produto.ValorCompraProduto = Convert.ToDouble(dataReader["VALOR_COMPRA_PRODUTO"]);
+                    produto.ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]);
+                    produto.GrupoProduto = dataReader["GRUPO_PRODUTO"].ToString();
+                    produto.MarcaProduto = dataReader["MARCA_PRODUTO"].ToString();
+                    produto.QuantidadeEstoqueProduto = Convert.ToInt32(dataReader["QUANTIDADE_ESTOQUE_PRODUTO"]);
                 }
                 return produto;
             }
@@ -104,8 +105,9 @@ namespace projeto2.Feature.Produto.DAO
             }
         }
 
-        public bool Alterar(Produto produto)
+        public bool Alterar(object obj)
         {
+            var produto = (Produto) obj;
             var conn = Conexao.GetInstancia();
             try
             {

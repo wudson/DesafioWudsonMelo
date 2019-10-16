@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridDadosClientes = new System.Windows.Forms.DataGridView();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.pnlcontrol = new System.Windows.Forms.Panel();
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
             this.btnExcluir = new System.Windows.Forms.PictureBox();
             this.btnEditar = new System.Windows.Forms.PictureBox();
             this.btnListar = new System.Windows.Forms.PictureBox();
             this.btnCadastrar = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDadosClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.pnlcontrol.SuspendLayout();
             this.tblBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnExcluir)).BeginInit();
@@ -44,33 +44,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCadastrar)).BeginInit();
             this.SuspendLayout();
             // 
-            // gridDadosClientes
+            // dgvClientes
             // 
-            this.gridDadosClientes.AllowUserToAddRows = false;
-            this.gridDadosClientes.AllowUserToDeleteRows = false;
-            this.gridDadosClientes.AllowUserToResizeColumns = false;
-            this.gridDadosClientes.AllowUserToResizeRows = false;
-            this.gridDadosClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDadosClientes.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gridDadosClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridDadosClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.gridDadosClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDadosClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridDadosClientes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gridDadosClientes.Location = new System.Drawing.Point(0, 75);
-            this.gridDadosClientes.Name = "gridDadosClientes";
-            this.gridDadosClientes.ReadOnly = true;
-            this.gridDadosClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.gridDadosClientes.RowTemplate.ReadOnly = true;
-            this.gridDadosClientes.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDadosClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDadosClientes.Size = new System.Drawing.Size(703, 375);
-            this.gridDadosClientes.TabIndex = 3;
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.AllowUserToResizeColumns = false;
+            this.dgvClientes.AllowUserToResizeRows = false;
+            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvClientes.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgvClientes.Location = new System.Drawing.Point(0, 75);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvClientes.RowTemplate.ReadOnly = true;
+            this.dgvClientes.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientes.Size = new System.Drawing.Size(703, 375);
+            this.dgvClientes.TabIndex = 3;
             // 
             // pnlcontrol
             // 
             this.pnlcontrol.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnlcontrol.Controls.Add(this.gridDadosClientes);
+            this.pnlcontrol.Controls.Add(this.dgvClientes);
             this.pnlcontrol.Controls.Add(this.tblBotoes);
             this.pnlcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlcontrol.Location = new System.Drawing.Point(0, 0);
@@ -143,6 +143,7 @@
             this.btnCadastrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnCadastrar.TabIndex = 6;
             this.btnCadastrar.TabStop = false;
+            this.btnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
             // 
             // FrmClientes
             // 
@@ -153,7 +154,7 @@
             this.Name = "FrmClientes";
             this.Text = "Clientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.gridDadosClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.pnlcontrol.ResumeLayout(false);
             this.tblBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnExcluir)).EndInit();
@@ -165,7 +166,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView gridDadosClientes;
+        private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.Panel pnlcontrol;
         private System.Windows.Forms.PictureBox btnExcluir;
         private System.Windows.Forms.PictureBox btnEditar;

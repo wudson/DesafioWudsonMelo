@@ -7,7 +7,7 @@ namespace projeto2.Feature.Produto.Controller
     {
         public DataTable BuscarTodosOsDados() => new ProdutoDao().Listar();
 
-        public Produto BuscarDado(int idProduto) => new ProdutoDao().Buscar(idProduto);
+        public Produto BuscarDado(int idProduto) => (Produto) new ProdutoDao().Buscar(idProduto);
 
         public bool ExcluirDado(int idProduto) => new ProdutoDao().Excluir(idProduto);
 
