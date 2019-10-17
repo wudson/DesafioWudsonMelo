@@ -66,6 +66,8 @@
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(703, 375);
             this.dgvClientes.TabIndex = 3;
+            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvClientes_CellClick);
+            this.dgvClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvClientes_CellDoubleClick);
             // 
             // pnlcontrol
             // 
@@ -109,6 +111,7 @@
             this.btnExcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnExcluir.TabIndex = 4;
             this.btnExcluir.TabStop = false;
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // btnEditar
             // 
@@ -121,6 +124,7 @@
             this.btnEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnEditar.TabIndex = 7;
             this.btnEditar.TabStop = false;
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // btnListar
             // 
@@ -132,6 +136,7 @@
             this.btnListar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnListar.TabIndex = 5;
             this.btnListar.TabStop = false;
+            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
             // 
             // btnCadastrar
             // 
@@ -154,6 +159,7 @@
             this.Name = "FrmClientes";
             this.Text = "Clientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.pnlcontrol.ResumeLayout(false);
             this.tblBotoes.ResumeLayout(false);

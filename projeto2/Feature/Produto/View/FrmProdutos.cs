@@ -30,19 +30,6 @@ namespace projeto2.Feature.Produto.View
             if (dgvProduto.CurrentRow != null) dgvProduto.CurrentRow.Selected = false;
 
             DesativarBotoes();
-            RenomearCabecalhoDadosProduto();
-        }
-
-        private void RenomearCabecalhoDadosProduto()
-        {
-            dgvProduto.Columns[0].HeaderText = @"ID";
-            dgvProduto.Columns[1].HeaderText = @"Produto";
-            dgvProduto.Columns[2].HeaderText = @"Fornecedor";
-            dgvProduto.Columns[3].HeaderText = @"Valor Compra";
-            dgvProduto.Columns[4].HeaderText = @"Valor Venda";
-            dgvProduto.Columns[5].HeaderText = @"Grupo";
-            dgvProduto.Columns[6].HeaderText = @"Marca";
-            dgvProduto.Columns[7].HeaderText = @"Estoque";
         }
 
         private void GridDadosProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

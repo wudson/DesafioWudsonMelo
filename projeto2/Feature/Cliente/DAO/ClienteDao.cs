@@ -13,26 +13,31 @@ namespace projeto2.Feature.Cliente.DAO
         {
             var cliente = (ClienteModel)obj;
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            var transaction = conn.BeginTransaction();
+            var cmd = new FbCommand { Transaction = transaction, Connection = conn };
             try
             {
-                conn.Open();
-                const string mSql = @"INSERT into CLIENTE (DATA_CADASTRO_CLIENTE, ID_PESSOA) 
-                                    Values(@dataCadastro, @id_pessoa)";
-
-                var cmd = new FbCommand(mSql, conn);
                 cmd.Parameters.Add("@dataCadastro", FbDbType.Date).Value = cliente.DataCadastroCliente;
-                cmd.Parameters.Add("@id_pessoa", FbDbType.Integer).Value = new PessoaDao().Cadastrar(cliente);
+                cmd.Parameters.Add("@id_pessoa", FbDbType.Integer).Value = new PessoaDao().Cadastrar(cliente, cmd);
+
+                const string mSql = @"INSERT into CLIENTE (DATA_CADASTRO_CLIENTE, ID_PESSOA) Values(@dataCadastro, @id_pessoa)";
+                cmd.CommandText = mSql;
 
                 cmd.ExecuteNonQuery();
-                return true;
 
+                transaction.Commit();
+                return true;
             }
             catch (Exception ex)
             {
+                transaction.Rollback();
+                Console.WriteLine(ex.Message);
                 return false;
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }
@@ -40,12 +45,11 @@ namespace projeto2.Feature.Cliente.DAO
         public object Buscar(int idCliente)
         {
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            const string mSql = "Select c.*, p.* from CLIENTE c, PESSOA p where c.ID_PESSOA = @id and c.ID_PESSOA = p.ID_PESSOA";
+            var cmd = new FbCommand(mSql, conn);
             try
             {
-                conn.Open();
-                const string mSql = "Select c.*, p.* from CLIENTE c, PESSOA p where c.ID_CLIENTE = @id and c.ID_PESSOA = p.ID_PESSOA";
-
-                var cmd = new FbCommand(mSql, conn);
                 cmd.Parameters.Add("@id", FbDbType.Integer).Value = idCliente;
 
                 var dataReader = cmd.ExecuteReader();
@@ -67,6 +71,7 @@ namespace projeto2.Feature.Cliente.DAO
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }
@@ -74,37 +79,38 @@ namespace projeto2.Feature.Cliente.DAO
         public bool Excluir(int idPessoa)
         {
             var conn = Conexao.GetInstancia();
-            try
-            {
-                conn.Open();
-                const string mSql = "DELETE from CLIENTE Where ID_PESSOA= @id";
-                var cmd = new FbCommand(mSql, conn);
-                cmd.Parameters.Add("@id", FbDbType.Integer).Value = idPessoa;
-                cmd.ExecuteNonQuery();
+            conn.Open();
+            const string mSql = "DELETE from CLIENTE Where ID_PESSOA= @id";
+            var transaction = conn.BeginTransaction();
+            var cmd = new FbCommand(mSql, conn, transaction);
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idPessoa;
+            cmd.ExecuteNonQuery();
 
-                return new PessoaDao().Excluir(idPessoa);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            var excluidoOuNao = new PessoaDao().Excluir(idPessoa, cmd);
+            conn.Close();
+            return excluidoOuNao;
         }
 
         public DataTable Listar()
         {
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            const string mSql = @"Select p.ID_PESSOA as ""Cod."", p.NOME_PESSOA as ""Nome"", p.EMAIL_PESSOA as ""Email"", p.TELEFONE_PESSOA as ""Telefone"", 
+                                p.DATA_NASCIMENTO_PESSOA as ""Data de nascimento"", c.DATA_CADASTRO_CLIENTE as ""Data de cadastro""
+                                from  PESSOA p, CLIENTE c where c.ID_PESSOA = p.ID_PESSOA";
+            var cmd = new FbCommand(mSql, conn);
             try
             {
-                conn.Open();
-                const string mSql = "Select p.NOME_PESSOA, p.EMAIL_PESSOA, p.TELEFONE_PESSOA, c.DATA_CADASTRO_CLIENTE from  PESSOA p, CLIENTE c where c.ID_PESSOA = p.ID_PESSOA";
-                var cmd = new FbCommand(mSql, conn);
                 var dataAdapter = new FbDataAdapter(cmd);
                 var dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
+
+                dataAdapter.Dispose();
                 return dataTable;
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }
@@ -113,26 +119,31 @@ namespace projeto2.Feature.Cliente.DAO
         {
             var cliente = (ClienteModel)obj;
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            const string mSql = @"Update CLIENTE set DATA_CADASTRO_CLIENTE = @dataCadastro WHERE ID_PESSOA = @id";
+            var transaction = conn.BeginTransaction();
+            var cmd = new FbCommand(mSql, conn, transaction);
             try
             {
-                conn.Open();
-                const string mSql = @"Update CLIENTE set DATA_CADASTRO_CLIENTE = @dataCadastro WHERE ID_PESSOA = @id";
-
-                var cmd = new FbCommand(mSql, conn);
-
                 cmd.Parameters.Add("@id", FbDbType.Integer).Value = cliente.IdPessoa;
                 cmd.Parameters.Add("@dataCadastro", FbDbType.Date).Value = cliente.DataCadastroCliente;
+                cmd.ExecuteNonQuery();
 
-                if (new PessoaDao().Alterar(cliente))
+                if (new PessoaDao().Alterar(cliente, cmd))
                 {
-                    cmd.ExecuteNonQuery();
+                    transaction.Commit();
                     return true;
                 }
-                else return false;
+                else
+                {
+                    transaction.Rollback();
+                    return false;
+                }
 
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }

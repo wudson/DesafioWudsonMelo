@@ -47,7 +47,7 @@ namespace projeto2.Feature.Produto.DAO
                 var cmd = new FbCommand(mSql, conn);
                 cmd.Parameters.Add("@id", FbDbType.Integer).Value = idProduto;
 
-                var dataReader = cmd.ExecuteReader();
+                 var dataReader = cmd.ExecuteReader();
                 var produto = new Produto();
                 while (dataReader.Read())
                 {
@@ -92,7 +92,9 @@ namespace projeto2.Feature.Produto.DAO
             try
             {
                 conn.Open();
-                const string mSql = "Select * from PRODUTO";
+                const string mSql = @"Select ID_PRODUTO as ""cod."", NOME_PRODUTO as ""Produto"", GRUPO_PRODUTO as ""Grupo"", MARCA_PRODUTO as ""Marca"",
+                FORNECEDOR_PRODUTO as ""Fornecedor"", VALOR_COMPRA_PRODUTO as ""Valor de compra"", VALOR_VENDA_PRODUTO as ""Valor de venda"",
+                QUANTIDADE_ESTOQUE_PRODUTO as ""Quantidade em estoque"" from PRODUTO";
                 var cmd = new FbCommand(mSql, conn);
                 var dataAdapter = new FbDataAdapter(cmd);
                 var dataTable = new DataTable();
