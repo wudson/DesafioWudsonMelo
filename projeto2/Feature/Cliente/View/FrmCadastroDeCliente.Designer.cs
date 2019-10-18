@@ -199,7 +199,7 @@
             this.txtDataNascimento.Location = new System.Drawing.Point(84, 186);
             this.txtDataNascimento.Name = "txtDataNascimento";
             this.txtDataNascimento.Size = new System.Drawing.Size(108, 20);
-            this.txtDataNascimento.TabIndex = 18;
+            this.txtDataNascimento.TabIndex = 2;
             this.txtDataNascimento.Value = new System.DateTime(2019, 10, 17, 0, 0, 0, 0);
             // 
             // txtRg
@@ -208,7 +208,7 @@
             this.txtRg.Mask = "000000000";
             this.txtRg.Name = "txtRg";
             this.txtRg.Size = new System.Drawing.Size(212, 20);
-            this.txtRg.TabIndex = 19;
+            this.txtRg.TabIndex = 7;
             this.txtRg.ValidatingType = typeof(System.DateTime);
             // 
             // txtCpf
@@ -217,7 +217,7 @@
             this.txtCpf.Mask = "00000000000";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(216, 20);
-            this.txtCpf.TabIndex = 20;
+            this.txtCpf.TabIndex = 6;
             this.txtCpf.ValidatingType = typeof(System.DateTime);
             // 
             // pnlFormCliente
@@ -244,7 +244,7 @@
             this.pnlFormCliente.Location = new System.Drawing.Point(0, 0);
             this.pnlFormCliente.Name = "pnlFormCliente";
             this.pnlFormCliente.Size = new System.Drawing.Size(601, 450);
-            this.pnlFormCliente.TabIndex = 21;
+            this.pnlFormCliente.TabIndex = 0;
             // 
             // FrmCadastroDeCliente
             // 

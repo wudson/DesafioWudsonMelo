@@ -17,14 +17,9 @@ namespace projeto2.Feature.Produto.View
             AtualizarGridDadosProduto();
         }
 
-        private void BtnListar_Click(object sender, EventArgs e)
-        {
-            AtualizarGridDadosProduto();
-        }
-
         private void AtualizarGridDadosProduto()
         {
-            
+
             var produtos = new ProdutoController().BuscarTodosOsDados();
             dgvProduto.DataSource = produtos;
             if (dgvProduto.CurrentRow != null) dgvProduto.CurrentRow.Selected = false;
@@ -32,7 +27,18 @@ namespace projeto2.Feature.Produto.View
             DesativarBotoes();
         }
 
-        private void GridDadosProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DesativarBotoes()
+        {
+            btnExcluir.Enabled = false;
+            btnEditar.Enabled = false;
+        }
+
+        private void BtnListar_Click(object sender, EventArgs e)
+        {
+            AtualizarGridDadosProduto();
+        }
+
+        private void DgvProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex <= -1) return;
             var idProdutoLinhaAtual = int.Parse(dgvProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -42,7 +48,7 @@ namespace projeto2.Feature.Produto.View
             AtualizarGridDadosProduto();
         }
 
-        private void GridDadosProduto_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DgvProduto_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             btnExcluir.Enabled = true;
             btnEditar.Enabled = true;
@@ -59,20 +65,12 @@ namespace projeto2.Feature.Produto.View
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (!result.Equals(DialogResult.OK)) return;
+            var resultado = MessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (!resultado.Equals(DialogResult.OK)) return;
 
             var idProdutoLinhaAtual = int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
-            MessageBox.Show(new ProdutoController().ExcluirDado(idProdutoLinhaAtual)
-                ? @"Produto excluido com sucesso!"
-                : @"Problemas ao excluir produto!");
-            AtualizarGridDadosProduto();
-        }
-
-        private void DesativarBotoes()
-        {
-            btnExcluir.Enabled = false;
-            btnEditar.Enabled = false;
+            if(new ProdutoController().ExcluirDado(idProdutoLinhaAtual))
+                AtualizarGridDadosProduto();
         }
 
         private void FrmProdutos_Load(object sender, EventArgs e)

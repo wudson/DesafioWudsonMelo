@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Interfaces;
 
@@ -39,15 +40,14 @@ namespace projeto2.Feature.Produto.DAO
         public object Buscar(int idProduto)
         {
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            const string mSql = "Select * from PRODUTO where ID_PRODUTO = @id";
+            var cmd = new FbCommand(mSql, conn);
             try
             {
-                conn.Open();
-                const string mSql = "Select * from PRODUTO where ID_PRODUTO = @id";
-
-                var cmd = new FbCommand(mSql, conn);
                 cmd.Parameters.Add("@id", FbDbType.Integer).Value = idProduto;
 
-                 var dataReader = cmd.ExecuteReader();
+                var dataReader = cmd.ExecuteReader();
                 var produto = new Produto();
                 while (dataReader.Read())
                 {
@@ -64,6 +64,7 @@ namespace projeto2.Feature.Produto.DAO
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }

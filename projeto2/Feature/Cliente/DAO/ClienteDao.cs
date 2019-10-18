@@ -29,11 +29,10 @@ namespace projeto2.Feature.Cliente.DAO
                 transaction.Commit();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 transaction.Rollback();
-                Console.WriteLine(ex.Message);
-                return false;
+                throw;
             }
             finally
             {
@@ -83,12 +82,17 @@ namespace projeto2.Feature.Cliente.DAO
             const string mSql = "DELETE from CLIENTE Where ID_PESSOA= @id";
             var transaction = conn.BeginTransaction();
             var cmd = new FbCommand(mSql, conn, transaction);
-            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idPessoa;
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.Parameters.Add("@id", FbDbType.Integer).Value = idPessoa;
+                cmd.ExecuteNonQuery();
 
-            var excluidoOuNao = new PessoaDao().Excluir(idPessoa, cmd);
-            conn.Close();
-            return excluidoOuNao;
+                return new PessoaDao().Excluir(idPessoa, cmd);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public DataTable Listar()
@@ -130,16 +134,14 @@ namespace projeto2.Feature.Cliente.DAO
                 cmd.ExecuteNonQuery();
 
                 if (new PessoaDao().Alterar(cliente, cmd))
-                {
                     transaction.Commit();
-                    return true;
-                }
-                else
-                {
-                    transaction.Rollback();
-                    return false;
-                }
 
+                return true;
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+                throw;
             }
             finally
             {

@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using System.Windows.Forms;
 using projeto2.Feature.Cliente.DAO;
 using projeto2.Feature.Cliente.Model;
 
@@ -8,12 +10,53 @@ namespace projeto2.Feature.Cliente.Controller
     {
         public DataTable BuscarTodosOsDados() => new ClienteDao().Listar();
 
-        public bool AlterarDado(ClienteModel cliente) => new ClienteDao().Alterar(cliente);
+        public bool AlterarDado(ClienteModel cliente)
+        {
+            try
+            {
+                if (new ClienteDao().Alterar(cliente))
+                {
+                    MessageBox.Show(@"Cliente alterado com sucesso.", @"Sucesso");
+                    return true;
+                }
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao alterar cliente.", @"Erro");
+            }
+            return false;
+        }
 
-        public bool CadastrarDado(ClienteModel cliente) => new ClienteDao().Cadastrar(cliente);
+        public bool CadastrarDado(ClienteModel cliente)
+        {
+            try
+            {
+                if (new ClienteDao().Cadastrar(cliente))
+                {
+                    MessageBox.Show(@"Cliente cadastrado com sucesso.", @"Sucesso");
+                    return true;
+                }
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
+            }
 
-        public ClienteModel BuscarDado(int idPessoa) => (ClienteModel) new ClienteDao().Buscar(idPessoa);
+            return false;
+        }
 
-        public bool ExcluirDado(int idPessoa) => new ClienteDao().Excluir(idPessoa);
+        public ClienteModel BuscarDado(int idPessoa) => (ClienteModel)new ClienteDao().Buscar(idPessoa);
+
+        public bool ExcluirDado(int idPessoa)
+        {
+            if (new ClienteDao().Excluir(idPessoa))
+            {
+                MessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
+                return true;
+            }
+
+            MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
+            return false;
+        }
     }
 }

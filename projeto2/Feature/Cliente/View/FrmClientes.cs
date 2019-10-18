@@ -73,10 +73,8 @@ namespace projeto2.Feature.Cliente.View
             if (!result.Equals(DialogResult.OK)) return;
 
             var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
-            MessageBox.Show(new ClienteController().ExcluirDado(idClienteLinhaAtual)
-                ? @"Cliente excluido com sucesso!"
-                : @"Problemas ao excluir cliente!");
-            AtualizarGridDadosCliente();
+            if(new ClienteController().ExcluirDado(idClienteLinhaAtual))
+                AtualizarGridDadosCliente();
         }
     }
 }

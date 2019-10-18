@@ -10,6 +10,7 @@ namespace projeto2.Feature.Cliente.View
     public partial class FrmCadastroDeCliente : Form
     {
         private readonly ClienteModel _cliente;
+
         public FrmCadastroDeCliente(ClienteModel cliente)
         {
             InitializeComponent();
@@ -40,22 +41,7 @@ namespace projeto2.Feature.Cliente.View
                 TelefonePessoa = txtTelefone.Text
             };
 
-            if (cliente.IdPessoa >= 1)
-            {
-                MessageBox.Show(new ClienteController().AlterarDado(cliente)
-                    ? "Cliente alterado com sucesso"
-                    : "Problema ao alterar cliente");
-
-                Close();
-            }
-            else
-            {
-                MessageBox.Show(new ClienteController().CadastrarDado(cliente)
-                    ? "Cliente cadastrado com sucesso"
-                    : "Problema ao cadastrar cliente");
-
-                Close();
-            }
+            CadastraOuAltera(cliente);
         }
 
         private bool ValidarCampos(IEnumerable controles)
@@ -63,7 +49,7 @@ namespace projeto2.Feature.Cliente.View
             if (!controles.Cast<Control>().Any(item => string.IsNullOrWhiteSpace(item.Text))) return ValidarSexo();
             MessageBox.Show(@"Porfavor preencha todos os campos", @"Atenção",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return false;
+            return ValidarSexo();
         }
 
         private bool ValidarSexo()
@@ -77,6 +63,30 @@ namespace projeto2.Feature.Cliente.View
         private string RetornarSexoSelecionado()
         {
             return rdbMasculino.Checked ? "M" : "F";
+        }
+
+        private void CadastraOuAltera(ClienteModel cliente)
+        {
+            if (cliente.IdPessoa >= 1)
+            {
+                DeveAlterar(cliente);
+            }
+            else
+            {
+                DeveCadastrar(cliente);
+            }
+        }
+
+        private void DeveAlterar(ClienteModel cliente)
+        {
+            if (new ClienteController().AlterarDado(cliente))
+                Close();
+        }
+
+        private void DeveCadastrar(ClienteModel cliente)
+        {
+            if (new ClienteController().CadastrarDado(cliente))
+                Close();
         }
 
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)

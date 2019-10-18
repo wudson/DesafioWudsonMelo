@@ -71,10 +71,9 @@ namespace projeto2.Feature.Pessoa.DAO
 
                 return true;
             }
-            catch (Exception ex)
+            finally
             {
-                Console.WriteLine(ex.Message);
-                return false;
+                Console.WriteLine(@"");
             }
         }
     }

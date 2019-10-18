@@ -36,22 +36,7 @@ namespace projeto2.Feature.Produto.View
                 ValorVendaProduto = double.Parse(txtValorDeVenda.Text)
             };
 
-            if (produto.IdProduto >= 1)
-            {
-                MessageBox.Show(new ProdutoController().AlterarDado(produto)
-                    ? "Produto alterado com sucesso"
-                    : "Problema ao alterar Produto");
-
-                Close();
-            }
-            else
-            {
-                MessageBox.Show(new ProdutoController().CadastrarDado(produto)
-                    ? "Produto cadastrado com sucesso"
-                    : "Problema ao cadastrar Produto");
-
-                LimpaCampos(pnlControl.Controls);
-            }
+            CadastraOuAltera(produto);
         }
 
         private static bool ValidarCampos(IEnumerable controles)
@@ -63,16 +48,39 @@ namespace projeto2.Feature.Produto.View
 
         }
 
+        private void CadastraOuAltera(Produto produto)
+        {
+            if (produto.IdProduto >= 1)
+            {
+                DeveAlterar(produto);
+            }
+            else
+            {
+                DeveCadastrar(produto);
+            }
+        }
+
+        private void DeveAlterar(Produto produto)
+        {
+            if (new ProdutoController().AlterarDado(produto))
+                Close();
+        }
+
+        private void DeveCadastrar(Produto produto)
+        {
+            if (new ProdutoController().CadastrarDado(produto))
+                LimpaCampos(pnlControl.Controls);
+        }
+
         public void LimpaCampos(Control.ControlCollection controles)
         {
             foreach (Control item in controles)
-            {
-                if (item.GetType() == typeof(TextBox) || item.GetType() == typeof(ComboBox))
-                {
+                if (DeveLimpar(item))
                     item.Text = string.Empty;
-                }
-            }
         }
+
+        private static bool DeveLimpar(IDisposable item) =>
+            item.GetType() == typeof(TextBox) || item.GetType() == typeof(ComboBox);
 
         private void BtnCancelarCadastroProduto_Click(object sender, EventArgs e) => Close();
 
