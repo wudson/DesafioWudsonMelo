@@ -15,16 +15,27 @@ namespace projeto2.Feature.Produto.View
         {
             InitializeComponent();
             _produto = produto;
+            btnEditar.Visible = true;
+            btnSalvarCadastroProduto.Visible = false;
         }
         public FrmCadastroDeProduto()
         {
             InitializeComponent();
+            btnEditar.Visible = false;
+            btnSalvarCadastroProduto.Visible = true;
         }
 
         private void BtnSalvarCadastroProduto_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos(pnlControl.Controls)) return;
-            var produto = new Produto
+            var produto = AtribuirCamposParaModel();
+            if (!new ProdutoController().Cadastrar(produto)) return;
+            LimpaCampos(pnlControl.Controls);
+            txtNome.Focus();
+        }
+
+        private Produto AtribuirCamposParaModel() =>
+            new Produto
             {
                 IdProduto = int.Parse(txtIdProduto.Text),
                 NomeProduto = txtNome.Text,
@@ -36,40 +47,12 @@ namespace projeto2.Feature.Produto.View
                 ValorVendaProduto = double.Parse(txtValorDeVenda.Text)
             };
 
-            CadastraOuAltera(produto);
-        }
-
         private static bool ValidarCampos(IEnumerable controles)
         {
             if (!controles.Cast<Control>().Any(item => string.IsNullOrWhiteSpace(item.Text))) return true;
-            MessageBox.Show(@"Porfavor preencha todos os campos", @"Atenção",
+            MessageBox.Show(@"Por favor preencha todos os campos", @"Atenção",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             return false;
-
-        }
-
-        private void CadastraOuAltera(Produto produto)
-        {
-            if (produto.IdProduto >= 1)
-            {
-                DeveAlterar(produto);
-            }
-            else
-            {
-                DeveCadastrar(produto);
-            }
-        }
-
-        private void DeveAlterar(Produto produto)
-        {
-            if (new ProdutoController().AlterarDado(produto))
-                Close();
-        }
-
-        private void DeveCadastrar(Produto produto)
-        {
-            if (new ProdutoController().CadastrarDado(produto))
-                LimpaCampos(pnlControl.Controls);
         }
 
         public void LimpaCampos(Control.ControlCollection controles)
@@ -97,5 +80,13 @@ namespace projeto2.Feature.Produto.View
             txtQuantidadeEmEstoque.Text = _produto.QuantidadeEstoqueProduto.ToString();
         }
 
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCampos(pnlControl.Controls)) return;
+            var produto = AtribuirCamposParaModel();
+
+            if(new ProdutoController().Alterar(produto))
+                Close();
+        }
     }
 }

@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using projeto2.Feature.Cliente.DAO;
+using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
 
 namespace projeto2.Feature.Cliente.Controller
 {
     public class ClienteController
     {
-        public DataTable BuscarTodosOsDados() => new ClienteDao().Listar();
+        public IList<object> BuscarTodosOsDados() => new ClienteDao().Listar();
+
 
         public bool AlterarDado(ClienteModel cliente)
         {

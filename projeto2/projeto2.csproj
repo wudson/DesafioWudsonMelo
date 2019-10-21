@@ -67,7 +67,7 @@
   <ItemGroup>
     <Compile Include="Conexao.cs" />
     <Compile Include="Feature\Cliente\Controller\ClienteController.cs" />
-    <Compile Include="Feature\Cliente\DAO\ClienteDao.cs" />
+    <Compile Include="Feature\Cliente\Dao\ClienteDao.cs" />
     <Compile Include="Feature\Cliente\Model\ClienteModel.cs" />
     <Compile Include="Feature\Cliente\View\FrmCadastroDeCliente.cs">
       <SubType>Form</SubType>
@@ -76,7 +76,13 @@
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Interfaces\ICrudDao.cs" />
-    <Compile Include="Feature\Pessoa\DAO\PessoaDao.cs" />
+    <Compile Include="Feature\Pedido\View\FrmPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Pedido\View\FrmPedido.Designer.cs">
+      <DependentUpon>FrmPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
     <Compile Include="FrmEntrar.cs">
@@ -98,7 +104,7 @@
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Produto\Controller\ProdutoController.cs" />
-    <Compile Include="Feature\Produto\DAO\ProdutoDao.cs" />
+    <Compile Include="Feature\Produto\Dao\ProdutoDao.cs" />
     <Compile Include="Feature\Produto\View\FrmProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Feature\Cliente\View\FrmCadastroDeCliente.resx">
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Pedido\View\FrmPedido.resx">
+      <DependentUpon>FrmPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEntrar.resx">
       <DependentUpon>FrmEntrar.cs</DependentUpon>
@@ -142,6 +151,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\projeto2.Feature.Cliente.Model.ClienteModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -177,9 +187,6 @@
     <None Include="Resources\edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\refresh.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\plus.png" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +198,8 @@
   <ItemGroup>
     <None Include="Resources\network.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\arrow.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
 
 namespace projeto2.Feature.Interfaces
 {
@@ -7,7 +7,7 @@ namespace projeto2.Feature.Interfaces
         bool Cadastrar(object obj);
         object Buscar(int id);
         bool Excluir(int id);
-        DataTable Listar();
+        IList<object> Listar();
         bool Alterar(object obj);
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
+using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Interfaces;
 
-namespace projeto2.Feature.Produto.DAO
+namespace projeto2.Feature.Produto.Dao
 {
     public class ProdutoDao : ICrudDao
     {
@@ -12,14 +11,15 @@ namespace projeto2.Feature.Produto.DAO
         {
             var produto = (Produto) obj;
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO, 
+                                  QUANTIDADE_ESTOQUE_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO, 
+                                  FORNECEDOR_PRODUTO) 
+                                  Values(@nome, @grupo, @marca, @estoque, @compra, @venda, @fornecedor)";
+
+            var cmd = new FbCommand(mSql, conn);
             try
             {
-                conn.Open();
-                const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO, 
-                                    QUANTIDADE_ESTOQUE_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO, FORNECEDOR_PRODUTO) 
-                                    Values(@nome, @grupo, @marca, @estoque, @compra, @venda, @fornecedor)";
-
-                var cmd = new FbCommand(mSql, conn);
                 cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
                 cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = produto.GrupoProduto;
                 cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = produto.MarcaProduto;
@@ -33,6 +33,7 @@ namespace projeto2.Feature.Produto.DAO
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }
@@ -72,38 +73,53 @@ namespace projeto2.Feature.Produto.DAO
         public bool Excluir(int idProduto)
         {
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            const string mSql = "DELETE from PRODUTO Where ID_PRODUTO= @id";
+            var cmd = new FbCommand(mSql, conn);
             try
             {
-                conn.Open();
-                const string mSql = "DELETE from PRODUTO Where ID_PRODUTO= @id";
-                var cmd = new FbCommand(mSql, conn);
                 cmd.Parameters.Add("@id", FbDbType.Integer).Value = idProduto;
                 cmd.ExecuteNonQuery();
                 return true;
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }
 
-        public DataTable Listar()
+        public IList<object> Listar()
         {
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            const string mSql = @"Select ID_PRODUTO, NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO,
+                FORNECEDOR_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO,
+                QUANTIDADE_ESTOQUE_PRODUTO from PRODUTO";
+            var cmd = new FbCommand(mSql, conn);
             try
             {
-                conn.Open();
-                const string mSql = @"Select ID_PRODUTO as ""cod."", NOME_PRODUTO as ""Produto"", GRUPO_PRODUTO as ""Grupo"", MARCA_PRODUTO as ""Marca"",
-                FORNECEDOR_PRODUTO as ""Fornecedor"", VALOR_COMPRA_PRODUTO as ""Valor de compra"", VALOR_VENDA_PRODUTO as ""Valor de venda"",
-                QUANTIDADE_ESTOQUE_PRODUTO as ""Quantidade em estoque"" from PRODUTO";
-                var cmd = new FbCommand(mSql, conn);
-                var dataAdapter = new FbDataAdapter(cmd);
-                var dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                return dataTable;
+                var dataReader = cmd.ExecuteReader();
+                var produtos = new List<object>();
+                while (dataReader.Read())
+                {
+                    produtos.Add(new Produto
+                    {
+                        IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
+                        NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
+                        FornecedorProduto = dataReader["FORNECEDOR_PRODUTO"].ToString(),
+                        ValorCompraProduto = Convert.ToDouble(dataReader["VALOR_COMPRA_PRODUTO"]),
+                        ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
+                        GrupoProduto = dataReader["GRUPO_PRODUTO"].ToString(),
+                        MarcaProduto = dataReader["MARCA_PRODUTO"].ToString(),
+                        QuantidadeEstoqueProduto = Convert.ToInt32(dataReader["QUANTIDADE_ESTOQUE_PRODUTO"])
+                    });
+                }
+                return produtos;
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }
@@ -112,12 +128,15 @@ namespace projeto2.Feature.Produto.DAO
         {
             var produto = (Produto) obj;
             var conn = Conexao.GetInstancia();
+            conn.Open();
+            const string mSql = @"Update PRODUTO set NOME_PRODUTO = @nome, GRUPO_PRODUTO = @grupo, 
+                                    MARCA_PRODUTO = @marca, QUANTIDADE_ESTOQUE_PRODUTO = @estoque, 
+                                    VALOR_COMPRA_PRODUTO = @compra, VALOR_VENDA_PRODUTO = @venda, 
+                                    FORNECEDOR_PRODUTO = @fornecedor WHERE ID_PRODUTO = @id";
+
+            var cmd = new FbCommand(mSql, conn);
             try
             {
-                conn.Open();
-                const string mSql = @"Update PRODUTO set NOME_PRODUTO = @nome, GRUPO_PRODUTO = @grupo, MARCA_PRODUTO = @marca, QUANTIDADE_ESTOQUE_PRODUTO = @estoque, VALOR_COMPRA_PRODUTO = @compra, VALOR_VENDA_PRODUTO = @venda, FORNECEDOR_PRODUTO = @fornecedor WHERE ID_PRODUTO = @id";
-
-                var cmd = new FbCommand(mSql, conn);
                 cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
                 cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = produto.GrupoProduto;
                 cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = produto.MarcaProduto;
@@ -132,6 +151,7 @@ namespace projeto2.Feature.Produto.DAO
             }
             finally
             {
+                cmd.Dispose();
                 conn.Close();
             }
         }

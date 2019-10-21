@@ -12,10 +12,24 @@ namespace projeto2
 
         private void BtnEntrar_Click(object sender, EventArgs e)
         {
-            Hide();
-            var principal = new FrmPrincipal();
-            principal.Closed += (s, args) => Close();
-            principal.Show();
+            var usuario = txtUsuario.Text;
+            var senha = txtSenha.Text;
+            if ("adm".Equals(usuario) && "123".Equals(senha))
+            {
+                Hide();
+                var principal = new FrmPrincipal();
+                principal.Closed += (s, args) => Close();
+                principal.Show();
+            }
+            else
+            {
+                MessageBox.Show(@"Usuario ou senha incorretos.");
+            }
+        }
+
+        private void FrmEntrar_Load(object sender, EventArgs e)
+        {
+            txtUsuario.Focus();
         }
     }
 }

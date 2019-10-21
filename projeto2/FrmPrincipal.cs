@@ -21,5 +21,13 @@ namespace projeto2
         {
             new FrmClientes().ShowDialog();
         }
+
+        private void BtnSair_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var login = new FrmEntrar();
+            login.Closed += (s, args) => Close();
+            login.Show();
+        }
     }
 }

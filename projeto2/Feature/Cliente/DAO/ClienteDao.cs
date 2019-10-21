@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Interfaces;
-using projeto2.Feature.Pessoa.DAO;
+using projeto2.Feature.Pessoa.Dao;
 
-namespace projeto2.Feature.Cliente.DAO
+namespace projeto2.Feature.Cliente.Dao
 {
     public class ClienteDao : ICrudDao
     {
@@ -21,7 +21,8 @@ namespace projeto2.Feature.Cliente.DAO
                 cmd.Parameters.Add("@dataCadastro", FbDbType.Date).Value = cliente.DataCadastroCliente;
                 cmd.Parameters.Add("@id_pessoa", FbDbType.Integer).Value = new PessoaDao().Cadastrar(cliente, cmd);
 
-                const string mSql = @"INSERT into CLIENTE (DATA_CADASTRO_CLIENTE, ID_PESSOA) Values(@dataCadastro, @id_pessoa)";
+                const string mSql = @"INSERT into CLIENTE (DATA_CADASTRO_CLIENTE, ID_PESSOA) 
+                                    Values(@dataCadastro, @id_pessoa)";
                 cmd.CommandText = mSql;
 
                 cmd.ExecuteNonQuery();
@@ -95,22 +96,31 @@ namespace projeto2.Feature.Cliente.DAO
             }
         }
 
-        public DataTable Listar()
+        public IList<object> Listar()
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = @"Select p.ID_PESSOA as ""Cod."", p.NOME_PESSOA as ""Nome"", p.EMAIL_PESSOA as ""Email"", p.TELEFONE_PESSOA as ""Telefone"", 
-                                p.DATA_NASCIMENTO_PESSOA as ""Data de nascimento"", c.DATA_CADASTRO_CLIENTE as ""Data de cadastro""
+            const string mSql = @"Select p.ID_PESSOA, p.NOME_PESSOA, p.EMAIL_PESSOA, p.TELEFONE_PESSOA, 
+                                p.DATA_NASCIMENTO_PESSOA, c.DATA_CADASTRO_CLIENTE
                                 from  PESSOA p, CLIENTE c where c.ID_PESSOA = p.ID_PESSOA";
             var cmd = new FbCommand(mSql, conn);
             try
             {
-                var dataAdapter = new FbDataAdapter(cmd);
-                var dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-
-                dataAdapter.Dispose();
-                return dataTable;
+                var dataReader = cmd.ExecuteReader();
+                var clientes = new List<object>();
+                while (dataReader.Read())
+                {
+                    clientes.Add(new ClienteModel()
+                    {
+                        IdPessoa = Convert.ToInt32(dataReader["ID_PESSOA"]),
+                        NomePessoa = dataReader["NOME_PESSOA"].ToString(),
+                        EmailPessoa = dataReader["EMAIL_PESSOA"].ToString(),
+                        TelefonePessoa = dataReader["TELEFONE_PESSOA"].ToString(),
+                        NascimentoPessoa = Convert.ToDateTime(dataReader["DATA_NASCIMENTO_PESSOA"]),
+                        DataCadastroCliente = Convert.ToDateTime(dataReader["DATA_CADASTRO_CLIENTE"])
+                    });
+                }
+                return clientes;
             }
             finally
             {

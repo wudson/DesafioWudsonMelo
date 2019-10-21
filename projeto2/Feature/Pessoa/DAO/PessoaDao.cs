@@ -2,7 +2,7 @@
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Pessoa.Model;
 
-namespace projeto2.Feature.Pessoa.DAO
+namespace projeto2.Feature.Pessoa.Dao
 {
     public class PessoaDao
     {

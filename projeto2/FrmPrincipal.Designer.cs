@@ -29,9 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
+            this.btnSair = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnProdutos = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnSair
+            // 
+            this.btnSair.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSair.FlatAppearance.BorderSize = 0;
+            this.btnSair.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnSair.Image = global::projeto2.Properties.Resources.arrow;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSair.Location = new System.Drawing.Point(308, 12);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(130, 90);
+            this.btnSair.TabIndex = 2;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
             // btnClientes
             // 
@@ -70,8 +87,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnProdutos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Principal";
@@ -83,5 +103,6 @@
 
         private System.Windows.Forms.Button btnProdutos;
         private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.Button btnSair;
     }
 }

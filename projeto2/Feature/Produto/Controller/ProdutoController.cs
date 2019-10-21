@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Windows.Forms;
-using projeto2.Feature.Produto.DAO;
+using projeto2.Feature.Produto.Dao;
 
 namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
-        public DataTable BuscarTodosOsDados() => new ProdutoDao().Listar();
+        public IList<object> BuscarTodosOsDados() => new ProdutoDao().Listar();
 
         public Produto BuscarDado(int idProduto) => (Produto) new ProdutoDao().Buscar(idProduto);
 
@@ -64,5 +64,9 @@ namespace projeto2.Feature.Produto.Controller
 
             return false;
         }
+
+        public bool Cadastrar(Produto produto) => CadastrarDado(produto);
+
+        public bool Alterar(Produto produto) => AlterarDado(produto);
     }
 }
