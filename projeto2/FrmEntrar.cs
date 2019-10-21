@@ -31,5 +31,18 @@ namespace projeto2
         {
             txtUsuario.Focus();
         }
+
+        private void FrmEntrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    BtnEntrar_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
     }
 }

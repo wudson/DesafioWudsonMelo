@@ -88,5 +88,26 @@ namespace projeto2.Feature.Produto.View
             if(new ProdutoController().Alterar(produto))
                 Close();
         }
+
+        private void FrmCadastroDeProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    CadastrarOuAlterar(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
+        private void CadastrarOuAlterar(object sender, KeyEventArgs e)
+        {
+            if (btnSalvarCadastroProduto.Visible)
+                BtnSalvarCadastroProduto_Click(sender, e);
+            else
+                BtnEditar_Click(sender, e);
+        }
     }
 }

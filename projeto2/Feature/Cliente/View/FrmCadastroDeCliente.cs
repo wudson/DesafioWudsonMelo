@@ -41,7 +41,7 @@ namespace projeto2.Feature.Cliente.View
                 TelefonePessoa = txtTelefone.Text
             };
 
-            CadastraOuAltera(cliente);
+            CadastrarOuAlterar(cliente);
         }
 
         private bool ValidarCampos(IEnumerable controles)
@@ -65,28 +65,18 @@ namespace projeto2.Feature.Cliente.View
             return rdbMasculino.Checked ? "M" : "F";
         }
 
-        private void CadastraOuAltera(ClienteModel cliente)
+        private void CadastrarOuAlterar(ClienteModel cliente)
         {
             if (cliente.IdPessoa >= 1)
             {
-                DeveAlterar(cliente);
+                if (new ClienteController().AlterarDado(cliente))
+                    Close();
             }
             else
             {
-                DeveCadastrar(cliente);
+                if (new ClienteController().CadastrarDado(cliente))
+                    Close();
             }
-        }
-
-        private void DeveAlterar(ClienteModel cliente)
-        {
-            if (new ClienteController().AlterarDado(cliente))
-                Close();
-        }
-
-        private void DeveCadastrar(ClienteModel cliente)
-        {
-            if (new ClienteController().CadastrarDado(cliente))
-                Close();
         }
 
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)
@@ -104,6 +94,19 @@ namespace projeto2.Feature.Cliente.View
             else 
                 rdbFeminino.Checked = true;
             
+        }
+
+        private void FrmCadastroDeCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    BtnSalvarCadastroCliente_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
         }
     }
 }

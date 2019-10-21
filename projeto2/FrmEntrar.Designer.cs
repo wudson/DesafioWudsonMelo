@@ -117,11 +117,13 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.lblEntrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmEntrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Entrar";
             this.Load += new System.EventHandler(this.FrmEntrar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmEntrar_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

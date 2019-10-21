@@ -36,12 +36,12 @@
             this.btnEditar = new System.Windows.Forms.PictureBox();
             this.btnListar = new System.Windows.Forms.PictureBox();
             this.btnCadastrar = new System.Windows.Forms.PictureBox();
-            this.clienteModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataCadastroClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clienteModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.pnlcontrol.SuspendLayout();
             this.tblBotoes.SuspendLayout();
@@ -80,6 +80,7 @@
             this.dgvClientes.RowTemplate.ReadOnly = true;
             this.dgvClientes.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientes.ShowEditingIcon = false;
             this.dgvClientes.Size = new System.Drawing.Size(703, 375);
             this.dgvClientes.TabIndex = 3;
             this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvClientes_CellClick);
@@ -164,11 +165,8 @@
             this.btnCadastrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnCadastrar.TabIndex = 6;
             this.btnCadastrar.TabStop = false;
+            this.btnCadastrar.Tag = "";
             this.btnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
-            // 
-            // clienteModelBindingSource
-            // 
-            this.clienteModelBindingSource.DataSource = typeof(projeto2.Feature.Cliente.Model.ClienteModel);
             // 
             // idPessoaDataGridViewTextBoxColumn
             // 
@@ -214,6 +212,10 @@
             this.dataCadastroClienteDataGridViewTextBoxColumn.Name = "dataCadastroClienteDataGridViewTextBoxColumn";
             this.dataCadastroClienteDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // clienteModelBindingSource
+            // 
+            this.clienteModelBindingSource.DataSource = typeof(projeto2.Feature.Cliente.Model.ClienteModel);
+            // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,11 +223,13 @@
             this.ClientSize = new System.Drawing.Size(703, 450);
             this.Controls.Add(this.pnlcontrol);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmClientes";
             this.Text = "Clientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmClientes_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmClientes_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.pnlcontrol.ResumeLayout(false);
             this.tblBotoes.ResumeLayout(false);

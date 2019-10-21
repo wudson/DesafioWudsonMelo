@@ -56,6 +56,8 @@ namespace projeto2.Feature.Produto.View
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
+            if (!btnEditar.Enabled) return;
+
             var idProdutoLinhaAtual = int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
             var produto = new ProdutoController().BuscarDado(idProdutoLinhaAtual);
 
@@ -65,6 +67,8 @@ namespace projeto2.Feature.Produto.View
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
+            if (!btnExcluir.Enabled) return;
+
             var resultado = MessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 
@@ -76,6 +80,28 @@ namespace projeto2.Feature.Produto.View
         private void FrmProdutos_Load(object sender, EventArgs e)
         {
             AtualizarGridDadosProduto();
+        }
+
+        private void FrmProdutos_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
+                    BtnCadastrar_Click(sender, e);
+                    break;
+                case Keys.F5:
+                    BtnListar_Click(sender, e);
+                    break;
+                case Keys.F4:
+                    BtnEditar_Click(sender, e);
+                    break;
+                case Keys.Delete:
+                    BtnExcluir_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
         }
     }
 }

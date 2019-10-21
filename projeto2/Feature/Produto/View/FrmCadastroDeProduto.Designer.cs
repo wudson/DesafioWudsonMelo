@@ -45,8 +45,8 @@
             this.txtGrupo = new System.Windows.Forms.ComboBox();
             this.txtMarca = new System.Windows.Forms.ComboBox();
             this.txtIdProduto = new System.Windows.Forms.TextBox();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.txtQuantidadeEmEstoque = new System.Windows.Forms.TextBox();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.pnlControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -236,6 +236,14 @@
             this.txtIdProduto.Text = "0";
             this.txtIdProduto.Visible = false;
             // 
+            // txtQuantidadeEmEstoque
+            // 
+            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(32, 151);
+            this.txtQuantidadeEmEstoque.Multiline = true;
+            this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
+            this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(274, 20);
+            this.txtQuantidadeEmEstoque.TabIndex = 8;
+            // 
             // btnEditar
             // 
             this.btnEditar.BackColor = System.Drawing.Color.LimeGreen;
@@ -251,14 +259,6 @@
             this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
-            // txtQuantidadeEmEstoque
-            // 
-            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(32, 151);
-            this.txtQuantidadeEmEstoque.Multiline = true;
-            this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
-            this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(274, 20);
-            this.txtQuantidadeEmEstoque.TabIndex = 8;
-            // 
             // FrmCadastroDeProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,11 +266,13 @@
             this.ClientSize = new System.Drawing.Size(620, 352);
             this.Controls.Add(this.pnlControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmCadastroDeProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Produtos";
             this.Load += new System.EventHandler(this.FormCadastroProdutos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroDeProduto_KeyDown);
             this.pnlControl.ResumeLayout(false);
             this.pnlControl.PerformLayout();
             this.ResumeLayout(false);

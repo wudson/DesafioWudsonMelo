@@ -264,11 +264,13 @@
             this.ClientSize = new System.Drawing.Size(601, 384);
             this.Controls.Add(this.pnlFormCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmCadastroDeCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Cliente";
             this.Load += new System.EventHandler(this.FrmCadastroDeCliente_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroDeCliente_KeyDown);
             this.pnlFormCliente.ResumeLayout(false);
             this.pnlFormCliente.PerformLayout();
             this.ResumeLayout(false);

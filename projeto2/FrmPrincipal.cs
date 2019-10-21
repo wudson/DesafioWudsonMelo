@@ -24,10 +24,29 @@ namespace projeto2
 
         private void BtnSair_Click(object sender, EventArgs e)
         {
+
+            var result = MessageBox.Show(@"Deseja sair do sistema?", @"Sair", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (!result.Equals(DialogResult.OK)) return;
             Hide();
             var login = new FrmEntrar();
             login.Closed += (s, args) => Close();
             login.Show();
+        }
+
+        private void FrmPrincipal_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D1:
+                    BtnProdutos_Click(sender, e);
+                    break;
+                case Keys.D2:
+                    BtnProdutos_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    BtnSair_Click(sender, e);
+                    break;
+            }
         }
     }
 }

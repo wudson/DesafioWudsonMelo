@@ -45,7 +45,7 @@
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(130, 90);
             this.btnSair.TabIndex = 2;
-            this.btnSair.Text = "Sair";
+            this.btnSair.Text = "Sair - [ Esc ]";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
@@ -61,7 +61,7 @@
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(130, 90);
             this.btnClientes.TabIndex = 1;
-            this.btnClientes.Text = "Clientes";
+            this.btnClientes.Text = "Clientes - [ 2 ]";
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Click += new System.EventHandler(this.BtnClientes_Click);
@@ -77,7 +77,7 @@
             this.btnProdutos.Name = "btnProdutos";
             this.btnProdutos.Size = new System.Drawing.Size(130, 90);
             this.btnProdutos.TabIndex = 0;
-            this.btnProdutos.Text = "Produtos";
+            this.btnProdutos.Text = "Produtos - [ 1 ]";
             this.btnProdutos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnProdutos.UseVisualStyleBackColor = false;
             this.btnProdutos.Click += new System.EventHandler(this.BtnProdutos_Click);
@@ -91,10 +91,12 @@
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnProdutos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tela Principal";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPrincipal_KeyDown);
             this.ResumeLayout(false);
 
         }

@@ -6,9 +6,12 @@ namespace projeto2.Feature.Cliente.View
 {
     public partial class FrmClientes : Form
     {
+        private bool _podeModificar;
+
         public FrmClientes()
         {
             InitializeComponent();
+            new ToolTip().SetToolTip(btnExcluir, "Excluir - [Del]");
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
@@ -22,14 +25,16 @@ namespace projeto2.Feature.Cliente.View
             var clientes = new ClienteController().BuscarTodosOsDados();
             dgvClientes.DataSource = clientes;
             if (dgvClientes.CurrentRow != null) dgvClientes.CurrentRow.Selected = false;
-
-            DesativarBotoes();
+            _podeModificar = true;
+            ModificarEnabledDosBotoes(false);
         }
 
-        private void DesativarBotoes()
+        private void ModificarEnabledDosBotoes(bool enabled)
         {
-            btnExcluir.Enabled = false;
-            btnEditar.Enabled = false;
+            if (!_podeModificar) return;
+
+            btnExcluir.Enabled = enabled;
+            btnEditar.Enabled = enabled;
         }
 
         private void BtnListar_Click(object sender, EventArgs e)
@@ -44,8 +49,7 @@ namespace projeto2.Feature.Cliente.View
 
         private void DgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnExcluir.Enabled = true;
-            btnEditar.Enabled = true;
+            ModificarEnabledDosBotoes(true);
         }
 
         private void DgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -60,6 +64,8 @@ namespace projeto2.Feature.Cliente.View
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
+            if (!btnEditar.Enabled) return;
+
             var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
             var cliente = new ClienteController().BuscarDado(idClienteLinhaAtual);
 
@@ -69,12 +75,36 @@ namespace projeto2.Feature.Cliente.View
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
+            if (!btnExcluir.Enabled) return;
+
             var result = MessageBox.Show(@"Deseja excluir esse cliente?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
 
             var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
             if(new ClienteController().ExcluirDado(idClienteLinhaAtual))
                 AtualizarGridDadosCliente();
+        }
+
+        private void FrmClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
+                    BtnCadastrar_Click(sender, e);
+                    break;
+                case Keys.F5:
+                    BtnListar_Click(sender, e);
+                    break;
+                case Keys.F4:
+                    BtnEditar_Click(sender, e);
+                    break;
+                case Keys.Delete:
+                    BtnExcluir_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
         }
     }
 }
