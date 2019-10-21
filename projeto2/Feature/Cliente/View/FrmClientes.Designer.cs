@@ -32,24 +32,24 @@
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.pnlcontrol = new System.Windows.Forms.Panel();
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
-            this.btnExcluir = new System.Windows.Forms.PictureBox();
-            this.btnEditar = new System.Windows.Forms.PictureBox();
-            this.btnListar = new System.Windows.Forms.PictureBox();
-            this.btnCadastrar = new System.Windows.Forms.PictureBox();
             this.idPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataCadastroClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnExcluir = new System.Windows.Forms.PictureBox();
+            this.btnEditar = new System.Windows.Forms.PictureBox();
+            this.btnListar = new System.Windows.Forms.PictureBox();
+            this.btnCadastrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.pnlcontrol.SuspendLayout();
             this.tblBotoes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExcluir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEditar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnListar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCadastrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvClientes
@@ -116,58 +116,6 @@
             this.tblBotoes.Size = new System.Drawing.Size(703, 75);
             this.tblBotoes.TabIndex = 2;
             // 
-            // btnExcluir
-            // 
-            this.btnExcluir.BackColor = System.Drawing.Color.Transparent;
-            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluir.Enabled = false;
-            this.btnExcluir.Image = global::projeto2.Properties.Resources.error;
-            this.btnExcluir.Location = new System.Drawing.Point(237, 3);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(72, 69);
-            this.btnExcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnExcluir.TabIndex = 4;
-            this.btnExcluir.TabStop = false;
-            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.Enabled = false;
-            this.btnEditar.Image = global::projeto2.Properties.Resources.edit;
-            this.btnEditar.Location = new System.Drawing.Point(159, 3);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(72, 69);
-            this.btnEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnEditar.TabIndex = 7;
-            this.btnEditar.TabStop = false;
-            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
-            // 
-            // btnListar
-            // 
-            this.btnListar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnListar.Image = global::projeto2.Properties.Resources.clipboard;
-            this.btnListar.Location = new System.Drawing.Point(81, 3);
-            this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(72, 69);
-            this.btnListar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnListar.TabIndex = 5;
-            this.btnListar.TabStop = false;
-            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
-            // 
-            // btnCadastrar
-            // 
-            this.btnCadastrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCadastrar.Image = global::projeto2.Properties.Resources.plus;
-            this.btnCadastrar.Location = new System.Drawing.Point(3, 3);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(72, 69);
-            this.btnCadastrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.btnCadastrar.TabIndex = 6;
-            this.btnCadastrar.TabStop = false;
-            this.btnCadastrar.Tag = "";
-            this.btnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
-            // 
             // idPessoaDataGridViewTextBoxColumn
             // 
             this.idPessoaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -216,6 +164,58 @@
             // 
             this.clienteModelBindingSource.DataSource = typeof(projeto2.Feature.Cliente.Model.ClienteModel);
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.Enabled = false;
+            this.btnExcluir.Image = global::projeto2.Properties.Resources.delete__1_;
+            this.btnExcluir.Location = new System.Drawing.Point(237, 3);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(72, 69);
+            this.btnExcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnExcluir.TabIndex = 4;
+            this.btnExcluir.TabStop = false;
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.Enabled = false;
+            this.btnEditar.Image = global::projeto2.Properties.Resources.edit;
+            this.btnEditar.Location = new System.Drawing.Point(159, 3);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(72, 69);
+            this.btnEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnEditar.TabIndex = 7;
+            this.btnEditar.TabStop = false;
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            // 
+            // btnListar
+            // 
+            this.btnListar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListar.Image = global::projeto2.Properties.Resources.clipboard;
+            this.btnListar.Location = new System.Drawing.Point(81, 3);
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(72, 69);
+            this.btnListar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnListar.TabIndex = 5;
+            this.btnListar.TabStop = false;
+            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
+            // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCadastrar.Image = global::projeto2.Properties.Resources.plus;
+            this.btnCadastrar.Location = new System.Drawing.Point(3, 3);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(72, 69);
+            this.btnCadastrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnCadastrar.TabIndex = 6;
+            this.btnCadastrar.TabStop = false;
+            this.btnCadastrar.Tag = "";
+            this.btnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
+            // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,11 +233,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.pnlcontrol.ResumeLayout(false);
             this.tblBotoes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExcluir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEditar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnListar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCadastrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

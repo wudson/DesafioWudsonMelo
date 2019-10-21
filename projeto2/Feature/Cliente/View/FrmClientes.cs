@@ -12,6 +12,9 @@ namespace projeto2.Feature.Cliente.View
         {
             InitializeComponent();
             new ToolTip().SetToolTip(btnExcluir, "Excluir - [Del]");
+            new ToolTip().SetToolTip(btnCadastrar, "Adicionar Cliente - [+]");
+            new ToolTip().SetToolTip(btnListar, "Atualizar Lista - [F5]");
+            new ToolTip().SetToolTip(btnEditar, "Editar - [F4]");
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
@@ -89,7 +92,7 @@ namespace projeto2.Feature.Cliente.View
         {
             switch (e.KeyCode)
             {
-                case Keys.F1:
+                case Keys.Add:
                     BtnCadastrar_Click(sender, e);
                     break;
                 case Keys.F5:
