@@ -41,7 +41,7 @@ namespace projeto2
                     BtnProdutos_Click(sender, e);
                     break;
                 case Keys.D2:
-                    BtnProdutos_Click(sender, e);
+                    BtnClientes_Click(sender, e);
                     break;
                 case Keys.Escape:
                     BtnSair_Click(sender, e);

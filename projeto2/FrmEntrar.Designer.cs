@@ -35,6 +35,12 @@
             this.btnEntrar = new System.Windows.Forms.Button();
             this.checkBoxLembrarDeMim = new System.Windows.Forms.CheckBox();
             this.txtSenha = new System.Windows.Forms.MaskedTextBox();
+            this.iconErroSenha = new System.Windows.Forms.PictureBox();
+            this.iconErroUsuario = new System.Windows.Forms.PictureBox();
+            this.iconSucessoUsuario = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.iconErroSenha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconErroUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconSucessoUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEntrar
@@ -52,7 +58,7 @@
             // 
             this.txtUsuario.Location = new System.Drawing.Point(21, 164);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(315, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(293, 20);
             this.txtUsuario.TabIndex = 0;
             // 
             // label1
@@ -100,15 +106,51 @@
             // 
             this.txtSenha.Location = new System.Drawing.Point(21, 230);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(315, 20);
+            this.txtSenha.Size = new System.Drawing.Size(293, 20);
             this.txtSenha.TabIndex = 1;
             this.txtSenha.UseSystemPasswordChar = true;
+            // 
+            // iconErroSenha
+            // 
+            this.iconErroSenha.Image = global::projeto2.Properties.Resources.error16x;
+            this.iconErroSenha.Location = new System.Drawing.Point(320, 230);
+            this.iconErroSenha.Name = "iconErroSenha";
+            this.iconErroSenha.Size = new System.Drawing.Size(21, 20);
+            this.iconErroSenha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconErroSenha.TabIndex = 7;
+            this.iconErroSenha.TabStop = false;
+            this.iconErroSenha.Visible = false;
+            // 
+            // iconErroUsuario
+            // 
+            this.iconErroUsuario.Image = global::projeto2.Properties.Resources.error16x;
+            this.iconErroUsuario.Location = new System.Drawing.Point(321, 164);
+            this.iconErroUsuario.Name = "iconErroUsuario";
+            this.iconErroUsuario.Size = new System.Drawing.Size(21, 20);
+            this.iconErroUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconErroUsuario.TabIndex = 7;
+            this.iconErroUsuario.TabStop = false;
+            this.iconErroUsuario.Visible = false;
+            // 
+            // iconSucessoUsuario
+            // 
+            this.iconSucessoUsuario.Image = global::projeto2.Properties.Resources.success;
+            this.iconSucessoUsuario.Location = new System.Drawing.Point(321, 164);
+            this.iconSucessoUsuario.Name = "iconSucessoUsuario";
+            this.iconSucessoUsuario.Size = new System.Drawing.Size(21, 20);
+            this.iconSucessoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.iconSucessoUsuario.TabIndex = 7;
+            this.iconSucessoUsuario.TabStop = false;
+            this.iconSucessoUsuario.Visible = false;
             // 
             // FrmEntrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 392);
+            this.Controls.Add(this.iconErroSenha);
+            this.Controls.Add(this.iconErroUsuario);
+            this.Controls.Add(this.iconSucessoUsuario);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.checkBoxLembrarDeMim);
             this.Controls.Add(this.btnEntrar);
@@ -124,6 +166,9 @@
             this.Text = "Entrar";
             this.Load += new System.EventHandler(this.FrmEntrar_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmEntrar_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.iconErroSenha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconErroUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconSucessoUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,5 +183,8 @@
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.CheckBox checkBoxLembrarDeMim;
         private System.Windows.Forms.MaskedTextBox txtSenha;
+        private System.Windows.Forms.PictureBox iconSucessoUsuario;
+        private System.Windows.Forms.PictureBox iconErroUsuario;
+        private System.Windows.Forms.PictureBox iconErroSenha;
     }
 }

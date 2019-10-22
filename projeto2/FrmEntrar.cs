@@ -14,16 +14,31 @@ namespace projeto2
         {
             var usuario = txtUsuario.Text;
             var senha = txtSenha.Text;
-            if ("adm".Equals(usuario) && "123".Equals(senha))
+            if ("adm".Equals(usuario))
             {
-                Hide();
-                var principal = new FrmPrincipal();
-                principal.Closed += (s, args) => Close();
-                principal.Show();
+                iconErroUsuario.Visible = false;
+                iconSucessoUsuario.Visible = true;
+
+                if (!"123".Equals(senha))
+                {
+                    iconErroSenha.Visible = true;
+                    MessageBox.Show(@"Senha incorreta.", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtSenha.Focus();
+                }
+                else
+                {
+                    Hide();
+                    var principal = new FrmPrincipal();
+                    principal.Closed += (s, args) => Close();
+                    principal.Show();
+                }
             }
             else
             {
-                MessageBox.Show(@"Usuario ou senha incorretos.");
+                MessageBox.Show(@"Usuario não existe.", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtUsuario.Focus();
+                iconSucessoUsuario.Visible = false;
+                iconErroUsuario.Visible = true;
             }
         }
 

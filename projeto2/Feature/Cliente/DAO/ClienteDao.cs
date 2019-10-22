@@ -65,6 +65,14 @@ namespace projeto2.Feature.Cliente.Dao
                     cliente.NascimentoPessoa = Convert.ToDateTime(dataReader["DATA_NASCIMENTO_PESSOA"]);
                     cliente.DataCadastroCliente = Convert.ToDateTime(dataReader["DATA_CADASTRO_CLIENTE"]);
                     cliente.TelefonePessoa = dataReader["TELEFONE_PESSOA"].ToString();
+                    cliente.CelularPessoa = dataReader["CELULAR_PESSOA"].ToString();
+                    cliente.EstadoPessoa = dataReader["ESTADO"].ToString();
+                    cliente.CidadePessoa = dataReader["CIDADE"].ToString();
+                    cliente.RuaPessoa = dataReader["RUA"].ToString();
+                    cliente.ComplementoPessoa = dataReader["COMPLEMENTO"].ToString();
+                    cliente.BairroPessoa = dataReader["BAIRRO"].ToString();
+                    cliente.CepPessoa = dataReader["CEP"].ToString();
+                    cliente.NumeroPessoa = Convert.ToInt32(dataReader["NUMERO"]);
                     cliente.IdPessoa = Convert.ToInt32(dataReader["ID_PESSOA"]);
                 }
                 return cliente;
@@ -100,8 +108,7 @@ namespace projeto2.Feature.Cliente.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = @"Select p.ID_PESSOA, p.NOME_PESSOA, p.EMAIL_PESSOA, p.TELEFONE_PESSOA, 
-                                p.DATA_NASCIMENTO_PESSOA, c.DATA_CADASTRO_CLIENTE
+            const string mSql = @"Select p.*, c.*
                                 from  PESSOA p, CLIENTE c where c.ID_PESSOA = p.ID_PESSOA";
             var cmd = new FbCommand(mSql, conn);
             try
@@ -112,13 +119,25 @@ namespace projeto2.Feature.Cliente.Dao
                 {
                     clientes.Add(new ClienteModel()
                     {
-                        IdPessoa = Convert.ToInt32(dataReader["ID_PESSOA"]),
+                        IdCliente = Convert.ToInt32(dataReader["ID_CLIENTE"]),
                         NomePessoa = dataReader["NOME_PESSOA"].ToString(),
                         EmailPessoa = dataReader["EMAIL_PESSOA"].ToString(),
-                        TelefonePessoa = dataReader["TELEFONE_PESSOA"].ToString(),
+                        CpfPessoa = dataReader["CPF_PESSOA"].ToString(),
+                        RgPessoa = dataReader["RG_PESSOA"].ToString(),
+                        SexoPessoa = dataReader["SEXO_PESSOA"].ToString(),
                         NascimentoPessoa = Convert.ToDateTime(dataReader["DATA_NASCIMENTO_PESSOA"]),
-                        DataCadastroCliente = Convert.ToDateTime(dataReader["DATA_CADASTRO_CLIENTE"])
-                    });
+                        DataCadastroCliente = Convert.ToDateTime(dataReader["DATA_CADASTRO_CLIENTE"]),
+                        TelefonePessoa = dataReader["TELEFONE_PESSOA"].ToString(),
+                        CelularPessoa = dataReader["CELULAR_PESSOA"].ToString(),
+                        EstadoPessoa = dataReader["ESTADO"].ToString(),
+                        CidadePessoa = dataReader["CIDADE"].ToString(),
+                        RuaPessoa = dataReader["RUA"].ToString(),
+                        ComplementoPessoa = dataReader["COMPLEMENTO"].ToString(),
+                        BairroPessoa = dataReader["BAIRRO"].ToString(),
+                        CepPessoa = dataReader["CEP"].ToString(),
+                        NumeroPessoa = Convert.ToInt32(dataReader["NUMERO"]),
+                        IdPessoa = Convert.ToInt32(dataReader["ID_PESSOA"])
+                });
                 }
                 return clientes;
             }

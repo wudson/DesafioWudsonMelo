@@ -38,7 +38,15 @@ namespace projeto2.Feature.Cliente.View
                 SexoPessoa = RetornarSexoSelecionado(),
                 CpfPessoa = txtCpf.Text,
                 RgPessoa = txtRg.Text,
-                TelefonePessoa = txtTelefone.Text
+                TelefonePessoa = txtTelefone.Text,
+                CelularPessoa = txtCelular.Text,
+                EstadoPessoa = txtEstado.Text,
+                CidadePessoa = txtCidade.Text,
+                CepPessoa = txtCep.Text,
+                RuaPessoa = txtRua.Text,
+                BairroPessoa = txtBairro.Text,
+                ComplementoPessoa = txtComplemento.Text,
+                NumeroPessoa = int.Parse(txtNumero.Text)
             };
 
             CadastrarOuAlterar(cliente);
@@ -89,7 +97,15 @@ namespace projeto2.Feature.Cliente.View
             txtRg.Text = _cliente.RgPessoa;
             txtCpf.Text = _cliente.CpfPessoa;
             txtTelefone.Text = _cliente.TelefonePessoa;
-            if(_cliente.SexoPessoa == "M")
+            txtCelular.Text = _cliente.CelularPessoa;
+            txtEstado.Text = _cliente.EstadoPessoa;
+            txtCidade.Text = _cliente.CidadePessoa;
+            txtCep.Text = _cliente.CepPessoa;
+            txtRua.Text = _cliente.RuaPessoa;
+            txtBairro.Text = _cliente.BairroPessoa;
+            txtComplemento.Text = _cliente.ComplementoPessoa;
+            txtNumero.Text = _cliente.NumeroPessoa.ToString(); ;
+            if (_cliente.SexoPessoa == "M")
                 rdbMasculino.Checked = true;
             else 
                 rdbFeminino.Checked = true;
