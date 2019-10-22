@@ -60,6 +60,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(293, 20);
             this.txtUsuario.TabIndex = 0;
+            this.txtUsuario.Leave += new System.EventHandler(this.TxtUsuario_Leave);
             // 
             // label1
             // 
@@ -120,6 +121,7 @@
             this.iconErroSenha.TabIndex = 7;
             this.iconErroSenha.TabStop = false;
             this.iconErroSenha.Visible = false;
+            this.iconErroSenha.MouseHover += new System.EventHandler(this.IconErroSenha_MouseHover);
             // 
             // iconErroUsuario
             // 
@@ -131,6 +133,7 @@
             this.iconErroUsuario.TabIndex = 7;
             this.iconErroUsuario.TabStop = false;
             this.iconErroUsuario.Visible = false;
+            this.iconErroUsuario.MouseHover += new System.EventHandler(this.IconErroUsuario_MouseHover);
             // 
             // iconSucessoUsuario
             // 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Pedido.View;
 
 namespace projeto2
 {
@@ -13,7 +14,7 @@ namespace projeto2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmEntrar());
+            Application.Run(new FrmPedido());
         }
     }
 }

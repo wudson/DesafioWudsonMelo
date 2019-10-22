@@ -27,6 +27,7 @@ namespace projeto2.Feature.Cliente.View
         private void BtnSalvarCadastroCliente_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos(pnlFormCliente.Controls)) return;
+            if (!ValidarSexo()) return;
 
             var cliente = new ClienteModel
             {
@@ -52,12 +53,14 @@ namespace projeto2.Feature.Cliente.View
             CadastrarOuAlterar(cliente);
         }
 
-        private bool ValidarCampos(IEnumerable controles)
+        public bool ValidarCampos(Control.ControlCollection controles)
         {
-            if (!controles.Cast<Control>().Any(item => string.IsNullOrWhiteSpace(item.Text))) return ValidarSexo();
+            if (!(from Control controle in controles from Control item in controle.Controls select item).Any(item =>
+                string.IsNullOrWhiteSpace(item.Text))) return true;
             MessageBox.Show(@"Porfavor preencha todos os campos", @"Atenção",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return ValidarSexo();
+            return false;
+
         }
 
         private bool ValidarSexo()
@@ -104,12 +107,12 @@ namespace projeto2.Feature.Cliente.View
             txtRua.Text = _cliente.RuaPessoa;
             txtBairro.Text = _cliente.BairroPessoa;
             txtComplemento.Text = _cliente.ComplementoPessoa;
-            txtNumero.Text = _cliente.NumeroPessoa.ToString(); ;
+            txtNumero.Text = _cliente.NumeroPessoa.ToString();
             if (_cliente.SexoPessoa == "M")
                 rdbMasculino.Checked = true;
-            else 
+            else
                 rdbFeminino.Checked = true;
-            
+
         }
 
         private void FrmCadastroDeCliente_KeyDown(object sender, KeyEventArgs e)
@@ -121,6 +124,25 @@ namespace projeto2.Feature.Cliente.View
                     break;
                 case Keys.Escape:
                     Close();
+                    break;
+            }
+        }
+
+        private void TxtEstado_SelectedValueChanged(object sender, EventArgs e)
+        {
+            switch (txtEstado.SelectedItem.ToString())
+            {
+                case "São Paulo":
+                    txtCidade.Text = string.Empty;
+                    txtCidade.Items.Clear();
+                    txtCidade.Items.Add("Jales");
+                    txtCidade.Items.Add("Urânia");
+                    break;
+                case "Rio de Janeiro":
+                    txtCidade.Text = string.Empty;
+                    txtCidade.Items.Clear();
+                    txtCidade.Items.Add("Angra dos reis");
+                    txtCidade.Items.Add("Rio de Janeiro");
                     break;
             }
         }

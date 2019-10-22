@@ -35,7 +35,7 @@ namespace projeto2
             }
             else
             {
-                MessageBox.Show(@"Usuario não existe.", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Usuario não encontrado.", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtUsuario.Focus();
                 iconSucessoUsuario.Visible = false;
                 iconErroUsuario.Visible = true;
@@ -57,6 +57,30 @@ namespace projeto2
                 case Keys.Escape:
                     Close();
                     break;
+            }
+        }
+
+        private void IconErroUsuario_MouseHover(object sender, EventArgs e)
+        {
+            new ToolTip().SetToolTip(iconErroUsuario, "Usuario não encontrado.");
+        }
+
+        private void IconErroSenha_MouseHover(object sender, EventArgs e)
+        {
+            new ToolTip().SetToolTip(iconErroSenha, "Senha incorreta.");
+        }
+
+        private void TxtUsuario_Leave(object sender, EventArgs e)
+        {
+            if ("adm".Equals(txtUsuario.Text))
+            {
+                iconErroUsuario.Visible = false;
+                iconSucessoUsuario.Visible = true;
+            }
+            else
+            {
+                iconSucessoUsuario.Visible = false;
+                iconErroUsuario.Visible = true;
             }
         }
     }

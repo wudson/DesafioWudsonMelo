@@ -11,10 +11,6 @@ namespace projeto2.Feature.Cliente.View
         public FrmClientes()
         {
             InitializeComponent();
-            new ToolTip().SetToolTip(btnExcluir, "Excluir - [Del]");
-            new ToolTip().SetToolTip(btnCadastrar, "Adicionar Cliente - [+]");
-            new ToolTip().SetToolTip(btnListar, "Atualizar Lista - [F5]");
-            new ToolTip().SetToolTip(btnEditar, "Editar - [F4]");
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)

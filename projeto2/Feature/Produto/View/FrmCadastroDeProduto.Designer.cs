@@ -64,7 +64,7 @@
             this.label2.Location = new System.Drawing.Point(29, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 15);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 10;
             this.label2.Text = "Produto";
             // 
             // label3
@@ -74,7 +74,7 @@
             this.label3.Location = new System.Drawing.Point(29, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 15);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 11;
             this.label3.Text = "Grupo";
             // 
             // label4
@@ -84,7 +84,7 @@
             this.label4.Location = new System.Drawing.Point(309, 84);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 15);
-            this.label4.TabIndex = 5;
+            this.label4.TabIndex = 12;
             this.label4.Text = "Marca";
             // 
             // label5
@@ -94,7 +94,7 @@
             this.label5.Location = new System.Drawing.Point(29, 135);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 15);
-            this.label5.TabIndex = 9;
+            this.label5.TabIndex = 13;
             this.label5.Text = "Estoque";
             // 
             // label6
@@ -104,7 +104,7 @@
             this.label6.Location = new System.Drawing.Point(309, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 15);
-            this.label6.TabIndex = 13;
+            this.label6.TabIndex = 15;
             this.label6.Text = "Venda (R$)";
             // 
             // txtValorDeVenda
@@ -112,7 +112,7 @@
             this.txtValorDeVenda.Location = new System.Drawing.Point(312, 198);
             this.txtValorDeVenda.Name = "txtValorDeVenda";
             this.txtValorDeVenda.Size = new System.Drawing.Size(274, 20);
-            this.txtValorDeVenda.TabIndex = 12;
+            this.txtValorDeVenda.TabIndex = 5;
             // 
             // label7
             // 
@@ -121,7 +121,7 @@
             this.label7.Location = new System.Drawing.Point(29, 183);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 15);
-            this.label7.TabIndex = 11;
+            this.label7.TabIndex = 14;
             this.label7.Text = "Compra (R$)";
             // 
             // txtValorDeCompra
@@ -129,7 +129,7 @@
             this.txtValorDeCompra.Location = new System.Drawing.Point(32, 198);
             this.txtValorDeCompra.Name = "txtValorDeCompra";
             this.txtValorDeCompra.Size = new System.Drawing.Size(274, 20);
-            this.txtValorDeCompra.TabIndex = 10;
+            this.txtValorDeCompra.TabIndex = 4;
             // 
             // label1
             // 
@@ -138,7 +138,7 @@
             this.label1.Location = new System.Drawing.Point(29, 230);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 15);
-            this.label1.TabIndex = 15;
+            this.label1.TabIndex = 16;
             this.label1.Text = "Fornecedor";
             // 
             // txtFornecedor
@@ -146,7 +146,7 @@
             this.txtFornecedor.Location = new System.Drawing.Point(32, 246);
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.Size = new System.Drawing.Size(554, 20);
-            this.txtFornecedor.TabIndex = 14;
+            this.txtFornecedor.TabIndex = 6;
             // 
             // btnSalvarCadastroProduto
             // 
@@ -157,7 +157,7 @@
             this.btnSalvarCadastroProduto.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalvarCadastroProduto.Name = "btnSalvarCadastroProduto";
             this.btnSalvarCadastroProduto.Size = new System.Drawing.Size(141, 41);
-            this.btnSalvarCadastroProduto.TabIndex = 16;
+            this.btnSalvarCadastroProduto.TabIndex = 7;
             this.btnSalvarCadastroProduto.Text = "Salvar";
             this.btnSalvarCadastroProduto.UseVisualStyleBackColor = false;
             this.btnSalvarCadastroProduto.Click += new System.EventHandler(this.BtnSalvarCadastroProduto_Click);
@@ -171,7 +171,7 @@
             this.btnCancelarCadastroProduto.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelarCadastroProduto.Name = "btnCancelarCadastroProduto";
             this.btnCancelarCadastroProduto.Size = new System.Drawing.Size(141, 41);
-            this.btnCancelarCadastroProduto.TabIndex = 17;
+            this.btnCancelarCadastroProduto.TabIndex = 9;
             this.btnCancelarCadastroProduto.Text = "Cancelar";
             this.btnCancelarCadastroProduto.UseVisualStyleBackColor = false;
             this.btnCancelarCadastroProduto.Click += new System.EventHandler(this.BtnCancelarCadastroProduto_Click);
@@ -200,7 +200,7 @@
             this.pnlControl.Location = new System.Drawing.Point(0, 0);
             this.pnlControl.Name = "pnlControl";
             this.pnlControl.Size = new System.Drawing.Size(620, 352);
-            this.pnlControl.TabIndex = 18;
+            this.pnlControl.TabIndex = 0;
             // 
             // txtGrupo
             // 
@@ -212,7 +212,7 @@
             this.txtGrupo.Location = new System.Drawing.Point(32, 100);
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(274, 21);
-            this.txtGrupo.TabIndex = 2;
+            this.txtGrupo.TabIndex = 1;
             // 
             // txtMarca
             // 
@@ -224,7 +224,7 @@
             this.txtMarca.Location = new System.Drawing.Point(312, 100);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(271, 21);
-            this.txtMarca.TabIndex = 7;
+            this.txtMarca.TabIndex = 2;
             // 
             // txtIdProduto
             // 
@@ -232,7 +232,7 @@
             this.txtIdProduto.Name = "txtIdProduto";
             this.txtIdProduto.ReadOnly = true;
             this.txtIdProduto.Size = new System.Drawing.Size(177, 20);
-            this.txtIdProduto.TabIndex = 18;
+            this.txtIdProduto.TabIndex = 17;
             this.txtIdProduto.Text = "0";
             this.txtIdProduto.Visible = false;
             // 
@@ -242,7 +242,7 @@
             this.txtQuantidadeEmEstoque.Multiline = true;
             this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
             this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(274, 20);
-            this.txtQuantidadeEmEstoque.TabIndex = 8;
+            this.txtQuantidadeEmEstoque.TabIndex = 3;
             // 
             // btnEditar
             // 
@@ -253,7 +253,7 @@
             this.btnEditar.Margin = new System.Windows.Forms.Padding(0);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(141, 41);
-            this.btnEditar.TabIndex = 16;
+            this.btnEditar.TabIndex = 8;
             this.btnEditar.Text = "Salvar";
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Visible = false;

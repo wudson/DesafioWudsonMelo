@@ -60,6 +60,8 @@ namespace projeto2.Feature.Produto.View
             foreach (Control item in controles)
                 if (DeveLimpar(item))
                     item.Text = string.Empty;
+
+            txtIdProduto.Text = @"0";
         }
 
         private static bool DeveLimpar(IDisposable item) =>
