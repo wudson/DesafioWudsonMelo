@@ -54,7 +54,7 @@ namespace projeto2
 
         private void BtnPedidos_Click(object sender, EventArgs e)
         {
-            new FrmPedido().ShowDialog();
+            new FrmPedidos().ShowDialog();
         }
     }
 }

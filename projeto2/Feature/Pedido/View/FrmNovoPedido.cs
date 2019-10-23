@@ -5,9 +5,9 @@ using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Pedido.View
 {
-    public partial class FrmPedido : Form
+    public partial class FrmNovoPedido : Form
     {
-        public FrmPedido()
+        public FrmNovoPedido()
         {
             InitializeComponent();
         }

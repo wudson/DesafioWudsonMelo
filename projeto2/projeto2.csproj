@@ -76,11 +76,17 @@
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Interfaces\ICrudDao.cs" />
-    <Compile Include="Feature\Pedido\View\FrmPedido.cs">
+    <Compile Include="Feature\Pedido\View\FrmNovoPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Pedido\View\FrmPedido.Designer.cs">
-      <DependentUpon>FrmPedido.cs</DependentUpon>
+    <Compile Include="Feature\Pedido\View\FrmNovoPedido.Designer.cs">
+      <DependentUpon>FrmNovoPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Pedido\View\FrmPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Pedido\View\FrmPedidos.Designer.cs">
+      <DependentUpon>FrmPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
@@ -122,8 +128,11 @@
     <EmbeddedResource Include="Feature\Cliente\View\FrmCadastroDeCliente.resx">
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Pedido\View\FrmPedido.resx">
-      <DependentUpon>FrmPedido.cs</DependentUpon>
+    <EmbeddedResource Include="Feature\Pedido\View\FrmNovoPedido.resx">
+      <DependentUpon>FrmNovoPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Pedido\View\FrmPedidos.resx">
+      <DependentUpon>FrmPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEntrar.resx">
       <DependentUpon>FrmEntrar.cs</DependentUpon>
