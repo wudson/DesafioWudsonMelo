@@ -10,5 +10,6 @@
         public double ValorCompraProduto { get; set; }
         public double ValorVendaProduto { get; set; }
         public string FornecedorProduto { get; set; }
+        public string TipoProduto { get; set; }
     }
 }

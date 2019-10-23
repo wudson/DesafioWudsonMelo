@@ -42,6 +42,7 @@ namespace projeto2.Feature.Produto.View
                 MarcaProduto = txtMarca.Text,
                 GrupoProduto = txtGrupo.Text,
                 FornecedorProduto = txtFornecedor.Text,
+                TipoProduto = txtTipo.Text,
                 QuantidadeEstoqueProduto = int.Parse(txtQuantidadeEmEstoque.Text),
                 ValorCompraProduto = double.Parse(txtValorDeCompra.Text),
                 ValorVendaProduto = double.Parse(txtValorDeVenda.Text)
@@ -77,6 +78,7 @@ namespace projeto2.Feature.Produto.View
             txtMarca.Text = _produto.MarcaProduto;
             txtGrupo.Text = _produto.GrupoProduto;
             txtFornecedor.Text = _produto.FornecedorProduto;
+            txtTipo.Text = _produto.TipoProduto;
             txtValorDeCompra.Text = _produto.ValorCompraProduto.ToString(CultureInfo.InvariantCulture);
             txtValorDeVenda.Text = _produto.ValorVendaProduto.ToString(CultureInfo.InvariantCulture);
             txtQuantidadeEmEstoque.Text = _produto.QuantidadeEstoqueProduto.ToString();

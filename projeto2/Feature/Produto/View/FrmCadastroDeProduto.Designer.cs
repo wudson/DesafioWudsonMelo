@@ -47,6 +47,8 @@
             this.txtIdProduto = new System.Windows.Forms.TextBox();
             this.txtQuantidadeEmEstoque = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTipo = new System.Windows.Forms.ComboBox();
             this.pnlControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(32, 55);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(551, 20);
+            this.txtNome.Size = new System.Drawing.Size(554, 20);
             this.txtNome.TabIndex = 0;
             // 
             // label2
@@ -91,7 +93,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(29, 135);
+            this.label5.Location = new System.Drawing.Point(309, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 15);
             this.label5.TabIndex = 13;
@@ -153,7 +155,7 @@
             this.btnSalvarCadastroProduto.BackColor = System.Drawing.Color.LimeGreen;
             this.btnSalvarCadastroProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvarCadastroProduto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSalvarCadastroProduto.Location = new System.Drawing.Point(162, 285);
+            this.btnSalvarCadastroProduto.Location = new System.Drawing.Point(165, 285);
             this.btnSalvarCadastroProduto.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalvarCadastroProduto.Name = "btnSalvarCadastroProduto";
             this.btnSalvarCadastroProduto.Size = new System.Drawing.Size(141, 41);
@@ -167,7 +169,7 @@
             this.btnCancelarCadastroProduto.BackColor = System.Drawing.Color.DarkGray;
             this.btnCancelarCadastroProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarCadastroProduto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCancelarCadastroProduto.Location = new System.Drawing.Point(312, 285);
+            this.btnCancelarCadastroProduto.Location = new System.Drawing.Point(315, 285);
             this.btnCancelarCadastroProduto.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelarCadastroProduto.Name = "btnCancelarCadastroProduto";
             this.btnCancelarCadastroProduto.Size = new System.Drawing.Size(141, 41);
@@ -178,6 +180,8 @@
             // 
             // pnlControl
             // 
+            this.pnlControl.Controls.Add(this.txtTipo);
+            this.pnlControl.Controls.Add(this.label8);
             this.pnlControl.Controls.Add(this.txtGrupo);
             this.pnlControl.Controls.Add(this.txtMarca);
             this.pnlControl.Controls.Add(this.txtIdProduto);
@@ -223,7 +227,7 @@
             "Marca3"});
             this.txtMarca.Location = new System.Drawing.Point(312, 100);
             this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(271, 21);
+            this.txtMarca.Size = new System.Drawing.Size(274, 21);
             this.txtMarca.TabIndex = 2;
             // 
             // txtIdProduto
@@ -238,8 +242,7 @@
             // 
             // txtQuantidadeEmEstoque
             // 
-            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(32, 151);
-            this.txtQuantidadeEmEstoque.Multiline = true;
+            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(312, 150);
             this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
             this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(274, 20);
             this.txtQuantidadeEmEstoque.TabIndex = 3;
@@ -258,6 +261,28 @@
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(29, 134);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 15);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Tipo";
+            // 
+            // txtTipo
+            // 
+            this.txtTipo.FormattingEnabled = true;
+            this.txtTipo.Items.AddRange(new object[] {
+            "Unidade",
+            "Caixa",
+            "Peso"});
+            this.txtTipo.Location = new System.Drawing.Point(32, 149);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(274, 21);
+            this.txtTipo.TabIndex = 20;
             // 
             // FrmCadastroDeProduto
             // 
@@ -300,5 +325,7 @@
         private System.Windows.Forms.ComboBox txtGrupo;
         private System.Windows.Forms.TextBox txtQuantidadeEmEstoque;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.ComboBox txtTipo;
+        private System.Windows.Forms.Label label8;
     }
 }

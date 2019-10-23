@@ -12,10 +12,10 @@ namespace projeto2.Feature.Produto.Dao
             var produto = (Produto) obj;
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO, 
+            const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO, TIPO_PRODUTO, 
                                   QUANTIDADE_ESTOQUE_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO, 
                                   FORNECEDOR_PRODUTO) 
-                                  Values(@nome, @grupo, @marca, @estoque, @compra, @venda, @fornecedor)";
+                                  Values(@nome, @grupo, @marca, @tipo, @estoque, @compra, @venda, @fornecedor)";
 
             var cmd = new FbCommand(mSql, conn);
             try
@@ -23,6 +23,7 @@ namespace projeto2.Feature.Produto.Dao
                 cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
                 cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = produto.GrupoProduto;
                 cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = produto.MarcaProduto;
+                cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = produto.TipoProduto;
                 cmd.Parameters.Add("@estoque", FbDbType.Integer).Value = produto.QuantidadeEstoqueProduto;
                 cmd.Parameters.Add("@compra", FbDbType.Numeric).Value = produto.ValorCompraProduto;
                 cmd.Parameters.Add("@venda", FbDbType.Numeric).Value = produto.ValorVendaProduto;
@@ -59,6 +60,7 @@ namespace projeto2.Feature.Produto.Dao
                     produto.ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]);
                     produto.GrupoProduto = dataReader["GRUPO_PRODUTO"].ToString();
                     produto.MarcaProduto = dataReader["MARCA_PRODUTO"].ToString();
+                    produto.TipoProduto = dataReader["TIPO_PRODUTO"].ToString();
                     produto.QuantidadeEstoqueProduto = Convert.ToInt32(dataReader["QUANTIDADE_ESTOQUE_PRODUTO"]);
                 }
                 return produto;
@@ -93,9 +95,7 @@ namespace projeto2.Feature.Produto.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = @"Select ID_PRODUTO, NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO,
-                FORNECEDOR_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO,
-                QUANTIDADE_ESTOQUE_PRODUTO from PRODUTO";
+            const string mSql = @"Select * from PRODUTO";
             var cmd = new FbCommand(mSql, conn);
             try
             {
@@ -112,6 +112,7 @@ namespace projeto2.Feature.Produto.Dao
                         ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
                         GrupoProduto = dataReader["GRUPO_PRODUTO"].ToString(),
                         MarcaProduto = dataReader["MARCA_PRODUTO"].ToString(),
+                        TipoProduto = dataReader["TIPO_PRODUTO"].ToString(),
                         QuantidadeEstoqueProduto = Convert.ToInt32(dataReader["QUANTIDADE_ESTOQUE_PRODUTO"])
                     });
                 }
@@ -130,7 +131,7 @@ namespace projeto2.Feature.Produto.Dao
             var conn = Conexao.GetInstancia();
             conn.Open();
             const string mSql = @"Update PRODUTO set NOME_PRODUTO = @nome, GRUPO_PRODUTO = @grupo, 
-                                    MARCA_PRODUTO = @marca, QUANTIDADE_ESTOQUE_PRODUTO = @estoque, 
+                                    MARCA_PRODUTO = @marca, TIPO_PRODUTO = @tipo, QUANTIDADE_ESTOQUE_PRODUTO = @estoque, 
                                     VALOR_COMPRA_PRODUTO = @compra, VALOR_VENDA_PRODUTO = @venda, 
                                     FORNECEDOR_PRODUTO = @fornecedor WHERE ID_PRODUTO = @id";
 
@@ -140,6 +141,7 @@ namespace projeto2.Feature.Produto.Dao
                 cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
                 cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = produto.GrupoProduto;
                 cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = produto.MarcaProduto;
+                cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = produto.TipoProduto;
                 cmd.Parameters.Add("@estoque", FbDbType.Integer).Value = produto.QuantidadeEstoqueProduto;
                 cmd.Parameters.Add("@compra", FbDbType.Numeric).Value = produto.ValorCompraProduto;
                 cmd.Parameters.Add("@venda", FbDbType.Numeric).Value = produto.ValorVendaProduto;

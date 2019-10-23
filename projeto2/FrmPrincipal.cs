@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.View;
+using projeto2.Feature.Pedido.View;
 using projeto2.Feature.Produto.View;
 
 namespace projeto2
@@ -24,7 +25,6 @@ namespace projeto2
 
         private void BtnSair_Click(object sender, EventArgs e)
         {
-
             var result = MessageBox.Show(@"Deseja sair do sistema?", @"Sair", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
             Hide();
@@ -43,10 +43,18 @@ namespace projeto2
                 case Keys.D2:
                     BtnClientes_Click(sender, e);
                     break;
+                case Keys.D3:
+                    BtnPedidos_Click(sender, e);
+                    break;
                 case Keys.Escape:
                     BtnSair_Click(sender, e);
                     break;
             }
+        }
+
+        private void BtnPedidos_Click(object sender, EventArgs e)
+        {
+            new FrmPedido().ShowDialog();
         }
     }
 }

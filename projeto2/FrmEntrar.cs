@@ -21,6 +21,7 @@ namespace projeto2
 
                 if (!"123".Equals(senha))
                 {
+                    txtSenha.Focus();
                     iconErroSenha.Visible = true;
                     MessageBox.Show(@"Senha incorreta.", @"Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtSenha.Focus();

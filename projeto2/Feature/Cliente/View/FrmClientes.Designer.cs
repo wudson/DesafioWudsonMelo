@@ -33,17 +33,17 @@
             this.CelularPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CidadePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlcontrol = new System.Windows.Forms.Panel();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCadastrar = new System.Windows.Forms.Button();
-            this.btnListar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.idPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataCadastroClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnCadastrar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnListar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.pnlcontrol.SuspendLayout();
             this.tblBotoes.SuspendLayout();
@@ -117,19 +117,6 @@
             this.pnlcontrol.Size = new System.Drawing.Size(703, 450);
             this.pnlcontrol.TabIndex = 4;
             // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Image = global::projeto2.Properties.Resources.delete__1_;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcluir.Location = new System.Drawing.Point(295, 3);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(91, 85);
-            this.btnExcluir.TabIndex = 3;
-            this.btnExcluir.Text = "Excluir - [ Del ]";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
-            // 
             // tblBotoes
             // 
             this.tblBotoes.ColumnCount = 7;
@@ -151,45 +138,6 @@
             this.tblBotoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblBotoes.Size = new System.Drawing.Size(703, 92);
             this.tblBotoes.TabIndex = 2;
-            // 
-            // btnCadastrar
-            // 
-            this.btnCadastrar.Image = global::projeto2.Properties.Resources.plus;
-            this.btnCadastrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCadastrar.Location = new System.Drawing.Point(3, 3);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(91, 85);
-            this.btnCadastrar.TabIndex = 0;
-            this.btnCadastrar.Text = "Adicionar - [ + ]";
-            this.btnCadastrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCadastrar.UseVisualStyleBackColor = true;
-            this.btnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
-            // 
-            // btnListar
-            // 
-            this.btnListar.Image = global::projeto2.Properties.Resources.clipboard;
-            this.btnListar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnListar.Location = new System.Drawing.Point(100, 3);
-            this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(91, 85);
-            this.btnListar.TabIndex = 1;
-            this.btnListar.Text = "Listar - [ F5 ]";
-            this.btnListar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnListar.UseVisualStyleBackColor = true;
-            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = global::projeto2.Properties.Resources.edit;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(197, 3);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(91, 85);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar - [ F3 ]";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // idPessoaDataGridViewTextBoxColumn
             // 
@@ -242,6 +190,62 @@
             // clienteModelBindingSource
             // 
             this.clienteModelBindingSource.DataSource = typeof(projeto2.Feature.Cliente.Model.ClienteModel);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnExcluir.Image = global::projeto2.Properties.Resources.garbage;
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExcluir.Location = new System.Drawing.Point(295, 3);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(91, 85);
+            this.btnExcluir.TabIndex = 3;
+            this.btnExcluir.Text = "Excluir - [ Del ]";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnCadastrar.Image = global::projeto2.Properties.Resources.plus;
+            this.btnCadastrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCadastrar.Location = new System.Drawing.Point(3, 3);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(91, 85);
+            this.btnCadastrar.TabIndex = 0;
+            this.btnCadastrar.Text = "Adicionar - [ + ]";
+            this.btnCadastrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCadastrar.UseVisualStyleBackColor = false;
+            this.btnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnEditar.Image = global::projeto2.Properties.Resources.compose;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditar.Location = new System.Drawing.Point(197, 3);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(91, 85);
+            this.btnEditar.TabIndex = 2;
+            this.btnEditar.Text = "Editar - [ F3 ]";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            // 
+            // btnListar
+            // 
+            this.btnListar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnListar.Image = global::projeto2.Properties.Resources.clipboard;
+            this.btnListar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnListar.Location = new System.Drawing.Point(100, 3);
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(91, 85);
+            this.btnListar.TabIndex = 1;
+            this.btnListar.Text = "Listar - [ F5 ]";
+            this.btnListar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnListar.UseVisualStyleBackColor = false;
+            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
             // 
             // FrmClientes
             // 
