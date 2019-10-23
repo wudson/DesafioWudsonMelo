@@ -75,7 +75,19 @@
     <Compile Include="Feature\Cliente\View\FrmCadastroDeCliente.Designer.cs">
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Grupo\View\FrmGrupos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Grupo\View\FrmGrupos.Designer.cs">
+      <DependentUpon>FrmGrupos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Interfaces\ICrudDao.cs" />
+    <Compile Include="Feature\Marca\View\FrmMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Marca\View\FrmMarcas.Designer.cs">
+      <DependentUpon>FrmMarcas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Pedido\View\FrmNovoPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +139,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Feature\Cliente\View\FrmCadastroDeCliente.resx">
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Grupo\View\FrmGrupos.resx">
+      <DependentUpon>FrmGrupos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Marca\View\FrmMarcas.resx">
+      <DependentUpon>FrmMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Pedido\View\FrmNovoPedido.resx">
       <DependentUpon>FrmNovoPedido.cs</DependentUpon>
@@ -235,5 +253,18 @@
   <ItemGroup>
     <None Include="Resources\compose.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\data-collection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

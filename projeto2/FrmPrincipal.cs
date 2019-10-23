@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.View;
+using projeto2.Feature.Grupo.View;
+using projeto2.Feature.Marca.View;
 using projeto2.Feature.Pedido.View;
 using projeto2.Feature.Produto.View;
 
@@ -46,6 +48,12 @@ namespace projeto2
                 case Keys.D3:
                     BtnPedidos_Click(sender, e);
                     break;
+                case Keys.D6:
+                    BtnGrupos_Click(sender, e);
+                    break;
+                case Keys.D7:
+                    BtnMarcas_Click(sender, e);
+                    break;
                 case Keys.Escape:
                     BtnSair_Click(sender, e);
                     break;
@@ -55,6 +63,16 @@ namespace projeto2
         private void BtnPedidos_Click(object sender, EventArgs e)
         {
             new FrmPedidos().ShowDialog();
+        }
+
+        private void BtnMarcas_Click(object sender, EventArgs e)
+        {
+            new FrmMarcas().ShowDialog();
+        }
+
+        private void BtnGrupos_Click(object sender, EventArgs e)
+        {
+            new FrmGrupos().ShowDialog();
         }
     }
 }
