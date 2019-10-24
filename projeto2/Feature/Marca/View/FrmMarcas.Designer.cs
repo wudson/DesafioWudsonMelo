@@ -66,6 +66,7 @@
             this.btnExcluirMarca.TabIndex = 2;
             this.btnExcluirMarca.Text = "Deletar";
             this.btnExcluirMarca.UseVisualStyleBackColor = false;
+            this.btnExcluirMarca.Click += new System.EventHandler(this.BtnExcluirMarca_Click);
             // 
             // btnSalvarMarca
             // 
@@ -79,6 +80,7 @@
             this.btnSalvarMarca.TabIndex = 1;
             this.btnSalvarMarca.Text = "Salvar";
             this.btnSalvarMarca.UseVisualStyleBackColor = false;
+            this.btnSalvarMarca.Click += new System.EventHandler(this.BtnSalvarMarca_Click);
             // 
             // dgvMarcas
             // 
@@ -91,9 +93,11 @@
             this.dgvMarcas.Location = new System.Drawing.Point(10, 86);
             this.dgvMarcas.Name = "dgvMarcas";
             this.dgvMarcas.ReadOnly = true;
+            this.dgvMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMarcas.Size = new System.Drawing.Size(600, 195);
             this.dgvMarcas.TabIndex = 3;
             this.dgvMarcas.TabStop = false;
+            this.dgvMarcas.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvMarcas_CellMouseClick);
             // 
             // idMarca
             // 
@@ -124,6 +128,7 @@
             this.Name = "FrmMarcas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Marcas";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmMarcas_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

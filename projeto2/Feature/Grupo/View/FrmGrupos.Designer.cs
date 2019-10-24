@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.dgvGrupo = new System.Windows.Forms.DataGridView();
+            this.idMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExcluirGrupo = new System.Windows.Forms.Button();
             this.btnSalvarGrupo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.TextBox();
-            this.idMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,13 +49,29 @@
             this.dgvGrupo.Location = new System.Drawing.Point(10, 86);
             this.dgvGrupo.Name = "dgvGrupo";
             this.dgvGrupo.ReadOnly = true;
+            this.dgvGrupo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGrupo.Size = new System.Drawing.Size(600, 195);
             this.dgvGrupo.TabIndex = 3;
             this.dgvGrupo.TabStop = false;
+            this.dgvGrupo.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvGrupo_CellMouseClick);
+            // 
+            // idMarca
+            // 
+            this.idMarca.HeaderText = "Cod.";
+            this.idMarca.Name = "idMarca";
+            this.idMarca.ReadOnly = true;
+            // 
+            // grupo
+            // 
+            this.grupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.grupo.HeaderText = "Grupo";
+            this.grupo.Name = "grupo";
+            this.grupo.ReadOnly = true;
             // 
             // btnExcluirGrupo
             // 
             this.btnExcluirGrupo.BackColor = System.Drawing.Color.DarkGray;
+            this.btnExcluirGrupo.Enabled = false;
             this.btnExcluirGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirGrupo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnExcluirGrupo.Location = new System.Drawing.Point(499, 29);
@@ -65,6 +81,7 @@
             this.btnExcluirGrupo.TabIndex = 2;
             this.btnExcluirGrupo.Text = "Deletar";
             this.btnExcluirGrupo.UseVisualStyleBackColor = false;
+            this.btnExcluirGrupo.Click += new System.EventHandler(this.BtnExcluirGrupo_Click);
             // 
             // btnSalvarGrupo
             // 
@@ -78,6 +95,7 @@
             this.btnSalvarGrupo.TabIndex = 1;
             this.btnSalvarGrupo.Text = "Salvar";
             this.btnSalvarGrupo.UseVisualStyleBackColor = false;
+            this.btnSalvarGrupo.Click += new System.EventHandler(this.BtnSalvarGrupo_Click);
             // 
             // label1
             // 
@@ -95,19 +113,6 @@
             this.txtGrupo.Size = new System.Drawing.Size(335, 20);
             this.txtGrupo.TabIndex = 0;
             // 
-            // idMarca
-            // 
-            this.idMarca.HeaderText = "Cod.";
-            this.idMarca.Name = "idMarca";
-            this.idMarca.ReadOnly = true;
-            // 
-            // grupo
-            // 
-            this.grupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.grupo.HeaderText = "Grupo";
-            this.grupo.Name = "grupo";
-            this.grupo.ReadOnly = true;
-            // 
             // FrmGrupos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,6 +129,7 @@
             this.Name = "FrmGrupos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Grupos";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmGrupos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

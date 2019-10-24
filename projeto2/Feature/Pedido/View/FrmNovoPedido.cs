@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection;
 using System.Windows.Forms;
 using projeto2.Feature.Produto.Controller;
 
@@ -41,7 +43,6 @@ namespace projeto2.Feature.Pedido.View
             txtPreco.Text = string.Empty;
             txtProduto.Text = string.Empty;
             txtQuantidade.Text = @"1";
-
 
             CalcularTotalAPagar();
         }
