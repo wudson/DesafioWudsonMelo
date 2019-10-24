@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection;
 using System.Windows.Forms;
 using projeto2.Feature.Produto.Controller;
 

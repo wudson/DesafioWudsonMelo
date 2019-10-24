@@ -48,12 +48,13 @@ namespace projeto2.Feature.Cliente.View
 
         private void DgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0) return;
             ModificarEnabledDosBotoes(true);
         }
 
         private void DgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex <= -1) return;
+            if (e.RowIndex < 0) return;
             var idClienteLinhaAtual = int.Parse(dgvClientes.Rows[e.RowIndex].Cells[0].Value.ToString());
             var cliente = new ClienteController().BuscarDado(idClienteLinhaAtual);
 

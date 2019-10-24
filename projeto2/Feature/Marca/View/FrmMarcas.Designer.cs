@@ -57,6 +57,7 @@
             // btnExcluirMarca
             // 
             this.btnExcluirMarca.BackColor = System.Drawing.Color.DarkGray;
+            this.btnExcluirMarca.Enabled = false;
             this.btnExcluirMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirMarca.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnExcluirMarca.Location = new System.Drawing.Point(499, 29);

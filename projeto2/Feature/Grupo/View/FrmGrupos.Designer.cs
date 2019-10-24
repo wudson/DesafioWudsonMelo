@@ -42,13 +42,17 @@
             // 
             this.dgvGrupo.AllowUserToAddRows = false;
             this.dgvGrupo.AllowUserToDeleteRows = false;
+            this.dgvGrupo.AllowUserToResizeColumns = false;
+            this.dgvGrupo.AllowUserToResizeRows = false;
             this.dgvGrupo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGrupo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idMarca,
             this.grupo});
             this.dgvGrupo.Location = new System.Drawing.Point(10, 86);
+            this.dgvGrupo.MultiSelect = false;
             this.dgvGrupo.Name = "dgvGrupo";
             this.dgvGrupo.ReadOnly = true;
+            this.dgvGrupo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvGrupo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGrupo.Size = new System.Drawing.Size(600, 195);
             this.dgvGrupo.TabIndex = 3;

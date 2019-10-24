@@ -40,7 +40,7 @@ namespace projeto2.Feature.Produto.View
 
         private void DgvProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex <= -1) return;
+            if (e.RowIndex < 0) return;
             var idProdutoLinhaAtual = int.Parse(dgvProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
             var produto = new ProdutoController().BuscarDado(idProdutoLinhaAtual);
 
@@ -50,6 +50,7 @@ namespace projeto2.Feature.Produto.View
 
         private void DgvProduto_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0) return;
             btnExcluir.Enabled = true;
             btnEditar.Enabled = true;
         }
