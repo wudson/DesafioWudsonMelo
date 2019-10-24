@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Estoque.View;
 using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Produto.View
@@ -96,6 +97,9 @@ namespace projeto2.Feature.Produto.View
                 case Keys.F4:
                     BtnEditar_Click(sender, e);
                     break;
+                case Keys.E:
+                    BtnEstoque_Click(sender, e);
+                    break;
                 case Keys.Delete:
                     BtnExcluir_Click(sender, e);
                     break;
@@ -103,6 +107,11 @@ namespace projeto2.Feature.Produto.View
                     Close();
                     break;
             }
+        }
+
+        private void BtnEstoque_Click(object sender, EventArgs e)
+        {
+            new FrmEstoque().ShowDialog();
         }
     }
 }

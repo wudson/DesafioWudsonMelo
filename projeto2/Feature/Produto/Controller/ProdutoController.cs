@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using projeto2.Feature.Produto.Dao;
@@ -8,7 +7,7 @@ namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
-        public IList<object> BuscarTodosOsDados() => new ProdutoDao().Listar();
+        public IList<Produto> BuscarTodosOsDados() => new ProdutoDao().Listar();
 
         public Produto BuscarDado(int idProduto) => (Produto) new ProdutoDao().Buscar(idProduto);
 
@@ -47,6 +46,8 @@ namespace projeto2.Feature.Produto.Controller
 
             return false;
         }
+
+        public IEnumerable<Produto> BuscarDadoComFiltros(string produto, string grupo, string tipo) => new ProdutoDao().BuscarComFiltros(produto, grupo, tipo);
 
         public bool CadastrarDado(Produto produto)
         {

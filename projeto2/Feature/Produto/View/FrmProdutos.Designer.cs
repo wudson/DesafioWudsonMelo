@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvProduto = new System.Windows.Forms.DataGridView();
+            this.pnlcontrol = new System.Windows.Forms.Panel();
+            this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
             this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grupoProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,16 +41,15 @@
             this.valorVendaProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fornecedorProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pnlcontrol = new System.Windows.Forms.Panel();
-            this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnCadastrar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.btnListar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnCadastrar = new System.Windows.Forms.Button();
+            this.btnEstoque = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.pnlcontrol.SuspendLayout();
             this.tblBotoes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvProduto
@@ -87,6 +88,38 @@
             this.dgvProduto.TabStop = false;
             this.dgvProduto.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProduto_CellDoubleClick);
             this.dgvProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvProduto_CellMouseClick);
+            // 
+            // pnlcontrol
+            // 
+            this.pnlcontrol.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlcontrol.Controls.Add(this.dgvProduto);
+            this.pnlcontrol.Controls.Add(this.tblBotoes);
+            this.pnlcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlcontrol.Location = new System.Drawing.Point(0, 0);
+            this.pnlcontrol.Name = "pnlcontrol";
+            this.pnlcontrol.Size = new System.Drawing.Size(703, 450);
+            this.pnlcontrol.TabIndex = 4;
+            // 
+            // tblBotoes
+            // 
+            this.tblBotoes.ColumnCount = 5;
+            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblBotoes.Controls.Add(this.btnListar, 2, 0);
+            this.tblBotoes.Controls.Add(this.btnExcluir, 4, 0);
+            this.tblBotoes.Controls.Add(this.btnEditar, 3, 0);
+            this.tblBotoes.Controls.Add(this.btnCadastrar, 1, 0);
+            this.tblBotoes.Controls.Add(this.btnEstoque, 0, 0);
+            this.tblBotoes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tblBotoes.Location = new System.Drawing.Point(0, 0);
+            this.tblBotoes.Name = "tblBotoes";
+            this.tblBotoes.RowCount = 1;
+            this.tblBotoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblBotoes.Size = new System.Drawing.Size(703, 92);
+            this.tblBotoes.TabIndex = 0;
             // 
             // idProdutoDataGridViewTextBoxColumn
             // 
@@ -164,94 +197,75 @@
             // 
             this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
             // 
-            // pnlcontrol
+            // btnListar
             // 
-            this.pnlcontrol.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pnlcontrol.Controls.Add(this.dgvProduto);
-            this.pnlcontrol.Controls.Add(this.tblBotoes);
-            this.pnlcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlcontrol.Location = new System.Drawing.Point(0, 0);
-            this.pnlcontrol.Name = "pnlcontrol";
-            this.pnlcontrol.Size = new System.Drawing.Size(703, 450);
-            this.pnlcontrol.TabIndex = 4;
-            // 
-            // tblBotoes
-            // 
-            this.tblBotoes.ColumnCount = 7;
-            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
-            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
-            this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 412F));
-            this.tblBotoes.Controls.Add(this.btnExcluir, 6, 0);
-            this.tblBotoes.Controls.Add(this.btnCadastrar, 3, 0);
-            this.tblBotoes.Controls.Add(this.btnEditar, 5, 0);
-            this.tblBotoes.Controls.Add(this.btnListar, 4, 0);
-            this.tblBotoes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tblBotoes.Location = new System.Drawing.Point(0, 0);
-            this.tblBotoes.Name = "tblBotoes";
-            this.tblBotoes.RowCount = 1;
-            this.tblBotoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblBotoes.Size = new System.Drawing.Size(703, 92);
-            this.tblBotoes.TabIndex = 0;
+            this.btnListar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnListar.Image = global::projeto2.Properties.Resources.clipboard;
+            this.btnListar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnListar.Location = new System.Drawing.Point(197, 3);
+            this.btnListar.Name = "btnListar";
+            this.btnListar.Size = new System.Drawing.Size(91, 85);
+            this.btnListar.TabIndex = 2;
+            this.btnListar.Text = "Listar - [ F5 ]";
+            this.btnListar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnListar.UseVisualStyleBackColor = false;
+            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
             // 
             // btnExcluir
             // 
             this.btnExcluir.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnExcluir.Image = global::projeto2.Properties.Resources.garbage;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcluir.Location = new System.Drawing.Point(294, 3);
+            this.btnExcluir.Location = new System.Drawing.Point(391, 3);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(91, 85);
-            this.btnExcluir.TabIndex = 3;
+            this.btnExcluir.TabIndex = 4;
             this.btnExcluir.Text = "Excluir - [ Del ]";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
-            // 
-            // btnCadastrar
-            // 
-            this.btnCadastrar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnCadastrar.Image = global::projeto2.Properties.Resources.plus;
-            this.btnCadastrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCadastrar.Location = new System.Drawing.Point(3, 3);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(91, 85);
-            this.btnCadastrar.TabIndex = 0;
-            this.btnCadastrar.Text = "Adicionar - [ + ]";
-            this.btnCadastrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCadastrar.UseVisualStyleBackColor = false;
-            this.btnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
             // 
             // btnEditar
             // 
             this.btnEditar.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnEditar.Image = global::projeto2.Properties.Resources.compose;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(197, 3);
+            this.btnEditar.Location = new System.Drawing.Point(294, 3);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(91, 85);
-            this.btnEditar.TabIndex = 2;
+            this.btnEditar.TabIndex = 3;
             this.btnEditar.Text = "Editar - [ F3 ]";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
-            // btnListar
+            // btnCadastrar
             // 
-            this.btnListar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnListar.Image = global::projeto2.Properties.Resources.clipboard;
-            this.btnListar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnListar.Location = new System.Drawing.Point(100, 3);
-            this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(91, 85);
-            this.btnListar.TabIndex = 1;
-            this.btnListar.Text = "Listar - [ F5 ]";
-            this.btnListar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnListar.UseVisualStyleBackColor = false;
-            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
+            this.btnCadastrar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnCadastrar.Image = global::projeto2.Properties.Resources.plus;
+            this.btnCadastrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCadastrar.Location = new System.Drawing.Point(100, 3);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(91, 85);
+            this.btnCadastrar.TabIndex = 1;
+            this.btnCadastrar.Text = "Adicionar - [ + ]";
+            this.btnCadastrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCadastrar.UseVisualStyleBackColor = false;
+            this.btnCadastrar.Click += new System.EventHandler(this.BtnCadastrar_Click);
+            // 
+            // btnEstoque
+            // 
+            this.btnEstoque.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnEstoque.Image = global::projeto2.Properties.Resources.package;
+            this.btnEstoque.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEstoque.Location = new System.Drawing.Point(3, 3);
+            this.btnEstoque.Name = "btnEstoque";
+            this.btnEstoque.Size = new System.Drawing.Size(91, 85);
+            this.btnEstoque.TabIndex = 0;
+            this.btnEstoque.Text = "Estoque - [ E ]";
+            this.btnEstoque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEstoque.UseVisualStyleBackColor = false;
+            this.btnEstoque.Click += new System.EventHandler(this.BtnEstoque_Click);
             // 
             // FrmProdutos
             // 
@@ -268,9 +282,9 @@
             this.Load += new System.EventHandler(this.FrmProdutos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmProdutos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.pnlcontrol.ResumeLayout(false);
             this.tblBotoes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -288,10 +302,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valorCompraProdutoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorVendaProdutoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fornecedorProdutoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.Button btnEstoque;
+        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnListar;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }
 

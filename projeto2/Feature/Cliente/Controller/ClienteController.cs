@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
@@ -9,7 +7,7 @@ namespace projeto2.Feature.Cliente.Controller
 {
     public class ClienteController
     {
-        public IList<object> BuscarTodosOsDados() => new ClienteDao().Listar();
+        public IList<ClienteModel> BuscarTodosOsDados() => new ClienteDao().Listar();
 
 
         public bool AlterarDado(ClienteModel cliente)
@@ -47,7 +45,7 @@ namespace projeto2.Feature.Cliente.Controller
             return false;
         }
 
-        public ClienteModel BuscarDado(int idPessoa) => (ClienteModel)new ClienteDao().Buscar(idPessoa);
+        public ClienteModel BuscarDado(int idPessoa) => new ClienteDao().Buscar(idPessoa);
 
         public bool ExcluirDado(int idPessoa)
         {

@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Model;
-using projeto2.Feature.Interfaces;
 using projeto2.Feature.Pessoa.Dao;
 
 namespace projeto2.Feature.Cliente.Dao
 {
-    public class ClienteDao : ICrudDao
+    public class ClienteDao
     {
-        public bool Cadastrar(object obj)
+        public bool Cadastrar(ClienteModel cliente)
         {
-            var cliente = (ClienteModel)obj;
             var conn = Conexao.GetInstancia();
             conn.Open();
             var transaction = conn.BeginTransaction();
@@ -42,7 +40,7 @@ namespace projeto2.Feature.Cliente.Dao
             }
         }
 
-        public object Buscar(int idCliente)
+        public ClienteModel Buscar(int idCliente)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
@@ -104,7 +102,7 @@ namespace projeto2.Feature.Cliente.Dao
             }
         }
 
-        public IList<object> Listar()
+        public IList<ClienteModel> Listar()
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
@@ -114,7 +112,7 @@ namespace projeto2.Feature.Cliente.Dao
             try
             {
                 var dataReader = cmd.ExecuteReader();
-                var clientes = new List<object>();
+                var clientes = new List<ClienteModel>();
                 while (dataReader.Read())
                 {
                     clientes.Add(new ClienteModel()
@@ -148,9 +146,8 @@ namespace projeto2.Feature.Cliente.Dao
             }
         }
 
-        public bool Alterar(object obj)
+        public bool Alterar(ClienteModel cliente)
         {
-            var cliente = (ClienteModel)obj;
             var conn = Conexao.GetInstancia();
             conn.Open();
             const string mSql = @"Update CLIENTE set DATA_CADASTRO_CLIENTE = @dataCadastro WHERE ID_PESSOA = @id";

@@ -68,6 +68,7 @@
             this.btnEstoque.Text = "Estoque - [ 4 ]";
             this.btnEstoque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEstoque.UseVisualStyleBackColor = false;
+            this.btnEstoque.Click += new System.EventHandler(this.BtnEstoque_Click);
             // 
             // btnMarcas
             // 

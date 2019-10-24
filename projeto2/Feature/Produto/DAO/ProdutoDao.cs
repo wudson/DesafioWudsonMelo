@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
-using projeto2.Feature.Interfaces;
 
 namespace projeto2.Feature.Produto.Dao
 {
-    public class ProdutoDao : ICrudDao
+    public class ProdutoDao
     {
-        public bool Cadastrar(object obj)
+        public bool Cadastrar(Produto produto)
         {
-            var produto = (Produto) obj;
             var conn = Conexao.GetInstancia();
             conn.Open();
             const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, GRUPO_PRODUTO, MARCA_PRODUTO, TIPO_PRODUTO, 
@@ -39,7 +37,7 @@ namespace projeto2.Feature.Produto.Dao
             }
         }
 
-        public object Buscar(int idProduto)
+        public Produto Buscar(int idProduto)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
@@ -71,6 +69,51 @@ namespace projeto2.Feature.Produto.Dao
                 conn.Close();
             }
         }
+        
+        public IEnumerable<Produto> BuscarComFiltros(string prod, string grupo, string tipo)
+        {
+            var conn = Conexao.GetInstancia();
+            conn.Open();
+            var mSql = "Select * from PRODUTO where (1 = 1)";
+            if (!string.IsNullOrWhiteSpace(prod)) mSql += " and lower(NOME_PRODUTO) like @prod";
+            if (!string.IsNullOrWhiteSpace(grupo)) mSql += " and lower(GRUPO_PRODUTO) like @grupo";
+            if (!string.IsNullOrWhiteSpace(tipo)) mSql += " and lower(TIPO_PRODUTO) like @tipo";
+            var cmd = new FbCommand(mSql, conn);
+            var listaProduto = new List<Produto>();
+            try
+            {
+                cmd.Parameters.Add("@prod", FbDbType.VarChar).Value = $"{prod}%";
+                cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = grupo;
+                cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = tipo;
+
+                var dataReader = cmd.ExecuteReader();
+               
+                while (dataReader.Read())
+                {
+                    var produto = new Produto
+                    {
+                        IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
+                        NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
+                        FornecedorProduto = dataReader["FORNECEDOR_PRODUTO"].ToString(),
+                        ValorCompraProduto = Convert.ToDouble(dataReader["VALOR_COMPRA_PRODUTO"]),
+                        ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
+                        GrupoProduto = dataReader["GRUPO_PRODUTO"].ToString(),
+                        MarcaProduto = dataReader["MARCA_PRODUTO"].ToString(),
+                        TipoProduto = dataReader["TIPO_PRODUTO"].ToString(),
+                        QuantidadeEstoqueProduto = Convert.ToInt32(dataReader["QUANTIDADE_ESTOQUE_PRODUTO"])
+                    };
+
+                    listaProduto.Add(produto);
+                }
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
+
+            return listaProduto;
+        }
 
         public bool Excluir(int idProduto)
         {
@@ -91,16 +134,17 @@ namespace projeto2.Feature.Produto.Dao
             }
         }
 
-        public IList<object> Listar()
+        public IList<Produto> Listar()
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
+
             const string mSql = @"Select * from PRODUTO";
             var cmd = new FbCommand(mSql, conn);
             try
             {
                 var dataReader = cmd.ExecuteReader();
-                var produtos = new List<object>();
+                var produtos = new List<Produto>();
                 while (dataReader.Read())
                 {
                     produtos.Add(new Produto
@@ -125,9 +169,8 @@ namespace projeto2.Feature.Produto.Dao
             }
         }
 
-        public bool Alterar(object obj)
+        public bool Alterar(Produto produto)
         {
-            var produto = (Produto) obj;
             var conn = Conexao.GetInstancia();
             conn.Open();
             const string mSql = @"Update PRODUTO set NOME_PRODUTO = @nome, GRUPO_PRODUTO = @grupo, 

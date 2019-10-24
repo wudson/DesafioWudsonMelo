@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Estoque.View;
 using projeto2.Feature.Pedido.View;
 
 namespace projeto2

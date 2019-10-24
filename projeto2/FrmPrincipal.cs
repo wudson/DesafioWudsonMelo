@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.View;
+using projeto2.Feature.Estoque.View;
 using projeto2.Feature.Grupo.View;
 using projeto2.Feature.Marca.View;
 using projeto2.Feature.Pedido.View;
@@ -48,6 +49,9 @@ namespace projeto2
                 case Keys.D3:
                     BtnPedidos_Click(sender, e);
                     break;
+                case Keys.D4:
+                    BtnEstoque_Click(sender, e);
+                    break;
                 case Keys.D6:
                     BtnGrupos_Click(sender, e);
                     break;
@@ -73,6 +77,11 @@ namespace projeto2
         private void BtnGrupos_Click(object sender, EventArgs e)
         {
             new FrmGrupos().ShowDialog();
+        }
+
+        private void BtnEstoque_Click(object sender, EventArgs e)
+        {
+            new FrmEstoque().ShowDialog();
         }
     }
 }
