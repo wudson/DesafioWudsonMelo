@@ -31,23 +31,23 @@ namespace projeto2.Feature.Cliente.View
 
             var cliente = new ClienteModel
             {
-                IdPessoa = int.Parse(txtIdPessoa.Text),
-                NomePessoa = txtNome.Text,
-                EmailPessoa = txtEmail.Text,
-                NascimentoPessoa = DateTime.Parse(txtDataNascimento.Text),
+                IdPessoa = int.Parse(txtIdPessoa.Text.Trim()),
+                NomePessoa = txtNome.Text.Trim(),
+                EmailPessoa = txtEmail.Text.Trim(),
+                NascimentoPessoa = DateTime.Parse(txtDataNascimento.Text.Trim()),
                 DataCadastroCliente = DateTime.Now.Date,
                 SexoPessoa = RetornarSexoSelecionado(),
-                CpfPessoa = txtCpf.Text,
-                RgPessoa = txtRg.Text,
-                TelefonePessoa = txtTelefone.Text,
-                CelularPessoa = txtCelular.Text,
-                EstadoPessoa = txtEstado.Text,
-                CidadePessoa = txtCidade.Text,
-                CepPessoa = txtCep.Text,
-                RuaPessoa = txtRua.Text,
-                BairroPessoa = txtBairro.Text,
-                ComplementoPessoa = txtComplemento.Text,
-                NumeroPessoa = int.Parse(txtNumero.Text)
+                CpfPessoa = txtCpf.Text.Trim(),
+                RgPessoa = txtRg.Text.Trim(),
+                TelefonePessoa = txtTelefone.Text.Trim(),
+                CelularPessoa = txtCelular.Text.Trim(),
+                EstadoPessoa = txtEstado.Text.Trim(),
+                CidadePessoa = txtCidade.Text.Trim(),
+                CepPessoa = txtCep.Text.Trim(),
+                RuaPessoa = txtRua.Text.Trim(),
+                BairroPessoa = txtBairro.Text.Trim(),
+                ComplementoPessoa = txtComplemento.Text.Trim(),
+                NumeroPessoa = int.Parse(txtNumero.Text.Trim())
             };
 
             CadastrarOuAlterar(cliente);

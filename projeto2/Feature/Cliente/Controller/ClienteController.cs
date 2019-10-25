@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
@@ -58,5 +59,8 @@ namespace projeto2.Feature.Cliente.Controller
             MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
             return false;
         }
+
+        public IEnumerable<ClienteModel> BuscarDadosComFiltros(string nome, string cidade)
+            => new ClienteDao().BuscarComFiltros(nome, cidade);
     }
 }

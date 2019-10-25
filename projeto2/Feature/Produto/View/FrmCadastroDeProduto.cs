@@ -37,15 +37,15 @@ namespace projeto2.Feature.Produto.View
         private Produto AtribuirCamposParaModel() =>
             new Produto
             {
-                IdProduto = int.Parse(txtIdProduto.Text),
-                NomeProduto = txtNome.Text,
-                MarcaProduto = txtMarca.Text,
-                GrupoProduto = txtGrupo.Text,
-                FornecedorProduto = txtFornecedor.Text,
-                TipoProduto = txtTipo.Text,
-                QuantidadeEstoqueProduto = int.Parse(txtQuantidadeEmEstoque.Text),
-                ValorCompraProduto = double.Parse(txtValorDeCompra.Text),
-                ValorVendaProduto = double.Parse(txtValorDeVenda.Text)
+                IdProduto = int.Parse(txtIdProduto.Text.Trim()),
+                NomeProduto = txtNome.Text.Trim(),
+                MarcaProduto = txtMarca.Text.Trim(),
+                GrupoProduto = txtGrupo.Text.Trim(),
+                FornecedorProduto = txtFornecedor.Text.Trim(),
+                TipoProduto = txtTipo.Text.Trim(),
+                QuantidadeEstoqueProduto = int.Parse(txtQuantidadeEmEstoque.Text.Trim()),
+                ValorCompraProduto = double.Parse(txtValorDeCompra.Text.Trim()),
+                ValorVendaProduto = double.Parse(txtValorDeVenda.Text.Trim())
             };
 
         private static bool ValidarCampos(IEnumerable controles)

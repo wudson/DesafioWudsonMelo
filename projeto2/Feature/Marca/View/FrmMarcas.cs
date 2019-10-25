@@ -29,7 +29,7 @@ namespace projeto2.Feature.Marca.View
         {
             if (string.IsNullOrWhiteSpace(txtMarca.Text)) return;
             var cod = dgvMarcas.RowCount + 1;
-            dgvMarcas.Rows.Add(cod, txtMarca.Text);
+            dgvMarcas.Rows.Add(cod, txtMarca.Text.Trim());
             txtMarca.Text = string.Empty;
             if (dgvMarcas.CurrentRow != null) dgvMarcas.CurrentRow.Selected = false;
             btnExcluirMarca.Enabled = false;

@@ -30,7 +30,7 @@ namespace projeto2.Feature.Grupo.View
         {
             if (string.IsNullOrWhiteSpace(txtGrupo.Text)) return;
             var cod = dgvGrupo.RowCount + 1;
-            dgvGrupo.Rows.Add(cod, txtGrupo.Text);
+            dgvGrupo.Rows.Add(cod, txtGrupo.Text.Trim());
             txtGrupo.Text = string.Empty;
             if (dgvGrupo.CurrentRow != null) dgvGrupo.CurrentRow.Selected = false;
             btnExcluirGrupo.Enabled = false;

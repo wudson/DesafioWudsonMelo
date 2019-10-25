@@ -82,6 +82,60 @@ namespace projeto2.Feature.Cliente.Dao
             }
         }
 
+        public IEnumerable<ClienteModel> BuscarComFiltros(string nome, string cidade)
+        {
+            var conn = Conexao.GetInstancia();
+            conn.Open();
+            var mSql = "Select c.*, p.* from CLIENTE c, PESSOA p where c.ID_PESSOA = p.ID_PESSOA";
+
+            if (!string.IsNullOrWhiteSpace(nome)) mSql += " and lower(NOME_PESSOA) like @nome";
+            if (!string.IsNullOrWhiteSpace(cidade)) mSql += " and lower(CIDADE) like @cidade";
+
+            var cmd = new FbCommand(mSql, conn);
+            var listaClientes = new List<ClienteModel>();
+            try
+            {
+                cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = $"{nome}%";
+                cmd.Parameters.Add("@cidade", FbDbType.VarChar).Value = cidade;
+
+                var dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    var cliente = new ClienteModel()
+                    {
+                        IdCliente = Convert.ToInt32(dataReader["ID_CLIENTE"]),
+                        NomePessoa = dataReader["NOME_PESSOA"].ToString(),
+                        EmailPessoa = dataReader["EMAIL_PESSOA"].ToString(),
+                        CpfPessoa = dataReader["CPF_PESSOA"].ToString(),
+                        RgPessoa = dataReader["RG_PESSOA"].ToString(),
+                        SexoPessoa = dataReader["SEXO_PESSOA"].ToString(),
+                        NascimentoPessoa = Convert.ToDateTime(dataReader["DATA_NASCIMENTO_PESSOA"]),
+                        DataCadastroCliente = Convert.ToDateTime(dataReader["DATA_CADASTRO_CLIENTE"]),
+                        TelefonePessoa = dataReader["TELEFONE_PESSOA"].ToString(),
+                        CelularPessoa = dataReader["CELULAR_PESSOA"].ToString(),
+                        EstadoPessoa = dataReader["ESTADO"].ToString(),
+                        CidadePessoa = dataReader["CIDADE"].ToString(),
+                        RuaPessoa = dataReader["RUA"].ToString(),
+                        ComplementoPessoa = dataReader["COMPLEMENTO"].ToString(),
+                        BairroPessoa = dataReader["BAIRRO"].ToString(),
+                        CepPessoa = dataReader["CEP"].ToString(),
+                        NumeroPessoa = Convert.ToInt32(dataReader["NUMERO"]),
+                        IdPessoa = Convert.ToInt32(dataReader["ID_PESSOA"])
+                    };
+
+                    listaClientes.Add(cliente);
+                }
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
+
+            return listaClientes;
+        }
+
         public bool Excluir(int idPessoa)
         {
             var conn = Conexao.GetInstancia();
@@ -135,7 +189,7 @@ namespace projeto2.Feature.Cliente.Dao
                         CepPessoa = dataReader["CEP"].ToString(),
                         NumeroPessoa = Convert.ToInt32(dataReader["NUMERO"]),
                         IdPessoa = Convert.ToInt32(dataReader["ID_PESSOA"])
-                });
+                    });
                 }
                 return clientes;
             }

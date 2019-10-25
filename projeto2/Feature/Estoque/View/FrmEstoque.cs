@@ -34,14 +34,14 @@ namespace projeto2.Feature.Estoque.View
             }
         }
 
-        private void BtnPesquisar_Click(object sender, EventArgs e)
+        private void BtnFiltrar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtPesquisa.Text) && string.IsNullOrWhiteSpace(txtGrupo.Text) && string.IsNullOrWhiteSpace(txtTipo.Text))
             {
                 FrmEstoque_Load(sender, e);
                 return;
             }
-            dgvEstoque.DataSource = new ProdutoController().BuscarDadoComFiltros(txtPesquisa.Text.ToLower(), txtGrupo.Text.ToLower(), txtTipo.Text.ToLower());
+            dgvEstoque.DataSource = new ProdutoController().BuscarDadosComFiltros(txtPesquisa.Text.Trim().ToLower(), txtGrupo.Text.Trim().ToLower(), txtTipo.Text.Trim().ToLower());
             CalculaPrecoTotal();
         }
 
@@ -50,9 +50,9 @@ namespace projeto2.Feature.Estoque.View
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    BtnPesquisar_Click(sender,e);
+                    BtnFiltrar_Click(sender,e);
                     break;
-                case Keys.Delete:
+                case Keys.R:
                     BtnLimpar_Click(sender, e);
                     break;
                 case Keys.Escape:

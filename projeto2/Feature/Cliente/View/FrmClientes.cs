@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Controller;
 
@@ -36,13 +37,13 @@ namespace projeto2.Feature.Cliente.View
             btnEditar.Enabled = enabled;
         }
 
-        private void BtnListar_Click(object sender, EventArgs e)
-        {
-            AtualizarGridDadosCliente();
-        }
-
         private void FrmClientes_Load(object sender, EventArgs e)
         {
+            txtCidade.Items.Clear();
+            txtCidade.Items.Add("Jales");
+            txtCidade.Items.Add("Urânia");
+            txtCidade.Items.Add("Angra dos reis");
+            txtCidade.Items.Add("Rio de Janeiro");
             AtualizarGridDadosCliente();
         }
 
@@ -81,7 +82,7 @@ namespace projeto2.Feature.Cliente.View
             if (!result.Equals(DialogResult.OK)) return;
 
             var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
-            if(new ClienteController().ExcluirDado(idClienteLinhaAtual))
+            if (new ClienteController().ExcluirDado(idClienteLinhaAtual))
                 AtualizarGridDadosCliente();
         }
 
@@ -92,8 +93,11 @@ namespace projeto2.Feature.Cliente.View
                 case Keys.Add:
                     BtnCadastrar_Click(sender, e);
                     break;
-                case Keys.F5:
-                    BtnListar_Click(sender, e);
+                case Keys.Enter:
+                    BtnFiltrar_Click(sender, e);
+                    break;
+                case Keys.R:
+                    BtnLimpar_Click(sender, e);
                     break;
                 case Keys.F4:
                     BtnEditar_Click(sender, e);
@@ -105,6 +109,45 @@ namespace projeto2.Feature.Cliente.View
                     Close();
                     break;
             }
+        }
+
+        private void BtnFiltrar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNome.Text) && string.IsNullOrWhiteSpace(txtCidade.Text) &&
+                string.IsNullOrWhiteSpace(txtDataInicio.Text) && string.IsNullOrWhiteSpace(txtDataFim.Text))
+            {
+                FrmClientes_Load(sender, e);
+                return;
+            }
+
+            var listaClientesFiltrados = new ClienteController().BuscarDadosComFiltros(txtNome.Text.Trim().ToLower(),
+                txtCidade.Text.Trim().ToLower());
+
+            dgvClientes.DataSource = listaClientesFiltrados;
+
+            if (txtDataInicio.Text.Equals(" ")) return;
+
+            DateTime.TryParse(txtDataInicio.Text, out var data);
+
+            dgvClientes.DataSource =
+                listaClientesFiltrados.Where(c => c.DataCadastroCliente.ToString("dd/MM/yyyy") == data.ToString("dd/MM/yyyy")).ToList();
+        }
+
+        private void TxtDataInicio_ValueChanged(object sender, EventArgs e)
+        {
+            if (txtDataInicio.Text == @" ")
+            {
+                txtDataInicio.Format = DateTimePickerFormat.Short;
+            }
+        }
+
+        private void BtnLimpar_Click(object sender, EventArgs e)
+        {
+            txtDataInicio.Format = DateTimePickerFormat.Custom;
+            txtDataInicio.CustomFormat = @" ";
+            txtCidade.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            BtnFiltrar_Click(sender, e);
         }
     }
 }

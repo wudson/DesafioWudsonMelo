@@ -47,7 +47,7 @@ namespace projeto2.Feature.Produto.Controller
             return false;
         }
 
-        public IEnumerable<Produto> BuscarDadoComFiltros(string produto, string grupo, string tipo) => new ProdutoDao().BuscarComFiltros(produto, grupo, tipo);
+        public IEnumerable<Produto> BuscarDadosComFiltros(string produto, string grupo, string tipo) => new ProdutoDao().BuscarComFiltros(produto, grupo, tipo);
 
         public bool CadastrarDado(Produto produto)
         {
