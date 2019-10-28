@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExcluirMarca = new System.Windows.Forms.Button();
             this.btnSalvarMarca = new System.Windows.Forms.Button();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
-            this.idMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcaModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idMarcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marcaModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMarca
@@ -87,10 +90,12 @@
             // 
             this.dgvMarcas.AllowUserToAddRows = false;
             this.dgvMarcas.AllowUserToDeleteRows = false;
+            this.dgvMarcas.AutoGenerateColumns = false;
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarcas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idMarca,
-            this.marca});
+            this.idMarcaDataGridViewTextBoxColumn,
+            this.marcaDataGridViewTextBoxColumn});
+            this.dgvMarcas.DataSource = this.marcaModelBindingSource;
             this.dgvMarcas.Location = new System.Drawing.Point(10, 86);
             this.dgvMarcas.Name = "dgvMarcas";
             this.dgvMarcas.ReadOnly = true;
@@ -100,18 +105,24 @@
             this.dgvMarcas.TabStop = false;
             this.dgvMarcas.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvMarcas_CellMouseClick);
             // 
-            // idMarca
+            // marcaModelBindingSource
             // 
-            this.idMarca.HeaderText = "Cod.";
-            this.idMarca.Name = "idMarca";
-            this.idMarca.ReadOnly = true;
+            this.marcaModelBindingSource.DataSource = typeof(projeto2.Feature.Marca.Model.MarcaModel);
             // 
-            // marca
+            // idMarcaDataGridViewTextBoxColumn
             // 
-            this.marca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.marca.HeaderText = "Marca";
-            this.marca.Name = "marca";
-            this.marca.ReadOnly = true;
+            this.idMarcaDataGridViewTextBoxColumn.DataPropertyName = "IdMarca";
+            this.idMarcaDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.idMarcaDataGridViewTextBoxColumn.Name = "idMarcaDataGridViewTextBoxColumn";
+            this.idMarcaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // marcaDataGridViewTextBoxColumn
+            // 
+            this.marcaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.marcaDataGridViewTextBoxColumn.DataPropertyName = "Marca";
+            this.marcaDataGridViewTextBoxColumn.HeaderText = "Marca";
+            this.marcaDataGridViewTextBoxColumn.Name = "marcaDataGridViewTextBoxColumn";
+            this.marcaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmMarcas
             // 
@@ -129,8 +140,10 @@
             this.Name = "FrmMarcas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Marcas";
+            this.Load += new System.EventHandler(this.FrmMarcas_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmMarcas_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marcaModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,7 +156,8 @@
         private System.Windows.Forms.Button btnExcluirMarca;
         private System.Windows.Forms.Button btnSalvarMarca;
         private System.Windows.Forms.DataGridView dgvMarcas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idMarca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn marca;
+        private System.Windows.Forms.BindingSource marcaModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idMarcaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marcaDataGridViewTextBoxColumn;
     }
 }

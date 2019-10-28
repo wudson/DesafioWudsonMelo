@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Grupo.Controller;
 
 namespace projeto2.Feature.Grupo.View
 {
@@ -18,10 +19,10 @@ namespace projeto2.Feature.Grupo.View
                     Close();
                     break;
                 case Keys.Enter:
-                    BtnSalvarGrupo_Click(sender,e);
+                    BtnSalvarGrupo_Click(sender, e);
                     break;
                 case Keys.Delete:
-                    BtnExcluirGrupo_Click(sender,e);
+                    BtnExcluirGrupo_Click(sender, e);
                     break;
             }
         }
@@ -29,8 +30,17 @@ namespace projeto2.Feature.Grupo.View
         private void BtnSalvarGrupo_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtGrupo.Text)) return;
-            var cod = dgvGrupo.RowCount + 1;
-            dgvGrupo.Rows.Add(cod, txtGrupo.Text.Trim());
+            var novoGrupo = txtGrupo.Text.Trim();
+            new GrupoController().CadastrarGrupo(novoGrupo);
+
+            ListarGrupos();
+        }
+
+        public void ListarGrupos()
+        {
+            var grupos = new GrupoController().ListarGrupos();
+            dgvGrupo.DataSource = grupos;
+
             txtGrupo.Text = string.Empty;
             if (dgvGrupo.CurrentRow != null) dgvGrupo.CurrentRow.Selected = false;
             btnExcluirGrupo.Enabled = false;
@@ -38,7 +48,6 @@ namespace projeto2.Feature.Grupo.View
 
         private void DgvGrupo_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
             if (e.RowIndex < 0) return;
             btnExcluirGrupo.Enabled = true;
         }
@@ -48,10 +57,17 @@ namespace projeto2.Feature.Grupo.View
             if (btnExcluirGrupo.Enabled == false) return;
             var resultado = MessageBox.Show(@"Deseja excluir esse grupo?", @"Grupo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
-            btnExcluirGrupo.Enabled = false;
+
             if (dgvGrupo.CurrentRow == null) return;
-            dgvGrupo.Rows.Remove(dgvGrupo.CurrentRow);
-            if (dgvGrupo.CurrentRow != null) dgvGrupo.CurrentRow.Selected = false;
+            var idGrupo = Convert.ToInt32(dgvGrupo.CurrentRow.Cells[0].Value);
+
+            if (new GrupoController().ExcluirGrupo(idGrupo))
+                ListarGrupos();
+        }
+
+        private void FrmGrupos_Load(object sender, EventArgs e)
+        {
+            ListarGrupos();
         }
     }
 }

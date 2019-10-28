@@ -18,7 +18,7 @@ namespace projeto2.Feature.Pedido.View
 
             lstProdutos.DisplayMember = "NomeProduto";
 
-            foreach (Produto.Produto prod in produtos)
+            foreach (var prod in produtos)
             {
                 lstProdutos.Items.Add(prod);
             }
@@ -28,6 +28,7 @@ namespace projeto2.Feature.Pedido.View
         {
             var index = this.lstProdutos.IndexFromPoint(e.Location);
             if (index == ListBox.NoMatches) return;
+
             var produtoAdicionado = (Produto.Produto)lstProdutos.SelectedItems[0];
             txtProduto.Text = produtoAdicionado.NomeProduto;
             txtPreco.Text = produtoAdicionado.ValorVendaProduto.ToString(CultureInfo.InvariantCulture);
@@ -36,6 +37,7 @@ namespace projeto2.Feature.Pedido.View
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtProduto.Text)) return;
+
             var precoProduto = int.Parse(txtPreco.Text) * int.Parse(txtQuantidade.Text);
             dgvPedido.Rows.Add(txtProduto.Text, txtQuantidade.Text, precoProduto);
             txtPreco.Text = string.Empty;
@@ -74,10 +76,12 @@ namespace projeto2.Feature.Pedido.View
         {
             var resultado = MessageBox.Show(@"Deseja remover esse item do pedido?", @"Pedido", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
+
             var indice = e.RowIndex;
             if (indice < 0) return;
             var linha = dgvPedido.Rows[indice];
             dgvPedido.Rows.Remove(linha);
+
             CalcularTotalAPagar();
         }
 

@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvGrupo = new System.Windows.Forms.DataGridView();
-            this.idMarca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExcluirGrupo = new System.Windows.Forms.Button();
             this.btnSalvarGrupo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.TextBox();
+            this.idGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grupoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grupoModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvGrupo
@@ -44,10 +47,12 @@
             this.dgvGrupo.AllowUserToDeleteRows = false;
             this.dgvGrupo.AllowUserToResizeColumns = false;
             this.dgvGrupo.AllowUserToResizeRows = false;
+            this.dgvGrupo.AutoGenerateColumns = false;
             this.dgvGrupo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGrupo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idMarca,
-            this.grupo});
+            this.idGrupoDataGridViewTextBoxColumn,
+            this.grupoDataGridViewTextBoxColumn});
+            this.dgvGrupo.DataSource = this.grupoModelBindingSource;
             this.dgvGrupo.Location = new System.Drawing.Point(10, 86);
             this.dgvGrupo.MultiSelect = false;
             this.dgvGrupo.Name = "dgvGrupo";
@@ -58,19 +63,6 @@
             this.dgvGrupo.TabIndex = 3;
             this.dgvGrupo.TabStop = false;
             this.dgvGrupo.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvGrupo_CellMouseClick);
-            // 
-            // idMarca
-            // 
-            this.idMarca.HeaderText = "Cod.";
-            this.idMarca.Name = "idMarca";
-            this.idMarca.ReadOnly = true;
-            // 
-            // grupo
-            // 
-            this.grupo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.grupo.HeaderText = "Grupo";
-            this.grupo.Name = "grupo";
-            this.grupo.ReadOnly = true;
             // 
             // btnExcluirGrupo
             // 
@@ -117,6 +109,25 @@
             this.txtGrupo.Size = new System.Drawing.Size(335, 20);
             this.txtGrupo.TabIndex = 0;
             // 
+            // idGrupoDataGridViewTextBoxColumn
+            // 
+            this.idGrupoDataGridViewTextBoxColumn.DataPropertyName = "IdGrupo";
+            this.idGrupoDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.idGrupoDataGridViewTextBoxColumn.Name = "idGrupoDataGridViewTextBoxColumn";
+            this.idGrupoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // grupoDataGridViewTextBoxColumn
+            // 
+            this.grupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.grupoDataGridViewTextBoxColumn.DataPropertyName = "Grupo";
+            this.grupoDataGridViewTextBoxColumn.HeaderText = "Grupo";
+            this.grupoDataGridViewTextBoxColumn.Name = "grupoDataGridViewTextBoxColumn";
+            this.grupoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // grupoModelBindingSource
+            // 
+            this.grupoModelBindingSource.DataSource = typeof(projeto2.Feature.Grupo.Model.GrupoModel);
+            // 
             // FrmGrupos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,8 +144,10 @@
             this.Name = "FrmGrupos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Grupos";
+            this.Load += new System.EventHandler(this.FrmGrupos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmGrupos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grupoModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,11 +156,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvGrupo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idMarca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grupo;
         private System.Windows.Forms.Button btnExcluirGrupo;
         private System.Windows.Forms.Button btnSalvarGrupo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtGrupo;
+        private System.Windows.Forms.BindingSource grupoModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idGrupoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grupoDataGridViewTextBoxColumn;
     }
 }
