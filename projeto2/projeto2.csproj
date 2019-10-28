@@ -99,6 +99,8 @@
     <Compile Include="Feature\Marca\View\FrmMarcas.Designer.cs">
       <DependentUpon>FrmMarcas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Pedido\Controller\PedidoController.cs" />
+    <Compile Include="Feature\Pedido\Dao\PedidoDao.cs" />
     <Compile Include="Feature\Pedido\Model\PedidoModel.cs" />
     <Compile Include="Feature\Pedido\View\FrmNovoPedido.cs">
       <SubType>Form</SubType>
@@ -285,9 +287,6 @@
   <ItemGroup>
     <None Include="Resources\package.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Feature\Pedido\Controller\" />
-    <Folder Include="Feature\Pedido\Dao\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

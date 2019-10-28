@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
+using projeto2.Feature.Pedido.Controller;
+using projeto2.Feature.Pedido.Model;
 using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Pedido.View
@@ -26,7 +29,7 @@ namespace projeto2.Feature.Pedido.View
 
         private void LstProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var index = this.lstProdutos.IndexFromPoint(e.Location);
+            var index = lstProdutos.IndexFromPoint(e.Location);
             if (index == ListBox.NoMatches) return;
 
             var produtoAdicionado = (Produto.Produto)lstProdutos.SelectedItems[0];
@@ -62,9 +65,38 @@ namespace projeto2.Feature.Pedido.View
         private void BtnSalvarPedido_Click(object sender, EventArgs e)
         {
             if (dgvPedido.RowCount <= 0) return;
+
+            var pedido = new PedidoModel
+            {
+                DataPedido = DateTime.Now,
+                PrecoTotalPedido = Convert.ToDouble(txtTotalPedido.Text),
+                Produtos = PreencherProdutosDoPedido()
+            };
+
+            //if (new PedidoController().SalvarPedido())
+            //{
+
+            //}
+
             dgvPedido.Rows.Clear();
             txtTotalPedido.Text = string.Empty;
-            MessageBox.Show(@"Pedido efetuado com sucesso");
+        }
+
+        private List<Produto.Produto> PreencherProdutosDoPedido()
+        {
+            var produtos = new List<Produto.Produto>();
+            var quantidadeDeProdutos = dgvPedido.RowCount;
+            for (var i = 0; i < quantidadeDeProdutos; i++)
+            {
+                var prod = new Produto.Produto
+                {
+                    NomeProduto = dgvPedido.Rows[i].Cells[0].Value.ToString()
+                };
+
+                produtos.Add(prod);
+            }
+
+            return produtos;
         }
 
         private void BtnCancelarCadastroProduto_Click(object sender, EventArgs e)

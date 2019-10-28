@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace projeto2.Feature.Pedido.Model
 {
@@ -8,5 +9,6 @@ namespace projeto2.Feature.Pedido.Model
         public DateTime DataPedido { get; set; }
         public double PrecoTotalPedido { get; set; }
         public int IdClientePedido { get; set; }
+        public List<Produto.Produto> Produtos { get; set; }
     }
 }
