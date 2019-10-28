@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows.Forms;
 using projeto2.Feature.Estoque.View;
 using projeto2.Feature.Produto.Controller;
@@ -112,6 +113,43 @@ namespace projeto2.Feature.Produto.View
         private void BtnEstoque_Click(object sender, EventArgs e)
         {
             new FrmEstoque().ShowDialog();
+        }
+
+        private void DgvProduto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((dgvProduto.Rows[e.RowIndex].DataBoundItem != null) && (dgvProduto.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
+            {
+                e.Value = BindProperty(dgvProduto.Rows[e.RowIndex].DataBoundItem, dgvProduto.Columns[e.ColumnIndex].DataPropertyName);
+            }
+        }
+
+        public object BindProperty(object propriedade, string propriedadeName)
+        {
+            var retValue = "";
+            if (propriedadeName.Contains("."))
+            {
+                PropertyInfo[] arrayProperties;
+                string leftPropertyName;
+                leftPropertyName = propriedadeName.Substring(0, propriedadeName.IndexOf(".", StringComparison.Ordinal));
+                arrayProperties = propriedade.GetType().GetProperties();
+                foreach (var propertyInfo in arrayProperties)
+                {
+                    if (propertyInfo.Name != leftPropertyName) continue;
+                    retValue = (string) BindProperty(
+                        propertyInfo.GetValue(propriedade, null),
+                        propriedadeName.Substring(propriedadeName.IndexOf(".", StringComparison.Ordinal) + 1));
+                    break;
+                }
+            }
+            else
+            {
+                Type propertyType;
+                PropertyInfo propertyInfo;
+                propertyType = propriedade.GetType();
+                propertyInfo = propertyType.GetProperty(propriedadeName);
+                if (propertyInfo != null) retValue = propertyInfo.GetValue(propriedade, null).ToString();
+            }
+            return retValue;
         }
     }
 }

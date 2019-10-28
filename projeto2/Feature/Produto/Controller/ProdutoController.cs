@@ -9,7 +9,7 @@ namespace projeto2.Feature.Produto.Controller
     {
         public IList<Produto> BuscarTodosOsDados() => new ProdutoDao().Listar();
 
-        public Produto BuscarDado(int idProduto) => (Produto) new ProdutoDao().Buscar(idProduto);
+        public Produto BuscarDado(int idProduto) => new ProdutoDao().Buscar(idProduto);
 
         public bool ExcluirDado(int idProduto)
         {
@@ -39,9 +39,9 @@ namespace projeto2.Feature.Produto.Controller
                     return true;
                 }
             }
-            catch (Exception e)
+            catch
             {
-                MessageBox.Show($@"Problemas ao alterar produto: {e.Message}", @"Erro");
+                MessageBox.Show($@"Problemas ao alterar produto", @"Erro");
             }
 
             return false;

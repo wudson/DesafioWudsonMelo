@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Produto.Controller;
+using projeto2.Feature.Produto.View;
 
 namespace projeto2.Feature.Estoque.View
 {
@@ -15,14 +17,20 @@ namespace projeto2.Feature.Estoque.View
         {
             dgvEstoque.DataSource = new ProdutoController().BuscarTodosOsDados();
 
-            txtGrupo.Items.Add("Grupo1");
-            txtGrupo.Items.Add("Grupo2");
-            txtGrupo.Items.Add("Grupo3");
+            PreencherGrupos();
             txtTipo.Items.Add("Unidade");
             txtTipo.Items.Add("Caixa");
             txtTipo.Items.Add("Peso");
 
             CalculaPrecoTotal();
+        }
+
+        private void PreencherGrupos()
+        {
+            txtGrupo.DataSource = new GrupoController().ListarGrupos();
+            txtGrupo.DisplayMember = "Grupo";
+            txtGrupo.ValueMember = "IdGrupo";
+            txtGrupo.Text = string.Empty;
         }
 
         private void CalculaPrecoTotal()
@@ -67,6 +75,14 @@ namespace projeto2.Feature.Estoque.View
             txtPesquisa.Text = string.Empty;
             txtTipo.Text = string.Empty;
             FrmEstoque_Load(sender, e);
+        }
+
+        private void DgvEstoque_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((dgvEstoque.Rows[e.RowIndex].DataBoundItem != null) && (dgvEstoque.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
+            {
+                e.Value = new FrmProdutos().BindProperty(dgvEstoque.Rows[e.RowIndex].DataBoundItem, dgvEstoque.Columns[e.ColumnIndex].DataPropertyName);
+            }
         }
     }
 }

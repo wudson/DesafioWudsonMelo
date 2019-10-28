@@ -3,6 +3,8 @@ using System.Collections;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using projeto2.Feature.Grupo.Controller;
+using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Produto.View
@@ -39,8 +41,14 @@ namespace projeto2.Feature.Produto.View
             {
                 IdProduto = int.Parse(txtIdProduto.Text.Trim()),
                 NomeProduto = txtNome.Text.Trim(),
-                MarcaProduto = txtMarca.Text.Trim(),
-                GrupoProduto = txtGrupo.Text.Trim(),
+                MarcaProduto =
+                {
+                    IdMarca = int.Parse(txtMarca.SelectedValue.ToString()),
+                },
+                GrupoProduto =
+                {
+                    IdGrupo = int.Parse(txtGrupo.SelectedValue.ToString()),
+                },
                 FornecedorProduto = txtFornecedor.Text.Trim(),
                 TipoProduto = txtTipo.Text.Trim(),
                 QuantidadeEstoqueProduto = int.Parse(txtQuantidadeEmEstoque.Text.Trim()),
@@ -72,11 +80,13 @@ namespace projeto2.Feature.Produto.View
 
         private void FormCadastroProdutos_Load(object sender, EventArgs e)
         {
+            PreencherGruposEMarcas();
+
             if (_produto == null) return;
             txtIdProduto.Text = _produto.IdProduto.ToString();
             txtNome.Text = _produto.NomeProduto;
-            txtMarca.Text = _produto.MarcaProduto;
-            txtGrupo.Text = _produto.GrupoProduto;
+            txtMarca.Text = _produto.MarcaProduto.Marca;
+            txtGrupo.Text = _produto.GrupoProduto.Grupo;
             txtFornecedor.Text = _produto.FornecedorProduto;
             txtTipo.Text = _produto.TipoProduto;
             txtValorDeCompra.Text = _produto.ValorCompraProduto.ToString(CultureInfo.InvariantCulture);
@@ -84,12 +94,25 @@ namespace projeto2.Feature.Produto.View
             txtQuantidadeEmEstoque.Text = _produto.QuantidadeEstoqueProduto.ToString();
         }
 
+        private void PreencherGruposEMarcas()
+        {
+            txtGrupo.DataSource = new GrupoController().ListarGrupos();
+            txtGrupo.DisplayMember = "Grupo";
+            txtGrupo.ValueMember = "IdGrupo";
+            txtGrupo.Text = string.Empty;
+
+            txtMarca.DataSource = new MarcaController().ListarMarcas();
+            txtMarca.DisplayMember = "Marca";
+            txtMarca.ValueMember = "IdMarca";
+            txtMarca.Text = string.Empty;
+        }
+
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos(pnlControl.Controls)) return;
             var produto = AtribuirCamposParaModel();
 
-            if(new ProdutoController().Alterar(produto))
+            if (new ProdutoController().Alterar(produto))
                 Close();
         }
 
