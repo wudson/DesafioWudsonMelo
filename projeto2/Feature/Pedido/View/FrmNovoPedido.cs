@@ -22,6 +22,8 @@ namespace projeto2.Feature.Pedido.View
 
         private void PreencherListaDeProdutos()
         {
+            lstProdutos.DataSource = null;
+
             var produtos = new ProdutoController().BuscarTodosOsDados();
 
             lstProdutos.DisplayMember = "NomeProduto";
@@ -133,6 +135,16 @@ namespace projeto2.Feature.Pedido.View
                     Close();
                     break;
             }
+        }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBuscar.Text))
+            {
+                PreencherListaDeProdutos();
+                return;
+            }
+            lstProdutos.DataSource = new ProdutoController().BuscarDadosComFiltros(txtBuscar.Text.Trim().ToLower(), null, null);
         }
     }
 }

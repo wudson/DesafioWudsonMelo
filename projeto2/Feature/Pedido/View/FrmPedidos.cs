@@ -14,6 +14,7 @@ namespace projeto2.Feature.Pedido.View
         private void BtnCadastrar_Click(object sender, EventArgs e)
         {
             new FrmNovoPedido().ShowDialog();
+            AtualizarGridPedidos();
         }
 
         private void FrmPedidos_KeyDown(object sender, KeyEventArgs e)

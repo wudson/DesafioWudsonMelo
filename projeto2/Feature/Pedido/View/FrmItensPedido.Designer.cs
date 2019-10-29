@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvItensPedido = new System.Windows.Forms.DataGridView();
-            this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnOk = new System.Windows.Forms.Button();
             this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorVendaProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnOk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,31 +58,6 @@
             this.dgvItensPedido.Name = "dgvItensPedido";
             this.dgvItensPedido.Size = new System.Drawing.Size(702, 275);
             this.dgvItensPedido.TabIndex = 0;
-            // 
-            // quantidade
-            // 
-            this.quantidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.quantidade.HeaderText = "Quantidade";
-            this.quantidade.Name = "quantidade";
-            this.quantidade.Width = 80;
-            // 
-            // valorTotal
-            // 
-            this.valorTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.valorTotal.HeaderText = "Preço Total (R$)";
-            this.valorTotal.Name = "valorTotal";
-            this.valorTotal.Width = 80;
-            // 
-            // btnOk
-            // 
-            this.btnOk.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnOk.Location = new System.Drawing.Point(609, 293);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(105, 33);
-            this.btnOk.TabIndex = 4;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = false;
             // 
             // idProdutoDataGridViewTextBoxColumn
             // 
@@ -115,9 +90,35 @@
             this.valorVendaProdutoDataGridViewTextBoxColumn.Name = "valorVendaProdutoDataGridViewTextBoxColumn";
             this.valorVendaProdutoDataGridViewTextBoxColumn.Width = 80;
             // 
+            // quantidade
+            // 
+            this.quantidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.quantidade.HeaderText = "Quantidade";
+            this.quantidade.Name = "quantidade";
+            this.quantidade.Width = 80;
+            // 
+            // valorTotal
+            // 
+            this.valorTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.valorTotal.HeaderText = "Preço Total (R$)";
+            this.valorTotal.Name = "valorTotal";
+            this.valorTotal.Width = 80;
+            // 
             // produtoBindingSource
             // 
             this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
+            // 
+            // btnOk
+            // 
+            this.btnOk.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOk.Location = new System.Drawing.Point(609, 293);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(105, 33);
+            this.btnOk.TabIndex = 4;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
             // 
             // FrmItensPedido
             // 
@@ -133,6 +134,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Itens do pedido";
             this.Load += new System.EventHandler(this.FrmItensPedido_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmItensPedido_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPedido)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.ResumeLayout(false);

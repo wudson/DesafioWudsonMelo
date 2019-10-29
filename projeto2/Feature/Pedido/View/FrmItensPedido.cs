@@ -22,5 +22,23 @@ namespace projeto2.Feature.Pedido.View
         {
             dgvItensPedido.DataSource = _produtosPedido;
         }
+
+        private void BtnOk_Click(object sender, System.EventArgs e)
+        {
+            Close();
+        }
+
+        private void FrmItensPedido_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    BtnOk_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
     }
 }
