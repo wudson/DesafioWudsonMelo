@@ -56,7 +56,7 @@ namespace projeto2.Feature.Pedido.View
             var idPedidoLinhaAtual = int.Parse(dgvPedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
             var pedido = new PedidoController().BuscarProdutosPedido(idPedidoLinhaAtual);
 
-            new FrmNovoPedido(pedido).ShowDialog();
+            new FrmItensPedido(pedido).ShowDialog();
             AtualizarGridPedidos();
         }
     }

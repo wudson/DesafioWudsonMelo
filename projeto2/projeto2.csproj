@@ -117,10 +117,10 @@
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
-    <Compile Include="Feature\Produto\View\FrmItensPedido.cs">
+    <Compile Include="Feature\Pedido\View\FrmItensPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Produto\View\FrmItensPedido.Designer.cs">
+    <Compile Include="Feature\Pedido\View\FrmItensPedido.Designer.cs">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEntrar.cs">
@@ -175,7 +175,7 @@
     <EmbeddedResource Include="Feature\Pedido\View\FrmPedidos.resx">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Produto\View\FrmItensPedido.resx">
+    <EmbeddedResource Include="Feature\Pedido\View\FrmItensPedido.resx">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEntrar.resx">
