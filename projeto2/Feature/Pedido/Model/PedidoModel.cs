@@ -9,6 +9,6 @@ namespace projeto2.Feature.Pedido.Model
         public DateTime DataPedido { get; set; }
         public double PrecoTotalPedido { get; set; }
         public int IdClientePedido { get; set; }
-        public List<Produto.Produto> Produtos { get; set; }
+        public IList<Produto.Produto> Produtos { get; set; }
     }
 }

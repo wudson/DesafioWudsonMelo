@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -37,16 +38,20 @@
             this.CelularPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CidadePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
-            this.idPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoTotalPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idClientePedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pedidoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tblBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pedidoModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tblBotoes
             // 
+            this.tblBotoes.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tblBotoes.ColumnCount = 7;
             this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -175,15 +180,18 @@
             this.dgvPedidos.AllowUserToDeleteRows = false;
             this.dgvPedidos.AllowUserToResizeColumns = false;
             this.dgvPedidos.AllowUserToResizeRows = false;
+            this.dgvPedidos.AutoGenerateColumns = false;
             this.dgvPedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvPedidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPedidos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPedidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idPedido,
-            this.dataPedido,
-            this.preco});
+            this.idPedidoDataGridViewTextBoxColumn,
+            this.dataPedidoDataGridViewTextBoxColumn,
+            this.precoTotalPedidoDataGridViewTextBoxColumn,
+            this.idClientePedidoDataGridViewTextBoxColumn});
+            this.dgvPedidos.DataSource = this.pedidoModelBindingSource;
             this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPedidos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvPedidos.Location = new System.Drawing.Point(0, 92);
@@ -197,27 +205,39 @@
             this.dgvPedidos.Size = new System.Drawing.Size(794, 358);
             this.dgvPedidos.TabIndex = 2;
             this.dgvPedidos.TabStop = false;
+            this.dgvPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPedidos_CellDoubleClick);
             // 
-            // idPedido
+            // idPedidoDataGridViewTextBoxColumn
             // 
-            this.idPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idPedido.HeaderText = "Cod.";
-            this.idPedido.Name = "idPedido";
-            this.idPedido.ReadOnly = true;
+            this.idPedidoDataGridViewTextBoxColumn.DataPropertyName = "IdPedido";
+            this.idPedidoDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.idPedidoDataGridViewTextBoxColumn.Name = "idPedidoDataGridViewTextBoxColumn";
+            this.idPedidoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataPedido
+            // dataPedidoDataGridViewTextBoxColumn
             // 
-            this.dataPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataPedido.HeaderText = "Data";
-            this.dataPedido.Name = "dataPedido";
-            this.dataPedido.ReadOnly = true;
+            this.dataPedidoDataGridViewTextBoxColumn.DataPropertyName = "DataPedido";
+            this.dataPedidoDataGridViewTextBoxColumn.HeaderText = "Data";
+            this.dataPedidoDataGridViewTextBoxColumn.Name = "dataPedidoDataGridViewTextBoxColumn";
+            this.dataPedidoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // preco
+            // precoTotalPedidoDataGridViewTextBoxColumn
             // 
-            this.preco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.preco.HeaderText = "Total a pagar";
-            this.preco.Name = "preco";
-            this.preco.ReadOnly = true;
+            this.precoTotalPedidoDataGridViewTextBoxColumn.DataPropertyName = "PrecoTotalPedido";
+            this.precoTotalPedidoDataGridViewTextBoxColumn.HeaderText = "Preço Total (R$)";
+            this.precoTotalPedidoDataGridViewTextBoxColumn.Name = "precoTotalPedidoDataGridViewTextBoxColumn";
+            this.precoTotalPedidoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idClientePedidoDataGridViewTextBoxColumn
+            // 
+            this.idClientePedidoDataGridViewTextBoxColumn.DataPropertyName = "IdClientePedido";
+            this.idClientePedidoDataGridViewTextBoxColumn.HeaderText = "Cliente";
+            this.idClientePedidoDataGridViewTextBoxColumn.Name = "idClientePedidoDataGridViewTextBoxColumn";
+            this.idClientePedidoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pedidoModelBindingSource
+            // 
+            this.pedidoModelBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.PedidoModel);
             // 
             // FrmPedidos
             // 
@@ -233,10 +253,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedidos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmPedidos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPedidos_KeyDown);
             this.tblBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pedidoModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,8 +274,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CelularPessoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn CidadePessoa;
         private System.Windows.Forms.DataGridView dgvPedidos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataPedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn preco;
+        private System.Windows.Forms.BindingSource pedidoModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPedidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataPedidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoTotalPedidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idClientePedidoDataGridViewTextBoxColumn;
     }
 }

@@ -117,6 +117,12 @@
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
+    <Compile Include="Feature\Produto\View\FrmItensPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Produto\View\FrmItensPedido.Designer.cs">
+      <DependentUpon>FrmItensPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEntrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     <EmbeddedResource Include="Feature\Pedido\View\FrmPedidos.resx">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Produto\View\FrmItensPedido.resx">
+      <DependentUpon>FrmItensPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEntrar.resx">
       <DependentUpon>FrmEntrar.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +207,7 @@
     <None Include="Properties\DataSources\projeto2.Feature.Cliente.Model.ClienteModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Grupo.Model.GrupoModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Marca.Model.MarcaModel.datasource" />
+    <None Include="Properties\DataSources\projeto2.Feature.Pedido.Model.PedidoModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Produto.Produto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

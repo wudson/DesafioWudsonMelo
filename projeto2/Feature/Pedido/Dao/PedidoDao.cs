@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Pedido.Model;
 
@@ -28,7 +29,7 @@ namespace projeto2.Feature.Pedido.Dao
 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 transaction.Rollback();
                 throw;
@@ -37,6 +38,70 @@ namespace projeto2.Feature.Pedido.Dao
             {
                 cmd.Dispose();
                 conn.Close();
+            }
+        }
+
+        public IEnumerable<PedidoModel> Listar()
+        {
+            var conn = Conexao.GetInstancia();
+            conn.Open();
+
+            const string mSql = @"Select pedido.*, pessoa.NOME_PESSOA 
+                                from PEDIDO pedido, CLIENTE cliente, PESSOA pessoa 
+                                where pedido.ID_CLIENTE = cliente.ID_CLIENTE and cliente.ID_PESSOA = pessoa.ID_PESSOA";
+            var cmd = new FbCommand(mSql, conn);
+            try
+            {
+                var dataReader = cmd.ExecuteReader();
+                var pedidos = new List<PedidoModel>();
+                while (dataReader.Read())
+                {
+                    pedidos.Add(new PedidoModel
+                    {
+                        IdPedido = Convert.ToInt32(dataReader["ID_PEDIDO"]),
+                        DataPedido = Convert.ToDateTime(dataReader["DATA_PEDIDO"]),
+                        PrecoTotalPedido = Convert.ToDouble(dataReader["VALOR_TOTAL_PEDIDO"]),
+                        IdClientePedido = Convert.ToInt32(dataReader["NOME_PESSOA"]),
+                        Produtos = BuscarProdutosDoPedido(conn, Convert.ToInt32(dataReader["ID_PEDIDO"]))
+                    });
+                }
+                return pedidos;
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
+        }
+
+        public IList<Produto.Produto> BuscarProdutosDoPedido(FbConnection conn, int idPedido)
+        {
+            
+            const string mSql = @"select ip.*, p.* from ITEM_PEDIDO ip, PRODUTO p 
+                                where ip.ID_PRODUTO = p.ID_PRODUTO and ip.ID_PEDIDO = @idPedido";
+            var cmd = new FbCommand(mSql, conn);
+            try
+            {
+                cmd.Parameters.Add("@idPedido", FbDbType.Integer).Value = idPedido;
+
+                var dataReader = cmd.ExecuteReader();
+                var produtos = new List<Produto.Produto>();
+                while (dataReader.Read())
+                {
+                    produtos.Add(new Produto.Produto
+                    {
+                        IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
+                        NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
+                        ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
+                        TipoProduto = dataReader["TIPO_PRODUTO"].ToString()
+                    });
+                }
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($@"erro ao buscar produtos do pedido: {ex.Message}");
+                throw;
             }
         }
 

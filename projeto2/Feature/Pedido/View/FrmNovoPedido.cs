@@ -10,12 +10,27 @@ namespace projeto2.Feature.Pedido.View
 {
     public partial class FrmNovoPedido : Form
     {
+        private readonly IList<Produto.Produto> _produtosPedido;
+
+        public FrmNovoPedido(IList<Produto.Produto> produtosPedido)
+        {
+            InitializeComponent();
+            _produtosPedido = produtosPedido;
+        }
+
         public FrmNovoPedido()
         {
             InitializeComponent();
         }
 
         private void FrmPedido_Load(object sender, EventArgs e)
+        {
+            PreencherListaDeProdutos();
+
+            dgvPedido.DataSource = _produtosPedido;
+        }
+
+        private void PreencherListaDeProdutos()
         {
             var produtos = new ProdutoController().BuscarTodosOsDados();
 
