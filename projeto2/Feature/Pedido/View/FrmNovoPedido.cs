@@ -34,6 +34,7 @@ namespace projeto2.Feature.Pedido.View
 
             var produtoAdicionado = (Produto.Produto)lstProdutos.SelectedItems[0];
             txtProduto.Text = produtoAdicionado.NomeProduto;
+            txtIdProduto.Text = produtoAdicionado.IdProduto.ToString();
             txtPreco.Text = produtoAdicionado.ValorVendaProduto.ToString(CultureInfo.InvariantCulture);
         }
 
@@ -42,7 +43,7 @@ namespace projeto2.Feature.Pedido.View
             if (string.IsNullOrWhiteSpace(txtProduto.Text)) return;
 
             var precoProduto = int.Parse(txtPreco.Text) * int.Parse(txtQuantidade.Text);
-            dgvPedido.Rows.Add(txtProduto.Text, txtQuantidade.Text, precoProduto);
+            dgvPedido.Rows.Add(txtIdProduto.Text, txtProduto.Text, txtQuantidade.Text, precoProduto);
             txtPreco.Text = string.Empty;
             txtProduto.Text = string.Empty;
             txtQuantidade.Text = @"1";
@@ -73,11 +74,7 @@ namespace projeto2.Feature.Pedido.View
                 Produtos = PreencherProdutosDoPedido()
             };
 
-            //if (new PedidoController().SalvarPedido())
-            //{
-
-            //}
-
+            if (!new PedidoController().SalvarPedido(pedido)) return;
             dgvPedido.Rows.Clear();
             txtTotalPedido.Text = string.Empty;
         }
@@ -90,7 +87,7 @@ namespace projeto2.Feature.Pedido.View
             {
                 var prod = new Produto.Produto
                 {
-                    NomeProduto = dgvPedido.Rows[i].Cells[0].Value.ToString()
+                    IdProduto = Convert.ToInt32(dgvPedido.Rows[i].Cells[0].Value.ToString())
                 };
 
                 produtos.Add(prod);
