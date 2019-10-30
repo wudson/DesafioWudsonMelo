@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Windows.Forms;
 using projeto2.Feature.Pedido.Model;
 
@@ -48,35 +47,31 @@ namespace projeto2.Feature.Pedido.View
         {
             if ((dgvItensPedido.Rows[e.RowIndex].DataBoundItem != null) && (dgvItensPedido.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
             {
-                e.Value = BindProperty(dgvItensPedido.Rows[e.RowIndex].DataBoundItem, dgvItensPedido.Columns[e.ColumnIndex].DataPropertyName);
+                e.Value = BuscarPropriedade(dgvItensPedido.Rows[e.RowIndex].DataBoundItem, dgvItensPedido.Columns[e.ColumnIndex].DataPropertyName);
             }
         }
 
-        public object BindProperty(object propriedade, string propriedadeName)
+        public object BuscarPropriedade(object propriedade, string nomePropriedade)
         {
             var retValue = "";
-            if (propriedadeName.Contains("."))
+            if (nomePropriedade.Contains("."))
             {
-                PropertyInfo[] arrayProperties;
-                string leftPropertyName;
-                leftPropertyName = propriedadeName.Substring(0, propriedadeName.IndexOf(".", StringComparison.Ordinal));
-                arrayProperties = propriedade.GetType().GetProperties();
-                foreach (var propertyInfo in arrayProperties)
+                var nomeDaPropriedadeRestante = nomePropriedade.Substring(0, nomePropriedade.IndexOf(".", StringComparison.Ordinal));
+                var propriedades = propriedade.GetType().GetProperties();
+                foreach (var propertyInfo in propriedades)
                 {
-                    if (propertyInfo.Name != leftPropertyName) continue;
-                    retValue = (string)BindProperty(
+                    if (propertyInfo.Name != nomeDaPropriedadeRestante) continue;
+                    retValue = (string)BuscarPropriedade(
                         propertyInfo.GetValue(propriedade, null),
-                        propriedadeName.Substring(propriedadeName.IndexOf(".", StringComparison.Ordinal) + 1));
+                        nomePropriedade.Substring(nomePropriedade.IndexOf(".", StringComparison.Ordinal) + 1));
                     break;
                 }
             }
             else
             {
-                Type propertyType;
-                PropertyInfo propertyInfo;
-                propertyType = propriedade.GetType();
-                propertyInfo = propertyType.GetProperty(propriedadeName);
-                if (propertyInfo != null) retValue = propertyInfo.GetValue(propriedade, null).ToString();
+                var tipoDaPropriedade = propriedade.GetType();
+                var informacoesDaPropriedade = tipoDaPropriedade.GetProperty(nomePropriedade);
+                if (informacoesDaPropriedade != null) retValue = informacoesDaPropriedade.GetValue(propriedade, null).ToString();
             }
             return retValue;
         }

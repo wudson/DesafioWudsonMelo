@@ -15,14 +15,9 @@ namespace projeto2.Feature.Estoque.View
 
         private void FrmEstoque_Load(object sender, EventArgs e)
         {
-            dgvEstoque.DataSource = new ProdutoController().BuscarTodosOsDados();
-
+            dgvEstoque.DataSource = new ProdutoController().ListarDados(new Produto.Produto());
             PreencherGrupos();
-            txtTipo.Items.Add("Unidade");
-            txtTipo.Items.Add("Caixa");
-            txtTipo.Items.Add("Peso");
-
-            CalculaPrecoTotal();
+            PreencherTipos();
         }
 
         private void PreencherGrupos()
@@ -33,13 +28,12 @@ namespace projeto2.Feature.Estoque.View
             txtGrupo.Text = string.Empty;
         }
 
-        private void CalculaPrecoTotal()
+        private void PreencherTipos()
         {
-            for (var i = 0; i < dgvEstoque.Rows.Count; i++)
-            {
-                var total = Convert.ToDecimal(dgvEstoque.Rows[i].Cells["valorVendaProduto"].Value) * Convert.ToDecimal(dgvEstoque.Rows[i].Cells["quantidadeEstoqueProduto"].Value);
-                dgvEstoque.Rows[i].Cells["valorTotal"].Value = total;
-            }
+            txtTipo.Items.Clear();
+            txtTipo.Items.Add("Unidade");
+            txtTipo.Items.Add("Caixa");
+            txtTipo.Items.Add("Peso");
         }
 
         private void BtnFiltrar_Click(object sender, EventArgs e)
@@ -49,18 +43,27 @@ namespace projeto2.Feature.Estoque.View
                 FrmEstoque_Load(sender, e);
                 return;
             }
-            dgvEstoque.DataSource = new ProdutoController().BuscarDadosComFiltros(txtPesquisa.Text.Trim().ToLower(), txtGrupo.Text.Trim().ToLower(), txtTipo.Text.Trim().ToLower());
-            CalculaPrecoTotal();
+
+            var filtros = Filtrar();
+            dgvEstoque.DataSource = new ProdutoController().ListarDados(filtros);
         }
+
+        private Produto.Produto Filtrar() =>
+            new Produto.Produto
+            {
+                NomeProduto = txtPesquisa.Text.Trim(),
+                GrupoProduto = {Grupo = txtGrupo.Text.Trim()},
+                TipoProduto = txtTipo.Text.Trim()
+            };
 
         private void FrmEstoque_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    BtnFiltrar_Click(sender,e);
+                    BtnFiltrar_Click(sender, e);
                     break;
-                case Keys.R:
+                case Keys.L:
                     BtnLimpar_Click(sender, e);
                     break;
                 case Keys.Escape:
@@ -81,7 +84,7 @@ namespace projeto2.Feature.Estoque.View
         {
             if ((dgvEstoque.Rows[e.RowIndex].DataBoundItem != null) && (dgvEstoque.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
             {
-                e.Value = new FrmProdutos().BindProperty(dgvEstoque.Rows[e.RowIndex].DataBoundItem, dgvEstoque.Columns[e.ColumnIndex].DataPropertyName);
+                e.Value = new FrmProdutos().BuscarPropriedade(dgvEstoque.Rows[e.RowIndex].DataBoundItem, dgvEstoque.Columns[e.ColumnIndex].DataPropertyName);
             }
         }
     }

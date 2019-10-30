@@ -47,6 +47,7 @@
             this.txtRg = new System.Windows.Forms.MaskedTextBox();
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.pnlFormCliente = new System.Windows.Forms.Panel();
+            this.btnAlterar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCidade = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -255,6 +256,7 @@
             // 
             // pnlFormCliente
             // 
+            this.pnlFormCliente.Controls.Add(this.btnAlterar);
             this.pnlFormCliente.Controls.Add(this.groupBox1);
             this.pnlFormCliente.Controls.Add(this.grpContato);
             this.pnlFormCliente.Controls.Add(this.grpDadosPessoais);
@@ -265,6 +267,21 @@
             this.pnlFormCliente.Name = "pnlFormCliente";
             this.pnlFormCliente.Size = new System.Drawing.Size(916, 392);
             this.pnlFormCliente.TabIndex = 0;
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterar.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnAlterar.Location = new System.Drawing.Point(523, 285);
+            this.btnAlterar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(141, 42);
+            this.btnAlterar.TabIndex = 5;
+            this.btnAlterar.Text = "Salvar";
+            this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Visible = false;
+            this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
             // 
             // groupBox1
             // 
@@ -534,5 +551,6 @@
         private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox txtCidade;
+        private System.Windows.Forms.Button btnAlterar;
     }
 }

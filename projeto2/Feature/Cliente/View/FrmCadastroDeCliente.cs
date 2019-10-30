@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Controller;
@@ -29,7 +28,14 @@ namespace projeto2.Feature.Cliente.View
             if (!ValidarCampos(pnlFormCliente.Controls)) return;
             if (!ValidarSexo()) return;
 
-            var cliente = new ClienteModel
+            var cliente = AtribuirCamposParaModel();
+
+            if (new ClienteController().CadastrarDado(cliente))
+                Close();
+        }
+
+        private ClienteModel AtribuirCamposParaModel() =>
+            new ClienteModel
             {
                 IdPessoa = int.Parse(txtIdPessoa.Text.Trim()),
                 NomePessoa = txtNome.Text.Trim(),
@@ -49,9 +55,6 @@ namespace projeto2.Feature.Cliente.View
                 ComplementoPessoa = txtComplemento.Text.Trim(),
                 NumeroPessoa = int.Parse(txtNumero.Text.Trim())
             };
-
-            CadastrarOuAlterar(cliente);
-        }
 
         public bool ValidarCampos(Control.ControlCollection controles)
         {
@@ -76,20 +79,6 @@ namespace projeto2.Feature.Cliente.View
             return rdbMasculino.Checked ? "M" : "F";
         }
 
-        private void CadastrarOuAlterar(ClienteModel cliente)
-        {
-            if (cliente.IdPessoa >= 1)
-            {
-                if (new ClienteController().AlterarDado(cliente))
-                    Close();
-            }
-            else
-            {
-                if (new ClienteController().CadastrarDado(cliente))
-                    Close();
-            }
-        }
-
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)
         {
             if (_cliente == null) return;
@@ -112,7 +101,6 @@ namespace projeto2.Feature.Cliente.View
                 rdbMasculino.Checked = true;
             else
                 rdbFeminino.Checked = true;
-
         }
 
         private void FrmCadastroDeCliente_KeyDown(object sender, KeyEventArgs e)
@@ -120,12 +108,20 @@ namespace projeto2.Feature.Cliente.View
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    BtnSalvarCadastroCliente_Click(sender, e);
+                    CadastrarOuAlterar(sender, e);
                     break;
                 case Keys.Escape:
                     Close();
                     break;
             }
+        }
+
+        private void CadastrarOuAlterar(object sender, EventArgs e)
+        {
+            if (btnSalvarCadastroCliente.Visible)
+                BtnSalvarCadastroCliente_Click(sender, e);
+            else
+                BtnAlterar_Click(sender, e);
         }
 
         private void TxtEstado_SelectedValueChanged(object sender, EventArgs e)
@@ -145,6 +141,16 @@ namespace projeto2.Feature.Cliente.View
                     txtCidade.Items.Add("Rio de Janeiro");
                     break;
             }
+        }
+
+        private void BtnAlterar_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCampos(pnlFormCliente.Controls)) return;
+            if (!ValidarSexo()) return;
+
+            var cliente = AtribuirCamposParaModel();
+            if (new ClienteController().AlterarDado(cliente))
+                Close();
         }
     }
 }

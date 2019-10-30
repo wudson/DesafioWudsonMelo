@@ -24,7 +24,7 @@ namespace projeto2.Feature.Pedido.View
         {
             lstProdutos.DataSource = null;
 
-            var produtos = new ProdutoController().BuscarTodosOsDados();
+            var produtos = new ProdutoController().ListarDados(new Produto.Produto());
 
             lstProdutos.DisplayMember = "NomeProduto";
 
@@ -144,7 +144,14 @@ namespace projeto2.Feature.Pedido.View
                 PreencherListaDeProdutos();
                 return;
             }
-            lstProdutos.DataSource = new ProdutoController().BuscarDadosComFiltros(txtBuscar.Text.Trim().ToLower(), null, null);
+
+            var filtros = Filtrar();
+            lstProdutos.DataSource = new ProdutoController().ListarDados(filtros);
         }
+
+        private Produto.Produto Filtrar() => new Produto.Produto
+        {
+            NomeProduto = txtBuscar.Text.Trim()
+        };
     }
 }

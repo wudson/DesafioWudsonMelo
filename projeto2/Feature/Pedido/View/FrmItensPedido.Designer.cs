@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvItensPedido = new System.Windows.Forms.DataGridView();
-            this.btnOk = new System.Windows.Forms.Button();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnOk = new System.Windows.Forms.Button();
             this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +63,10 @@
             this.dgvItensPedido.TabIndex = 0;
             this.dgvItensPedido.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvItensPedido_CellFormatting);
             // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.ItemPedidoModel);
+            // 
             // btnOk
             // 
             this.btnOk.BackColor = System.Drawing.Color.LimeGreen;
@@ -74,10 +78,6 @@
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
-            // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.ItemPedidoModel);
             // 
             // idProduto
             // 

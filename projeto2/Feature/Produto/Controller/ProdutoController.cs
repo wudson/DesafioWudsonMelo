@@ -7,7 +7,7 @@ namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
-        public IList<Produto> BuscarTodosOsDados() => new ProdutoDao().Listar();
+        public IList<Produto> ListarDados(Produto filtros) => new ProdutoDao().Listar(filtros);
 
         public Produto BuscarDado(int idProduto) => new ProdutoDao().Buscar(idProduto);
 
@@ -46,8 +46,6 @@ namespace projeto2.Feature.Produto.Controller
 
             return false;
         }
-
-        public IEnumerable<Produto> BuscarDadosComFiltros(string produto, string grupo, string tipo) => new ProdutoDao().BuscarComFiltros(produto, grupo, tipo);
 
         public bool CadastrarDado(Produto produto)
         {

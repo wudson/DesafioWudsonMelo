@@ -129,7 +129,7 @@ namespace projeto2.Feature.Produto.View
             }
         }
 
-        private void CadastrarOuAlterar(object sender, KeyEventArgs e)
+        private void CadastrarOuAlterar(object sender, EventArgs e)
         {
             if (btnSalvarCadastroProduto.Visible)
                 BtnSalvarCadastroProduto_Click(sender, e);

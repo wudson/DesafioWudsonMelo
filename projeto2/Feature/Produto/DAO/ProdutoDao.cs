@@ -82,61 +82,6 @@ namespace projeto2.Feature.Produto.Dao
             }
         }
 
-        public IEnumerable<Produto> BuscarComFiltros(string prod, string grupo, string tipo)
-        {
-            var conn = Conexao.GetInstancia();
-            conn.Open();
-            var mSql = "Select p.*, m.MARCA, g.GRUPO from PRODUTO p, MARCA m, GRUPO g where p.ID_GRUPO = g.ID_GRUPO and p.ID_MARCA = m.ID_MARCA";
-            if (!string.IsNullOrWhiteSpace(prod)) mSql += " and lower(NOME_PRODUTO) like @prod";
-            if (!string.IsNullOrWhiteSpace(grupo)) mSql += " and lower(GRUPO) like @grupo";
-            if (!string.IsNullOrWhiteSpace(tipo)) mSql += " and lower(TIPO_PRODUTO) like @tipo";
-            var cmd = new FbCommand(mSql, conn);
-            var listaProduto = new List<Produto>();
-            try
-            {
-                cmd.Parameters.Add("@prod", FbDbType.VarChar).Value = $"{prod}%";
-                cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = grupo;
-                cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = tipo;
-
-                var dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    var produto = new Produto
-                    {
-                        IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
-                        NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
-                        FornecedorProduto = dataReader["FORNECEDOR_PRODUTO"].ToString(),
-                        ValorCompraProduto = Convert.ToDouble(dataReader["VALOR_COMPRA_PRODUTO"]),
-                        ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
-                        GrupoProduto = new GrupoModel
-                        {
-                            IdGrupo = Convert.ToInt32(dataReader["ID_GRUPO"]),
-                            Grupo = dataReader["GRUPO"].ToString()
-
-                        },
-                        MarcaProduto = new MarcaModel()
-                        {
-                            IdMarca = Convert.ToInt32(dataReader["ID_MARCA"]),
-                            Marca = dataReader["MARCA"].ToString()
-
-                        },
-                        TipoProduto = dataReader["TIPO_PRODUTO"].ToString(),
-                        QuantidadeEstoqueProduto = Convert.ToInt32(dataReader["QUANTIDADE_ESTOQUE_PRODUTO"])
-                    };
-
-                    listaProduto.Add(produto);
-                }
-            }
-            finally
-            {
-                cmd.Dispose();
-                conn.Close();
-            }
-
-            return listaProduto;
-        }
-
         public bool Excluir(int idProduto)
         {
             var conn = Conexao.GetInstancia();
@@ -156,15 +101,24 @@ namespace projeto2.Feature.Produto.Dao
             }
         }
 
-        public IList<Produto> Listar()
+        public IList<Produto> Listar(Produto filtros)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
+                                 
+            var mSql = "Select p.*, m.MARCA, g.GRUPO from PRODUTO p, MARCA m, GRUPO g where p.ID_GRUPO = g.ID_GRUPO and p.ID_MARCA = m.ID_MARCA";
 
-            const string mSql = "Select p.*, m.MARCA, g.GRUPO from PRODUTO p, MARCA m, GRUPO g where p.ID_GRUPO = g.ID_GRUPO and p.ID_MARCA = m.ID_MARCA";
+            if (!string.IsNullOrWhiteSpace(filtros.NomeProduto)) mSql += " and lower(NOME_PRODUTO) like lower(@prod)";
+            if (!string.IsNullOrWhiteSpace(filtros.GrupoProduto.Grupo)) mSql += " and lower(GRUPO) like lower(@grupo)";
+            if (!string.IsNullOrWhiteSpace(filtros.TipoProduto)) mSql += " and lower(TIPO_PRODUTO) like lower(@tipo)";
+
             var cmd = new FbCommand(mSql, conn);
             try
             {
+                cmd.Parameters.Add("@prod", FbDbType.VarChar).Value = $"{filtros.NomeProduto}%";
+                cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = filtros.GrupoProduto.Grupo;
+                cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = filtros.TipoProduto;
+
                 var dataReader = cmd.ExecuteReader();
                 var produtos = new List<Produto>();
                 while (dataReader.Read())
