@@ -32,19 +32,19 @@ namespace projeto2.Feature.Pedido.Controller
 
         public IEnumerable<PedidoModel> BuscarTodosOsDados() => new PedidoDao().Listar();
 
-        public IList<Produto.Produto> BuscarProdutosPedido(int idPedido)
+        public IEnumerable<ItemPedidoModel> BuscarProdutosPedido(int idPedido)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
             try
             {
-                var produtosPedido = new PedidoDao().BuscarProdutosDoPedido(conn, idPedido);
-                return produtosPedido;
+                var itensPedido = new PedidoDao().BuscarProdutosDoPedido(conn, idPedido);
+                return itensPedido;
             }
             catch
             {
                 MessageBox.Show(@"Problemas ao buscar itens do pedido.");
-                return new List<Produto.Produto>();
+                return new List<ItemPedidoModel>();
             }
             finally
             {

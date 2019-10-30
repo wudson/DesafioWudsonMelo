@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="Feature\Pedido\Controller\PedidoController.cs" />
     <Compile Include="Feature\Pedido\Dao\PedidoDao.cs" />
+    <Compile Include="Feature\Pedido\Model\ItemPedidoModel.cs" />
     <Compile Include="Feature\Pedido\Model\PedidoModel.cs" />
     <Compile Include="Feature\Pedido\View\FrmNovoPedido.cs">
       <SubType>Form</SubType>
@@ -208,6 +209,7 @@
     <None Include="Properties\DataSources\projeto2.Feature.Cliente.Model.ClienteModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Grupo.Model.GrupoModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Marca.Model.MarcaModel.datasource" />
+    <None Include="Properties\DataSources\projeto2.Feature.Pedido.Model.ItemPedidoModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Pedido.Model.PedidoModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Produto.Produto.datasource" />
     <None Include="Properties\Settings.settings">

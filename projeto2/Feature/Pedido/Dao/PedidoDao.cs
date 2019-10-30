@@ -61,8 +61,7 @@ namespace projeto2.Feature.Pedido.Dao
                         IdPedido = Convert.ToInt32(dataReader["ID_PEDIDO"]),
                         DataPedido = Convert.ToDateTime(dataReader["DATA_PEDIDO"]),
                         PrecoTotalPedido = Convert.ToDouble(dataReader["VALOR_TOTAL_PEDIDO"]),
-                        IdClientePedido = Convert.ToInt32(dataReader["NOME_PESSOA"]),
-                        Produtos = BuscarProdutosDoPedido(conn, Convert.ToInt32(dataReader["ID_PEDIDO"]))
+                        IdClientePedido = Convert.ToInt32(dataReader["NOME_PESSOA"])
                     });
                 }
                 return pedidos;
@@ -74,9 +73,9 @@ namespace projeto2.Feature.Pedido.Dao
             }
         }
 
-        public IList<Produto.Produto> BuscarProdutosDoPedido(FbConnection conn, int idPedido)
+        public IEnumerable<ItemPedidoModel> BuscarProdutosDoPedido(FbConnection conn, int idPedido)
         {
-            
+
             const string mSql = @"select ip.*, p.* from ITEM_PEDIDO ip, PRODUTO p 
                                 where ip.ID_PRODUTO = p.ID_PRODUTO and ip.ID_PEDIDO = @idPedido";
             var cmd = new FbCommand(mSql, conn);
@@ -85,18 +84,25 @@ namespace projeto2.Feature.Pedido.Dao
                 cmd.Parameters.Add("@idPedido", FbDbType.Integer).Value = idPedido;
 
                 var dataReader = cmd.ExecuteReader();
-                var produtos = new List<Produto.Produto>();
+                var itensPedido = new List<ItemPedidoModel>();
+
                 while (dataReader.Read())
                 {
-                    produtos.Add(new Produto.Produto
+                    itensPedido.Add(new ItemPedidoModel()
                     {
-                        IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
-                        NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
-                        ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
-                        TipoProduto = dataReader["TIPO_PRODUTO"].ToString()
+                        IdItemPedido = Convert.ToInt32(dataReader["ID_ITEM"]),
+                        Quantidade = Convert.ToInt32(dataReader["QUANTIDADE"]),
+                        ProdutosPedido = new Produto.Produto()
+                        {
+                            IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
+                            NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
+                            ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
+                            TipoProduto = dataReader["TIPO_PRODUTO"].ToString()
+                        }
                     });
                 }
-                return produtos;
+
+                return itensPedido;
             }
             catch (Exception ex)
             {
