@@ -38,7 +38,6 @@
             this.rdbMasculino = new System.Windows.Forms.RadioButton();
             this.rdbFeminino = new System.Windows.Forms.RadioButton();
             this.lblSexo = new System.Windows.Forms.Label();
-            this.txtIdPessoa = new System.Windows.Forms.TextBox();
             this.btnCancelarCadastroCliente = new System.Windows.Forms.Button();
             this.btnSalvarCadastroCliente = new System.Windows.Forms.Button();
             this.lblTelefone = new System.Windows.Forms.Label();
@@ -168,16 +167,6 @@
             this.lblSexo.Size = new System.Drawing.Size(35, 15);
             this.lblSexo.TabIndex = 8;
             this.lblSexo.Text = "Sexo";
-            // 
-            // txtIdPessoa
-            // 
-            this.txtIdPessoa.Location = new System.Drawing.Point(79, 29);
-            this.txtIdPessoa.Name = "txtIdPessoa";
-            this.txtIdPessoa.ReadOnly = true;
-            this.txtIdPessoa.Size = new System.Drawing.Size(177, 20);
-            this.txtIdPessoa.TabIndex = 11;
-            this.txtIdPessoa.Text = "0";
-            this.txtIdPessoa.Visible = false;
             // 
             // btnCancelarCadastroCliente
             // 
@@ -472,7 +461,6 @@
             this.grpDadosPessoais.Controls.Add(this.rdbMasculino);
             this.grpDadosPessoais.Controls.Add(this.lblDataNascimento);
             this.grpDadosPessoais.Controls.Add(this.rdbFeminino);
-            this.grpDadosPessoais.Controls.Add(this.txtIdPessoa);
             this.grpDadosPessoais.Controls.Add(this.txtCpf);
             this.grpDadosPessoais.Controls.Add(this.lblCpf);
             this.grpDadosPessoais.Controls.Add(this.lblRg);
@@ -523,7 +511,6 @@
         private System.Windows.Forms.RadioButton rdbMasculino;
         private System.Windows.Forms.RadioButton rdbFeminino;
         private System.Windows.Forms.Label lblSexo;
-        private System.Windows.Forms.TextBox txtIdPessoa;
         private System.Windows.Forms.Button btnCancelarCadastroCliente;
         private System.Windows.Forms.Button btnSalvarCadastroCliente;
         private System.Windows.Forms.Label lblTelefone;

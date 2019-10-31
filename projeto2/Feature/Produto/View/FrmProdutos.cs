@@ -21,7 +21,7 @@ namespace projeto2.Feature.Produto.View
         private void AtualizarGridDadosProduto()
         {
 
-            var produtos = new ProdutoController().ListarDados(new Produto());
+            var produtos = new ProdutoController().ListarDados(new FiltrosProdutoModel());
             dgvProduto.DataSource = produtos;
             if (dgvProduto.CurrentRow != null) dgvProduto.CurrentRow.Selected = false;
 

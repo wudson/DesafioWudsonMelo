@@ -46,7 +46,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.ComboBox();
             this.txtMarca = new System.Windows.Forms.ComboBox();
-            this.txtIdProduto = new System.Windows.Forms.TextBox();
             this.txtQuantidadeEmEstoque = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.pnlControl.SuspendLayout();
@@ -184,7 +183,6 @@
             this.pnlControl.Controls.Add(this.label8);
             this.pnlControl.Controls.Add(this.txtGrupo);
             this.pnlControl.Controls.Add(this.txtMarca);
-            this.pnlControl.Controls.Add(this.txtIdProduto);
             this.pnlControl.Controls.Add(this.btnCancelarCadastroProduto);
             this.pnlControl.Controls.Add(this.label2);
             this.pnlControl.Controls.Add(this.btnSalvarCadastroProduto);
@@ -252,16 +250,6 @@
             this.txtMarca.Size = new System.Drawing.Size(274, 21);
             this.txtMarca.TabIndex = 2;
             // 
-            // txtIdProduto
-            // 
-            this.txtIdProduto.Location = new System.Drawing.Point(220, 29);
-            this.txtIdProduto.Name = "txtIdProduto";
-            this.txtIdProduto.ReadOnly = true;
-            this.txtIdProduto.Size = new System.Drawing.Size(177, 20);
-            this.txtIdProduto.TabIndex = 19;
-            this.txtIdProduto.Text = "0";
-            this.txtIdProduto.Visible = false;
-            // 
             // txtQuantidadeEmEstoque
             // 
             this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(312, 150);
@@ -320,7 +308,6 @@
         private System.Windows.Forms.Button btnSalvarCadastroProduto;
         private System.Windows.Forms.Button btnCancelarCadastroProduto;
         private System.Windows.Forms.Panel pnlControl;
-        private System.Windows.Forms.TextBox txtIdProduto;
         private System.Windows.Forms.ComboBox txtMarca;
         private System.Windows.Forms.ComboBox txtGrupo;
         private System.Windows.Forms.TextBox txtQuantidadeEmEstoque;

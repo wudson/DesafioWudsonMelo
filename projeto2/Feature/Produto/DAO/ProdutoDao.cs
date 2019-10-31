@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using FirebirdSql.Data.FirebirdClient;
+﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Grupo.Model;
 using projeto2.Feature.Marca.Model;
+using System;
+using System.Collections.Generic;
 
 namespace projeto2.Feature.Produto.Dao
 {
@@ -20,7 +20,7 @@ namespace projeto2.Feature.Produto.Dao
             var cmd = new FbCommand(mSql, conn);
             try
             {
-                cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = (produto.NomeProduto).ToUpper();
+                cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto.ToUpper();
                 cmd.Parameters.Add("@grupo", FbDbType.Integer).Value = produto.GrupoProduto.IdGrupo;
                 cmd.Parameters.Add("@marca", FbDbType.Integer).Value = produto.MarcaProduto.IdMarca;
                 cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = produto.TipoProduto;
@@ -101,7 +101,7 @@ namespace projeto2.Feature.Produto.Dao
             }
         }
 
-        public IList<Produto> Listar(Produto filtros)
+        public IList<Produto> Listar(FiltrosProdutoModel filtros)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();

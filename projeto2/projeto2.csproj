@@ -70,6 +70,7 @@
     <Compile Include="Feature\Cliente\Controller\ClienteController.cs" />
     <Compile Include="Feature\Cliente\Dao\ClienteDao.cs" />
     <Compile Include="Feature\Cliente\Model\ClienteModel.cs" />
+    <Compile Include="Feature\Cliente\Model\FiltrosClienteModel.cs" />
     <Compile Include="Feature\Cliente\View\FrmCadastroDeCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +119,7 @@
     </Compile>
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
+    <Compile Include="Feature\Produto\Model\FiltrosProdutoModel.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
     <Compile Include="Feature\Pedido\View\FrmItensPedido.cs">
       <SubType>Form</SubType>

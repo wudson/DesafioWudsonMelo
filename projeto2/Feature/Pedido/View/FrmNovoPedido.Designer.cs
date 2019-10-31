@@ -251,7 +251,7 @@
             // 
             // produtoBindingSource
             // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
+            this.produtoBindingSource.DataSource = typeof(Produto.Produto);
             // 
             // groupBox1
             // 

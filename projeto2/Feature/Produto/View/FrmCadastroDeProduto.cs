@@ -12,6 +12,7 @@ namespace projeto2.Feature.Produto.View
     public partial class FrmCadastroDeProduto : Form
     {
         private readonly Produto _produto;
+        private int _codigoProduto;
 
         public FrmCadastroDeProduto(Produto produto)
         {
@@ -39,7 +40,7 @@ namespace projeto2.Feature.Produto.View
         private Produto AtribuirCamposParaModel() =>
             new Produto
             {
-                IdProduto = int.Parse(txtIdProduto.Text.Trim()),
+                IdProduto = _codigoProduto,
                 NomeProduto = txtNome.Text.Trim(),
                 MarcaProduto =
                 {
@@ -69,8 +70,6 @@ namespace projeto2.Feature.Produto.View
             foreach (Control item in controles)
                 if (DeveLimpar(item))
                     item.Text = string.Empty;
-
-            txtIdProduto.Text = @"0";
         }
 
         private static bool DeveLimpar(IDisposable item) =>
@@ -83,7 +82,7 @@ namespace projeto2.Feature.Produto.View
             PreencherGruposEMarcas();
 
             if (_produto == null) return;
-            txtIdProduto.Text = _produto.IdProduto.ToString();
+            _codigoProduto = _produto.IdProduto;
             txtNome.Text = _produto.NomeProduto;
             txtMarca.Text = _produto.MarcaProduto.Marca;
             txtGrupo.Text = _produto.GrupoProduto.Grupo;

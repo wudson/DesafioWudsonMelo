@@ -82,21 +82,26 @@ namespace projeto2.Feature.Cliente.Dao
             }
         }
 
-        public IEnumerable<ClienteModel> BuscarComFiltros(string nome, string cidade)
+        public IEnumerable<ClienteModel> BuscarComFiltros(FiltrosClienteModel filtros)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
             var mSql = "Select c.*, p.* from CLIENTE c, PESSOA p where c.ID_PESSOA = p.ID_PESSOA";
 
-            if (!string.IsNullOrWhiteSpace(nome)) mSql += " and lower(NOME_PESSOA) like @nome";
-            if (!string.IsNullOrWhiteSpace(cidade)) mSql += " and lower(CIDADE) like @cidade";
+            if (!string.IsNullOrWhiteSpace(filtros.NomePessoa)) mSql += " and lower(NOME_PESSOA) like lower(@nome)";
+            if (!string.IsNullOrWhiteSpace(filtros.CidadePessoa)) mSql += " and lower(CIDADE) like lower(@cidade)";
+            if (!string.IsNullOrWhiteSpace(filtros.DataInicio) && !string.IsNullOrWhiteSpace(filtros.DataFim)) mSql += " and DATA_CADASTRO_CLIENTE between @dataI and @dataF";
+            if (!string.IsNullOrWhiteSpace(filtros.DataInicio)) mSql += " and DATA_CADASTRO_CLIENTE >= @dataI";
+            if (!string.IsNullOrWhiteSpace(filtros.DataFim)) mSql += " and DATA_CADASTRO_CLIENTE <= @dataF";
 
             var cmd = new FbCommand(mSql, conn);
             var listaClientes = new List<ClienteModel>();
             try
             {
-                cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = $"{nome}%";
-                cmd.Parameters.Add("@cidade", FbDbType.VarChar).Value = cidade;
+                cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = $"{filtros.NomePessoa}%";
+                cmd.Parameters.Add("@cidade", FbDbType.VarChar).Value = filtros.CidadePessoa;
+                cmd.Parameters.Add("@dataI", FbDbType.Date).Value = filtros.DataInicio;
+                cmd.Parameters.Add("@dataF", FbDbType.Date).Value = filtros.DataFim;
 
                 var dataReader = cmd.ExecuteReader();
 

@@ -38,8 +38,8 @@ namespace projeto2.Feature.Grupo.Controller
             catch
             {
                 MessageBox.Show(@"Problemas ao excluir grupo.");
-                return false;
             }
+            return false;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Controller;
+using projeto2.Feature.Cliente.Model;
 
 namespace projeto2.Feature.Cliente.View
 {
@@ -120,39 +120,18 @@ namespace projeto2.Feature.Cliente.View
                 return;
             }
 
-            var listaClientesFiltrados = new ClienteController().BuscarDadosComFiltros(txtNome.Text.Trim().ToLower(),
-                txtCidade.Text.Trim().ToLower());
-
-            dgvClientes.DataSource = listaClientesFiltrados;
-            DateTime.TryParse(txtDataInicio.Text, out var dataI);
-            DateTime.TryParse(txtDataFim.Text, out var dataF);
-
-            if (txtDataInicio.Text.Equals(" ") && txtDataFim.Text.Equals(" ")) return;
-
-            if (!txtDataInicio.Text.Equals(" ") && !txtDataFim.Text.Equals(" "))
-            {
-                dgvClientes.DataSource =
-                    listaClientesFiltrados.Where(c => DateTime.Compare(c.DataCadastroCliente, dataI) >= 0 && DateTime.Compare(c.DataCadastroCliente, dataF) <= 0).ToList();
-                return;
-            }
-
-            if (!txtDataInicio.Text.Equals(" "))
-            {
-                dgvClientes.DataSource =
-                    listaClientesFiltrados.Where(c => DateTime.Compare(c.DataCadastroCliente, dataI) >= 0).ToList();
-                return;
-            }
-            if (!txtDataFim.Text.Equals(" "))
-            {
-                dgvClientes.DataSource =
-                    listaClientesFiltrados.Where(c => DateTime.Compare(c.DataCadastroCliente, dataF) <= 0).ToList();
-            }
-
-            //DateTime.TryParse(txtDataInicio.Text, out var data);
-
-            //dgvClientes.DataSource =
-            //    listaClientesFiltrados.Where(c => c.DataCadastroCliente.ToString("dd/MM/yyyy") == data.ToString("dd/MM/yyyy")).ToList();
+            var filtros = Filtrar();
+            dgvClientes.DataSource = new ClienteController().BuscarDadosComFiltros(filtros);
         }
+
+        private FiltrosClienteModel Filtrar() =>
+            new FiltrosClienteModel
+            {
+                NomePessoa = txtNome.Text.Trim(),
+                CidadePessoa = txtCidade.Text.Trim(),
+                DataInicio = txtDataInicio.Text,
+                DataFim = txtDataFim.Text
+            };
 
         private void TxtDataInicio_ValueChanged(object sender, EventArgs e)
         {

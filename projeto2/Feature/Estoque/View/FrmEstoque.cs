@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using projeto2.Feature.Grupo.Controller;
+﻿using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Produto.View;
+using System;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Estoque.View
 {
@@ -15,7 +15,7 @@ namespace projeto2.Feature.Estoque.View
 
         private void FrmEstoque_Load(object sender, EventArgs e)
         {
-            dgvEstoque.DataSource = new ProdutoController().ListarDados(new Produto.Produto());
+            dgvEstoque.DataSource = new ProdutoController().ListarDados(new Produto.FiltrosProdutoModel());
             PreencherGrupos();
             PreencherTipos();
         }
@@ -48,11 +48,11 @@ namespace projeto2.Feature.Estoque.View
             dgvEstoque.DataSource = new ProdutoController().ListarDados(filtros);
         }
 
-        private Produto.Produto Filtrar() =>
-            new Produto.Produto
+        private Produto.FiltrosProdutoModel Filtrar() =>
+            new Produto.FiltrosProdutoModel
             {
                 NomeProduto = txtPesquisa.Text.Trim(),
-                GrupoProduto = {Grupo = txtGrupo.Text.Trim()},
+                GrupoProduto = { Grupo = txtGrupo.Text.Trim() },
                 TipoProduto = txtTipo.Text.Trim()
             };
 

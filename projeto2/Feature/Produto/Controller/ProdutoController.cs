@@ -7,7 +7,7 @@ namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
-        public IList<Produto> ListarDados(Produto filtros) => new ProdutoDao().Listar(filtros);
+        public IList<Produto> ListarDados(FiltrosProdutoModel filtros) => new ProdutoDao().Listar(filtros);
 
         public Produto BuscarDado(int idProduto) => new ProdutoDao().Buscar(idProduto);
 
@@ -21,9 +21,9 @@ namespace projeto2.Feature.Produto.Controller
                     return true;
                 }
             }
-            catch (Exception e)
+            catch
             {
-                MessageBox.Show($@"Problemas ao excluir produto: {e.Message}", @"Erro");
+                MessageBox.Show($@"Problemas ao excluir produto.", @"Erro");
             }
 
             return false;

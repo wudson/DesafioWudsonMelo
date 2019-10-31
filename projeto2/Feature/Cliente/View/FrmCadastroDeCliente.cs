@@ -9,16 +9,21 @@ namespace projeto2.Feature.Cliente.View
     public partial class FrmCadastroDeCliente : Form
     {
         private readonly ClienteModel _cliente;
+        private int _codigoCliente;
 
         public FrmCadastroDeCliente(ClienteModel cliente)
         {
             InitializeComponent();
             _cliente = cliente;
+            btnAlterar.Visible = true;
+            btnSalvarCadastroCliente.Visible = false;
         }
 
         public FrmCadastroDeCliente()
         {
             InitializeComponent();
+            btnAlterar.Visible = false;
+            btnSalvarCadastroCliente.Visible = true;
         }
 
         private void BtnCancelarCadastroCliente_Click(object sender, EventArgs e) => Close();
@@ -37,7 +42,7 @@ namespace projeto2.Feature.Cliente.View
         private ClienteModel AtribuirCamposParaModel() =>
             new ClienteModel
             {
-                IdPessoa = int.Parse(txtIdPessoa.Text.Trim()),
+                IdPessoa = _codigoCliente,
                 NomePessoa = txtNome.Text.Trim(),
                 EmailPessoa = txtEmail.Text.Trim(),
                 NascimentoPessoa = DateTime.Parse(txtDataNascimento.Text.Trim()),
@@ -82,7 +87,7 @@ namespace projeto2.Feature.Cliente.View
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)
         {
             if (_cliente == null) return;
-            txtIdPessoa.Text = _cliente.IdPessoa.ToString();
+            _codigoCliente = _cliente.IdPessoa;
             txtNome.Text = _cliente.NomePessoa;
             txtEmail.Text = _cliente.EmailPessoa;
             txtDataNascimento.Text = _cliente.NascimentoPessoa.ToShortDateString();

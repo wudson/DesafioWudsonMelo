@@ -34,8 +34,8 @@ namespace projeto2.Feature.Marca.Controller
             catch
             {
                 MessageBox.Show(@"Problemas ao excluir marca.");
-                return false;
             }
+            return false;
         }
     }
 }

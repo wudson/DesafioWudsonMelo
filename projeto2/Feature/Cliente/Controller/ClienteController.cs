@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
@@ -50,17 +49,34 @@ namespace projeto2.Feature.Cliente.Controller
 
         public bool ExcluirDado(int idPessoa)
         {
-            if (new ClienteDao().Excluir(idPessoa))
+            try
             {
-                MessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
-                return true;
+                if (new ClienteDao().Excluir(idPessoa))
+                {
+                    MessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
+                    return true;
+                }
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
             }
 
-            MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
             return false;
         }
 
-        public IEnumerable<ClienteModel> BuscarDadosComFiltros(string nome, string cidade)
-            => new ClienteDao().BuscarComFiltros(nome, cidade);
+        public IEnumerable<ClienteModel> BuscarDadosComFiltros(FiltrosClienteModel filtros)
+        {
+            try
+            {
+                var clientesFiltrados = new ClienteDao().BuscarComFiltros(filtros);
+                return clientesFiltrados;
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao filtrar clientes");
+            }
+            return new List<ClienteModel>();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace projeto2.Feature.Pedido.View
         {
             lstProdutos.DataSource = null;
 
-            var produtos = new ProdutoController().ListarDados(new Produto.Produto());
+            var produtos = new ProdutoController().ListarDados(new Produto.FiltrosProdutoModel());
 
             lstProdutos.DisplayMember = "NomeProduto";
 
@@ -149,7 +149,7 @@ namespace projeto2.Feature.Pedido.View
             lstProdutos.DataSource = new ProdutoController().ListarDados(filtros);
         }
 
-        private Produto.Produto Filtrar() => new Produto.Produto
+        private Produto.FiltrosProdutoModel Filtrar() => new Produto.FiltrosProdutoModel()
         {
             NomeProduto = txtBuscar.Text.Trim()
         };
