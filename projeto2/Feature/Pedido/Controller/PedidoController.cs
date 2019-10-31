@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Pedido.Dao;
 using projeto2.Feature.Pedido.Model;
 
@@ -24,7 +20,7 @@ namespace projeto2.Feature.Pedido.Controller
             }
             catch
             {
-                MessageBox.Show($@"Problemas ao efetuar pedido.", @"Erro");
+                MessageBox.Show(@"Problemas ao efetuar pedido.", @"Erro");
             }
 
             return false;
@@ -51,6 +47,16 @@ namespace projeto2.Feature.Pedido.Controller
                 conn.Close();
             }
             
-        } 
+        }
+
+        public bool ExcluirDado(int idProduto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PedidoModel BuscarDado(int idPedidoLinhaAtual)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

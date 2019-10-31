@@ -114,12 +114,7 @@ namespace projeto2.Feature.Produto.View
             new FrmEstoque().ShowDialog();
         }
 
-        private void DgvProduto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if ((dgvProduto.Rows[e.RowIndex].DataBoundItem != null) && (dgvProduto.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
-            {
-                e.Value = new Propriedade().BuscarPropriedade(dgvProduto.Rows[e.RowIndex].DataBoundItem, dgvProduto.Columns[e.ColumnIndex].DataPropertyName);
-            }
-        }
+        private void DgvProduto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) => 
+            e.Value = Propriedade.BuscarPropriedadeComPonto(dgvProduto, e);
     }
 }

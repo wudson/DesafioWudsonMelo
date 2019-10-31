@@ -1,6 +1,5 @@
 ﻿using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Produto.Controller;
-using projeto2.Feature.Produto.View;
 using System;
 using System.Windows.Forms;
 
@@ -74,12 +73,7 @@ namespace projeto2.Feature.Estoque.View
             FrmEstoque_Load(sender, e);
         }
 
-        private void DgvEstoque_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if ((dgvEstoque.Rows[e.RowIndex].DataBoundItem != null) && (dgvEstoque.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
-            {
-                e.Value = new Propriedade().BuscarPropriedade(dgvEstoque.Rows[e.RowIndex].DataBoundItem, dgvEstoque.Columns[e.ColumnIndex].DataPropertyName);
-            }
-        }
+        private void DgvEstoque_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) =>
+            e.Value = Propriedade.BuscarPropriedadeComPonto(dgvEstoque, e);
     }
 }

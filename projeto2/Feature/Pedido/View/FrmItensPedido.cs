@@ -43,12 +43,7 @@ namespace projeto2.Feature.Pedido.View
             }
         }
 
-        private void DgvItensPedido_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if ((dgvItensPedido.Rows[e.RowIndex].DataBoundItem != null) && (dgvItensPedido.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
-            {
-                e.Value = new Propriedade().BuscarPropriedade(dgvItensPedido.Rows[e.RowIndex].DataBoundItem, dgvItensPedido.Columns[e.ColumnIndex].DataPropertyName);
-            }
-        }
+        private void DgvItensPedido_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) => 
+            e.Value = Propriedade.BuscarPropriedadeComPonto(dgvItensPedido, e);
     }
 }

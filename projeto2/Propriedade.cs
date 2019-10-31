@@ -1,10 +1,19 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace projeto2
 {
     public class Propriedade
     {
-        public object BuscarPropriedade(object propriedade, string nomePropriedade)
+        public static object BuscarPropriedadeComPonto(DataGridView grid, DataGridViewCellFormattingEventArgs e)
+        {
+            if (grid.Rows[e.RowIndex].DataBoundItem != null && grid.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+                return BuscarPropriedade(grid.Rows[e.RowIndex].DataBoundItem, grid.Columns[e.ColumnIndex].DataPropertyName);
+
+            return e.Value;
+        }
+
+        private static object BuscarPropriedade(object propriedade, string nomePropriedade)
         {
             var valorPropriedade = "";
             if (nomePropriedade.Contains("."))

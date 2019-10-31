@@ -85,6 +85,7 @@
             this.btnExcluir.Text = "Excluir - [ Del ]";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // btnCadastrar
             // 
@@ -113,6 +114,7 @@
             this.btnEditar.Text = "Editar - [ F3 ]";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // btnListar
             // 
@@ -126,6 +128,7 @@
             this.btnListar.Text = "Listar - [ F5 ]";
             this.btnListar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnListar.UseVisualStyleBackColor = false;
+            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
             // 
             // dgvClientes
             // 
@@ -206,6 +209,7 @@
             this.dgvPedidos.TabIndex = 2;
             this.dgvPedidos.TabStop = false;
             this.dgvPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPedidos_CellDoubleClick);
+            this.dgvPedidos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvPedidos_CellMouseClick);
             // 
             // idPedidoDataGridViewTextBoxColumn
             // 
