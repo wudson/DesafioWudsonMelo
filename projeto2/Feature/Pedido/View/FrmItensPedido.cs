@@ -47,33 +47,8 @@ namespace projeto2.Feature.Pedido.View
         {
             if ((dgvItensPedido.Rows[e.RowIndex].DataBoundItem != null) && (dgvItensPedido.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
             {
-                e.Value = BuscarPropriedade(dgvItensPedido.Rows[e.RowIndex].DataBoundItem, dgvItensPedido.Columns[e.ColumnIndex].DataPropertyName);
+                e.Value = new Propriedade().BuscarPropriedade(dgvItensPedido.Rows[e.RowIndex].DataBoundItem, dgvItensPedido.Columns[e.ColumnIndex].DataPropertyName);
             }
-        }
-
-        public object BuscarPropriedade(object propriedade, string nomePropriedade)
-        {
-            var retValue = "";
-            if (nomePropriedade.Contains("."))
-            {
-                var nomeDaPropriedadeRestante = nomePropriedade.Substring(0, nomePropriedade.IndexOf(".", StringComparison.Ordinal));
-                var propriedades = propriedade.GetType().GetProperties();
-                foreach (var propertyInfo in propriedades)
-                {
-                    if (propertyInfo.Name != nomeDaPropriedadeRestante) continue;
-                    retValue = (string)BuscarPropriedade(
-                        propertyInfo.GetValue(propriedade, null),
-                        nomePropriedade.Substring(nomePropriedade.IndexOf(".", StringComparison.Ordinal) + 1));
-                    break;
-                }
-            }
-            else
-            {
-                var tipoDaPropriedade = propriedade.GetType();
-                var informacoesDaPropriedade = tipoDaPropriedade.GetProperty(nomePropriedade);
-                if (informacoesDaPropriedade != null) retValue = informacoesDaPropriedade.GetValue(propriedade, null).ToString();
-            }
-            return retValue;
         }
     }
 }

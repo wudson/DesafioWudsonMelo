@@ -205,7 +205,7 @@
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(103, 37);
             this.btnLimpar.TabIndex = 6;
-            this.btnLimpar.Text = "Resetar";
+            this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
             // 

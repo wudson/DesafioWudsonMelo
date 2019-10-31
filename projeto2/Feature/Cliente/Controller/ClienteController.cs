@@ -7,9 +7,6 @@ namespace projeto2.Feature.Cliente.Controller
 {
     public class ClienteController
     {
-        public IList<ClienteModel> BuscarTodosOsDados() => new ClienteDao().Listar();
-
-
         public bool AlterarDado(ClienteModel cliente)
         {
             try
@@ -65,11 +62,11 @@ namespace projeto2.Feature.Cliente.Controller
             return false;
         }
 
-        public IEnumerable<ClienteModel> BuscarDadosComFiltros(FiltrosClienteModel filtros)
+        public IEnumerable<ClienteModel> ListarDados(FiltrosClienteModel filtros)
         {
             try
             {
-                var clientesFiltrados = new ClienteDao().BuscarComFiltros(filtros);
+                var clientesFiltrados = new ClienteDao().ListarDados(filtros);
                 return clientesFiltrados;
             }
             catch

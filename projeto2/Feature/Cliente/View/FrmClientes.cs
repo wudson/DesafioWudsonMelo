@@ -22,8 +22,8 @@ namespace projeto2.Feature.Cliente.View
 
         private void AtualizarGridDadosCliente()
         {
-            var clientes = new ClienteController().BuscarTodosOsDados();
-            dgvClientes.DataSource = clientes;
+            var filtros = Filtrar();
+            dgvClientes.DataSource = new ClienteController().ListarDados(filtros);
             if (dgvClientes.CurrentRow != null) dgvClientes.CurrentRow.Selected = false;
             _podeModificar = true;
             ModificarEnabledDosBotoes(false);
@@ -67,7 +67,7 @@ namespace projeto2.Feature.Cliente.View
         {
             if (!btnEditar.Enabled) return;
 
-            var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
+            var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "0");
             var cliente = new ClienteController().BuscarDado(idClienteLinhaAtual);
 
             new FrmCadastroDeCliente(cliente).ShowDialog();
@@ -81,7 +81,7 @@ namespace projeto2.Feature.Cliente.View
             var result = MessageBox.Show(@"Deseja excluir esse cliente?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
 
-            var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? throw new InvalidOperationException());
+            var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "0");
             if (new ClienteController().ExcluirDado(idClienteLinhaAtual))
                 AtualizarGridDadosCliente();
         }
@@ -113,15 +113,7 @@ namespace projeto2.Feature.Cliente.View
 
         private void BtnFiltrar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNome.Text) && string.IsNullOrWhiteSpace(txtCidade.Text) &&
-                string.IsNullOrWhiteSpace(txtDataInicio.Text) && string.IsNullOrWhiteSpace(txtDataFim.Text))
-            {
-                FrmClientes_Load(sender, e);
-                return;
-            }
-
-            var filtros = Filtrar();
-            dgvClientes.DataSource = new ClienteController().BuscarDadosComFiltros(filtros);
+            AtualizarGridDadosCliente();
         }
 
         private FiltrosClienteModel Filtrar() =>

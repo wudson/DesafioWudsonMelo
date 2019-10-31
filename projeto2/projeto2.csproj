@@ -161,6 +161,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Propriedade.cs" />
     <EmbeddedResource Include="Feature\Cliente\View\FrmCadastroDeCliente.resx">
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
     </EmbeddedResource>

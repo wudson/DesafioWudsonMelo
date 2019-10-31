@@ -7,7 +7,19 @@ namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
-        public IList<Produto> ListarDados(FiltrosProdutoModel filtros) => new ProdutoDao().Listar(filtros);
+        public IList<Produto> ListarDados(FiltrosProdutoModel filtros)
+        {
+            try
+            {
+                var produtosFiltrados = new ProdutoDao().Listar(filtros);
+                return produtosFiltrados;
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao filtrar produtos");
+            }
+            return new List<Produto>();
+        }
 
         public Produto BuscarDado(int idProduto) => new ProdutoDao().Buscar(idProduto);
 

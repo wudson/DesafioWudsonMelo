@@ -38,12 +38,6 @@ namespace projeto2.Feature.Estoque.View
 
         private void BtnFiltrar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPesquisa.Text) && string.IsNullOrWhiteSpace(txtGrupo.Text) && string.IsNullOrWhiteSpace(txtTipo.Text))
-            {
-                FrmEstoque_Load(sender, e);
-                return;
-            }
-
             var filtros = Filtrar();
             dgvEstoque.DataSource = new ProdutoController().ListarDados(filtros);
         }
@@ -84,7 +78,7 @@ namespace projeto2.Feature.Estoque.View
         {
             if ((dgvEstoque.Rows[e.RowIndex].DataBoundItem != null) && (dgvEstoque.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
             {
-                e.Value = new FrmProdutos().BuscarPropriedade(dgvEstoque.Rows[e.RowIndex].DataBoundItem, dgvEstoque.Columns[e.ColumnIndex].DataPropertyName);
+                e.Value = new Propriedade().BuscarPropriedade(dgvEstoque.Rows[e.RowIndex].DataBoundItem, dgvEstoque.Columns[e.ColumnIndex].DataPropertyName);
             }
         }
     }
