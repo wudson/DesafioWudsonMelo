@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvProduto = new System.Windows.Forms.DataGridView();
+            this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedorProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlcontrol = new System.Windows.Forms.Panel();
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
@@ -43,11 +46,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grupoProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marcaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fornecedorProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.pnlcontrol.SuspendLayout();
@@ -69,8 +67,6 @@
             this.dgvProduto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idProdutoDataGridViewTextBoxColumn,
             this.nomeProdutoDataGridViewTextBoxColumn,
-            this.grupoProdutoDataGridViewTextBoxColumn,
-            this.marcaProduto,
             this.fornecedorProdutoDataGridViewTextBoxColumn});
             this.dgvProduto.DataSource = this.produtoBindingSource;
             this.dgvProduto.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -89,9 +85,32 @@
             this.dgvProduto.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvProduto_CellFormatting);
             this.dgvProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvProduto_CellMouseClick);
             // 
+            // idProdutoDataGridViewTextBoxColumn
+            // 
+            this.idProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "IdProduto";
+            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
+            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomeProdutoDataGridViewTextBoxColumn
+            // 
+            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
+            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
+            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fornecedorProdutoDataGridViewTextBoxColumn
+            // 
+            this.fornecedorProdutoDataGridViewTextBoxColumn.DataPropertyName = "FornecedorProduto";
+            this.fornecedorProdutoDataGridViewTextBoxColumn.HeaderText = "Fornecedor";
+            this.fornecedorProdutoDataGridViewTextBoxColumn.Name = "fornecedorProdutoDataGridViewTextBoxColumn";
+            this.fornecedorProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // produtoBindingSource
             // 
-            this.produtoBindingSource.DataSource = typeof(Produto);
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
             // 
             // pnlcontrol
             // 
@@ -162,7 +181,7 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(91, 85);
             this.btnEditar.TabIndex = 3;
-            this.btnEditar.Text = "Editar - [ F3 ]";
+            this.btnEditar.Text = "Editar - [ F4 ]";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
@@ -233,43 +252,6 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 369;
-            // 
-            // idProdutoDataGridViewTextBoxColumn
-            // 
-            this.idProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "IdProduto";
-            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "Código";
-            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
-            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomeProdutoDataGridViewTextBoxColumn
-            // 
-            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
-            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
-            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // grupoProdutoDataGridViewTextBoxColumn
-            // 
-            this.grupoProdutoDataGridViewTextBoxColumn.DataPropertyName = "GrupoProduto.Grupo";
-            this.grupoProdutoDataGridViewTextBoxColumn.HeaderText = "Grupo";
-            this.grupoProdutoDataGridViewTextBoxColumn.Name = "grupoProdutoDataGridViewTextBoxColumn";
-            this.grupoProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // marcaProduto
-            // 
-            this.marcaProduto.DataPropertyName = "MarcaProduto.Marca";
-            this.marcaProduto.HeaderText = "Marca";
-            this.marcaProduto.Name = "marcaProduto";
-            this.marcaProduto.ReadOnly = true;
-            // 
-            // fornecedorProdutoDataGridViewTextBoxColumn
-            // 
-            this.fornecedorProdutoDataGridViewTextBoxColumn.DataPropertyName = "FornecedorProduto";
-            this.fornecedorProdutoDataGridViewTextBoxColumn.HeaderText = "Fornecedor";
-            this.fornecedorProdutoDataGridViewTextBoxColumn.Name = "fornecedorProdutoDataGridViewTextBoxColumn";
-            this.fornecedorProdutoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmProdutos
             // 

@@ -111,7 +111,7 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(91, 85);
             this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar - [ F3 ]";
+            this.btnEditar.Text = "Editar - [ F4 ]";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);

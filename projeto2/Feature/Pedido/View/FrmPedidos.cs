@@ -29,13 +29,13 @@ namespace projeto2.Feature.Pedido.View
             dgvPedidos.DataSource = _pedidoController.BuscarTodosOsDados();
             if (dgvPedidos.CurrentRow != null) dgvPedidos.CurrentRow.Selected = false;
 
-            DesativarBotoes();
+            ModificarEnabledDosBotoes(false);
         }
 
-        private void DesativarBotoes()
+        private void ModificarEnabledDosBotoes(bool enabled)
         {
-            btnExcluir.Enabled = false;
-            btnEditar.Enabled = false;
+            btnExcluir.Enabled = enabled;
+            btnEditar.Enabled = enabled;
         }
 
         private void DgvPedidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -53,19 +53,17 @@ namespace projeto2.Feature.Pedido.View
         private void DgvPedidos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            btnExcluir.Enabled = true;
-            btnEditar.Enabled = true;
+            ModificarEnabledDosBotoes(true);
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (!btnEditar.Enabled) return;
 
-            var produto =
-                _pedidoController.BuscarDado(
-                    int.Parse(dgvPedidos.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
+            //var pedido =
+            //    _pedidoController.BuscarDado(
+            //        int.Parse(dgvPedidos.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
 
-            new FrmNovoPedido().ShowDialog();
             AtualizarGridPedidos();
         }
 

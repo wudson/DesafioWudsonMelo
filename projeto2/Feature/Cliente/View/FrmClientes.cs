@@ -8,7 +8,6 @@ namespace projeto2.Feature.Cliente.View
     public partial class FrmClientes : Form
     {
         private readonly ClienteController _clienteController;
-        private bool _podeModificar;
 
         public FrmClientes()
         {
@@ -27,14 +26,11 @@ namespace projeto2.Feature.Cliente.View
             var filtros = Filtrar();
             dgvClientes.DataSource = _clienteController.ListarDados(filtros);
             if (dgvClientes.CurrentRow != null) dgvClientes.CurrentRow.Selected = false;
-            _podeModificar = true;
             ModificarEnabledDosBotoes(false);
         }
 
         private void ModificarEnabledDosBotoes(bool enabled)
         {
-            if (!_podeModificar) return;
-
             btnExcluir.Enabled = enabled;
             btnEditar.Enabled = enabled;
         }

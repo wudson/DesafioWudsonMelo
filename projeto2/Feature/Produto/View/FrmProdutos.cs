@@ -26,13 +26,13 @@ namespace projeto2.Feature.Produto.View
             dgvProduto.DataSource = _produtoController.ListarDados(new FiltrosProdutoModel());
             if (dgvProduto.CurrentRow != null) dgvProduto.CurrentRow.Selected = false;
 
-            DesativarBotoes();
+            ModificarEnabledDosBotoes(false);
         }
 
-        private void DesativarBotoes()
+        private void ModificarEnabledDosBotoes(bool enabled)
         {
-            btnExcluir.Enabled = false;
-            btnEditar.Enabled = false;
+            btnExcluir.Enabled = enabled;
+            btnEditar.Enabled = enabled;
         }
 
         private void BtnListar_Click(object sender, EventArgs e) => AtualizarGridDadosProduto();
@@ -51,8 +51,7 @@ namespace projeto2.Feature.Produto.View
         private void DgvProduto_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            btnExcluir.Enabled = true;
-            btnEditar.Enabled = true;
+            ModificarEnabledDosBotoes(true);
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)

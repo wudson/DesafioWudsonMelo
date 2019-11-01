@@ -1,34 +1,26 @@
-﻿using System;
-using System.Windows.Forms;
-using projeto2.Feature.Cliente.View;
+﻿using projeto2.Feature.Cliente.View;
 using projeto2.Feature.Estoque.View;
 using projeto2.Feature.Grupo.View;
 using projeto2.Feature.Marca.View;
 using projeto2.Feature.Pedido.View;
 using projeto2.Feature.Produto.View;
+using System;
+using System.Windows.Forms;
 
 namespace projeto2
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal()
-        {
-            InitializeComponent();
-        }
+        public FrmPrincipal() => InitializeComponent();
 
-        private void BtnProdutos_Click(object sender, EventArgs e)
-        {
-            new FrmProdutos().ShowDialog();
-        }
+        private void BtnProdutos_Click(object sender, EventArgs e) => new FrmProdutos().ShowDialog();
 
-        private void BtnClientes_Click(object sender, EventArgs e)
-        {
-            new FrmClientes().ShowDialog();
-        }
+        private void BtnClientes_Click(object sender, EventArgs e) => new FrmClientes().ShowDialog();
 
         private void BtnSair_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(@"Deseja sair do sistema?", @"Sair", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            var result = MessageBox.Show(@"Deseja sair do sistema?", @"Sair", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
             Hide();
             var login = new FrmEntrar();
@@ -64,24 +56,12 @@ namespace projeto2
             }
         }
 
-        private void BtnPedidos_Click(object sender, EventArgs e)
-        {
-            new FrmPedidos().ShowDialog();
-        }
+        private void BtnPedidos_Click(object sender, EventArgs e) => new FrmPedidos().ShowDialog();
 
-        private void BtnMarcas_Click(object sender, EventArgs e)
-        {
-            new FrmMarcas().ShowDialog();
-        }
+        private void BtnMarcas_Click(object sender, EventArgs e) => new FrmMarcas().ShowDialog();
 
-        private void BtnGrupos_Click(object sender, EventArgs e)
-        {
-            new FrmGrupos().ShowDialog();
-        }
+        private void BtnGrupos_Click(object sender, EventArgs e) => new FrmGrupos().ShowDialog();
 
-        private void BtnEstoque_Click(object sender, EventArgs e)
-        {
-            new FrmEstoque().ShowDialog();
-        }
+        private void BtnEstoque_Click(object sender, EventArgs e) => new FrmEstoque().ShowDialog();
     }
 }

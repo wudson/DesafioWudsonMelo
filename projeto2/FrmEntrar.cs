@@ -5,10 +5,7 @@ namespace projeto2
 {
     public partial class FrmEntrar : Form
     {
-        public FrmEntrar()
-        {
-            InitializeComponent();
-        }
+        public FrmEntrar() => InitializeComponent();
 
         private void BtnEntrar_Click(object sender, EventArgs e)
         {
@@ -61,15 +58,11 @@ namespace projeto2
             }
         }
 
-        private void IconErroUsuario_MouseHover(object sender, EventArgs e)
-        {
+        private void IconErroUsuario_MouseHover(object sender, EventArgs e) => 
             new ToolTip().SetToolTip(iconErroUsuario, "Usuario não encontrado.");
-        }
 
-        private void IconErroSenha_MouseHover(object sender, EventArgs e)
-        {
+        private void IconErroSenha_MouseHover(object sender, EventArgs e) => 
             new ToolTip().SetToolTip(iconErroSenha, "Senha incorreta.");
-        }
 
         private void TxtUsuario_Leave(object sender, EventArgs e)
         {

@@ -30,13 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.idPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CelularPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CidadePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataCadastroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlcontrol = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -55,6 +48,13 @@
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.idPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailPessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CelularPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefonePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CidadePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataCadastroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).BeginInit();
             this.pnlcontrol.SuspendLayout();
@@ -96,73 +96,6 @@
             this.dgvClientes.TabStop = false;
             this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvClientes_CellClick);
             this.dgvClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvClientes_CellDoubleClick);
-            // 
-            // idPessoaDataGridViewTextBoxColumn
-            // 
-            this.idPessoaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.idPessoaDataGridViewTextBoxColumn.DataPropertyName = "IdPessoa";
-            this.idPessoaDataGridViewTextBoxColumn.FillWeight = 50.76142F;
-            this.idPessoaDataGridViewTextBoxColumn.HeaderText = "Cod.";
-            this.idPessoaDataGridViewTextBoxColumn.MinimumWidth = 20;
-            this.idPessoaDataGridViewTextBoxColumn.Name = "idPessoaDataGridViewTextBoxColumn";
-            this.idPessoaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idPessoaDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // nomePessoaDataGridViewTextBoxColumn
-            // 
-            this.nomePessoaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomePessoaDataGridViewTextBoxColumn.DataPropertyName = "NomePessoa";
-            this.nomePessoaDataGridViewTextBoxColumn.FillWeight = 73.89323F;
-            this.nomePessoaDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomePessoaDataGridViewTextBoxColumn.Name = "nomePessoaDataGridViewTextBoxColumn";
-            this.nomePessoaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailPessoaDataGridViewTextBoxColumn
-            // 
-            this.emailPessoaDataGridViewTextBoxColumn.DataPropertyName = "EmailPessoa";
-            this.emailPessoaDataGridViewTextBoxColumn.FillWeight = 73.89323F;
-            this.emailPessoaDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailPessoaDataGridViewTextBoxColumn.Name = "emailPessoaDataGridViewTextBoxColumn";
-            this.emailPessoaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // CelularPessoa
-            // 
-            this.CelularPessoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CelularPessoa.DataPropertyName = "CelularPessoa";
-            this.CelularPessoa.HeaderText = "Celular";
-            this.CelularPessoa.Name = "CelularPessoa";
-            this.CelularPessoa.ReadOnly = true;
-            this.CelularPessoa.Width = 115;
-            // 
-            // telefonePessoaDataGridViewTextBoxColumn
-            // 
-            this.telefonePessoaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.telefonePessoaDataGridViewTextBoxColumn.DataPropertyName = "TelefonePessoa";
-            this.telefonePessoaDataGridViewTextBoxColumn.FillWeight = 45.82235F;
-            this.telefonePessoaDataGridViewTextBoxColumn.HeaderText = "Telefone";
-            this.telefonePessoaDataGridViewTextBoxColumn.Name = "telefonePessoaDataGridViewTextBoxColumn";
-            this.telefonePessoaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.telefonePessoaDataGridViewTextBoxColumn.Width = 115;
-            // 
-            // CidadePessoa
-            // 
-            this.CidadePessoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CidadePessoa.DataPropertyName = "CidadePessoa";
-            this.CidadePessoa.FillWeight = 314.8502F;
-            this.CidadePessoa.HeaderText = "Cidade";
-            this.CidadePessoa.Name = "CidadePessoa";
-            this.CidadePessoa.ReadOnly = true;
-            this.CidadePessoa.Width = 200;
-            // 
-            // dataCadastroCliente
-            // 
-            this.dataCadastroCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataCadastroCliente.DataPropertyName = "DataCadastroCliente";
-            this.dataCadastroCliente.FillWeight = 40.77967F;
-            this.dataCadastroCliente.HeaderText = "Cadastro";
-            this.dataCadastroCliente.Name = "dataCadastroCliente";
-            this.dataCadastroCliente.ReadOnly = true;
-            this.dataCadastroCliente.Width = 115;
             // 
             // clienteModelBindingSource
             // 
@@ -353,7 +286,7 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(91, 85);
             this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "Editar - [ F3 ]";
+            this.btnEditar.Text = "Editar - [ F4 ]";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
@@ -371,6 +304,80 @@
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
+            // 
+            // idPessoaDataGridViewTextBoxColumn
+            // 
+            this.idPessoaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.idPessoaDataGridViewTextBoxColumn.DataPropertyName = "IdPessoa";
+            this.idPessoaDataGridViewTextBoxColumn.FillWeight = 50.76142F;
+            this.idPessoaDataGridViewTextBoxColumn.HeaderText = "Cod.";
+            this.idPessoaDataGridViewTextBoxColumn.MinimumWidth = 20;
+            this.idPessoaDataGridViewTextBoxColumn.Name = "idPessoaDataGridViewTextBoxColumn";
+            this.idPessoaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idPessoaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.idPessoaDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // nomePessoaDataGridViewTextBoxColumn
+            // 
+            this.nomePessoaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomePessoaDataGridViewTextBoxColumn.DataPropertyName = "NomePessoa";
+            this.nomePessoaDataGridViewTextBoxColumn.FillWeight = 73.89323F;
+            this.nomePessoaDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomePessoaDataGridViewTextBoxColumn.Name = "nomePessoaDataGridViewTextBoxColumn";
+            this.nomePessoaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomePessoaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // emailPessoaDataGridViewTextBoxColumn
+            // 
+            this.emailPessoaDataGridViewTextBoxColumn.DataPropertyName = "EmailPessoa";
+            this.emailPessoaDataGridViewTextBoxColumn.FillWeight = 73.89323F;
+            this.emailPessoaDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailPessoaDataGridViewTextBoxColumn.Name = "emailPessoaDataGridViewTextBoxColumn";
+            this.emailPessoaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailPessoaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CelularPessoa
+            // 
+            this.CelularPessoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CelularPessoa.DataPropertyName = "CelularPessoa";
+            this.CelularPessoa.HeaderText = "Celular";
+            this.CelularPessoa.Name = "CelularPessoa";
+            this.CelularPessoa.ReadOnly = true;
+            this.CelularPessoa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CelularPessoa.Width = 115;
+            // 
+            // telefonePessoaDataGridViewTextBoxColumn
+            // 
+            this.telefonePessoaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.telefonePessoaDataGridViewTextBoxColumn.DataPropertyName = "TelefonePessoa";
+            this.telefonePessoaDataGridViewTextBoxColumn.FillWeight = 45.82235F;
+            this.telefonePessoaDataGridViewTextBoxColumn.HeaderText = "Telefone";
+            this.telefonePessoaDataGridViewTextBoxColumn.Name = "telefonePessoaDataGridViewTextBoxColumn";
+            this.telefonePessoaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.telefonePessoaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.telefonePessoaDataGridViewTextBoxColumn.Width = 115;
+            // 
+            // CidadePessoa
+            // 
+            this.CidadePessoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CidadePessoa.DataPropertyName = "CidadePessoa";
+            this.CidadePessoa.FillWeight = 314.8502F;
+            this.CidadePessoa.HeaderText = "Cidade";
+            this.CidadePessoa.Name = "CidadePessoa";
+            this.CidadePessoa.ReadOnly = true;
+            this.CidadePessoa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CidadePessoa.Width = 200;
+            // 
+            // dataCadastroCliente
+            // 
+            this.dataCadastroCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataCadastroCliente.DataPropertyName = "DataCadastroCliente";
+            this.dataCadastroCliente.FillWeight = 40.77967F;
+            this.dataCadastroCliente.HeaderText = "Cadastro";
+            this.dataCadastroCliente.Name = "dataCadastroCliente";
+            this.dataCadastroCliente.ReadOnly = true;
+            this.dataCadastroCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataCadastroCliente.Width = 115;
             // 
             // FrmClientes
             // 
@@ -416,6 +423,8 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.DateTimePicker txtDataInicio;
+        private System.Windows.Forms.DateTimePicker txtDataFim;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPessoaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomePessoaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailPessoaDataGridViewTextBoxColumn;
@@ -423,8 +432,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefonePessoaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CidadePessoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataCadastroCliente;
-        private System.Windows.Forms.DateTimePicker txtDataInicio;
-        private System.Windows.Forms.DateTimePicker txtDataFim;
     }
 }
 
