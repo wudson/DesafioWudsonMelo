@@ -1,5 +1,4 @@
-﻿
-namespace projeto2.Feature.Grupo.Model
+﻿namespace projeto2.Feature.Grupo.Model
 {
     public class GrupoModel
     {

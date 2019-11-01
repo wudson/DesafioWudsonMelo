@@ -1,15 +1,18 @@
-﻿using System;
-using System.Windows.Forms;
-using projeto2.Feature.Estoque.View;
+﻿using projeto2.Feature.Estoque.View;
 using projeto2.Feature.Produto.Controller;
+using System;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Produto.View
 {
     public partial class FrmProdutos : Form
     {
+        private readonly ProdutoController _produtoController;
+
         public FrmProdutos()
         {
             InitializeComponent();
+            _produtoController = new ProdutoController();
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
@@ -20,9 +23,7 @@ namespace projeto2.Feature.Produto.View
 
         private void AtualizarGridDadosProduto()
         {
-
-            var produtos = new ProdutoController().ListarDados(new FiltrosProdutoModel());
-            dgvProduto.DataSource = produtos;
+            dgvProduto.DataSource = _produtoController.ListarDados(new FiltrosProdutoModel());
             if (dgvProduto.CurrentRow != null) dgvProduto.CurrentRow.Selected = false;
 
             DesativarBotoes();
@@ -34,16 +35,14 @@ namespace projeto2.Feature.Produto.View
             btnEditar.Enabled = false;
         }
 
-        private void BtnListar_Click(object sender, EventArgs e)
-        {
-            AtualizarGridDadosProduto();
-        }
+        private void BtnListar_Click(object sender, EventArgs e) => AtualizarGridDadosProduto();
 
         private void DgvProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            var idProdutoLinhaAtual = int.Parse(dgvProduto.Rows[e.RowIndex].Cells[0].Value.ToString());
-            var produto = new ProdutoController().BuscarDado(idProdutoLinhaAtual);
+
+            var produto =
+                _produtoController.BuscarDado(int.Parse(dgvProduto.Rows[e.RowIndex].Cells[0].Value.ToString()));
 
             new FrmCadastroDeProduto(produto).ShowDialog();
             AtualizarGridDadosProduto();
@@ -60,8 +59,8 @@ namespace projeto2.Feature.Produto.View
         {
             if (!btnEditar.Enabled) return;
 
-            var idProdutoLinhaAtual = int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? "0");
-            var produto = new ProdutoController().BuscarDado(idProdutoLinhaAtual);
+            var produto =
+                _produtoController.BuscarDado(int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
 
             new FrmCadastroDeProduto(produto).ShowDialog();
             AtualizarGridDadosProduto();
@@ -71,18 +70,15 @@ namespace projeto2.Feature.Produto.View
         {
             if (!btnExcluir.Enabled) return;
 
-            var resultado = MessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            var resultado = MessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 
-            var idProdutoLinhaAtual = int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? "0");
-            if(new ProdutoController().ExcluirDado(idProdutoLinhaAtual))
+            if(_produtoController.ExcluirDado(int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? "-1")))
                 AtualizarGridDadosProduto();
         }
 
-        private void FrmProdutos_Load(object sender, EventArgs e)
-        {
-            AtualizarGridDadosProduto();
-        }
+        private void FrmProdutos_Load(object sender, EventArgs e) => AtualizarGridDadosProduto();
 
         private void FrmProdutos_KeyDown(object sender, KeyEventArgs e)
         {
@@ -109,10 +105,7 @@ namespace projeto2.Feature.Produto.View
             }
         }
 
-        private void BtnEstoque_Click(object sender, EventArgs e)
-        {
-            new FrmEstoque().ShowDialog();
-        }
+        private void BtnEstoque_Click(object sender, EventArgs e) => new FrmEstoque().ShowDialog();
 
         private void DgvProduto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) => 
             e.Value = Propriedade.BuscarPropriedadeComPonto(dgvProduto, e);

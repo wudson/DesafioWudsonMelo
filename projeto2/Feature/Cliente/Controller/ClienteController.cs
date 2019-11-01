@@ -1,17 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
-using projeto2.Feature.Cliente.Dao;
+﻿using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Cliente.Controller
 {
     public class ClienteController
     {
+        private readonly ClienteDao _clienteDao;
+
+        public ClienteController()
+        {
+            _clienteDao = new ClienteDao();
+        }
+
         public bool AlterarDado(ClienteModel cliente)
         {
             try
             {
-                if (new ClienteDao().Alterar(cliente))
+                if (_clienteDao.Alterar(cliente))
                 {
                     MessageBox.Show(@"Cliente alterado com sucesso.", @"Sucesso");
                     return true;
@@ -28,7 +35,7 @@ namespace projeto2.Feature.Cliente.Controller
         {
             try
             {
-                if (new ClienteDao().Cadastrar(cliente))
+                if (_clienteDao.Cadastrar(cliente))
                 {
                     MessageBox.Show(@"Cliente cadastrado com sucesso.", @"Sucesso");
                     return true;
@@ -42,13 +49,25 @@ namespace projeto2.Feature.Cliente.Controller
             return false;
         }
 
-        public ClienteModel BuscarDado(int idPessoa) => new ClienteDao().Buscar(idPessoa);
+        public ClienteModel BuscarDado(int idPessoa)
+        {
+            try
+            {
+                return _clienteDao.Buscar(idPessoa);
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
+            }
+
+            return new ClienteModel();
+        }
 
         public bool ExcluirDado(int idPessoa)
         {
             try
             {
-                if (new ClienteDao().Excluir(idPessoa))
+                if (_clienteDao.Excluir(idPessoa))
                 {
                     MessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
                     return true;
@@ -66,8 +85,7 @@ namespace projeto2.Feature.Cliente.Controller
         {
             try
             {
-                var clientesFiltrados = new ClienteDao().ListarDados(filtros);
-                return clientesFiltrados;
+                return _clienteDao.ListarDados(filtros);
             }
             catch
             {

@@ -107,7 +107,7 @@ namespace projeto2.Feature.Cliente.Dao
 
                 while (dataReader.Read())
                 {
-                    var cliente = new ClienteModel()
+                    var cliente = new ClienteModel
                     {
                         IdCliente = Convert.ToInt32(dataReader["ID_CLIENTE"]),
                         NomePessoa = dataReader["NOME_PESSOA"].ToString(),

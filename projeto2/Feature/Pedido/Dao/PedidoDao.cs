@@ -40,6 +40,33 @@ namespace projeto2.Feature.Pedido.Dao
                 conn.Close();
             }
         }
+        private static bool CadastrarProdutosDoPedido(PedidoModel pedido, int idPedido, FbCommand cmd)
+        {
+            const string mSql = @"INSERT into ITEM_PEDIDO (ID_PRODUTO, ID_PEDIDO, QUANTIDADE) 
+                                    Values(@prod, @pedido, @quant)";
+            cmd.CommandText = mSql;
+            try
+            {
+                cmd.Parameters.Add("@prod", FbDbType.Integer);
+                cmd.Parameters.Add("@pedido", FbDbType.Integer);
+                cmd.Parameters.Add("@quant", FbDbType.Integer);
+
+                foreach (var produto in pedido.Produtos)
+                {
+                    cmd.Parameters["@prod"].Value = produto.IdProduto;
+                    cmd.Parameters["@pedido"].Value = idPedido;
+                    cmd.Parameters["@quant"].Value = 10;
+                    cmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($@"erro ao cadastrar produtos do pedido: {ex.Message}");
+                throw;
+            }
+        }
 
         public IEnumerable<PedidoModel> Listar()
         {
@@ -73,9 +100,10 @@ namespace projeto2.Feature.Pedido.Dao
             }
         }
 
-        public IEnumerable<ItemPedidoModel> BuscarProdutosDoPedido(FbConnection conn, int idPedido)
+        public IEnumerable<ItemPedidoModel> BuscarProdutosDoPedido(int idPedido)
         {
-
+            var conn = Conexao.GetInstancia();
+            conn.Open();
             const string mSql = @"select ip.*, p.* from ITEM_PEDIDO ip, PRODUTO p 
                                 where ip.ID_PRODUTO = p.ID_PRODUTO and ip.ID_PEDIDO = @idPedido";
             var cmd = new FbCommand(mSql, conn);
@@ -88,11 +116,11 @@ namespace projeto2.Feature.Pedido.Dao
 
                 while (dataReader.Read())
                 {
-                    itensPedido.Add(new ItemPedidoModel()
+                    itensPedido.Add(new ItemPedidoModel
                     {
                         IdItemPedido = Convert.ToInt32(dataReader["ID_ITEM"]),
                         Quantidade = Convert.ToInt32(dataReader["QUANTIDADE"]),
-                        ProdutosPedido = new Produto.Produto()
+                        ProdutosPedido = new Produto.Produto
                         {
                             IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
                             NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
@@ -101,41 +129,11 @@ namespace projeto2.Feature.Pedido.Dao
                         }
                     });
                 }
-
                 return itensPedido;
             }
-            catch (Exception ex)
+            finally
             {
-                Console.WriteLine($@"erro ao buscar produtos do pedido: {ex.Message}");
-                throw;
-            }
-        }
-
-        private static bool CadastrarProdutosDoPedido(PedidoModel pedido, int idPedido, FbCommand cmd)
-        {
-            const string mSql = @"INSERT into ITEM_PEDIDO (ID_PRODUTO, ID_PEDIDO, QUANTIDADE) 
-                                    Values(@prod, @pedido, @quant)";
-            cmd.CommandText = mSql;
-            try
-            {
-                cmd.Parameters.Add("@prod", FbDbType.Integer);
-                cmd.Parameters.Add("@pedido", FbDbType.Integer);
-                cmd.Parameters.Add("@quant", FbDbType.Integer);
-
-                foreach (var produto in pedido.Produtos)
-                {
-                    cmd.Parameters["@prod"].Value = produto.IdProduto;
-                    cmd.Parameters["@pedido"].Value = idPedido;
-                    cmd.Parameters["@quant"].Value = 10;
-                    cmd.ExecuteNonQuery();
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($@"erro ao cadastrar produtos do pedido: {ex.Message}");
-                throw;
+                conn.Close();
             }
         }
     }

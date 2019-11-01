@@ -6,9 +6,12 @@ namespace projeto2.Feature.Pedido.View
 {
     public partial class FrmPedidos : Form
     {
+        private readonly PedidoController _pedidoController;
+
         public FrmPedidos()
         {
             InitializeComponent();
+            _pedidoController = new PedidoController();
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
@@ -17,21 +20,13 @@ namespace projeto2.Feature.Pedido.View
             AtualizarGridPedidos();
         }
 
-        private void BtnListar_Click(object sender, EventArgs e)
-        {
-            AtualizarGridPedidos();
-        }
+        private void BtnListar_Click(object sender, EventArgs e) => AtualizarGridPedidos();
 
-        private void FrmPedidos_Load(object sender, EventArgs e)
-        {
-            AtualizarGridPedidos();
-        }
+        private void FrmPedidos_Load(object sender, EventArgs e) => AtualizarGridPedidos();
 
         private void AtualizarGridPedidos()
         {
-
-            var pedidos = new PedidoController().BuscarTodosOsDados();
-            dgvPedidos.DataSource = pedidos;
+            dgvPedidos.DataSource = _pedidoController.BuscarTodosOsDados();
             if (dgvPedidos.CurrentRow != null) dgvPedidos.CurrentRow.Selected = false;
 
             DesativarBotoes();
@@ -46,8 +41,10 @@ namespace projeto2.Feature.Pedido.View
         private void DgvPedidos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            var idPedidoLinhaAtual = int.Parse(dgvPedidos.Rows[e.RowIndex].Cells[0].Value.ToString());
-            var pedido = new PedidoController().BuscarProdutosPedido(idPedidoLinhaAtual);
+
+            var pedido =
+                _pedidoController.BuscarProdutosPedido(
+                    int.Parse(dgvPedidos.Rows[e.RowIndex].Cells[0].Value.ToString()));
 
             new FrmItensPedido(pedido).ShowDialog();
             AtualizarGridPedidos();
@@ -64,8 +61,9 @@ namespace projeto2.Feature.Pedido.View
         {
             if (!btnEditar.Enabled) return;
 
-            var idPedidoLinhaAtual = int.Parse(dgvPedidos.CurrentRow?.Cells[0].Value.ToString() ?? "0");
-            var produto = new PedidoController().BuscarDado(idPedidoLinhaAtual);
+            var produto =
+                _pedidoController.BuscarDado(
+                    int.Parse(dgvPedidos.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
 
             new FrmNovoPedido().ShowDialog();
             AtualizarGridPedidos();
@@ -78,8 +76,7 @@ namespace projeto2.Feature.Pedido.View
             var resultado = MessageBox.Show(@"Deseja cancelar esse pedido?", @"Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 
-            var idPedidoLinhaAtual = int.Parse(dgvPedidos.CurrentRow?.Cells[0].Value.ToString() ?? "0");
-            if (new PedidoController().ExcluirDado(idPedidoLinhaAtual))
+            if (_pedidoController.ExcluirDado(int.Parse(dgvPedidos.CurrentRow?.Cells[0].Value.ToString() ?? "-1")))
                 AtualizarGridPedidos();
         }
 

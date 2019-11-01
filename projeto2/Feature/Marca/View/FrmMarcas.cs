@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
 using projeto2.Feature.Marca.Controller;
+using projeto2.Feature.Marca.Model;
 
 namespace projeto2.Feature.Marca.View
 {
     public partial class FrmMarcas : Form
     {
+        private readonly MarcaController _marcaController;
+        private readonly MarcaModel _marcaModel;
+
         public FrmMarcas()
         {
             InitializeComponent();
+            _marcaController = new MarcaController();
+            _marcaModel = new MarcaModel();
         }
 
         private void FrmMarcas_KeyDown(object sender, KeyEventArgs e)
@@ -30,16 +36,16 @@ namespace projeto2.Feature.Marca.View
         private void BtnSalvarMarca_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMarca.Text)) return;
-            var novaMarca = txtMarca.Text.Trim();
-            new MarcaController().CadastrarMarca(novaMarca);
+
+            _marcaModel.Marca = txtMarca.Text.Trim();
+            _marcaController.CadastrarMarca(_marcaModel);
 
             ListarMarcas();
         }
 
         public void ListarMarcas()
         {
-            var grupos = new MarcaController().ListarMarcas();
-            dgvMarcas.DataSource = grupos;
+            dgvMarcas.DataSource = _marcaController.ListarMarcas();
 
             txtMarca.Text = string.Empty;
             if (dgvMarcas.CurrentRow != null) dgvMarcas.CurrentRow.Selected = false;
@@ -66,9 +72,6 @@ namespace projeto2.Feature.Marca.View
             btnExcluirMarca.Enabled = true;
         }
 
-        private void FrmMarcas_Load(object sender, EventArgs e)
-        {
-            ListarMarcas();
-        }
+        private void FrmMarcas_Load(object sender, EventArgs e) => ListarMarcas();
     }
 }

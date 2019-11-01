@@ -1,17 +1,19 @@
-﻿using System;
-using System.Windows.Forms;
-using projeto2.Feature.Cliente.Controller;
+﻿using projeto2.Feature.Cliente.Controller;
 using projeto2.Feature.Cliente.Model;
+using System;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Cliente.View
 {
     public partial class FrmClientes : Form
     {
+        private readonly ClienteController _clienteController;
         private bool _podeModificar;
 
         public FrmClientes()
         {
             InitializeComponent();
+            _clienteController = new ClienteController();
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
@@ -23,7 +25,7 @@ namespace projeto2.Feature.Cliente.View
         private void AtualizarGridDadosCliente()
         {
             var filtros = Filtrar();
-            dgvClientes.DataSource = new ClienteController().ListarDados(filtros);
+            dgvClientes.DataSource = _clienteController.ListarDados(filtros);
             if (dgvClientes.CurrentRow != null) dgvClientes.CurrentRow.Selected = false;
             _podeModificar = true;
             ModificarEnabledDosBotoes(false);
@@ -56,8 +58,8 @@ namespace projeto2.Feature.Cliente.View
         private void DgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            var idClienteLinhaAtual = int.Parse(dgvClientes.Rows[e.RowIndex].Cells[0].Value.ToString());
-            var cliente = new ClienteController().BuscarDado(idClienteLinhaAtual);
+
+            var cliente = _clienteController.BuscarDado(int.Parse(dgvClientes.Rows[e.RowIndex].Cells[0].Value.ToString()));
 
             new FrmCadastroDeCliente(cliente).ShowDialog();
             AtualizarGridDadosCliente();
@@ -67,8 +69,7 @@ namespace projeto2.Feature.Cliente.View
         {
             if (!btnEditar.Enabled) return;
 
-            var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "0");
-            var cliente = new ClienteController().BuscarDado(idClienteLinhaAtual);
+            var cliente = _clienteController.BuscarDado(int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
 
             new FrmCadastroDeCliente(cliente).ShowDialog();
             AtualizarGridDadosCliente();
@@ -81,8 +82,8 @@ namespace projeto2.Feature.Cliente.View
             var result = MessageBox.Show(@"Deseja excluir esse cliente?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
 
-            var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "0");
-            if (new ClienteController().ExcluirDado(idClienteLinhaAtual))
+            var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "-1");
+            if (_clienteController.ExcluirDado(idClienteLinhaAtual))
                 AtualizarGridDadosCliente();
         }
 
@@ -111,10 +112,7 @@ namespace projeto2.Feature.Cliente.View
             }
         }
 
-        private void BtnFiltrar_Click(object sender, EventArgs e)
-        {
-            AtualizarGridDadosCliente();
-        }
+        private void BtnFiltrar_Click(object sender, EventArgs e) => AtualizarGridDadosCliente();
 
         private FiltrosClienteModel Filtrar() =>
             new FiltrosClienteModel
@@ -128,9 +126,7 @@ namespace projeto2.Feature.Cliente.View
         private void TxtDataInicio_ValueChanged(object sender, EventArgs e)
         {
             if (txtDataInicio.Text == @" ")
-            {
                 txtDataInicio.Format = DateTimePickerFormat.Short;
-            }
         }
 
         private void BtnLimpar_Click(object sender, EventArgs e)
@@ -147,9 +143,7 @@ namespace projeto2.Feature.Cliente.View
         private void TxtDataFim_ValueChanged(object sender, EventArgs e)
         {
             if (txtDataFim.Text == @" ")
-            {
                 txtDataFim.Format = DateTimePickerFormat.Short;
-            }
         }
     }
 }

@@ -7,14 +7,17 @@ namespace projeto2.Feature.Estoque.View
 {
     public partial class FrmEstoque : Form
     {
+        private readonly ProdutoController _produtoController;
+
         public FrmEstoque()
         {
             InitializeComponent();
+            _produtoController = new ProdutoController();
         }
 
         private void FrmEstoque_Load(object sender, EventArgs e)
         {
-            dgvEstoque.DataSource = new ProdutoController().ListarDados(new Produto.FiltrosProdutoModel());
+            dgvEstoque.DataSource = _produtoController.ListarDados(new Produto.FiltrosProdutoModel());
             PreencherGrupos();
             PreencherTipos();
         }
@@ -35,11 +38,8 @@ namespace projeto2.Feature.Estoque.View
             txtTipo.Items.Add("Peso");
         }
 
-        private void BtnFiltrar_Click(object sender, EventArgs e)
-        {
-            var filtros = Filtrar();
-            dgvEstoque.DataSource = new ProdutoController().ListarDados(filtros);
-        }
+        private void BtnFiltrar_Click(object sender, EventArgs e) => 
+            dgvEstoque.DataSource = _produtoController.ListarDados(Filtrar());
 
         private Produto.FiltrosProdutoModel Filtrar() =>
             new Produto.FiltrosProdutoModel

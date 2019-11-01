@@ -1,16 +1,15 @@
-﻿using System;
+﻿using projeto2.Feature.Produto.Controller;
+using System;
 using System.Collections;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
-using projeto2.Feature.Grupo.Controller;
-using projeto2.Feature.Marca.Controller;
-using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Produto.View
 {
     public partial class FrmCadastroDeProduto : Form
     {
+        private readonly ProdutoController _produtoController = new ProdutoController();
         private readonly Produto _produto;
         private int _codigoProduto;
 
@@ -31,8 +30,8 @@ namespace projeto2.Feature.Produto.View
         private void BtnSalvarCadastroProduto_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos(pnlControl.Controls)) return;
-            var produto = AtribuirCamposParaModel();
-            if (!new ProdutoController().Cadastrar(produto)) return;
+
+            if (!_produtoController.CadastrarDado(AtribuirCamposParaModel())) return;
             LimpaCampos(pnlControl.Controls);
             txtNome.Focus();
         }
@@ -95,12 +94,12 @@ namespace projeto2.Feature.Produto.View
 
         private void PreencherGruposEMarcas()
         {
-            txtGrupo.DataSource = new GrupoController().ListarGrupos();
+            txtGrupo.DataSource = _produtoController.ListarGrupos();
             txtGrupo.DisplayMember = "Grupo";
             txtGrupo.ValueMember = "IdGrupo";
             txtGrupo.Text = string.Empty;
 
-            txtMarca.DataSource = new MarcaController().ListarMarcas();
+            txtMarca.DataSource = _produtoController.ListarMarcas();
             txtMarca.DisplayMember = "Marca";
             txtMarca.ValueMember = "IdMarca";
             txtMarca.Text = string.Empty;
@@ -109,9 +108,8 @@ namespace projeto2.Feature.Produto.View
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos(pnlControl.Controls)) return;
-            var produto = AtribuirCamposParaModel();
 
-            if (new ProdutoController().Alterar(produto))
+            if (_produtoController.AlterarDado(AtribuirCamposParaModel()))
                 Close();
         }
 

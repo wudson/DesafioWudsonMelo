@@ -7,11 +7,16 @@ namespace projeto2.Feature.Marca.Controller
 {
     public class MarcaController
     {
-        public void CadastrarMarca(string novaMarca)
+        private readonly MarcaDao _dao;
+
+        public MarcaController() =>
+            _dao = new MarcaDao();
+
+        public void CadastrarMarca(MarcaModel novaMarca)
         {
             try
             {
-                if (new MarcaDao().Cadastrar(novaMarca))
+                if (_dao.Cadastrar(novaMarca))
                     MessageBox.Show(@"Marca cadastrada com sucesso.");
             }
             catch
@@ -21,13 +26,25 @@ namespace projeto2.Feature.Marca.Controller
 
         }
 
-        public IEnumerable<MarcaModel> ListarMarcas() => new MarcaDao().Listar();
+        public IEnumerable<MarcaModel> ListarMarcas()
+        {
+            try
+            {
+                return _dao.Listar();
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao listar grupos");
+            }
+
+            return new List<MarcaModel>();
+        }
 
         public bool ExcluirMarca(int idGrupo)
         {
             try
             {
-                if (new MarcaDao().Excluir(idGrupo))
+                if (_dao.Excluir(idGrupo))
                     MessageBox.Show(@"Marca excluida com sucesso.");
                 return true;
             }

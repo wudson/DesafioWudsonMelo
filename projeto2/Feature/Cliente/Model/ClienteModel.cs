@@ -1,5 +1,5 @@
-﻿using System;
-using projeto2.Feature.Pessoa.Model;
+﻿using projeto2.Feature.Pessoa.Model;
+using System;
 
 namespace projeto2.Feature.Cliente.Model
 {

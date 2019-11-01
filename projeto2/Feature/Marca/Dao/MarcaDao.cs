@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using FirebirdSql.Data.FirebirdClient;
+﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Marca.Model;
+using System;
+using System.Collections.Generic;
 
 namespace projeto2.Feature.Marca.Dao
 {
     public class MarcaDao
     {
-        public bool Cadastrar(string marca)
+        public bool Cadastrar(MarcaModel marca)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
@@ -16,7 +16,7 @@ namespace projeto2.Feature.Marca.Dao
             var cmd = new FbCommand(mSql, conn);
             try
             {
-                cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca;
+                cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca.Marca;
 
                 cmd.ExecuteNonQuery();
                 return true;

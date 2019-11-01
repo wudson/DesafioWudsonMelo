@@ -1,18 +1,25 @@
-﻿using System;
+﻿using projeto2.Feature.Grupo.Controller;
+using projeto2.Feature.Grupo.Model;
+using projeto2.Feature.Marca.Controller;
+using projeto2.Feature.Marca.Model;
+using projeto2.Feature.Produto.Dao;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using projeto2.Feature.Produto.Dao;
 
 namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
+        private readonly ProdutoDao _dao;
+
+        public ProdutoController() => _dao = new ProdutoDao();
+
         public IList<Produto> ListarDados(FiltrosProdutoModel filtros)
         {
             try
             {
-                var produtosFiltrados = new ProdutoDao().Listar(filtros);
-                return produtosFiltrados;
+                return _dao.Listar(filtros);
             }
             catch
             {
@@ -27,7 +34,7 @@ namespace projeto2.Feature.Produto.Controller
         {
             try
             {
-                if (new ProdutoDao().Excluir(idProduto))
+                if (_dao.Excluir(idProduto))
                 {
                     MessageBox.Show(@"Produto excluido com sucesso.", @"Sucesso");
                     return true;
@@ -45,7 +52,7 @@ namespace projeto2.Feature.Produto.Controller
         {
             try
             {
-                if (new ProdutoDao().Alterar(produto))
+                if (_dao.Alterar(produto))
                 {
                     MessageBox.Show(@"Produto alterado com sucesso.", @"Sucesso");
                     return true;
@@ -63,7 +70,7 @@ namespace projeto2.Feature.Produto.Controller
         {
             try
             {
-                if (new ProdutoDao().Cadastrar(produto))
+                if (_dao.Cadastrar(produto))
                 {
                     MessageBox.Show(@"Produto cadastrado com sucesso.", @"Sucesso");
                     return true;
@@ -77,8 +84,8 @@ namespace projeto2.Feature.Produto.Controller
             return false;
         }
 
-        public bool Cadastrar(Produto produto) => CadastrarDado(produto);
+        public IEnumerable<GrupoModel> ListarGrupos() => new GrupoController().ListarGrupos();
 
-        public bool Alterar(Produto produto) => AlterarDado(produto);
+        public IEnumerable<MarcaModel> ListarMarcas() => new MarcaController().ListarMarcas();
     }
 }

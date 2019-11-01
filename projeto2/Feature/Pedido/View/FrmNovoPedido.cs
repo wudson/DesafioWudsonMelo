@@ -1,37 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Windows.Forms;
-using projeto2.Feature.Pedido.Controller;
+﻿using projeto2.Feature.Pedido.Controller;
 using projeto2.Feature.Pedido.Model;
 using projeto2.Feature.Produto.Controller;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Pedido.View
 {
     public partial class FrmNovoPedido : Form
     {
+        private readonly PedidoController _pedidoController;
+
         public FrmNovoPedido()
         {
             InitializeComponent();
+            _pedidoController = new PedidoController();
         }
 
-        private void FrmPedido_Load(object sender, EventArgs e)
-        {
-            PreencherListaDeProdutos();
-        }
+        private void FrmPedido_Load(object sender, EventArgs e) => PreencherListaDeProdutos();
 
         private void PreencherListaDeProdutos()
         {
-            lstProdutos.DataSource = null;
-
-            var produtos = new ProdutoController().ListarDados(new Produto.FiltrosProdutoModel());
-
+            lstProdutos.DataSource = _pedidoController.ListarProdutos(new Produto.FiltrosProdutoModel());
             lstProdutos.DisplayMember = "NomeProduto";
-
-            foreach (var prod in produtos)
-            {
-                lstProdutos.Items.Add(prod);
-            }
         }
 
         private void LstProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -49,8 +42,8 @@ namespace projeto2.Feature.Pedido.View
         {
             if (string.IsNullOrWhiteSpace(txtProduto.Text)) return;
 
-            var precoProduto = int.Parse(txtPreco.Text) * int.Parse(txtQuantidade.Text);
-            dgvPedido.Rows.Add(txtIdProduto.Text, txtProduto.Text, txtQuantidade.Text, precoProduto);
+            dgvPedido.Rows.Add(txtIdProduto.Text, txtProduto.Text, txtQuantidade.Text,
+                int.Parse(txtPreco.Text) * int.Parse(txtQuantidade.Text));
             txtPreco.Text = string.Empty;
             txtProduto.Text = string.Empty;
             txtQuantidade.Text = @"1";
@@ -58,17 +51,11 @@ namespace projeto2.Feature.Pedido.View
             CalcularTotalAPagar();
         }
 
-        private void CalcularTotalAPagar()
-        {
-            decimal total = 0;
-
-            for (var i = 0; i < dgvPedido.Rows.Count; i++)
-            {
-                total += Convert.ToDecimal(dgvPedido.Rows[i].Cells["preco"].Value);
-            }
-
-            txtTotalPedido.Text = total.ToString(CultureInfo.InvariantCulture);
-        }
+        private void CalcularTotalAPagar() =>
+            txtTotalPedido.Text = dgvPedido.Rows
+                .Cast<DataGridViewRow>()
+                .Sum(r => Convert.ToDecimal(r.Cells["preco"].Value))
+                .ToString(CultureInfo.InvariantCulture);
 
         private void BtnSalvarPedido_Click(object sender, EventArgs e)
         {
@@ -81,42 +68,29 @@ namespace projeto2.Feature.Pedido.View
                 Produtos = PreencherProdutosDoPedido()
             };
 
-            if (!new PedidoController().SalvarPedido(pedido)) return;
+            if (!_pedidoController.SalvarPedido(pedido)) return;
             dgvPedido.Rows.Clear();
             txtTotalPedido.Text = string.Empty;
         }
 
-        private List<Produto.Produto> PreencherProdutosDoPedido()
-        {
-            var produtos = new List<Produto.Produto>();
-            var quantidadeDeProdutos = dgvPedido.RowCount;
-            for (var i = 0; i < quantidadeDeProdutos; i++)
-            {
-                var prod = new Produto.Produto
+        private IList<Produto.Produto> PreencherProdutosDoPedido() =>
+            dgvPedido.Rows
+                .Cast<DataGridViewRow>()
+                .Select(r => new Produto.Produto
                 {
-                    IdProduto = Convert.ToInt32(dgvPedido.Rows[i].Cells[0].Value.ToString())
-                };
+                    IdProduto = Convert.ToInt32(r.Cells[0].Value.ToString())
+                })
+                .ToList();
 
-                produtos.Add(prod);
-            }
-
-            return produtos;
-        }
-
-        private void BtnCancelarCadastroProduto_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void BtnCancelarCadastroProduto_Click(object sender, EventArgs e) => Close();
 
         private void DgvPedido_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var resultado = MessageBox.Show(@"Deseja remover esse item do pedido?", @"Pedido", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 
-            var indice = e.RowIndex;
-            if (indice < 0) return;
-            var linha = dgvPedido.Rows[indice];
-            dgvPedido.Rows.Remove(linha);
+            if (e.RowIndex < 0) return;
+            dgvPedido.Rows.Remove(dgvPedido.Rows[e.RowIndex]);
 
             CalcularTotalAPagar();
         }
@@ -145,11 +119,10 @@ namespace projeto2.Feature.Pedido.View
                 return;
             }
 
-            var filtros = Filtrar();
-            lstProdutos.DataSource = new ProdutoController().ListarDados(filtros);
+            lstProdutos.DataSource = new ProdutoController().ListarDados(Filtrar());
         }
 
-        private Produto.FiltrosProdutoModel Filtrar() => new Produto.FiltrosProdutoModel()
+        private Produto.FiltrosProdutoModel Filtrar() => new Produto.FiltrosProdutoModel
         {
             NomeProduto = txtBuscar.Text.Trim()
         };

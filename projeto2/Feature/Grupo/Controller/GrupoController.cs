@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using projeto2.Feature.Grupo.Dao;
+﻿using projeto2.Feature.Grupo.Dao;
 using projeto2.Feature.Grupo.Model;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Grupo.Controller
 {
     public class GrupoController
     {
-        public void CadastrarGrupo(string novoGrupo)
+        private readonly GrupoDao _dao;
+
+        public GrupoController() =>
+            _dao = new GrupoDao();
+
+        public void CadastrarGrupo(GrupoModel novoGrupo)
         {
             try
             {
-                if (new GrupoDao().Cadastrar(novoGrupo))
+                if (_dao.Cadastrar(novoGrupo))
                     MessageBox.Show(@"Grupo cadastrado com sucesso.");
             }
             catch
@@ -25,14 +26,26 @@ namespace projeto2.Feature.Grupo.Controller
 
         }
 
-        public IEnumerable<GrupoModel> ListarGrupos() => new GrupoDao().Listar();
+        public IEnumerable<GrupoModel> ListarGrupos()
+        {
+            try
+            {
+                return _dao.Listar();
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao listar grupos");
+            }
+
+            return new List<GrupoModel>();
+        }
 
         public bool ExcluirGrupo(int idGrupo)
         {
             try
             {
-                if (new GrupoDao().Excluir(idGrupo))
-                    MessageBox.Show(@"Grupo excluido com sucesso.");
+                if (_dao.Excluir(idGrupo))
+                    MessageBox.Show(@"Grupo excluído com sucesso.");
                 return true;
             }
             catch

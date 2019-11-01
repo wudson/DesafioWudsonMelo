@@ -15,20 +15,9 @@ namespace projeto2.Feature.Pedido.View
             _produtosPedido = produtosPedido;
         }
 
-        public FrmItensPedido()
-        {
-            InitializeComponent();
-        }
+        private void FrmItensPedido_Load(object sender, EventArgs e) => dgvItensPedido.DataSource = _produtosPedido;
 
-        private void FrmItensPedido_Load(object sender, EventArgs e)
-        {
-            dgvItensPedido.DataSource = _produtosPedido;
-        }
-
-        private void BtnOk_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void BtnOk_Click(object sender, EventArgs e) => Close();
 
         private void FrmItensPedido_KeyDown(object sender, KeyEventArgs e)
         {

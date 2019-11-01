@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace projeto2.Feature.Pedido.Model
+﻿namespace projeto2.Feature.Pedido.Model
 {
     public class ItemPedidoModel
     {

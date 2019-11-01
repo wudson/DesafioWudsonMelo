@@ -3,6 +3,7 @@ using projeto2.Feature.Grupo.Model;
 using projeto2.Feature.Marca.Model;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace projeto2.Feature.Produto.Dao
 {
@@ -44,6 +45,12 @@ namespace projeto2.Feature.Produto.Dao
             var conn = Conexao.GetInstancia();
             conn.Open();
             const string mSql = "Select p.*, g.GRUPO, m.MARCA from PRODUTO p, GRUPO g, MARCA m where ID_PRODUTO = @id and p.ID_GRUPO = g.ID_GRUPO and p.ID_MARCA = m.ID_MARCA";
+            /*
+             * SELECT p.*, g.Grupo, m.Marca FROM Produto p
+             * INNER JOIN Grupo AS g ON p.Id_Grupo = g.Id_Grupo
+             * INNER JOIN Marca AS m ON p.Id_Marca = m.Id_Marca
+             * WHERE p.Id_Produto = @id
+             */
             var cmd = new FbCommand(mSql, conn);
             try
             {
@@ -64,7 +71,7 @@ namespace projeto2.Feature.Produto.Dao
                         Grupo = dataReader["GRUPO"].ToString()
 
                     };
-                    produto.MarcaProduto = new MarcaModel()
+                    produto.MarcaProduto = new MarcaModel
                     {
                         IdMarca = Convert.ToInt32(dataReader["ID_MARCA"]),
                         Marca = dataReader["MARCA"].ToString()
@@ -105,14 +112,16 @@ namespace projeto2.Feature.Produto.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-                                 
-            var mSql = "Select p.*, m.MARCA, g.GRUPO from PRODUTO p, MARCA m, GRUPO g where p.ID_GRUPO = g.ID_GRUPO and p.ID_MARCA = m.ID_MARCA";
 
-            if (!string.IsNullOrWhiteSpace(filtros.NomeProduto)) mSql += " and lower(NOME_PRODUTO) like lower(@prod)";
-            if (!string.IsNullOrWhiteSpace(filtros.GrupoProduto.Grupo)) mSql += " and lower(GRUPO) like lower(@grupo)";
-            if (!string.IsNullOrWhiteSpace(filtros.TipoProduto)) mSql += " and lower(TIPO_PRODUTO) like lower(@tipo)";
+            var sql = new StringBuilder();
+            sql.Append(
+                "Select p.*, m.MARCA, g.GRUPO from PRODUTO p, MARCA m, GRUPO g where p.ID_GRUPO = g.ID_GRUPO and p.ID_MARCA = m.ID_MARCA");
 
-            var cmd = new FbCommand(mSql, conn);
+            if (!string.IsNullOrWhiteSpace(filtros.NomeProduto)) sql.Append(" and lower(NOME_PRODUTO) like lower(@prod)");
+            if (!string.IsNullOrWhiteSpace(filtros.GrupoProduto.Grupo)) sql.Append(" and lower(GRUPO) like lower(@grupo)");
+            if (!string.IsNullOrWhiteSpace(filtros.TipoProduto)) sql.Append(" and lower(TIPO_PRODUTO) like lower(@tipo)");
+
+            var cmd = new FbCommand(sql.ToString(), conn);
             try
             {
                 cmd.Parameters.Add("@prod", FbDbType.VarChar).Value = $"{filtros.NomeProduto}%";

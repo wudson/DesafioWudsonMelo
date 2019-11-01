@@ -1,19 +1,21 @@
-﻿using System;
+﻿using projeto2.Feature.Cliente.Controller;
+using projeto2.Feature.Cliente.Model;
+using System;
 using System.Linq;
 using System.Windows.Forms;
-using projeto2.Feature.Cliente.Controller;
-using projeto2.Feature.Cliente.Model;
 
 namespace projeto2.Feature.Cliente.View
 {
     public partial class FrmCadastroDeCliente : Form
     {
+        private readonly ClienteController _clienteController;
         private readonly ClienteModel _cliente;
         private int _codigoCliente;
 
         public FrmCadastroDeCliente(ClienteModel cliente)
         {
             InitializeComponent();
+            _clienteController = new ClienteController();
             _cliente = cliente;
             btnAlterar.Visible = true;
             btnSalvarCadastroCliente.Visible = false;
@@ -35,7 +37,7 @@ namespace projeto2.Feature.Cliente.View
 
             var cliente = AtribuirCamposParaModel();
 
-            if (new ClienteController().CadastrarDado(cliente))
+            if (_clienteController.CadastrarDado(cliente))
                 Close();
         }
 
@@ -79,10 +81,7 @@ namespace projeto2.Feature.Cliente.View
             return false;
         }
 
-        private string RetornarSexoSelecionado()
-        {
-            return rdbMasculino.Checked ? "M" : "F";
-        }
+        private string RetornarSexoSelecionado() => rdbMasculino.Checked ? "M" : "F";
 
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)
         {
@@ -154,7 +153,7 @@ namespace projeto2.Feature.Cliente.View
             if (!ValidarSexo()) return;
 
             var cliente = AtribuirCamposParaModel();
-            if (new ClienteController().AlterarDado(cliente))
+            if (_clienteController.AlterarDado(cliente))
                 Close();
         }
     }

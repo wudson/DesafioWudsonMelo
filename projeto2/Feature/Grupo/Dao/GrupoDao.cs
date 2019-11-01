@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using FirebirdSql.Data.FirebirdClient;
+﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Grupo.Model;
+using System;
+using System.Collections.Generic;
 
 namespace projeto2.Feature.Grupo.Dao
 {
     public class GrupoDao
     {
-        public bool Cadastrar(string grupo)
+        public bool Cadastrar(GrupoModel grupo)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
@@ -16,7 +16,7 @@ namespace projeto2.Feature.Grupo.Dao
             var cmd = new FbCommand(mSql, conn);
             try
             {
-                cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = grupo;
+                cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = grupo.Grupo;
 
                 cmd.ExecuteNonQuery();
                 return true;
@@ -40,13 +40,11 @@ namespace projeto2.Feature.Grupo.Dao
                 var dataReader = cmd.ExecuteReader();
                 var grupos = new List<GrupoModel>();
                 while (dataReader.Read())
-                {
                     grupos.Add(new GrupoModel
                     {
                         IdGrupo = Convert.ToInt32(dataReader["ID_GRUPO"]),
                         Grupo = dataReader["GRUPO"].ToString()
                     });
-                }
                 return grupos;
             }
             finally
@@ -60,7 +58,7 @@ namespace projeto2.Feature.Grupo.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = "DELETE from GRUPO Where ID_GRUPO= @id";
+            const string mSql = "DELETE from GRUPO Where ID_GRUPO = @id";
             var cmd = new FbCommand(mSql, conn);
             try
             {

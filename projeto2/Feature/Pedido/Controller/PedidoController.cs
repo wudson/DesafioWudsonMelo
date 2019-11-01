@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using projeto2.Feature.Pedido.Dao;
 using projeto2.Feature.Pedido.Model;
+using projeto2.Feature.Produto;
+using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Pedido.Controller
 {
     public class PedidoController
     {
+        private readonly PedidoDao _dao;
+
+        public PedidoController() => _dao = new PedidoDao();
+
         public bool SalvarPedido(PedidoModel pedido)
         {
             try
             {
-                if (new PedidoDao().Cadastrar(pedido))
+                if (_dao.Cadastrar(pedido))
                 {
                     MessageBox.Show(@"Pedido efetuado com sucesso.", @"Sucesso");
                     return true;
@@ -26,27 +32,30 @@ namespace projeto2.Feature.Pedido.Controller
             return false;
         }
 
-        public IEnumerable<PedidoModel> BuscarTodosOsDados() => new PedidoDao().Listar();
+        public IEnumerable<PedidoModel> BuscarTodosOsDados()
+        {
+            try
+            {
+                return _dao.Listar();
+            }
+            catch
+            {
+                MessageBox.Show(@"Problemas ao listar pedidos.");
+            }
+            return new List<PedidoModel>();
+        }
 
         public IEnumerable<ItemPedidoModel> BuscarProdutosPedido(int idPedido)
         {
-            var conn = Conexao.GetInstancia();
-            conn.Open();
             try
             {
-                var itensPedido = new PedidoDao().BuscarProdutosDoPedido(conn, idPedido);
-                return itensPedido;
+                return _dao.BuscarProdutosDoPedido(idPedido);
             }
             catch
             {
                 MessageBox.Show(@"Problemas ao buscar itens do pedido.");
-                return new List<ItemPedidoModel>();
             }
-            finally
-            {
-                conn.Close();
-            }
-            
+            return new List<ItemPedidoModel>();
         }
 
         public bool ExcluirDado(int idProduto)
@@ -58,5 +67,8 @@ namespace projeto2.Feature.Pedido.Controller
         {
             throw new NotImplementedException();
         }
+
+        public IList<Produto.Produto> ListarProdutos(FiltrosProdutoModel filtrosProdutoModel) =>
+            new ProdutoController().ListarDados(filtrosProdutoModel);
     }
 }

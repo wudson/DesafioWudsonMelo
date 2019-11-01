@@ -1,14 +1,20 @@
-﻿using System;
+﻿using projeto2.Feature.Grupo.Controller;
+using projeto2.Feature.Grupo.Model;
+using System;
 using System.Windows.Forms;
-using projeto2.Feature.Grupo.Controller;
 
 namespace projeto2.Feature.Grupo.View
 {
     public partial class FrmGrupos : Form
     {
+        private readonly GrupoController _grupoController;
+        private readonly GrupoModel _grupoModel;
+
         public FrmGrupos()
         {
             InitializeComponent();
+            _grupoController = new GrupoController();
+            _grupoModel = new GrupoModel();
         }
 
         private void FrmGrupos_KeyDown(object sender, KeyEventArgs e)
@@ -30,16 +36,16 @@ namespace projeto2.Feature.Grupo.View
         private void BtnSalvarGrupo_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtGrupo.Text)) return;
-            var novoGrupo = txtGrupo.Text.Trim();
-            new GrupoController().CadastrarGrupo(novoGrupo);
+
+            _grupoModel.Grupo = txtGrupo.Text.Trim();
+            _grupoController.CadastrarGrupo(_grupoModel);
 
             ListarGrupos();
         }
 
         public void ListarGrupos()
         {
-            var grupos = new GrupoController().ListarGrupos();
-            dgvGrupo.DataSource = grupos;
+            dgvGrupo.DataSource = _grupoController.ListarGrupos();
 
             txtGrupo.Text = string.Empty;
             if (dgvGrupo.CurrentRow != null) dgvGrupo.CurrentRow.Selected = false;
@@ -61,13 +67,11 @@ namespace projeto2.Feature.Grupo.View
             if (dgvGrupo.CurrentRow == null) return;
             var idGrupo = Convert.ToInt32(dgvGrupo.CurrentRow.Cells[0].Value);
 
-            if (new GrupoController().ExcluirGrupo(idGrupo))
+            if (_grupoController.ExcluirGrupo(idGrupo))
                 ListarGrupos();
         }
 
-        private void FrmGrupos_Load(object sender, EventArgs e)
-        {
+        private void FrmGrupos_Load(object sender, EventArgs e) =>
             ListarGrupos();
-        }
     }
 }
