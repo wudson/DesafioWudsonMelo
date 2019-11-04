@@ -38,7 +38,7 @@ namespace projeto2.Feature.Pedido.Controller
             {
                 return _dao.Listar();
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show(@"Problemas ao listar pedidos.");
             }

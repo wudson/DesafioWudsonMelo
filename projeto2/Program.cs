@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using projeto2.Feature.Estoque.View;
-using projeto2.Feature.Pedido.View;
+using projeto2.Feature.Promocao.View;
 
 namespace projeto2
 {
@@ -15,7 +14,7 @@ namespace projeto2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmEntrar());
+            Application.Run(new FrmPrincipal());
         }
     }
 }

@@ -56,7 +56,7 @@ namespace projeto2.Feature.Estoque.View
                 case Keys.Enter:
                     BtnFiltrar_Click(sender, e);
                     break;
-                case Keys.L:
+                case Keys.F10:
                     BtnLimpar_Click(sender, e);
                     break;
                 case Keys.Escape:

@@ -54,6 +54,7 @@
             this.CelularPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonePessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CidadePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataEdicaoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataCadastroCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).BeginInit();
@@ -66,6 +67,7 @@
             // dgvClientes
             // 
             this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.AllowUserToResizeColumns = false;
             this.dgvClientes.AllowUserToResizeRows = false;
             this.dgvClientes.AutoGenerateColumns = false;
@@ -80,6 +82,7 @@
             this.CelularPessoa,
             this.telefonePessoaDataGridViewTextBoxColumn,
             this.CidadePessoa,
+            this.DataEdicaoCliente,
             this.dataCadastroCliente});
             this.dgvClientes.DataSource = this.clienteModelBindingSource;
             this.dgvClientes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -366,7 +369,16 @@
             this.CidadePessoa.Name = "CidadePessoa";
             this.CidadePessoa.ReadOnly = true;
             this.CidadePessoa.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CidadePessoa.Width = 200;
+            this.CidadePessoa.Width = 150;
+            // 
+            // DataEdicaoCliente
+            // 
+            this.DataEdicaoCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DataEdicaoCliente.DataPropertyName = "DataEdicaoCliente";
+            this.DataEdicaoCliente.HeaderText = "Ultima alteração";
+            this.DataEdicaoCliente.Name = "DataEdicaoCliente";
+            this.DataEdicaoCliente.ReadOnly = true;
+            this.DataEdicaoCliente.Width = 115;
             // 
             // dataCadastroCliente
             // 
@@ -431,6 +443,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CelularPessoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefonePessoaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CidadePessoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataEdicaoCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataCadastroCliente;
     }
 }

@@ -17,10 +17,11 @@ namespace projeto2.Feature.Cliente.Dao
             try
             {
                 cmd.Parameters.Add("@dataCadastro", FbDbType.Date).Value = cliente.DataCadastroCliente;
+                cmd.Parameters.Add("@dataEdicao", FbDbType.Date).Value = cliente.DataEdicaoCliente;
                 cmd.Parameters.Add("@id_pessoa", FbDbType.Integer).Value = new PessoaDao().Cadastrar(cliente, cmd);
 
-                const string mSql = @"INSERT into CLIENTE (DATA_CADASTRO_CLIENTE, ID_PESSOA) 
-                                    Values(@dataCadastro, @id_pessoa)";
+                const string mSql = @"INSERT into CLIENTE (DATA_CADASTRO_CLIENTE, DATA_EDICAO_CLIENTE, ID_PESSOA) 
+                                    Values(@dataCadastro, @dataEdicao, @id_pessoa)";
                 cmd.CommandText = mSql;
 
                 cmd.ExecuteNonQuery();
@@ -117,6 +118,7 @@ namespace projeto2.Feature.Cliente.Dao
                         SexoPessoa = dataReader["SEXO_PESSOA"].ToString(),
                         NascimentoPessoa = Convert.ToDateTime(dataReader["DATA_NASCIMENTO_PESSOA"]),
                         DataCadastroCliente = Convert.ToDateTime(dataReader["DATA_CADASTRO_CLIENTE"]),
+                        DataEdicaoCliente = Convert.ToDateTime(dataReader["DATA_EDICAO_CLIENTE"]),
                         TelefonePessoa = dataReader["TELEFONE_PESSOA"].ToString(),
                         CelularPessoa = dataReader["CELULAR_PESSOA"].ToString(),
                         EstadoPessoa = dataReader["ESTADO"].ToString(),
@@ -165,13 +167,13 @@ namespace projeto2.Feature.Cliente.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = @"Update CLIENTE set DATA_CADASTRO_CLIENTE = @dataCadastro WHERE ID_PESSOA = @id";
+            const string mSql = @"Update CLIENTE set DATA_EDICAO_CLIENTE = @dataEdicao WHERE ID_PESSOA = @id";
             var transaction = conn.BeginTransaction();
             var cmd = new FbCommand(mSql, conn, transaction);
             try
             {
                 cmd.Parameters.Add("@id", FbDbType.Integer).Value = cliente.IdPessoa;
-                cmd.Parameters.Add("@dataCadastro", FbDbType.Date).Value = cliente.DataCadastroCliente;
+                cmd.Parameters.Add("@dataEdicao", FbDbType.Date).Value = cliente.DataEdicaoCliente;
                 cmd.ExecuteNonQuery();
 
                 if (new PessoaDao().Alterar(cliente, cmd))

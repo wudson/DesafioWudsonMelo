@@ -7,5 +7,6 @@ namespace projeto2.Feature.Cliente.Model
     {
         public int IdCliente { get; set; }
         public DateTime DataCadastroCliente { get; set; }
+        public DateTime DataEdicaoCliente { get; set; }
     }
 }

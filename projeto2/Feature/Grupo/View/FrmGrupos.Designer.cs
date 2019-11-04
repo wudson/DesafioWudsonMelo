@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvGrupo = new System.Windows.Forms.DataGridView();
+            this.idGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grupoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnExcluirGrupo = new System.Windows.Forms.Button();
             this.btnSalvarGrupo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.TextBox();
-            this.idGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grupoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grupoModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -63,6 +63,25 @@
             this.dgvGrupo.TabIndex = 3;
             this.dgvGrupo.TabStop = false;
             this.dgvGrupo.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvGrupo_CellMouseClick);
+            // 
+            // idGrupoDataGridViewTextBoxColumn
+            // 
+            this.idGrupoDataGridViewTextBoxColumn.DataPropertyName = "IdGrupo";
+            this.idGrupoDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.idGrupoDataGridViewTextBoxColumn.Name = "idGrupoDataGridViewTextBoxColumn";
+            this.idGrupoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // grupoDataGridViewTextBoxColumn
+            // 
+            this.grupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.grupoDataGridViewTextBoxColumn.DataPropertyName = "Grupo";
+            this.grupoDataGridViewTextBoxColumn.HeaderText = "Grupo";
+            this.grupoDataGridViewTextBoxColumn.Name = "grupoDataGridViewTextBoxColumn";
+            this.grupoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // grupoModelBindingSource
+            // 
+            this.grupoModelBindingSource.DataSource = typeof(projeto2.Feature.Grupo.Model.GrupoModel);
             // 
             // btnExcluirGrupo
             // 
@@ -105,28 +124,10 @@
             // txtGrupo
             // 
             this.txtGrupo.Location = new System.Drawing.Point(25, 34);
+            this.txtGrupo.MaxLength = 100;
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(335, 20);
             this.txtGrupo.TabIndex = 0;
-            // 
-            // idGrupoDataGridViewTextBoxColumn
-            // 
-            this.idGrupoDataGridViewTextBoxColumn.DataPropertyName = "IdGrupo";
-            this.idGrupoDataGridViewTextBoxColumn.HeaderText = "Código";
-            this.idGrupoDataGridViewTextBoxColumn.Name = "idGrupoDataGridViewTextBoxColumn";
-            this.idGrupoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // grupoDataGridViewTextBoxColumn
-            // 
-            this.grupoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.grupoDataGridViewTextBoxColumn.DataPropertyName = "Grupo";
-            this.grupoDataGridViewTextBoxColumn.HeaderText = "Grupo";
-            this.grupoDataGridViewTextBoxColumn.Name = "grupoDataGridViewTextBoxColumn";
-            this.grupoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // grupoModelBindingSource
-            // 
-            this.grupoModelBindingSource.DataSource = typeof(projeto2.Feature.Grupo.Model.GrupoModel);
             // 
             // FrmGrupos
             // 

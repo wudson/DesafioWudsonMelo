@@ -127,6 +127,25 @@
     <Compile Include="Feature\Pedido\View\FrmItensPedido.Designer.cs">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Promocao\Model\PromocaoModel.cs" />
+    <Compile Include="Feature\Promocao\View\FrmPeriodoPromocao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\FrmPeriodoPromocao.Designer.cs">
+      <DependentUpon>FrmPeriodoPromocao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.Designer.cs">
+      <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\FrmPromocoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\FrmPromocoes.Designer.cs">
+      <DependentUpon>FrmPromocoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEntrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +201,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Pedido\View\FrmItensPedido.resx">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Promocao\View\FrmPeriodoPromocao.resx">
+      <DependentUpon>FrmPeriodoPromocao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.resx">
+      <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Promocao\View\FrmPromocoes.resx">
+      <DependentUpon>FrmPromocoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEntrar.resx">
       <DependentUpon>FrmEntrar.cs</DependentUpon>

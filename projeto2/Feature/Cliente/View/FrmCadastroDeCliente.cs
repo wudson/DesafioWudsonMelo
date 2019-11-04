@@ -1,7 +1,6 @@
 ﻿using projeto2.Feature.Cliente.Controller;
 using projeto2.Feature.Cliente.Model;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace projeto2.Feature.Cliente.View
@@ -24,6 +23,7 @@ namespace projeto2.Feature.Cliente.View
         public FrmCadastroDeCliente()
         {
             InitializeComponent();
+            _clienteController = new ClienteController();
             btnAlterar.Visible = false;
             btnSalvarCadastroCliente.Visible = true;
         }
@@ -32,8 +32,7 @@ namespace projeto2.Feature.Cliente.View
 
         private void BtnSalvarCadastroCliente_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos(pnlFormCliente.Controls)) return;
-            if (!ValidarSexo()) return;
+            if (!ValidarCamposObrigatorios()) return;
 
             var cliente = AtribuirCamposParaModel();
 
@@ -49,6 +48,7 @@ namespace projeto2.Feature.Cliente.View
                 EmailPessoa = txtEmail.Text.Trim(),
                 NascimentoPessoa = DateTime.Parse(txtDataNascimento.Text.Trim()),
                 DataCadastroCliente = DateTime.Now.Date,
+                DataEdicaoCliente = DateTime.Now.Date,
                 SexoPessoa = RetornarSexoSelecionado(),
                 CpfPessoa = txtCpf.Text.Trim(),
                 RgPessoa = txtRg.Text.Trim(),
@@ -63,21 +63,82 @@ namespace projeto2.Feature.Cliente.View
                 NumeroPessoa = int.Parse(txtNumero.Text.Trim())
             };
 
-        public bool ValidarCampos(Control.ControlCollection controles)
+        private bool ValidarCamposObrigatorios()
         {
-            if (!(from Control controle in controles from Control item in controle.Controls select item).Any(item =>
-                string.IsNullOrWhiteSpace(item.Text))) return true;
-            MessageBox.Show(@"Porfavor preencha todos os campos", @"Atenção",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return false;
+            if (string.IsNullOrWhiteSpace(txtNome.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Nome' obrigatorio.");
+                txtNome.Focus();
+                return false;
+            }
 
-        }
+            if (string.IsNullOrWhiteSpace(txtDataNascimento.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Nascimento' obrigatorio.");
+                txtDataNascimento.Focus();
+                return false;
+            }
 
-        private bool ValidarSexo()
-        {
-            if (rdbFeminino.Checked || rdbMasculino.Checked) return true;
-            MessageBox.Show(@"Porfavor preencha todos os campos", @"Atenção",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!rdbFeminino.Checked || !rdbMasculino.Checked)
+            {
+                MessageBox.Show(@"Campo 'Sexo' obrigatorio.");
+                txtDataNascimento.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCpf.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'CPF' obrigatorio.");
+                txtCpf.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'E-mail' obrigatorio.");
+                txtEmail.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCelular.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Celular' obrigatorio.");
+                txtCelular.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCep.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'CEP' obrigatorio.");
+                txtCep.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEstado.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Estado' obrigatorio.");
+                txtEstado.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtRua.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Rua' obrigatorio.");
+                txtRua.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNumero.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Numero' obrigatorio.");
+                txtNumero.Focus();
+                return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(txtCidade.Text.Trim())) return true;
+
+            MessageBox.Show(@"Campo 'Cidade' obrigatorio.");
+            txtCidade.Focus();
             return false;
         }
 
@@ -149,8 +210,8 @@ namespace projeto2.Feature.Cliente.View
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos(pnlFormCliente.Controls)) return;
-            if (!ValidarSexo()) return;
+            //if (!ValidarCampos(pnlFormCliente.Controls)) return;
+            //if (!ValidarSexo()) return;
 
             var cliente = AtribuirCamposParaModel();
             if (_clienteController.AlterarDado(cliente))

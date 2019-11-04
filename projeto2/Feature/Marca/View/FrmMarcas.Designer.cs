@@ -34,9 +34,9 @@
             this.btnExcluirMarca = new System.Windows.Forms.Button();
             this.btnSalvarMarca = new System.Windows.Forms.Button();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
-            this.marcaModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idMarcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marcaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marcaModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marcaModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -44,6 +44,7 @@
             // txtMarca
             // 
             this.txtMarca.Location = new System.Drawing.Point(25, 34);
+            this.txtMarca.MaxLength = 100;
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(335, 20);
             this.txtMarca.TabIndex = 0;
@@ -105,10 +106,6 @@
             this.dgvMarcas.TabStop = false;
             this.dgvMarcas.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvMarcas_CellMouseClick);
             // 
-            // marcaModelBindingSource
-            // 
-            this.marcaModelBindingSource.DataSource = typeof(projeto2.Feature.Marca.Model.MarcaModel);
-            // 
             // idMarcaDataGridViewTextBoxColumn
             // 
             this.idMarcaDataGridViewTextBoxColumn.DataPropertyName = "IdMarca";
@@ -123,6 +120,10 @@
             this.marcaDataGridViewTextBoxColumn.HeaderText = "Marca";
             this.marcaDataGridViewTextBoxColumn.Name = "marcaDataGridViewTextBoxColumn";
             this.marcaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // marcaModelBindingSource
+            // 
+            this.marcaModelBindingSource.DataSource = typeof(projeto2.Feature.Marca.Model.MarcaModel);
             // 
             // FrmMarcas
             // 

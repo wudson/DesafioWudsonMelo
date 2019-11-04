@@ -7,7 +7,7 @@ namespace projeto2
         private static FbConnection InstanciaFireBird { get; set; }
 
         private const string StringConexao =
-            "User = SYSDBA; Password=masterkey;Database=C:/Users/Wudso/Documents/IBExpert_Portable/banco.fdb;DataSource=localhost; Pooling=true;";
+            "User = SYSDBA; Password=masterkey; Database=C:/Users/Wudso/Documents/IBExpert_Portable/banco.fdb;DataSource=localhost; Dialect=3; Charset=WIN1252; Pooling=true;";
 
         public static FbConnection GetInstancia() => InstanciaFireBird ?? CriaConexao();
 

@@ -34,9 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtValorDeVenda = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtValorDeCompra = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFornecedor = new System.Windows.Forms.TextBox();
             this.btnSalvarCadastroProduto = new System.Windows.Forms.Button();
@@ -46,14 +44,28 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.ComboBox();
             this.txtMarca = new System.Windows.Forms.ComboBox();
-            this.txtQuantidadeEmEstoque = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.txtQuantidadeEmEstoque = new System.Windows.Forms.NumericUpDown();
+            this.txtValorDeCompra = new System.Windows.Forms.NumericUpDown();
+            this.txtValorDeVenda = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.pnlControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidadeEmEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDeVenda)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(32, 55);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(554, 20);
             this.txtNome.TabIndex = 0;
@@ -108,13 +120,6 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "Venda (R$)";
             // 
-            // txtValorDeVenda
-            // 
-            this.txtValorDeVenda.Location = new System.Drawing.Point(312, 198);
-            this.txtValorDeVenda.Name = "txtValorDeVenda";
-            this.txtValorDeVenda.Size = new System.Drawing.Size(274, 20);
-            this.txtValorDeVenda.TabIndex = 6;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -124,13 +129,6 @@
             this.label7.Size = new System.Drawing.Size(78, 15);
             this.label7.TabIndex = 14;
             this.label7.Text = "Compra (R$)";
-            // 
-            // txtValorDeCompra
-            // 
-            this.txtValorDeCompra.Location = new System.Drawing.Point(32, 198);
-            this.txtValorDeCompra.Name = "txtValorDeCompra";
-            this.txtValorDeCompra.Size = new System.Drawing.Size(274, 20);
-            this.txtValorDeCompra.TabIndex = 5;
             // 
             // label1
             // 
@@ -145,6 +143,7 @@
             // txtFornecedor
             // 
             this.txtFornecedor.Location = new System.Drawing.Point(32, 246);
+            this.txtFornecedor.MaxLength = 100;
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.Size = new System.Drawing.Size(554, 20);
             this.txtFornecedor.TabIndex = 7;
@@ -179,6 +178,17 @@
             // 
             // pnlControl
             // 
+            this.pnlControl.Controls.Add(this.label16);
+            this.pnlControl.Controls.Add(this.label15);
+            this.pnlControl.Controls.Add(this.label14);
+            this.pnlControl.Controls.Add(this.label13);
+            this.pnlControl.Controls.Add(this.label12);
+            this.pnlControl.Controls.Add(this.label11);
+            this.pnlControl.Controls.Add(this.label10);
+            this.pnlControl.Controls.Add(this.label9);
+            this.pnlControl.Controls.Add(this.txtValorDeVenda);
+            this.pnlControl.Controls.Add(this.txtValorDeCompra);
+            this.pnlControl.Controls.Add(this.txtQuantidadeEmEstoque);
             this.pnlControl.Controls.Add(this.txtTipo);
             this.pnlControl.Controls.Add(this.label8);
             this.pnlControl.Controls.Add(this.txtGrupo);
@@ -191,11 +201,8 @@
             this.pnlControl.Controls.Add(this.txtFornecedor);
             this.pnlControl.Controls.Add(this.label3);
             this.pnlControl.Controls.Add(this.label6);
-            this.pnlControl.Controls.Add(this.txtValorDeVenda);
             this.pnlControl.Controls.Add(this.label4);
             this.pnlControl.Controls.Add(this.label7);
-            this.pnlControl.Controls.Add(this.txtQuantidadeEmEstoque);
-            this.pnlControl.Controls.Add(this.txtValorDeCompra);
             this.pnlControl.Controls.Add(this.label5);
             this.pnlControl.Controls.Add(this.btnEditar);
             this.pnlControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -212,6 +219,7 @@
             "Caixa",
             "Peso"});
             this.txtTipo.Location = new System.Drawing.Point(32, 149);
+            this.txtTipo.MaxLength = 100;
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(274, 21);
             this.txtTipo.TabIndex = 3;
@@ -234,6 +242,7 @@
             "Grupo2",
             "Grupo3"});
             this.txtGrupo.Location = new System.Drawing.Point(32, 100);
+            this.txtGrupo.MaxLength = 100;
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(274, 21);
             this.txtGrupo.TabIndex = 1;
@@ -246,16 +255,10 @@
             "Marca2",
             "Marca3"});
             this.txtMarca.Location = new System.Drawing.Point(312, 100);
+            this.txtMarca.MaxLength = 100;
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(274, 21);
             this.txtMarca.TabIndex = 2;
-            // 
-            // txtQuantidadeEmEstoque
-            // 
-            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(312, 150);
-            this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
-            this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(274, 20);
-            this.txtQuantidadeEmEstoque.TabIndex = 4;
             // 
             // btnEditar
             // 
@@ -272,6 +275,119 @@
             this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
+            // txtQuantidadeEmEstoque
+            // 
+            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(312, 150);
+            this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
+            this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(274, 20);
+            this.txtQuantidadeEmEstoque.TabIndex = 19;
+            // 
+            // txtValorDeCompra
+            // 
+            this.txtValorDeCompra.DecimalPlaces = 2;
+            this.txtValorDeCompra.Location = new System.Drawing.Point(32, 198);
+            this.txtValorDeCompra.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            131072});
+            this.txtValorDeCompra.Name = "txtValorDeCompra";
+            this.txtValorDeCompra.Size = new System.Drawing.Size(274, 20);
+            this.txtValorDeCompra.TabIndex = 20;
+            // 
+            // txtValorDeVenda
+            // 
+            this.txtValorDeVenda.DecimalPlaces = 2;
+            this.txtValorDeVenda.Location = new System.Drawing.Point(312, 198);
+            this.txtValorDeVenda.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            131072});
+            this.txtValorDeVenda.Name = "txtValorDeVenda";
+            this.txtValorDeVenda.Size = new System.Drawing.Size(274, 20);
+            this.txtValorDeVenda.TabIndex = 22;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(29, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "( * ) Obrigatorio";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(75, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(11, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(356, 135);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(11, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(95, 231);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(11, 13);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(373, 183);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(11, 13);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(102, 182);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(11, 13);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "*";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(56, 135);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(11, 13);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "*";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(66, 85);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(11, 13);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "*";
+            // 
             // FrmCadastroDeProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,11 +399,14 @@
             this.MaximizeBox = false;
             this.Name = "FrmCadastroDeProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro de Produtos";
+            this.Text = "Cadastro de produtos";
             this.Load += new System.EventHandler(this.FormCadastroProdutos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroDeProduto_KeyDown);
             this.pnlControl.ResumeLayout(false);
             this.pnlControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidadeEmEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDeVenda)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -300,9 +419,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtValorDeVenda;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtValorDeCompra;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFornecedor;
         private System.Windows.Forms.Button btnSalvarCadastroProduto;
@@ -310,9 +427,19 @@
         private System.Windows.Forms.Panel pnlControl;
         private System.Windows.Forms.ComboBox txtMarca;
         private System.Windows.Forms.ComboBox txtGrupo;
-        private System.Windows.Forms.TextBox txtQuantidadeEmEstoque;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.ComboBox txtTipo;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown txtQuantidadeEmEstoque;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown txtValorDeVenda;
+        private System.Windows.Forms.NumericUpDown txtValorDeCompra;
     }
 }

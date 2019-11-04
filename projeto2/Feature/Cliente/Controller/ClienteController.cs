@@ -33,6 +33,8 @@ namespace projeto2.Feature.Cliente.Controller
 
         public bool CadastrarDado(ClienteModel cliente)
         {
+            if (string.IsNullOrWhiteSpace(cliente.NomePessoa)) return false;
+
             try
             {
                 if (_clienteDao.Cadastrar(cliente))

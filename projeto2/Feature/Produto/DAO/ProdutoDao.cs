@@ -21,7 +21,7 @@ namespace projeto2.Feature.Produto.Dao
             var cmd = new FbCommand(mSql, conn);
             try
             {
-                cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto.ToUpper();
+                cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
                 cmd.Parameters.Add("@grupo", FbDbType.Integer).Value = produto.GrupoProduto.IdGrupo;
                 cmd.Parameters.Add("@marca", FbDbType.Integer).Value = produto.MarcaProduto.IdMarca;
                 cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = produto.TipoProduto;
