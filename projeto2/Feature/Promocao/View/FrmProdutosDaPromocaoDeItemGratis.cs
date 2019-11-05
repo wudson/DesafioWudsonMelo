@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace projeto2.Feature.Promocao.View
 {
-    public partial class FrmPeriodoPromocao : Form
+    public partial class FrmProdutosDaPromocaoDeItemGratis : Form
     {
-        public FrmPeriodoPromocao()
+        public FrmProdutosDaPromocaoDeItemGratis()
         {
             InitializeComponent();
         }
 
-        private void BtnProximo_Click(object sender, EventArgs e)
-        {
-            new FrmProdutosDaPromocaoComDesconto().ShowDialog();
-        }
-
-        private void btnCancelarCadastroProduto_Click(object sender, EventArgs e)
+        private void btnAdicionarProdutosSelecionadosNaPromocao_Click(object sender, EventArgs e)
         {
 
         }

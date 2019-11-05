@@ -79,10 +79,10 @@ namespace projeto2.Feature.Cliente.View
                 return false;
             }
 
-            if (!rdbFeminino.Checked || !rdbMasculino.Checked)
+            if (!rdbFeminino.Checked && !rdbMasculino.Checked)
             {
                 MessageBox.Show(@"Campo 'Sexo' obrigatorio.");
-                txtDataNascimento.Focus();
+                rdbMasculino.Focus();
                 return false;
             }
 

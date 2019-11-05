@@ -29,7 +29,7 @@ namespace projeto2.Feature.Produto.View
 
         private void BtnSalvarCadastroProduto_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos(pnlControl.Controls)) return;
+            //if (!ValidarCampos(pnlControl.Controls)) return;
 
             if (!_produtoController.CadastrarDado(AtribuirCamposParaModel())) return;
             LimpaCampos(pnlControl.Controls);
@@ -56,13 +56,13 @@ namespace projeto2.Feature.Produto.View
                 ValorVendaProduto = double.Parse(txtValorDeVenda.Text.Trim())
             };
 
-        private static bool ValidarCampos(IEnumerable controles)
-        {
-            if (!controles.Cast<Control>().Any(item => string.IsNullOrWhiteSpace(item.Text))) return true;
-            MessageBox.Show(@"Por favor preencha todos os campos", @"Atenção",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return false;
-        }
+        //private static bool ValidarCampos(IEnumerable controles)
+        //{
+        //    if (!controles.Cast<Control>().Any(item => string.IsNullOrWhiteSpace(item.Text))) return true;
+        //    MessageBox.Show(@"Por favor preencha todos os campos", @"Atenção",
+        //        MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    return false;
+        //}
 
         public void LimpaCampos(Control.ControlCollection controles)
         {
@@ -107,7 +107,7 @@ namespace projeto2.Feature.Produto.View
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos(pnlControl.Controls)) return;
+            //if (!ValidarCampos(pnlControl.Controls)) return;
 
             if (_produtoController.AlterarDado(AtribuirCamposParaModel()))
                 Close();

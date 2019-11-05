@@ -88,7 +88,7 @@ namespace projeto2.Feature.Pedido.Dao
                         IdPedido = Convert.ToInt32(dataReader["ID_PEDIDO"]),
                         DataPedido = Convert.ToDateTime(dataReader["DATA_PEDIDO"]),
                         PrecoTotalPedido = Convert.ToDouble(dataReader["VALOR_TOTAL_PEDIDO"]),
-                        IdClientePedido = Convert.ToInt32(dataReader["NOME_PESSOA"])
+                        IdClientePedido = Convert.ToInt32(dataReader["ID_PESSOA"])
                     });
                 }
                 return pedidos;

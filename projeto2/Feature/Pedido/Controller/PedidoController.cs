@@ -40,7 +40,7 @@ namespace projeto2.Feature.Pedido.Controller
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao listar pedidos.");
+                MessageBox.Show($@"Problemas ao listar pedidos. {ex}");
             }
             return new List<PedidoModel>();
         }

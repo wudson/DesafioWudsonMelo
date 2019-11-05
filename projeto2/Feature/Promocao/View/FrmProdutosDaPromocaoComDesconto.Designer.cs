@@ -49,7 +49,9 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnAdicionarProdutosSelecionadosNaPromocao = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAplicar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesconto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
@@ -266,6 +268,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAplicar);
             this.groupBox1.Controls.Add(this.txtDesconto);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.rdbValorFixo);
@@ -276,6 +279,20 @@
             this.groupBox1.Size = new System.Drawing.Size(344, 81);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
+            // 
+            // btnAplicar
+            // 
+            this.btnAplicar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAplicar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAplicar.Location = new System.Drawing.Point(276, 36);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAplicar.Name = "btnAplicar";
+            this.btnAplicar.Size = new System.Drawing.Size(64, 24);
+            this.btnAplicar.TabIndex = 17;
+            this.btnAplicar.Text = "Aplicar";
+            this.btnAplicar.UseVisualStyleBackColor = false;
+            this.btnAplicar.Click += new System.EventHandler(this.BtnAplicar_Click);
             // 
             // groupBox2
             // 
@@ -290,11 +307,26 @@
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.DarkGray;
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnVoltar.Location = new System.Drawing.Point(25, 470);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(141, 41);
+            this.btnVoltar.TabIndex = 19;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // FrmProdutosDaPromocaoComDesconto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1021, 543);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLimpar);
@@ -302,10 +334,12 @@
             this.Controls.Add(this.btnSalvarPromocao);
             this.Controls.Add(this.dgvProdutosDaPromocao);
             this.Controls.Add(this.lstDeProdutos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmProdutosDaPromocaoComDesconto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Aplicar desconto";
+            this.Text = "Cadastro de promoção";
             this.Load += new System.EventHandler(this.FrmProdutosDaPromocaoComDesconto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtDesconto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).EndInit();
@@ -341,5 +375,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeProdutoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorVendaProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn PreçoComDesconto;
+        private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.Button btnAplicar;
     }
 }

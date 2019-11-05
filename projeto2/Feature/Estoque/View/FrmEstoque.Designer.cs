@@ -29,14 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvEstoque = new System.Windows.Forms.DataGridView();
-            this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GrupoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidadeEstoqueProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +42,13 @@
             this.txtTipo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.ComboBox();
+            this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GrupoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidadeEstoqueProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.gbxFiltros.SuspendLayout();
@@ -75,66 +77,6 @@
             this.dgvEstoque.TabIndex = 1;
             this.dgvEstoque.TabStop = false;
             this.dgvEstoque.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvEstoque_CellFormatting);
-            // 
-            // idProdutoDataGridViewTextBoxColumn
-            // 
-            this.idProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "IdProduto";
-            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "Cod.";
-            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
-            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idProdutoDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // nomeProdutoDataGridViewTextBoxColumn
-            // 
-            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
-            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
-            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
-            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // GrupoProduto
-            // 
-            this.GrupoProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.GrupoProduto.DataPropertyName = "GrupoProduto.Grupo";
-            this.GrupoProduto.HeaderText = "Grupo";
-            this.GrupoProduto.Name = "GrupoProduto";
-            this.GrupoProduto.ReadOnly = true;
-            this.GrupoProduto.Width = 80;
-            // 
-            // tipoProdutoDataGridViewTextBoxColumn
-            // 
-            this.tipoProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tipoProdutoDataGridViewTextBoxColumn.DataPropertyName = "TipoProduto";
-            this.tipoProdutoDataGridViewTextBoxColumn.HeaderText = "Tipo";
-            this.tipoProdutoDataGridViewTextBoxColumn.Name = "tipoProdutoDataGridViewTextBoxColumn";
-            this.tipoProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tipoProdutoDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // valorVendaProduto
-            // 
-            this.valorVendaProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
-            this.valorVendaProduto.HeaderText = "Preço";
-            this.valorVendaProduto.Name = "valorVendaProduto";
-            this.valorVendaProduto.ReadOnly = true;
-            this.valorVendaProduto.Width = 70;
-            // 
-            // quantidadeEstoqueProduto
-            // 
-            this.quantidadeEstoqueProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.quantidadeEstoqueProduto.DataPropertyName = "QuantidadeEstoqueProduto";
-            this.quantidadeEstoqueProduto.HeaderText = "Quantidade";
-            this.quantidadeEstoqueProduto.Name = "quantidadeEstoqueProduto";
-            this.quantidadeEstoqueProduto.ReadOnly = true;
-            this.quantidadeEstoqueProduto.Width = 70;
-            // 
-            // valorTotal
-            // 
-            this.valorTotal.DataPropertyName = "ValorTotalEstoque";
-            this.valorTotal.HeaderText = "Preço Total";
-            this.valorTotal.Name = "valorTotal";
-            this.valorTotal.ReadOnly = true;
             // 
             // produtoBindingSource
             // 
@@ -235,6 +177,72 @@
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(174, 21);
             this.txtGrupo.TabIndex = 1;
+            // 
+            // idProdutoDataGridViewTextBoxColumn
+            // 
+            this.idProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "IdProduto";
+            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "Cod.";
+            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
+            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idProdutoDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // nomeProdutoDataGridViewTextBoxColumn
+            // 
+            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
+            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
+            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
+            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // GrupoProduto
+            // 
+            this.GrupoProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.GrupoProduto.DataPropertyName = "GrupoProduto.Grupo";
+            this.GrupoProduto.HeaderText = "Grupo";
+            this.GrupoProduto.Name = "GrupoProduto";
+            this.GrupoProduto.ReadOnly = true;
+            this.GrupoProduto.Width = 80;
+            // 
+            // tipoProdutoDataGridViewTextBoxColumn
+            // 
+            this.tipoProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.tipoProdutoDataGridViewTextBoxColumn.DataPropertyName = "TipoProduto";
+            this.tipoProdutoDataGridViewTextBoxColumn.HeaderText = "Tipo";
+            this.tipoProdutoDataGridViewTextBoxColumn.Name = "tipoProdutoDataGridViewTextBoxColumn";
+            this.tipoProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tipoProdutoDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // valorVendaProduto
+            // 
+            this.valorVendaProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle1;
+            this.valorVendaProduto.HeaderText = "Preço";
+            this.valorVendaProduto.Name = "valorVendaProduto";
+            this.valorVendaProduto.ReadOnly = true;
+            this.valorVendaProduto.Width = 70;
+            // 
+            // quantidadeEstoqueProduto
+            // 
+            this.quantidadeEstoqueProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.quantidadeEstoqueProduto.DataPropertyName = "QuantidadeEstoqueProduto";
+            this.quantidadeEstoqueProduto.HeaderText = "Quantidade";
+            this.quantidadeEstoqueProduto.Name = "quantidadeEstoqueProduto";
+            this.quantidadeEstoqueProduto.ReadOnly = true;
+            this.quantidadeEstoqueProduto.Width = 70;
+            // 
+            // valorTotal
+            // 
+            this.valorTotal.DataPropertyName = "ValorTotalEstoque";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = "-";
+            this.valorTotal.DefaultCellStyle = dataGridViewCellStyle2;
+            this.valorTotal.HeaderText = "Preço Total";
+            this.valorTotal.Name = "valorTotal";
+            this.valorTotal.ReadOnly = true;
             // 
             // FrmEstoque
             // 

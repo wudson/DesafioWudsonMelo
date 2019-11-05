@@ -40,26 +40,26 @@
             this.btnSalvarCadastroProduto = new System.Windows.Forms.Button();
             this.btnCancelarCadastroProduto = new System.Windows.Forms.Button();
             this.pnlControl = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtValorDeVenda = new System.Windows.Forms.NumericUpDown();
+            this.txtValorDeCompra = new System.Windows.Forms.NumericUpDown();
+            this.txtQuantidadeEmEstoque = new System.Windows.Forms.NumericUpDown();
             this.txtTipo = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.ComboBox();
             this.txtMarca = new System.Windows.Forms.ComboBox();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.txtQuantidadeEmEstoque = new System.Windows.Forms.NumericUpDown();
-            this.txtValorDeCompra = new System.Windows.Forms.NumericUpDown();
-            this.txtValorDeVenda = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.pnlControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidadeEmEstoque)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtValorDeVenda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidadeEmEstoque)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNome
@@ -211,6 +211,119 @@
             this.pnlControl.Size = new System.Drawing.Size(620, 352);
             this.pnlControl.TabIndex = 0;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(66, 85);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(11, 13);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "*";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(56, 135);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(11, 13);
+            this.label15.TabIndex = 22;
+            this.label15.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(102, 182);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(11, 13);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(373, 183);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(11, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(95, 231);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(11, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(356, 135);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(11, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(75, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(11, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(29, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "( * ) Obrigatorio";
+            // 
+            // txtValorDeVenda
+            // 
+            this.txtValorDeVenda.DecimalPlaces = 2;
+            this.txtValorDeVenda.Location = new System.Drawing.Point(312, 198);
+            this.txtValorDeVenda.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            131072});
+            this.txtValorDeVenda.Name = "txtValorDeVenda";
+            this.txtValorDeVenda.Size = new System.Drawing.Size(274, 20);
+            this.txtValorDeVenda.TabIndex = 6;
+            // 
+            // txtValorDeCompra
+            // 
+            this.txtValorDeCompra.DecimalPlaces = 2;
+            this.txtValorDeCompra.Location = new System.Drawing.Point(32, 198);
+            this.txtValorDeCompra.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            131072});
+            this.txtValorDeCompra.Name = "txtValorDeCompra";
+            this.txtValorDeCompra.Size = new System.Drawing.Size(274, 20);
+            this.txtValorDeCompra.TabIndex = 5;
+            // 
+            // txtQuantidadeEmEstoque
+            // 
+            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(312, 150);
+            this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
+            this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(274, 20);
+            this.txtQuantidadeEmEstoque.TabIndex = 4;
+            // 
             // txtTipo
             // 
             this.txtTipo.FormattingEnabled = true;
@@ -275,119 +388,6 @@
             this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
-            // txtQuantidadeEmEstoque
-            // 
-            this.txtQuantidadeEmEstoque.Location = new System.Drawing.Point(312, 150);
-            this.txtQuantidadeEmEstoque.Name = "txtQuantidadeEmEstoque";
-            this.txtQuantidadeEmEstoque.Size = new System.Drawing.Size(274, 20);
-            this.txtQuantidadeEmEstoque.TabIndex = 19;
-            // 
-            // txtValorDeCompra
-            // 
-            this.txtValorDeCompra.DecimalPlaces = 2;
-            this.txtValorDeCompra.Location = new System.Drawing.Point(32, 198);
-            this.txtValorDeCompra.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            131072});
-            this.txtValorDeCompra.Name = "txtValorDeCompra";
-            this.txtValorDeCompra.Size = new System.Drawing.Size(274, 20);
-            this.txtValorDeCompra.TabIndex = 20;
-            // 
-            // txtValorDeVenda
-            // 
-            this.txtValorDeVenda.DecimalPlaces = 2;
-            this.txtValorDeVenda.Location = new System.Drawing.Point(312, 198);
-            this.txtValorDeVenda.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            131072});
-            this.txtValorDeVenda.Name = "txtValorDeVenda";
-            this.txtValorDeVenda.Size = new System.Drawing.Size(274, 20);
-            this.txtValorDeVenda.TabIndex = 22;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(29, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 13);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "( * ) Obrigatorio";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(75, 40);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(11, 13);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "*";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(356, 135);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(11, 13);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "*";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(95, 231);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(11, 13);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "*";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(373, 183);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(11, 13);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "*";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(102, 182);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(11, 13);
-            this.label14.TabIndex = 28;
-            this.label14.Text = "*";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(56, 135);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(11, 13);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "*";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(66, 85);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(11, 13);
-            this.label16.TabIndex = 30;
-            this.label16.Text = "*";
-            // 
             // FrmCadastroDeProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,9 +404,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroDeProduto_KeyDown);
             this.pnlControl.ResumeLayout(false);
             this.pnlControl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidadeEmEstoque)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtValorDeVenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidadeEmEstoque)).EndInit();
             this.ResumeLayout(false);
 
         }

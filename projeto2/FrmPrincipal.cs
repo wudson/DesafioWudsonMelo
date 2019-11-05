@@ -6,6 +6,7 @@ using projeto2.Feature.Pedido.View;
 using projeto2.Feature.Produto.View;
 using System;
 using System.Windows.Forms;
+using projeto2.Feature.Promocao.View;
 
 namespace projeto2
 {
@@ -63,5 +64,10 @@ namespace projeto2
         private void BtnGrupos_Click(object sender, EventArgs e) => new FrmGrupos().ShowDialog();
 
         private void BtnEstoque_Click(object sender, EventArgs e) => new FrmEstoque().ShowDialog();
+
+        private void btnPromocoes_Click(object sender, EventArgs e)
+        {
+            new FrmPromocoes().ShowDialog();
+        }
     }
 }

@@ -46,8 +46,14 @@
             this.txtRg = new System.Windows.Forms.MaskedTextBox();
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.pnlFormCliente = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.ComboBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,21 +69,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtRua = new System.Windows.Forms.TextBox();
             this.grpContato = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.lblCelular = new System.Windows.Forms.Label();
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.grpDadosPessoais = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.pnlFormCliente.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpContato.SuspendLayout();
@@ -109,7 +109,7 @@
             this.lblRg.Location = new System.Drawing.Point(17, 160);
             this.lblRg.Name = "lblRg";
             this.lblRg.Size = new System.Drawing.Size(25, 15);
-            this.lblRg.TabIndex = 9;
+            this.lblRg.TabIndex = 12;
             this.lblRg.Text = "RG";
             // 
             // lblCpf
@@ -119,7 +119,7 @@
             this.lblCpf.Location = new System.Drawing.Point(219, 160);
             this.lblCpf.Name = "lblCpf";
             this.lblCpf.Size = new System.Drawing.Size(30, 15);
-            this.lblCpf.TabIndex = 10;
+            this.lblCpf.TabIndex = 13;
             this.lblCpf.Text = "CPF";
             // 
             // lblEmail
@@ -147,7 +147,7 @@
             this.lblDataNascimento.Location = new System.Drawing.Point(16, 79);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(73, 15);
-            this.lblDataNascimento.TabIndex = 7;
+            this.lblDataNascimento.TabIndex = 8;
             this.lblDataNascimento.Text = "Nascimento";
             // 
             // rdbMasculino
@@ -179,7 +179,7 @@
             this.lblSexo.Location = new System.Drawing.Point(17, 121);
             this.lblSexo.Name = "lblSexo";
             this.lblSexo.Size = new System.Drawing.Size(35, 15);
-            this.lblSexo.TabIndex = 8;
+            this.lblSexo.TabIndex = 10;
             this.lblSexo.Text = "Sexo";
             // 
             // btnCancelarCadastroCliente
@@ -187,11 +187,11 @@
             this.btnCancelarCadastroCliente.BackColor = System.Drawing.Color.DarkGray;
             this.btnCancelarCadastroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarCadastroCliente.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCancelarCadastroCliente.Location = new System.Drawing.Point(688, 286);
+            this.btnCancelarCadastroCliente.Location = new System.Drawing.Point(688, 285);
             this.btnCancelarCadastroCliente.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelarCadastroCliente.Name = "btnCancelarCadastroCliente";
             this.btnCancelarCadastroCliente.Size = new System.Drawing.Size(141, 42);
-            this.btnCancelarCadastroCliente.TabIndex = 4;
+            this.btnCancelarCadastroCliente.TabIndex = 5;
             this.btnCancelarCadastroCliente.Text = "Cancelar";
             this.btnCancelarCadastroCliente.UseVisualStyleBackColor = false;
             this.btnCancelarCadastroCliente.Click += new System.EventHandler(this.BtnCancelarCadastroCliente_Click);
@@ -201,11 +201,11 @@
             this.btnSalvarCadastroCliente.BackColor = System.Drawing.Color.LimeGreen;
             this.btnSalvarCadastroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvarCadastroCliente.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnSalvarCadastroCliente.Location = new System.Drawing.Point(523, 285);
+            this.btnSalvarCadastroCliente.Location = new System.Drawing.Point(535, 285);
             this.btnSalvarCadastroCliente.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalvarCadastroCliente.Name = "btnSalvarCadastroCliente";
             this.btnSalvarCadastroCliente.Size = new System.Drawing.Size(141, 42);
-            this.btnSalvarCadastroCliente.TabIndex = 3;
+            this.btnSalvarCadastroCliente.TabIndex = 4;
             this.btnSalvarCadastroCliente.Text = "Salvar";
             this.btnSalvarCadastroCliente.UseVisualStyleBackColor = false;
             this.btnSalvarCadastroCliente.Click += new System.EventHandler(this.BtnSalvarCadastroCliente_Click);
@@ -217,7 +217,7 @@
             this.lblTelefone.Location = new System.Drawing.Point(17, 59);
             this.lblTelefone.Name = "lblTelefone";
             this.lblTelefone.Size = new System.Drawing.Size(55, 15);
-            this.lblTelefone.TabIndex = 4;
+            this.lblTelefone.TabIndex = 5;
             this.lblTelefone.Text = "Telefone";
             // 
             // txtTelefone
@@ -272,16 +272,26 @@
             this.pnlFormCliente.Size = new System.Drawing.Size(916, 392);
             this.pnlFormCliente.TabIndex = 0;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(20, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "( * ) Obrigatorio";
+            // 
             // btnAlterar
             // 
             this.btnAlterar.BackColor = System.Drawing.Color.LimeGreen;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnAlterar.Location = new System.Drawing.Point(523, 285);
+            this.btnAlterar.Location = new System.Drawing.Point(535, 285);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(141, 42);
-            this.btnAlterar.TabIndex = 5;
+            this.btnAlterar.TabIndex = 3;
             this.btnAlterar.Text = "Salvar";
             this.btnAlterar.UseVisualStyleBackColor = false;
             this.btnAlterar.Visible = false;
@@ -315,6 +325,56 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Endereço";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(266, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(47, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(11, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(47, 83);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(11, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(272, 82);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(11, 13);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(63, 161);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(11, 13);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "*";
+            // 
             // txtCidade
             // 
             this.txtCidade.FormattingEnabled = true;
@@ -339,7 +399,7 @@
             this.label8.Location = new System.Drawing.Point(225, 81);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 15);
-            this.label8.TabIndex = 10;
+            this.label8.TabIndex = 13;
             this.label8.Text = "Numero";
             // 
             // txtComplemento
@@ -357,7 +417,7 @@
             this.label7.Location = new System.Drawing.Point(22, 122);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 15);
-            this.label7.TabIndex = 11;
+            this.label7.TabIndex = 15;
             this.label7.Text = "Complemento";
             // 
             // txtEstado
@@ -388,7 +448,7 @@
             this.label6.Location = new System.Drawing.Point(22, 160);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 15);
-            this.label6.TabIndex = 13;
+            this.label6.TabIndex = 16;
             this.label6.Text = "Cidade";
             // 
             // txtCep
@@ -406,7 +466,7 @@
             this.label4.Location = new System.Drawing.Point(225, 123);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 15);
-            this.label4.TabIndex = 12;
+            this.label4.TabIndex = 18;
             this.label4.Text = "Bairro";
             // 
             // label2
@@ -416,7 +476,7 @@
             this.label2.Location = new System.Drawing.Point(225, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 15);
-            this.label2.TabIndex = 8;
+            this.label2.TabIndex = 9;
             this.label2.Text = "Estado";
             // 
             // label5
@@ -436,7 +496,7 @@
             this.label3.Location = new System.Drawing.Point(22, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 15);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 11;
             this.label3.Text = "Rua";
             // 
             // txtRua
@@ -464,6 +524,26 @@
             this.grpContato.TabStop = false;
             this.grpContato.Text = "Contato";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(261, 61);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(11, 13);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "*";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(56, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(11, 13);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "*";
+            // 
             // lblCelular
             // 
             this.lblCelular.AutoSize = true;
@@ -471,7 +551,7 @@
             this.lblCelular.Location = new System.Drawing.Point(219, 59);
             this.lblCelular.Name = "lblCelular";
             this.lblCelular.Size = new System.Drawing.Size(46, 15);
-            this.lblCelular.TabIndex = 5;
+            this.lblCelular.TabIndex = 6;
             this.lblCelular.Text = "Celular";
             // 
             // txtCelular
@@ -507,96 +587,6 @@
             this.grpDadosPessoais.TabStop = false;
             this.grpDadosPessoais.Text = "Dados Pessoais";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(244, 159);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(11, 13);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "*";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(20, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 13);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "( * ) Obrigatorio";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(266, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(11, 13);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "*";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(47, 41);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(11, 13);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "*";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(47, 83);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(11, 13);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "*";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(272, 82);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(11, 13);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "*";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(63, 161);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(11, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "*";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(261, 61);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(11, 13);
-            this.label15.TabIndex = 32;
-            this.label15.Text = "*";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(56, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(11, 13);
-            this.label16.TabIndex = 33;
-            this.label16.Text = "*";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -604,7 +594,7 @@
             this.label17.Location = new System.Drawing.Point(47, 123);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(11, 13);
-            this.label17.TabIndex = 34;
+            this.label17.TabIndex = 11;
             this.label17.Text = "*";
             // 
             // label18
@@ -614,7 +604,7 @@
             this.label18.Location = new System.Drawing.Point(84, 79);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(11, 13);
-            this.label18.TabIndex = 35;
+            this.label18.TabIndex = 9;
             this.label18.Text = "*";
             // 
             // label19
@@ -624,8 +614,18 @@
             this.label19.Location = new System.Drawing.Point(53, 40);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(11, 13);
-            this.label19.TabIndex = 36;
+            this.label19.TabIndex = 7;
             this.label19.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(244, 159);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(11, 13);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "*";
             // 
             // FrmCadastroDeCliente
             // 

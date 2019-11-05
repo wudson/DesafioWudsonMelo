@@ -53,6 +53,7 @@
             this.btnPromocoes.Text = "Promoções - [ 5 ]";
             this.btnPromocoes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPromocoes.UseVisualStyleBackColor = false;
+            this.btnPromocoes.Click += new System.EventHandler(this.btnPromocoes_Click);
             // 
             // btnEstoque
             // 

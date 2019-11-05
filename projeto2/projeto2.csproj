@@ -128,6 +128,12 @@
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Promocao\Model\PromocaoModel.cs" />
+    <Compile Include="Feature\Promocao\View\FrmFinalizarCadastroPromocao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\FrmFinalizarCadastroPromocao.Designer.cs">
+      <DependentUpon>FrmFinalizarCadastroPromocao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Promocao\View\FrmPeriodoPromocao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,12 @@
     </Compile>
     <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.Designer.cs">
       <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoDeItemGratis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoDeItemGratis.Designer.cs">
+      <DependentUpon>FrmProdutosDaPromocaoDeItemGratis.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Promocao\View\FrmPromocoes.cs">
       <SubType>Form</SubType>
@@ -202,11 +214,17 @@
     <EmbeddedResource Include="Feature\Pedido\View\FrmItensPedido.resx">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Promocao\View\FrmFinalizarCadastroPromocao.resx">
+      <DependentUpon>FrmFinalizarCadastroPromocao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmPeriodoPromocao.resx">
       <DependentUpon>FrmPeriodoPromocao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.resx">
       <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Promocao\View\FrmProdutosDaPromocaoDeItemGratis.resx">
+      <DependentUpon>FrmProdutosDaPromocaoDeItemGratis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmPromocoes.resx">
       <DependentUpon>FrmPromocoes.cs</DependentUpon>
