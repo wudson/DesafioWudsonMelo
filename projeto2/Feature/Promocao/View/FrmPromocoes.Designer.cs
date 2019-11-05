@@ -28,29 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.promocaoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAdcionar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.nomePromocao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoPromocao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusPromocao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.promocaoModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.nomePromocaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusPromocaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nomePromocao,
-            this.tipoPromocao,
-            this.statusPromocao});
+            this.nomePromocaoDataGridViewTextBoxColumn,
+            this.statusPromocaoDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.promocaoModelBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(12, 98);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(625, 340);
             this.dataGridView1.TabIndex = 7;
+            // 
+            // promocaoModelBindingSource
+            // 
+            this.promocaoModelBindingSource.DataSource = typeof(projeto2.Feature.Promocao.Model.PromocaoModel);
             // 
             // btnAdcionar
             // 
@@ -79,28 +88,23 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // nomePromocao
+            // promocaoModelBindingSource1
             // 
-            this.nomePromocao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomePromocao.HeaderText = "Nome";
-            this.nomePromocao.Name = "nomePromocao";
-            this.nomePromocao.ReadOnly = true;
+            this.promocaoModelBindingSource1.DataSource = typeof(projeto2.Feature.Promocao.Model.PromocaoModel);
             // 
-            // tipoPromocao
+            // nomePromocaoDataGridViewTextBoxColumn
             // 
-            this.tipoPromocao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.tipoPromocao.HeaderText = "Tipo";
-            this.tipoPromocao.Name = "tipoPromocao";
-            this.tipoPromocao.ReadOnly = true;
-            this.tipoPromocao.Width = 120;
+            this.nomePromocaoDataGridViewTextBoxColumn.DataPropertyName = "NomePromocao";
+            this.nomePromocaoDataGridViewTextBoxColumn.HeaderText = "NomePromocao";
+            this.nomePromocaoDataGridViewTextBoxColumn.Name = "nomePromocaoDataGridViewTextBoxColumn";
+            this.nomePromocaoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // statusPromocao
+            // statusPromocaoDataGridViewTextBoxColumn
             // 
-            this.statusPromocao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.statusPromocao.HeaderText = "Status";
-            this.statusPromocao.Name = "statusPromocao";
-            this.statusPromocao.ReadOnly = true;
-            this.statusPromocao.Width = 120;
+            this.statusPromocaoDataGridViewTextBoxColumn.DataPropertyName = "StatusPromocao";
+            this.statusPromocaoDataGridViewTextBoxColumn.HeaderText = "StatusPromocao";
+            this.statusPromocaoDataGridViewTextBoxColumn.Name = "statusPromocaoDataGridViewTextBoxColumn";
+            this.statusPromocaoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmPromocoes
             // 
@@ -117,6 +121,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Promoções";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,8 +131,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAdcionar;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomePromocao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoPromocao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusPromocao;
+        private System.Windows.Forms.BindingSource promocaoModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomePromocaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusPromocaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource promocaoModelBindingSource1;
     }
 }

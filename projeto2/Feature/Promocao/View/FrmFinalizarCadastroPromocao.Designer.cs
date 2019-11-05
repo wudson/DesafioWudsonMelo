@@ -31,15 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFinalizarCadastroPromocao));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.txtDataFim = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnCancelarCadastroProduto = new System.Windows.Forms.Button();
-            this.btnProximo = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.txtNome = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -52,52 +50,46 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // dateTimePicker2
+            // txtDataFim
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            resources.ApplyResources(this.dateTimePicker2, "dateTimePicker2");
-            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.txtDataFim.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            resources.ApplyResources(this.txtDataFim, "txtDataFim");
+            this.txtDataFim.Name = "txtDataFim";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // dateTimePicker1
+            // txtDataInicio
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
-            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.txtDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            resources.ApplyResources(this.txtDataInicio, "txtDataInicio");
+            this.txtDataInicio.Name = "txtDataInicio";
             // 
-            // dataGridView1
+            // btnCancelar
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Name = "dataGridView1";
+            this.btnCancelar.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.btnCancelar, "btnCancelar");
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // btnCancelarCadastroProduto
+            // btnSalvar
             // 
-            this.btnCancelarCadastroProduto.BackColor = System.Drawing.Color.DarkGray;
-            resources.ApplyResources(this.btnCancelarCadastroProduto, "btnCancelarCadastroProduto");
-            this.btnCancelarCadastroProduto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCancelarCadastroProduto.Name = "btnCancelarCadastroProduto";
-            this.btnCancelarCadastroProduto.UseVisualStyleBackColor = false;
+            this.btnSalvar.BackColor = System.Drawing.Color.LimeGreen;
+            resources.ApplyResources(this.btnSalvar, "btnSalvar");
+            this.btnSalvar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.UseVisualStyleBackColor = false;
             // 
-            // btnProximo
+            // btnVoltar
             // 
-            this.btnProximo.BackColor = System.Drawing.Color.LimeGreen;
-            resources.ApplyResources(this.btnProximo, "btnProximo");
-            this.btnProximo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnProximo.Name = "btnProximo";
-            this.btnProximo.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DarkGray;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnVoltar.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.btnVoltar, "btnVoltar");
+            this.btnVoltar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.UseVisualStyleBackColor = false;
             // 
             // txtNome
             // 
@@ -109,20 +101,18 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnCancelarCadastroProduto);
-            this.Controls.Add(this.btnProximo);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnVoltar);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.txtDataFim);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.txtDataInicio);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmFinalizarCadastroPromocao";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,13 +122,12 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker txtDataFim;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnCancelarCadastroProduto;
-        private System.Windows.Forms.Button btnProximo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker txtDataInicio;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.TextBox txtNome;
     }
 }

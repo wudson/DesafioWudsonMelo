@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.rdbValorFixo = new System.Windows.Forms.RadioButton();
             this.rdbPorcentagem = new System.Windows.Forms.RadioButton();
@@ -40,9 +41,6 @@
             this.rdbMarca = new System.Windows.Forms.RadioButton();
             this.lstDeProdutos = new System.Windows.Forms.CheckedListBox();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
-            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreçoComDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnCancelarPromocao = new System.Windows.Forms.Button();
             this.btnSalvarPromocao = new System.Windows.Forms.Button();
@@ -52,6 +50,10 @@
             this.btnAplicar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnVoltar = new System.Windows.Forms.Button();
+            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreçoComDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesconto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
@@ -170,6 +172,7 @@
             this.dgvProdutosDaPromocao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutosDaPromocao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomeProdutoDataGridViewTextBoxColumn,
+            this.ValorCompraProduto,
             this.valorVendaProduto,
             this.PreçoComDesconto});
             this.dgvProdutosDaPromocao.DataSource = this.produtoBindingSource;
@@ -184,28 +187,6 @@
             this.dgvProdutosDaPromocao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProdutosDaPromocao_CellDoubleClick);
             this.dgvProdutosDaPromocao.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvProdutosDaPromocao_CellFormatting);
             this.dgvProdutosDaPromocao.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DgvProdutosDaPromocao_DataBindingComplete);
-            // 
-            // nomeProdutoDataGridViewTextBoxColumn
-            // 
-            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
-            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
-            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
-            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorVendaProduto
-            // 
-            this.valorVendaProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
-            this.valorVendaProduto.HeaderText = "Preço (R$)";
-            this.valorVendaProduto.Name = "valorVendaProduto";
-            this.valorVendaProduto.ReadOnly = true;
-            // 
-            // PreçoComDesconto
-            // 
-            this.PreçoComDesconto.HeaderText = "Preço com desconto";
-            this.PreçoComDesconto.Name = "PreçoComDesconto";
-            this.PreçoComDesconto.ReadOnly = true;
             // 
             // produtoBindingSource
             // 
@@ -235,7 +216,7 @@
             this.btnSalvarPromocao.Name = "btnSalvarPromocao";
             this.btnSalvarPromocao.Size = new System.Drawing.Size(141, 41);
             this.btnSalvarPromocao.TabIndex = 13;
-            this.btnSalvarPromocao.Text = "Salvar";
+            this.btnSalvarPromocao.Text = "Proximo";
             this.btnSalvarPromocao.UseVisualStyleBackColor = false;
             // 
             // btnLimpar
@@ -321,6 +302,43 @@
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
+            // nomeProdutoDataGridViewTextBoxColumn
+            // 
+            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
+            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
+            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
+            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ValorCompraProduto
+            // 
+            this.ValorCompraProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ValorCompraProduto.DataPropertyName = "ValorCompraProduto";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ValorCompraProduto.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ValorCompraProduto.HeaderText = "Preço de compra";
+            this.ValorCompraProduto.Name = "ValorCompraProduto";
+            this.ValorCompraProduto.ReadOnly = true;
+            this.ValorCompraProduto.Width = 85;
+            // 
+            // valorVendaProduto
+            // 
+            this.valorVendaProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
+            this.valorVendaProduto.HeaderText = "Preço de venda";
+            this.valorVendaProduto.Name = "valorVendaProduto";
+            this.valorVendaProduto.ReadOnly = true;
+            this.valorVendaProduto.Width = 85;
+            // 
+            // PreçoComDesconto
+            // 
+            this.PreçoComDesconto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.PreçoComDesconto.HeaderText = "Preço com desconto";
+            this.PreçoComDesconto.Name = "PreçoComDesconto";
+            this.PreçoComDesconto.ReadOnly = true;
+            this.PreçoComDesconto.Width = 85;
+            // 
             // FrmProdutosDaPromocaoComDesconto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,10 +390,11 @@
         private System.Windows.Forms.Button btnAdicionarProdutosSelecionadosNaPromocao;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeProdutoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorVendaProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PreçoComDesconto;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.Button btnAplicar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeProdutoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorCompraProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorVendaProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreçoComDesconto;
     }
 }

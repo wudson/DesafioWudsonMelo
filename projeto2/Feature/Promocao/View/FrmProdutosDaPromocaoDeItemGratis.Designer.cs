@@ -32,8 +32,8 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.rdbGrupo = new System.Windows.Forms.RadioButton();
             this.btnAdicionarProdutosSelecionadosNaPromocao = new System.Windows.Forms.Button();
             this.rdbProduto = new System.Windows.Forms.RadioButton();
@@ -43,10 +43,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnBrinde = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.rdbValorFixo = new System.Windows.Forms.RadioButton();
-            this.rdbPorcentagem = new System.Windows.Forms.RadioButton();
+            this.rdbCompreMenosLeveMais = new System.Windows.Forms.RadioButton();
+            this.rdbItemDeBrinde = new System.Windows.Forms.RadioButton();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnCancelarPromocao = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvarPromocao = new System.Windows.Forms.Button();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
             this.produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,8 +77,8 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.btnBuscar);
+            this.groupBox2.Controls.Add(this.txtBuscar);
             this.groupBox2.Controls.Add(this.rdbGrupo);
             this.groupBox2.Controls.Add(this.btnAdicionarProdutosSelecionadosNaPromocao);
             this.groupBox2.Controls.Add(this.rdbProduto);
@@ -99,25 +99,25 @@
             this.label2.TabIndex = 22;
             this.label2.Text = "Buscar:";
             // 
-            // button1
+            // btnBuscar
             // 
-            this.button1.BackColor = System.Drawing.Color.LimeGreen;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(194, 71);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 24);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnBuscar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnBuscar.Location = new System.Drawing.Point(194, 71);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(48, 24);
+            this.btnBuscar.TabIndex = 20;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // txtBuscar
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 74);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(179, 20);
-            this.textBox2.TabIndex = 21;
+            this.txtBuscar.Location = new System.Drawing.Point(12, 74);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(179, 20);
+            this.txtBuscar.TabIndex = 21;
             // 
             // rdbGrupo
             // 
@@ -171,8 +171,8 @@
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.btnBrinde);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.rdbValorFixo);
-            this.groupBox1.Controls.Add(this.rdbPorcentagem);
+            this.groupBox1.Controls.Add(this.rdbCompreMenosLeveMais);
+            this.groupBox1.Controls.Add(this.rdbItemDeBrinde);
             this.groupBox1.Location = new System.Drawing.Point(25, 7);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(509, 99);
@@ -217,27 +217,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Promoção:";
             // 
-            // rdbValorFixo
+            // rdbCompreMenosLeveMais
             // 
-            this.rdbValorFixo.AutoSize = true;
-            this.rdbValorFixo.Checked = true;
-            this.rdbValorFixo.Location = new System.Drawing.Point(12, 38);
-            this.rdbValorFixo.Name = "rdbValorFixo";
-            this.rdbValorFixo.Size = new System.Drawing.Size(145, 17);
-            this.rdbValorFixo.TabIndex = 1;
-            this.rdbValorFixo.TabStop = true;
-            this.rdbValorFixo.Text = "Compre menos, leve mais";
-            this.rdbValorFixo.UseVisualStyleBackColor = true;
+            this.rdbCompreMenosLeveMais.AutoSize = true;
+            this.rdbCompreMenosLeveMais.Checked = true;
+            this.rdbCompreMenosLeveMais.Location = new System.Drawing.Point(12, 38);
+            this.rdbCompreMenosLeveMais.Name = "rdbCompreMenosLeveMais";
+            this.rdbCompreMenosLeveMais.Size = new System.Drawing.Size(145, 17);
+            this.rdbCompreMenosLeveMais.TabIndex = 1;
+            this.rdbCompreMenosLeveMais.TabStop = true;
+            this.rdbCompreMenosLeveMais.Text = "Compre menos, leve mais";
+            this.rdbCompreMenosLeveMais.UseVisualStyleBackColor = true;
             // 
-            // rdbPorcentagem
+            // rdbItemDeBrinde
             // 
-            this.rdbPorcentagem.AutoSize = true;
-            this.rdbPorcentagem.Location = new System.Drawing.Point(218, 38);
-            this.rdbPorcentagem.Name = "rdbPorcentagem";
-            this.rdbPorcentagem.Size = new System.Drawing.Size(92, 17);
-            this.rdbPorcentagem.TabIndex = 2;
-            this.rdbPorcentagem.Text = "Item de brinde";
-            this.rdbPorcentagem.UseVisualStyleBackColor = true;
+            this.rdbItemDeBrinde.AutoSize = true;
+            this.rdbItemDeBrinde.Location = new System.Drawing.Point(218, 38);
+            this.rdbItemDeBrinde.Name = "rdbItemDeBrinde";
+            this.rdbItemDeBrinde.Size = new System.Drawing.Size(92, 17);
+            this.rdbItemDeBrinde.TabIndex = 2;
+            this.rdbItemDeBrinde.Text = "Item de brinde";
+            this.rdbItemDeBrinde.UseVisualStyleBackColor = true;
             // 
             // btnLimpar
             // 
@@ -252,18 +252,18 @@
             this.btnLimpar.Text = "Limpar produtos";
             this.btnLimpar.UseVisualStyleBackColor = false;
             // 
-            // btnCancelarPromocao
+            // btnCancelar
             // 
-            this.btnCancelarPromocao.BackColor = System.Drawing.Color.DarkGray;
-            this.btnCancelarPromocao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarPromocao.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCancelarPromocao.Location = new System.Drawing.Point(855, 537);
-            this.btnCancelarPromocao.Margin = new System.Windows.Forms.Padding(0);
-            this.btnCancelarPromocao.Name = "btnCancelarPromocao";
-            this.btnCancelarPromocao.Size = new System.Drawing.Size(141, 41);
-            this.btnCancelarPromocao.TabIndex = 23;
-            this.btnCancelarPromocao.Text = "Cancelar";
-            this.btnCancelarPromocao.UseVisualStyleBackColor = false;
+            this.btnCancelar.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCancelar.Location = new System.Drawing.Point(855, 537);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(141, 41);
+            this.btnCancelar.TabIndex = 23;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnSalvarPromocao
             // 
@@ -275,7 +275,7 @@
             this.btnSalvarPromocao.Name = "btnSalvarPromocao";
             this.btnSalvarPromocao.Size = new System.Drawing.Size(141, 41);
             this.btnSalvarPromocao.TabIndex = 22;
-            this.btnSalvarPromocao.Text = "Salvar";
+            this.btnSalvarPromocao.Text = "Proximo";
             this.btnSalvarPromocao.UseVisualStyleBackColor = false;
             // 
             // dgvProdutosDaPromocao
@@ -353,7 +353,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLimpar);
-            this.Controls.Add(this.btnCancelarPromocao);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalvarPromocao);
             this.Controls.Add(this.dgvProdutosDaPromocao);
             this.Controls.Add(this.lstDeProdutos);
@@ -384,18 +384,18 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnBrinde;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton rdbValorFixo;
-        private System.Windows.Forms.RadioButton rdbPorcentagem;
+        private System.Windows.Forms.RadioButton rdbCompreMenosLeveMais;
+        private System.Windows.Forms.RadioButton rdbItemDeBrinde;
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.Button btnCancelarPromocao;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvarPromocao;
         private System.Windows.Forms.DataGridView dgvProdutosDaPromocao;
         private System.Windows.Forms.CheckedListBox lstDeProdutos;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.BindingSource produtoBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn produto;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeProdutoDataGridViewTextBoxColumn;

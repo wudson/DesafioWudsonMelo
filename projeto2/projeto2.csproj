@@ -261,6 +261,7 @@
     <None Include="Properties\DataSources\projeto2.Feature.Pedido.Model.ItemPedidoModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Pedido.Model.PedidoModel.datasource" />
     <None Include="Properties\DataSources\projeto2.Feature.Produto.Produto.datasource" />
+    <None Include="Properties\DataSources\projeto2.Feature.Promocao.Model.PromocaoModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
