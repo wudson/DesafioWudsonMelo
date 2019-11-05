@@ -16,7 +16,13 @@ namespace projeto2.Feature.Promocao.View
 
         private void FrmProdutosDaPromocaoComDesconto_Load(object sender, EventArgs e)
         {
-            lstDeProdutos.DataSource = new List<Produto.Produto>
+            lstDeProdutos.DataSource = AtribuirListaProdutos();
+
+            lstDeProdutos.DisplayMember = "NomeProduto";
+        }
+
+        private static List<Produto.Produto> AtribuirListaProdutos() =>
+            new List<Produto.Produto>
             {
                 new Produto.Produto
                 {
@@ -59,98 +65,35 @@ namespace projeto2.Feature.Promocao.View
                 }
             };
 
-            lstDeProdutos.DisplayMember = "NomeProduto";
-        }
-
-        private void BtnAdicionarProdutosSelecionadosNaPromocao_Click(object sender, System.EventArgs e)
+        private void BtnAdicionarProdutosSelecionadosNaPromocao_Click(object sender, EventArgs e)
         {
             if (lstDeProdutos.CheckedItems.Count == 0) return;
-            if (rdbProduto.Checked)
-            {
-                var produtos = lstDeProdutos.CheckedItems.Cast<Produto.Produto>().ToList();
 
-                dgvProdutosDaPromocao.DataSource = produtos;
-            }
+            if (rdbProduto.Checked)
+                dgvProdutosDaPromocao.DataSource = lstDeProdutos.CheckedItems.Cast<Produto.Produto>().ToList();
+
             else if (rdbGrupo.Checked)
             {
-                var produtos = new List<Produto.Produto>
-                {
-                    new Produto.Produto
-                    {
-                        NomeProduto = "Coca cola",
-                        ValorVendaProduto = 10,
-                        GrupoProduto = new GrupoModel
-                        {
-                            Grupo = "Bebidas",
-                        },
-                        MarcaProduto = new MarcaModel
-                        {
-                            Marca = "Coca-Cola",
-                        }
-                    },
-                    new Produto.Produto
-                    {
-                        NomeProduto = "Cerveja",
-                        ValorVendaProduto = 5,
-                        GrupoProduto = new GrupoModel
-                        {
-                            Grupo = "Bebidas",
-                        },
-                        MarcaProduto = new MarcaModel
-                        {
-                            Marca = "Skol",
-                        }
-                    },
-                    new Produto.Produto
-                    {
-                        NomeProduto = "Sprite",
-                        ValorVendaProduto = 8,
-                        GrupoProduto = new GrupoModel
-                        {
-                            Grupo = "Bebidas",
-                        },
-                        MarcaProduto = new MarcaModel
-                        {
-                            Marca = "Coca-Cola",
-                        }
-                    }
-                };
+                var grupos = lstDeProdutos.CheckedItems.Cast<GrupoModel>().ToList();
 
-                dgvProdutosDaPromocao.DataSource = produtos;
+                var zéGotinha = new List<Produto.Produto>();
+
+                foreach (var grupo in grupos)
+                    zéGotinha.AddRange(
+                        AtribuirListaProdutos().Where(p => p.GrupoProduto.Grupo.Equals(grupo.Grupo)).ToList());
+                dgvProdutosDaPromocao.DataSource = zéGotinha;
             }
             else
             {
-                var produtos = new List<Produto.Produto>
-                {
-                    new Produto.Produto
-                    {
-                        NomeProduto = "Coca cola",
-                        ValorVendaProduto = 10,
-                        GrupoProduto = new GrupoModel
-                        {
-                            Grupo = "Bebidas",
-                        },
-                        MarcaProduto = new MarcaModel
-                        {
-                            Marca = "Coca-Cola",
-                        }
-                    },
-                    new Produto.Produto
-                    {
-                        NomeProduto = "Sprite",
-                        ValorVendaProduto = 8,
-                        GrupoProduto = new GrupoModel
-                        {
-                            Grupo = "Bebidas",
-                        },
-                        MarcaProduto = new MarcaModel
-                        {
-                            Marca = "Coca-Cola",
-                        }
-                    }
-                };
+                var marcas = lstDeProdutos.CheckedItems.Cast<MarcaModel>().ToList();
 
-                dgvProdutosDaPromocao.DataSource = produtos;
+                var zéGotinha = new List<Produto.Produto>();
+
+                foreach (var marca in marcas)
+                    zéGotinha.AddRange(
+                        AtribuirListaProdutos().Where(p => p.MarcaProduto.Marca.Equals(marca.Marca)).ToList());
+                dgvProdutosDaPromocao.DataSource = zéGotinha;
+
             }
 
         }
@@ -162,16 +105,19 @@ namespace projeto2.Feature.Promocao.View
 
         private void RdbGrupo_CheckedChanged(object sender, EventArgs e)
         {
-            lstDeProdutos.DataSource = new List<GrupoModel>
+            lstDeProdutos.DataSource = AtribuirListaGrupos();
+
+            lstDeProdutos.DisplayMember = "Grupo";
+        }
+
+        private static List<GrupoModel> AtribuirListaGrupos() =>
+            new List<GrupoModel>
             {
                 new GrupoModel
                 {
                     Grupo = "Bebidas"
                 }
             };
-
-            lstDeProdutos.DisplayMember = "Grupo";
-        }
 
         private void RdbProduto_CheckedChanged(object sender, EventArgs e)
         {
@@ -180,7 +126,13 @@ namespace projeto2.Feature.Promocao.View
 
         private void RdbMarca_CheckedChanged(object sender, EventArgs e)
         {
-            lstDeProdutos.DataSource = new List<MarcaModel>
+            lstDeProdutos.DataSource = AtribuirListaMarcas();
+
+            lstDeProdutos.DisplayMember = "Marca";
+        }
+
+        private static List<MarcaModel> AtribuirListaMarcas() =>
+            new List<MarcaModel>
             {
                 new MarcaModel
                 {
@@ -191,9 +143,6 @@ namespace projeto2.Feature.Promocao.View
                     Marca = "Skol"
                 }
             };
-
-            lstDeProdutos.DisplayMember = "Marca";
-        }
 
         private void BtnLimpar_Click(object sender, EventArgs e)
         {
@@ -226,7 +175,7 @@ namespace projeto2.Feature.Promocao.View
         {
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
+        private void BtnVoltar_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -244,6 +193,39 @@ namespace projeto2.Feature.Promocao.View
                         double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) - double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) * double.Parse(txtDesconto.Text) / 100;
                 }
             }
+        }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if (rdbProduto.Checked)
+            {
+                lstDeProdutos.DataSource =
+                    AtribuirListaProdutos().Where(p => p.NomeProduto.ToLower().StartsWith(txtBuscar.Text.ToLower()))
+                        .ToList();
+
+                lstDeProdutos.DisplayMember = "NomeProduto";
+            }
+            else if (rdbGrupo.Checked)
+            {
+                lstDeProdutos.DataSource =
+                    AtribuirListaGrupos().Where(g => g.Grupo.ToLower().StartsWith(txtBuscar.Text.ToLower()))
+                        .ToList();
+
+                lstDeProdutos.DisplayMember = "Grupo";
+            }
+            else
+            {
+                lstDeProdutos.DataSource =
+                    AtribuirListaMarcas().Where(m => m.Marca.ToLower().StartsWith(txtBuscar.Text.ToLower()))
+                        .ToList();
+
+                lstDeProdutos.DisplayMember = "Marca";
+            }
+        }
+
+        private void BtnSalvarPromocao_Click(object sender, EventArgs e)
+        {
+            new FrmFinalizarCadastroPromocao().ShowDialog();
         }
     }
 }

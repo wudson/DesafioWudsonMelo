@@ -68,7 +68,7 @@ namespace projeto2.Feature.Pedido.Controller
             throw new NotImplementedException();
         }
 
-        public IList<Produto.Produto> ListarProdutos(FiltrosProdutoModel filtrosProdutoModel) =>
-            new ProdutoController().ListarDados(filtrosProdutoModel);
+        public IList<Produto.Produto> ListarProdutos(Produto.Produto produto) =>
+            new ProdutoController().ListarDados(produto);
     }
 }

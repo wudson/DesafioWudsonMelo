@@ -242,7 +242,6 @@
             // txtRg
             // 
             this.txtRg.Location = new System.Drawing.Point(20, 177);
-            this.txtRg.Mask = "000000000";
             this.txtRg.Name = "txtRg";
             this.txtRg.Size = new System.Drawing.Size(179, 20);
             this.txtRg.TabIndex = 4;

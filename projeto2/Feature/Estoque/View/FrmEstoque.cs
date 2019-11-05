@@ -17,7 +17,7 @@ namespace projeto2.Feature.Estoque.View
 
         private void FrmEstoque_Load(object sender, EventArgs e)
         {
-            dgvEstoque.DataSource = _produtoController.ListarDados(new Produto.FiltrosProdutoModel());
+            dgvEstoque.DataSource = _produtoController.ListarDados(new Produto.Produto());
             PreencherGrupos();
             PreencherTipos();
         }
@@ -41,8 +41,8 @@ namespace projeto2.Feature.Estoque.View
         private void BtnFiltrar_Click(object sender, EventArgs e) => 
             dgvEstoque.DataSource = _produtoController.ListarDados(Filtrar());
 
-        private Produto.FiltrosProdutoModel Filtrar() =>
-            new Produto.FiltrosProdutoModel
+        private Produto.Produto Filtrar() =>
+            new Produto.Produto
             {
                 NomeProduto = txtPesquisa.Text.Trim(),
                 GrupoProduto = { Grupo = txtGrupo.Text.Trim() },

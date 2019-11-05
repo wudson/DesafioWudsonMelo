@@ -15,7 +15,7 @@ namespace projeto2.Feature.Produto.Controller
 
         public ProdutoController() => _dao = new ProdutoDao();
 
-        public IList<Produto> ListarDados(FiltrosProdutoModel filtros)
+        public IList<Produto> ListarDados(Produto filtros)
         {
             try
             {

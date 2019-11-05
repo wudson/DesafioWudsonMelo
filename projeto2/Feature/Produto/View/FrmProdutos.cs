@@ -23,7 +23,7 @@ namespace projeto2.Feature.Produto.View
 
         private void AtualizarGridDadosProduto()
         {
-            dgvProduto.DataSource = _produtoController.ListarDados(new FiltrosProdutoModel());
+            dgvProduto.DataSource = _produtoController.ListarDados(new Produto());
             if (dgvProduto.CurrentRow != null) dgvProduto.CurrentRow.Selected = false;
 
             ModificarEnabledDosBotoes(false);

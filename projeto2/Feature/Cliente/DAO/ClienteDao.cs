@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Pessoa.Dao;
@@ -45,7 +46,9 @@ namespace projeto2.Feature.Cliente.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = "Select c.*, p.* from CLIENTE c, PESSOA p where c.ID_PESSOA = @id and c.ID_PESSOA = p.ID_PESSOA";
+            const string mSql = @"Select c.*, p.* from CLIENTE c
+                                INNER JOIN PESSOA as p ON c.ID_PESSOA = p.ID_PESSOA
+                                WHERE c.ID_PESSOA = @id";
             var cmd = new FbCommand(mSql, conn);
             try
             {
@@ -87,15 +90,19 @@ namespace projeto2.Feature.Cliente.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            var mSql = "Select c.*, p.* from CLIENTE c, PESSOA p where c.ID_PESSOA = p.ID_PESSOA";
 
-            if (!string.IsNullOrWhiteSpace(filtros.NomePessoa)) mSql += " and lower(NOME_PESSOA) like lower(@nome)";
-            if (!string.IsNullOrWhiteSpace(filtros.CidadePessoa)) mSql += " and lower(CIDADE) like lower(@cidade)";
-            if (!string.IsNullOrWhiteSpace(filtros.DataInicio) && !string.IsNullOrWhiteSpace(filtros.DataFim)) mSql += " and DATA_CADASTRO_CLIENTE between @dataI and @dataF";
-            if (!string.IsNullOrWhiteSpace(filtros.DataInicio)) mSql += " and DATA_CADASTRO_CLIENTE >= @dataI";
-            if (!string.IsNullOrWhiteSpace(filtros.DataFim)) mSql += " and DATA_CADASTRO_CLIENTE <= @dataF";
+            var sql = new StringBuilder();
+            sql.Append(@"Select c.*, p.* from CLIENTE c
+                       INNER JOIN PESSOA as p ON c.ID_PESSOA = p.ID_PESSOA
+                       WHERE (1=1)");
 
-            var cmd = new FbCommand(mSql, conn);
+            if (!string.IsNullOrWhiteSpace(filtros.NomePessoa)) sql.Append(" and lower(NOME_PESSOA) like lower(@nome)");
+            if (!string.IsNullOrWhiteSpace(filtros.CidadePessoa)) sql.Append(" and lower(CIDADE) like lower(@cidade)");
+            if (!string.IsNullOrWhiteSpace(filtros.DataInicio) && !string.IsNullOrWhiteSpace(filtros.DataFim)) sql.Append(" and DATA_CADASTRO_CLIENTE between @dataI and @dataF");
+            if (!string.IsNullOrWhiteSpace(filtros.DataInicio)) sql.Append(" and DATA_CADASTRO_CLIENTE >= @dataI");
+            if (!string.IsNullOrWhiteSpace(filtros.DataFim)) sql.Append(" and DATA_CADASTRO_CLIENTE <= @dataF");
+
+            var cmd = new FbCommand(sql.ToString(), conn);
             var listaClientes = new List<ClienteModel>();
             try
             {

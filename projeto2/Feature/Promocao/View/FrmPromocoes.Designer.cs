@@ -30,15 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.promocaoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAdcionar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.promocaoModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.promocaoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nomePromocaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoPromocao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusPromocaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -49,17 +50,16 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomePromocaoDataGridViewTextBoxColumn,
+            this.TipoPromocao,
+            this.DataInicio,
+            this.DataFim,
             this.statusPromocaoDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.promocaoModelBindingSource1;
+            this.dataGridView1.DataSource = this.promocaoModelBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 98);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(625, 340);
             this.dataGridView1.TabIndex = 7;
-            // 
-            // promocaoModelBindingSource
-            // 
-            this.promocaoModelBindingSource.DataSource = typeof(projeto2.Feature.Promocao.Model.PromocaoModel);
             // 
             // btnAdcionar
             // 
@@ -88,23 +88,53 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // promocaoModelBindingSource1
+            // promocaoModelBindingSource
             // 
-            this.promocaoModelBindingSource1.DataSource = typeof(projeto2.Feature.Promocao.Model.PromocaoModel);
+            this.promocaoModelBindingSource.DataSource = typeof(projeto2.Feature.Promocao.Model.PromocaoModel);
             // 
             // nomePromocaoDataGridViewTextBoxColumn
             // 
+            this.nomePromocaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nomePromocaoDataGridViewTextBoxColumn.DataPropertyName = "NomePromocao";
-            this.nomePromocaoDataGridViewTextBoxColumn.HeaderText = "NomePromocao";
+            this.nomePromocaoDataGridViewTextBoxColumn.HeaderText = "Nome";
             this.nomePromocaoDataGridViewTextBoxColumn.Name = "nomePromocaoDataGridViewTextBoxColumn";
             this.nomePromocaoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // TipoPromocao
+            // 
+            this.TipoPromocao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TipoPromocao.DataPropertyName = "TipoPromocao";
+            this.TipoPromocao.HeaderText = "Tipo";
+            this.TipoPromocao.Name = "TipoPromocao";
+            this.TipoPromocao.ReadOnly = true;
+            this.TipoPromocao.Width = 120;
+            // 
+            // DataInicio
+            // 
+            this.DataInicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DataInicio.DataPropertyName = "DataInicio";
+            this.DataInicio.HeaderText = "Inicio";
+            this.DataInicio.Name = "DataInicio";
+            this.DataInicio.ReadOnly = true;
+            this.DataInicio.Width = 85;
+            // 
+            // DataFim
+            // 
+            this.DataFim.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DataFim.DataPropertyName = "DataFim";
+            this.DataFim.HeaderText = "Fim";
+            this.DataFim.Name = "DataFim";
+            this.DataFim.ReadOnly = true;
+            this.DataFim.Width = 85;
+            // 
             // statusPromocaoDataGridViewTextBoxColumn
             // 
+            this.statusPromocaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.statusPromocaoDataGridViewTextBoxColumn.DataPropertyName = "StatusPromocao";
-            this.statusPromocaoDataGridViewTextBoxColumn.HeaderText = "StatusPromocao";
+            this.statusPromocaoDataGridViewTextBoxColumn.HeaderText = "Status";
             this.statusPromocaoDataGridViewTextBoxColumn.Name = "statusPromocaoDataGridViewTextBoxColumn";
             this.statusPromocaoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusPromocaoDataGridViewTextBoxColumn.Width = 70;
             // 
             // FrmPromocoes
             // 
@@ -122,7 +152,6 @@
             this.Text = "Promoções";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -133,7 +162,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource promocaoModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomePromocaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoPromocao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataFim;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusPromocaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource promocaoModelBindingSource1;
     }
 }

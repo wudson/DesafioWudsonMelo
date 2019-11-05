@@ -73,9 +73,10 @@ namespace projeto2.Feature.Pedido.Dao
             var conn = Conexao.GetInstancia();
             conn.Open();
 
-            const string mSql = @"Select pedido.*, pessoa.NOME_PESSOA 
-                                from PEDIDO pedido, CLIENTE cliente, PESSOA pessoa 
-                                where pedido.ID_CLIENTE = cliente.ID_CLIENTE and cliente.ID_PESSOA = pessoa.ID_PESSOA";
+            const string mSql = @"Select pedido.*, p.* from PEDIDO pedido 
+                                INNER JOIN CLIENTE as c ON pedido.ID_CLIENTE = c.ID_CLIENTE
+                                INNER JOIN PESSOA as p ON c.ID_PESSOA = p.ID_PESSOA";
+
             var cmd = new FbCommand(mSql, conn);
             try
             {
@@ -104,8 +105,10 @@ namespace projeto2.Feature.Pedido.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = @"select ip.*, p.* from ITEM_PEDIDO ip, PRODUTO p 
-                                where ip.ID_PRODUTO = p.ID_PRODUTO and ip.ID_PEDIDO = @idPedido";
+            const string mSql = @"select ip.*, p.* from ITEM_PEDIDO ip 
+                                INNER JOIN PRODUTO as p ON ip.ID_PRODUTO = p.ID_PRODUTO 
+                                WHERE ip.ID_PEDIDO = @idPedido";
+
             var cmd = new FbCommand(mSql, conn);
             try
             {
@@ -134,6 +137,7 @@ namespace projeto2.Feature.Pedido.Dao
             finally
             {
                 conn.Close();
+                cmd.Dispose();
             }
         }
     }

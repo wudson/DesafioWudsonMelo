@@ -119,7 +119,6 @@
     </Compile>
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
-    <Compile Include="Feature\Produto\Model\FiltrosProdutoModel.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
     <Compile Include="Feature\Pedido\View\FrmItensPedido.cs">
       <SubType>Form</SubType>

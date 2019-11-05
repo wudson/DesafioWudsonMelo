@@ -44,13 +44,11 @@ namespace projeto2.Feature.Produto.Dao
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
-            const string mSql = "Select p.*, g.GRUPO, m.MARCA from PRODUTO p, GRUPO g, MARCA m where ID_PRODUTO = @id and p.ID_GRUPO = g.ID_GRUPO and p.ID_MARCA = m.ID_MARCA";
-            /*
-             * SELECT p.*, g.Grupo, m.Marca FROM Produto p
-             * INNER JOIN Grupo AS g ON p.Id_Grupo = g.Id_Grupo
-             * INNER JOIN Marca AS m ON p.Id_Marca = m.Id_Marca
-             * WHERE p.Id_Produto = @id
-             */
+            const string mSql = @"SELECT p.*, g.Grupo, m.Marca FROM Produto p
+                                INNER JOIN Grupo AS g ON p.Id_Grupo = g.Id_Grupo
+                                INNER JOIN Marca AS m ON p.Id_Marca = m.Id_Marca
+                                WHERE p.Id_Produto = @id";
+             
             var cmd = new FbCommand(mSql, conn);
             try
             {
@@ -108,14 +106,16 @@ namespace projeto2.Feature.Produto.Dao
             }
         }
 
-        public IList<Produto> Listar(FiltrosProdutoModel filtros)
+        public IList<Produto> Listar(Produto filtros)
         {
             var conn = Conexao.GetInstancia();
             conn.Open();
 
             var sql = new StringBuilder();
-            sql.Append(
-                "Select p.*, m.MARCA, g.GRUPO from PRODUTO p, MARCA m, GRUPO g where p.ID_GRUPO = g.ID_GRUPO and p.ID_MARCA = m.ID_MARCA");
+            sql.Append(@"Select p.*, m.MARCA, g.GRUPO from PRODUTO p 
+                       INNER JOIN Grupo AS g ON p.Id_Grupo = g.Id_Grupo 
+                       INNER JOIN Marca AS m ON p.Id_Marca = m.Id_Marca
+                       WHERE (1=1)");
 
             if (!string.IsNullOrWhiteSpace(filtros.NomeProduto)) sql.Append(" and lower(NOME_PRODUTO) like lower(@prod)");
             if (!string.IsNullOrWhiteSpace(filtros.GrupoProduto.Grupo)) sql.Append(" and lower(GRUPO) like lower(@grupo)");

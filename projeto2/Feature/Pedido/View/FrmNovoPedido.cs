@@ -23,7 +23,7 @@ namespace projeto2.Feature.Pedido.View
 
         private void PreencherListaDeProdutos()
         {
-            lstProdutos.DataSource = _pedidoController.ListarProdutos(new Produto.FiltrosProdutoModel());
+            lstProdutos.DataSource = _pedidoController.ListarProdutos(new Produto.Produto());
             lstProdutos.DisplayMember = "NomeProduto";
         }
 
@@ -122,7 +122,7 @@ namespace projeto2.Feature.Pedido.View
             lstProdutos.DataSource = new ProdutoController().ListarDados(Filtrar());
         }
 
-        private Produto.FiltrosProdutoModel Filtrar() => new Produto.FiltrosProdutoModel
+        private Produto.Produto Filtrar() => new Produto.Produto
         {
             NomeProduto = txtBuscar.Text.Trim()
         };
