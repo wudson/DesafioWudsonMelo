@@ -1,7 +1,10 @@
-﻿using projeto2.Feature.Grupo.Dao;
+﻿using System;
+using projeto2.Feature.Grupo.Dao;
 using projeto2.Feature.Grupo.Model;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using FirebirdSql.Data.FirebirdClient;
 
 namespace projeto2.Feature.Grupo.Controller
 {
@@ -19,22 +22,37 @@ namespace projeto2.Feature.Grupo.Controller
                 if (_dao.Cadastrar(novoGrupo))
                     MessageBox.Show(@"Grupo cadastrado com sucesso.");
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar grupo.");
+                MessageBox.Show(@"Problemas no banco de dados ao cadastrar grupo.");
+                Console.WriteLine(ex);
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao cadastrar grupo");
+                Console.WriteLine(ex);
+            }
         }
 
         public IEnumerable<GrupoModel> ListarGrupos()
         {
             try
             {
-                return _dao.Listar();
+                var grupos = _dao.Listar().ToList();
+                if (grupos.Count < 1)
+                    MessageBox.Show(@"Nenhum grupo foi encontrado.");
+                else
+                    return grupos;
             }
-            catch
+            catch (FbException ex)
+            {
+                MessageBox.Show(@"Problemas no banco de dados ao listar grupos.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(@"Problemas ao listar grupos");
+                Console.WriteLine(ex);
             }
 
             return new List<GrupoModel>();
@@ -48,9 +66,15 @@ namespace projeto2.Feature.Grupo.Controller
                     MessageBox.Show(@"Grupo excluído com sucesso.");
                 return true;
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao excluir grupo.");
+                MessageBox.Show(@"Problemas no banco de dados ao excluir grupo.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao excluir grupo");
+                Console.WriteLine(ex);
             }
             return false;
         }

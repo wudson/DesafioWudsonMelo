@@ -6,6 +6,7 @@ using projeto2.Feature.Produto.Dao;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using FirebirdSql.Data.FirebirdClient;
 
 namespace projeto2.Feature.Produto.Controller
 {
@@ -19,16 +20,48 @@ namespace projeto2.Feature.Produto.Controller
         {
             try
             {
-                return _dao.Listar(filtros);
+                var produtos = _dao.Listar(filtros);
+                if (produtos.Count < 1)
+                    MessageBox.Show(@"Nenhum produto foi encontrado.");
+                else
+                    return produtos;
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao filtrar produtos");
+                MessageBox.Show(@"Problemas no banco de dados ao filtrar produtos.");
+                Console.WriteLine(ex);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao filtrar produtos.");
+                Console.WriteLine(ex);
+            }
+
             return new List<Produto>();
         }
 
-        public Produto BuscarDado(int idProduto) => new ProdutoDao().Buscar(idProduto);
+        public Produto BuscarDado(int idProduto)
+        {
+            try
+            {
+                var produto = _dao.Buscar(idProduto);
+                if (produto.IdProduto < 1)
+                    MessageBox.Show(@"Produto não encontrado.");
+                else
+                    return produto;
+            }
+            catch (FbException ex)
+            {
+                MessageBox.Show(@"Problemas no banco de dados ao buscar produto.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao buscar produto");
+                Console.WriteLine(ex);
+            }
+            return new Produto();
+        }
 
         public bool ExcluirDado(int idProduto)
         {
@@ -40,9 +73,15 @@ namespace projeto2.Feature.Produto.Controller
                     return true;
                 }
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show($@"Problemas ao excluir produto.", @"Erro");
+                MessageBox.Show(@"Problemas no banco de dados ao excluir produtos.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao excluir produto.", @"Erro");
+                Console.WriteLine(ex);
             }
 
             return false;
@@ -58,9 +97,15 @@ namespace projeto2.Feature.Produto.Controller
                     return true;
                 }
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show($@"Problemas ao alterar produto", @"Erro");
+                MessageBox.Show(@"Problemas no banco de dados ao alterar produto.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao alterar produto", @"Erro");
+                Console.WriteLine(ex);
             }
 
             return false;
@@ -76,9 +121,15 @@ namespace projeto2.Feature.Produto.Controller
                     return true;
                 }
             }
-            catch (Exception e)
+            catch (FbException ex)
             {
-                MessageBox.Show($@"Problemas ao cadastrar produto: {e.Message}", @"Erro");
+                MessageBox.Show(@"Problemas no banco de dados ao cadastrar produto.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao cadastrar produto.", @"Erro");
+                Console.WriteLine(ex);
             }
 
             return false;

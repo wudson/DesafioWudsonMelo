@@ -1,21 +1,19 @@
 ﻿using projeto2.Feature.Produto.Controller;
 using System;
-using System.Collections;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace projeto2.Feature.Produto.View
 {
     public partial class FrmCadastroDeProduto : Form
     {
-        private readonly ProdutoController _produtoController = new ProdutoController();
+        private readonly ProdutoController _produtoController;
         private readonly Produto _produto;
-        private int _codigoProduto;
 
         public FrmCadastroDeProduto(Produto produto)
         {
             InitializeComponent();
+            _produtoController = new ProdutoController();
             _produto = produto;
             btnEditar.Visible = true;
             btnSalvarCadastroProduto.Visible = false;
@@ -23,23 +21,24 @@ namespace projeto2.Feature.Produto.View
         public FrmCadastroDeProduto()
         {
             InitializeComponent();
+            _produtoController = new ProdutoController();
             btnEditar.Visible = false;
             btnSalvarCadastroProduto.Visible = true;
         }
 
         private void BtnSalvarCadastroProduto_Click(object sender, EventArgs e)
         {
-            //if (!ValidarCampos(pnlControl.Controls)) return;
+            if (!ValidarCamposObrigatorios()) return;
 
-            if (!_produtoController.CadastrarDado(AtribuirCamposParaModel())) return;
+            if (!_produtoController.CadastrarDado(AtribuirCamposParaModel(0))) return;
             LimpaCampos(pnlControl.Controls);
             txtNome.Focus();
         }
 
-        private Produto AtribuirCamposParaModel() =>
+        private Produto AtribuirCamposParaModel(int id) =>
             new Produto
             {
-                IdProduto = _codigoProduto,
+                IdProduto = id,
                 NomeProduto = txtNome.Text.Trim(),
                 MarcaProduto =
                 {
@@ -81,7 +80,6 @@ namespace projeto2.Feature.Produto.View
             PreencherGruposEMarcas();
 
             if (_produto == null) return;
-            _codigoProduto = _produto.IdProduto;
             txtNome.Text = _produto.NomeProduto;
             txtMarca.Text = _produto.MarcaProduto.Marca;
             txtGrupo.Text = _produto.GrupoProduto.Grupo;
@@ -107,10 +105,53 @@ namespace projeto2.Feature.Produto.View
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            //if (!ValidarCampos(pnlControl.Controls)) return;
+            if (!ValidarCamposObrigatorios()) return;
 
-            if (_produtoController.AlterarDado(AtribuirCamposParaModel()))
+            if (_produtoController.AlterarDado(AtribuirCamposParaModel(_produto.IdProduto)))
                 Close();
+        }
+
+        private bool ValidarCamposObrigatorios()
+        {
+            if (string.IsNullOrWhiteSpace(txtNome.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Nome' obrigatorio.");
+                txtNome.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtGrupo.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Grupo' obrigatorio.");
+                txtGrupo.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtTipo.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Tipo' obrigatorio.");
+                txtTipo.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtValorDeCompra.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Compra' obrigatorio.");
+                txtValorDeCompra.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtValorDeVenda.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Venda' obrigatorio.");
+                txtValorDeVenda.Focus();
+                return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(txtFornecedor.Text.Trim())) return true;
+            MessageBox.Show(@"Campo 'Fornecedor' obrigatorio.");
+            txtFornecedor.Focus();
+            return false;
         }
 
         private void FrmCadastroDeProduto_KeyDown(object sender, KeyEventArgs e)

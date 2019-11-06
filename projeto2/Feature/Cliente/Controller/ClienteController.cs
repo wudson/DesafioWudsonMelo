@@ -1,7 +1,10 @@
-﻿using projeto2.Feature.Cliente.Dao;
+﻿using System;
+using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using FirebirdSql.Data.FirebirdClient;
 
 namespace projeto2.Feature.Cliente.Controller
 {
@@ -24,9 +27,15 @@ namespace projeto2.Feature.Cliente.Controller
                     return true;
                 }
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao alterar cliente.", @"Erro");
+                MessageBox.Show(@"Problemas no banco de dados ao alterar cliente.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao alterar cliente");
+                Console.WriteLine(ex);
             }
             return false;
         }
@@ -43,9 +52,15 @@ namespace projeto2.Feature.Cliente.Controller
                     return true;
                 }
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
+                MessageBox.Show(@"Problemas no banco de dados ao cadastrar cliente.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao cadastrar cliente");
+                Console.WriteLine(ex);
             }
 
             return false;
@@ -55,11 +70,21 @@ namespace projeto2.Feature.Cliente.Controller
         {
             try
             {
-                return _clienteDao.Buscar(idPessoa);
+                var cliente = _clienteDao.Buscar(idPessoa);
+                if (cliente.IdCliente < 1)
+                    MessageBox.Show(@"Cliente não encontrado.");
+                else
+                    return cliente;
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
+                MessageBox.Show(@"Problemas no banco de dados ao buscar cliente.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao buscar cliente");
+                Console.WriteLine(ex);
             }
 
             return new ClienteModel();
@@ -75,9 +100,15 @@ namespace projeto2.Feature.Cliente.Controller
                     return true;
                 }
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar cliente.", @"Erro");
+                MessageBox.Show(@"Problemas no banco de dados ao excluir cliente.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao excluir cliente");
+                Console.WriteLine(ex);
             }
 
             return false;
@@ -87,12 +118,23 @@ namespace projeto2.Feature.Cliente.Controller
         {
             try
             {
-                return _clienteDao.ListarDados(filtros);
+                var clientes = _clienteDao.ListarDados(filtros).ToList();
+                if (clientes.Count < 1)
+                    MessageBox.Show(@"Nenhum cliente foi encontrado.");
+                else
+                    return clientes;
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao filtrar clientes");
+                MessageBox.Show(@"Problemas no banco de dados ao listar clientes.");
+                Console.WriteLine(ex);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao listar clientes");
+                Console.WriteLine(ex);
+            }
+
             return new List<ClienteModel>();
         }
     }

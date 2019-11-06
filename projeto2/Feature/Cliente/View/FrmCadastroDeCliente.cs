@@ -9,7 +9,6 @@ namespace projeto2.Feature.Cliente.View
     {
         private readonly ClienteController _clienteController;
         private readonly ClienteModel _cliente;
-        private int _codigoCliente;
 
         public FrmCadastroDeCliente(ClienteModel cliente)
         {
@@ -34,16 +33,14 @@ namespace projeto2.Feature.Cliente.View
         {
             if (!ValidarCamposObrigatorios()) return;
 
-            var cliente = AtribuirCamposParaModel();
-
-            if (_clienteController.CadastrarDado(cliente))
+            if (_clienteController.CadastrarDado(AtribuirCamposParaModel(0)))
                 Close();
         }
 
-        private ClienteModel AtribuirCamposParaModel() =>
+        private ClienteModel AtribuirCamposParaModel(int id) =>
             new ClienteModel
             {
-                IdPessoa = _codigoCliente,
+                IdPessoa = id,
                 NomePessoa = txtNome.Text.Trim(),
                 EmailPessoa = txtEmail.Text.Trim(),
                 NascimentoPessoa = DateTime.Parse(txtDataNascimento.Text.Trim()),
@@ -147,7 +144,6 @@ namespace projeto2.Feature.Cliente.View
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)
         {
             if (_cliente == null) return;
-            _codigoCliente = _cliente.IdPessoa;
             txtNome.Text = _cliente.NomePessoa;
             txtEmail.Text = _cliente.EmailPessoa;
             txtDataNascimento.Text = _cliente.NascimentoPessoa.ToShortDateString();
@@ -210,10 +206,9 @@ namespace projeto2.Feature.Cliente.View
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
-            //if (!ValidarCampos(pnlFormCliente.Controls)) return;
-            //if (!ValidarSexo()) return;
+            if (!ValidarCamposObrigatorios()) return;
 
-            var cliente = AtribuirCamposParaModel();
+            var cliente = AtribuirCamposParaModel(_cliente.IdPessoa);
             if (_clienteController.AlterarDado(cliente))
                 Close();
         }

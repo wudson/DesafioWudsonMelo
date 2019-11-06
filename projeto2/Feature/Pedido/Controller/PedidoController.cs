@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Pedido.Dao;
 using projeto2.Feature.Pedido.Model;
-using projeto2.Feature.Produto;
 using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Pedido.Controller
@@ -24,9 +25,15 @@ namespace projeto2.Feature.Pedido.Controller
                     return true;
                 }
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao efetuar pedido.", @"Erro");
+                MessageBox.Show(@"Problemas no banco de dados ao efetuar pedido.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao efetuar pedido");
+                Console.WriteLine(ex);
             }
 
             return false;
@@ -36,12 +43,23 @@ namespace projeto2.Feature.Pedido.Controller
         {
             try
             {
-                return _dao.Listar();
+                var pedidos = _dao.Listar().ToList();
+                if (pedidos.Count < 1)
+                    MessageBox.Show(@"Nenhum pedido foi encontrado.");
+                else
+                    return pedidos;
+            }
+            catch (FbException ex)
+            {
+                MessageBox.Show(@"Problemas no banco de dados ao listar pedidos.");
+                Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($@"Problemas ao listar pedidos. {ex}");
+                MessageBox.Show(@"Problemas ao listar pedidos");
+                Console.WriteLine(ex);
             }
+
             return new List<PedidoModel>();
         }
 
@@ -49,12 +67,23 @@ namespace projeto2.Feature.Pedido.Controller
         {
             try
             {
-                return _dao.BuscarProdutosDoPedido(idPedido);
+                var produtos = _dao.BuscarProdutosDoPedido(idPedido).ToList();
+                if (produtos.Count < 1)
+                    MessageBox.Show(@"Nenhum produto foi encontrado nesse pedido.");
+                else
+                    return produtos;
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao buscar itens do pedido.");
+                MessageBox.Show(@"Problemas no banco de dados ao buscar itens do pedido.");
+                Console.WriteLine(ex);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao buscar itens do pedido");
+                Console.WriteLine(ex);
+            }
+
             return new List<ItemPedidoModel>();
         }
 

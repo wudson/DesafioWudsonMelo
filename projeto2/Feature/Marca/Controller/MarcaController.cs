@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Marca.Dao;
 using projeto2.Feature.Marca.Model;
 
@@ -19,9 +22,15 @@ namespace projeto2.Feature.Marca.Controller
                 if (_dao.Cadastrar(novaMarca))
                     MessageBox.Show(@"Marca cadastrada com sucesso.");
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar marca.");
+                MessageBox.Show(@"Problemas no banco de dados ao cadastrar marca.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao cadastrar marca");
+                Console.WriteLine(ex);
             }
 
         }
@@ -30,11 +39,21 @@ namespace projeto2.Feature.Marca.Controller
         {
             try
             {
-                return _dao.Listar();
+                var marcas = _dao.Listar().ToList();
+                if (marcas.Count < 1)
+                    MessageBox.Show(@"Nenhuma marca foi encontrada.");
+                else
+                    return marcas;
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao listar grupos");
+                MessageBox.Show(@"Problemas no banco de dados ao listar marcas.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao listar marcas");
+                Console.WriteLine(ex);
             }
 
             return new List<MarcaModel>();
@@ -48,10 +67,17 @@ namespace projeto2.Feature.Marca.Controller
                     MessageBox.Show(@"Marca excluida com sucesso.");
                 return true;
             }
-            catch
+            catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas ao excluir marca.");
+                MessageBox.Show(@"Problemas no banco de dados ao excluir marca.");
+                Console.WriteLine(ex);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao excluir marcas");
+                Console.WriteLine(ex);
+            }
+
             return false;
         }
     }
