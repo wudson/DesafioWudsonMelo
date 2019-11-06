@@ -99,5 +99,8 @@ namespace projeto2.Feature.Pedido.View
                     break;
             }
         }
+
+        private void DgvPedidos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) => 
+            e.Value = Propriedade.BuscarPropriedadeComPonto(dgvPedidos, e);
     }
 }

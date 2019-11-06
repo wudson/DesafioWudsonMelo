@@ -8,5 +8,10 @@ namespace projeto2.Feature.Promocao.View
         {
             InitializeComponent();
         }
+
+        private void BtnSalvar_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

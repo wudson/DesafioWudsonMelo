@@ -41,6 +41,9 @@
             // txtTipoPromocao
             // 
             this.txtTipoPromocao.FormattingEnabled = true;
+            this.txtTipoPromocao.Items.AddRange(new object[] {
+            "Desconto",
+            "Item gratis"});
             this.txtTipoPromocao.Location = new System.Drawing.Point(75, 105);
             this.txtTipoPromocao.Name = "txtTipoPromocao";
             this.txtTipoPromocao.Size = new System.Drawing.Size(491, 21);

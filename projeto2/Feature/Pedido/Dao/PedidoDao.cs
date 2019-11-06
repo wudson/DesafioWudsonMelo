@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FirebirdSql.Data.FirebirdClient;
+using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Pedido.Model;
 
 namespace projeto2.Feature.Pedido.Dao
@@ -18,7 +19,7 @@ namespace projeto2.Feature.Pedido.Dao
             var cmd = new FbCommand(mSql, conn, transaction);
             try
             {
-                cmd.Parameters.Add("@idCli", FbDbType.Integer).Value = 34;
+                cmd.Parameters.Add("@idCli", FbDbType.Integer).Value = pedido.Cliente.IdCliente;
                 cmd.Parameters.Add("@data", FbDbType.Date).Value = pedido.DataPedido;
                 cmd.Parameters.Add("@valorT", FbDbType.Date).Value = pedido.PrecoTotalPedido;
 
@@ -29,7 +30,7 @@ namespace projeto2.Feature.Pedido.Dao
 
                 return true;
             }
-            catch (Exception)
+            catch
             {
                 transaction.Rollback();
                 throw;
@@ -45,27 +46,20 @@ namespace projeto2.Feature.Pedido.Dao
             const string mSql = @"INSERT into ITEM_PEDIDO (ID_PRODUTO, ID_PEDIDO, QUANTIDADE) 
                                     Values(@prod, @pedido, @quant)";
             cmd.CommandText = mSql;
-            try
-            {
-                cmd.Parameters.Add("@prod", FbDbType.Integer);
-                cmd.Parameters.Add("@pedido", FbDbType.Integer);
-                cmd.Parameters.Add("@quant", FbDbType.Integer);
 
-                foreach (var produto in pedido.Produtos)
-                {
-                    cmd.Parameters["@prod"].Value = produto.IdProduto;
-                    cmd.Parameters["@pedido"].Value = idPedido;
-                    cmd.Parameters["@quant"].Value = 10;
-                    cmd.ExecuteNonQuery();
-                }
+            cmd.Parameters.Add("@prod", FbDbType.Integer);
+            cmd.Parameters.Add("@pedido", FbDbType.Integer);
+            cmd.Parameters.Add("@quant", FbDbType.Integer);
 
-                return true;
-            }
-            catch (Exception ex)
+            foreach (var produto in pedido.Produtos)
             {
-                Console.WriteLine($@"erro ao cadastrar produtos do pedido: {ex.Message}");
-                throw;
+                cmd.Parameters["@prod"].Value = produto.IdProduto;
+                cmd.Parameters["@pedido"].Value = idPedido;
+                cmd.Parameters["@quant"].Value = 10;
+                cmd.ExecuteNonQuery();
             }
+
+            return true;
         }
 
         public IEnumerable<PedidoModel> Listar()
@@ -89,7 +83,11 @@ namespace projeto2.Feature.Pedido.Dao
                         IdPedido = Convert.ToInt32(dataReader["ID_PEDIDO"]),
                         DataPedido = Convert.ToDateTime(dataReader["DATA_PEDIDO"]),
                         PrecoTotalPedido = Convert.ToDouble(dataReader["VALOR_TOTAL_PEDIDO"]),
-                        IdClientePedido = Convert.ToInt32(dataReader["ID_PESSOA"])
+                        Cliente = new ClienteModel
+                        {
+                            IdCliente = Convert.ToInt32(dataReader["ID_CLIENTE"]),
+                            NomePessoa = dataReader["NOME_PESSOA"].ToString()
+                        }
                     });
                 }
                 return pedidos;

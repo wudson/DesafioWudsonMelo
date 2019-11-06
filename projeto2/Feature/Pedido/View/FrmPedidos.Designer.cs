@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -43,7 +43,7 @@
             this.idPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precoTotalPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idClientePedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
@@ -194,7 +194,7 @@
             this.idPedidoDataGridViewTextBoxColumn,
             this.dataPedidoDataGridViewTextBoxColumn,
             this.precoTotalPedidoDataGridViewTextBoxColumn,
-            this.idClientePedidoDataGridViewTextBoxColumn});
+            this.Cliente});
             this.dgvPedidos.DataSource = this.pedidoModelBindingSource;
             this.dgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPedidos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -210,6 +210,7 @@
             this.dgvPedidos.TabIndex = 2;
             this.dgvPedidos.TabStop = false;
             this.dgvPedidos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPedidos_CellDoubleClick);
+            this.dgvPedidos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvPedidos_CellFormatting);
             this.dgvPedidos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvPedidos_CellMouseClick);
             // 
             // pedidoModelBindingSource
@@ -233,19 +234,19 @@
             // precoTotalPedidoDataGridViewTextBoxColumn
             // 
             this.precoTotalPedidoDataGridViewTextBoxColumn.DataPropertyName = "PrecoTotalPedido";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.precoTotalPedidoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.precoTotalPedidoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.precoTotalPedidoDataGridViewTextBoxColumn.HeaderText = "Preço Total (R$)";
             this.precoTotalPedidoDataGridViewTextBoxColumn.Name = "precoTotalPedidoDataGridViewTextBoxColumn";
             this.precoTotalPedidoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // idClientePedidoDataGridViewTextBoxColumn
+            // Cliente
             // 
-            this.idClientePedidoDataGridViewTextBoxColumn.DataPropertyName = "IdClientePedido";
-            this.idClientePedidoDataGridViewTextBoxColumn.HeaderText = "Cliente";
-            this.idClientePedidoDataGridViewTextBoxColumn.Name = "idClientePedidoDataGridViewTextBoxColumn";
-            this.idClientePedidoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Cliente.DataPropertyName = "Cliente.NomePessoa";
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
             // 
             // FrmPedidos
             // 
@@ -283,9 +284,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CidadePessoa;
         private System.Windows.Forms.DataGridView dgvPedidos;
         private System.Windows.Forms.BindingSource pedidoModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idClientePedidoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPedidoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataPedidoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precoTotalPedidoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idClientePedidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
     }
 }

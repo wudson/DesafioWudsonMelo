@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using projeto2.Feature.Cliente.Model;
 
 namespace projeto2.Feature.Pedido.View
 {
@@ -19,12 +20,24 @@ namespace projeto2.Feature.Pedido.View
             _pedidoController = new PedidoController();
         }
 
-        private void FrmPedido_Load(object sender, EventArgs e) => PreencherListaDeProdutos();
+        private void FrmPedido_Load(object sender, EventArgs e)
+        {
+            PreencherListaDeProdutos();
+            PreencherComboClientes();
+        }
 
         private void PreencherListaDeProdutos()
         {
-            lstProdutos.DataSource = _pedidoController.ListarProdutos(new Produto.Produto());
+            lstProdutos.DataSource = _pedidoController.ListarProdutos();
             lstProdutos.DisplayMember = "NomeProduto";
+        }
+
+        private void PreencherComboClientes()
+        {
+            txtCliente.DataSource = _pedidoController.ListarClientes();
+            txtCliente.DisplayMember = "NomePessoa";
+            txtCliente.ValueMember = "IdCliente";
+            txtCliente.Text = string.Empty;
         }
 
         private void LstProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -61,16 +74,28 @@ namespace projeto2.Feature.Pedido.View
         {
             if (dgvPedido.RowCount <= 0) return;
 
+            if (string.IsNullOrWhiteSpace(txtCliente.Text))
+            {
+                MessageBox.Show(@"Informe o cliente.");
+                txtCliente.Focus();
+                return;
+            }
+
             var pedido = new PedidoModel
             {
                 DataPedido = DateTime.Now,
                 PrecoTotalPedido = Convert.ToDouble(txtTotalPedido.Text),
-                Produtos = PreencherProdutosDoPedido()
+                Produtos = PreencherProdutosDoPedido(),
+                Cliente = new ClienteModel
+                {
+                    IdCliente = int.Parse(txtCliente.SelectedValue.ToString())
+                }
             };
 
             if (!_pedidoController.SalvarPedido(pedido)) return;
             dgvPedido.Rows.Clear();
             txtTotalPedido.Text = string.Empty;
+            txtCliente.Text = string.Empty;
         }
 
         private IList<Produto.Produto> PreencherProdutosDoPedido() =>

@@ -20,6 +20,7 @@ namespace projeto2.Feature.Produto
         public double ValorVendaProduto { get; set; }
         public string FornecedorProduto { get; set; }
         public string TipoProduto { get; set; }
+        public string CodigoDeBarras { get; set; }
 
         public double ValorTotalEstoque =>
             QuantidadeEstoqueProduto * ValorVendaProduto;

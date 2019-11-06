@@ -49,12 +49,12 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvarPromocao = new System.Windows.Forms.Button();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
+            this.lstDeProdutos = new System.Windows.Forms.CheckedListBox();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lstDeProdutos = new System.Windows.Forms.CheckedListBox();
-            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).BeginInit();
@@ -300,12 +300,32 @@
             this.dgvProdutosDaPromocao.TabIndex = 21;
             this.dgvProdutosDaPromocao.TabStop = false;
             // 
+            // lstDeProdutos
+            // 
+            this.lstDeProdutos.FormattingEnabled = true;
+            this.lstDeProdutos.Location = new System.Drawing.Point(25, 211);
+            this.lstDeProdutos.Name = "lstDeProdutos";
+            this.lstDeProdutos.Size = new System.Drawing.Size(257, 319);
+            this.lstDeProdutos.TabIndex = 20;
+            // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
+            // 
             // produto
             // 
             this.produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.produto.HeaderText = "Produto";
             this.produto.Name = "produto";
             this.produto.ReadOnly = true;
+            // 
+            // nomeProdutoDataGridViewTextBoxColumn
+            // 
+            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
+            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Brinde";
+            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
+            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ValorCompraProduto
             // 
@@ -324,26 +344,6 @@
             this.ValorVendaProduto.Name = "ValorVendaProduto";
             this.ValorVendaProduto.ReadOnly = true;
             this.ValorVendaProduto.Width = 85;
-            // 
-            // lstDeProdutos
-            // 
-            this.lstDeProdutos.FormattingEnabled = true;
-            this.lstDeProdutos.Location = new System.Drawing.Point(25, 211);
-            this.lstDeProdutos.Name = "lstDeProdutos";
-            this.lstDeProdutos.Size = new System.Drawing.Size(257, 319);
-            this.lstDeProdutos.TabIndex = 20;
-            // 
-            // nomeProdutoDataGridViewTextBoxColumn
-            // 
-            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
-            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Brinde";
-            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
-            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
             // 
             // FrmProdutosDaPromocaoDeItemGratis
             // 

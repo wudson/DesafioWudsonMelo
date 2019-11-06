@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
+using projeto2.Feature.Cliente.Controller;
+using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Pedido.Dao;
 using projeto2.Feature.Pedido.Model;
 using projeto2.Feature.Produto.Controller;
@@ -97,7 +99,10 @@ namespace projeto2.Feature.Pedido.Controller
             throw new NotImplementedException();
         }
 
-        public IList<Produto.Produto> ListarProdutos(Produto.Produto produto) =>
-            new ProdutoController().ListarDados(produto);
+        public IList<Produto.Produto> ListarProdutos() =>
+            new ProdutoController().ListarDados(new Produto.Produto());
+
+        public IEnumerable<ClienteModel> ListarClientes() => 
+            new ClienteController().ListarDados(new FiltrosClienteModel());
     }
 }
