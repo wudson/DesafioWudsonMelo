@@ -1,6 +1,6 @@
 ﻿namespace projeto2.Feature.Promocao.View
 {
-    partial class FrmFinalizarCadastroPromocao
+    partial class FrmFinalizaCadastroPromocao
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFinalizarCadastroPromocao));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFinalizaCadastroPromocao));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDataFim = new System.Windows.Forms.DateTimePicker();
@@ -96,7 +96,7 @@
             resources.ApplyResources(this.txtNome, "txtNome");
             this.txtNome.Name = "txtNome";
             // 
-            // FrmFinalizarCadastroPromocao
+            // FrmFinalizaCadastroPromocao
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -112,7 +112,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.Name = "FrmFinalizarCadastroPromocao";
+            this.Name = "FrmFinalizaCadastroPromocao";
             this.ResumeLayout(false);
             this.PerformLayout();
 

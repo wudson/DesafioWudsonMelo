@@ -94,7 +94,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.DarkGray;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCancelar.Location = new System.Drawing.Point(325, 387);
+            this.btnCancelar.Location = new System.Drawing.Point(325, 311);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(141, 41);
@@ -108,7 +108,7 @@
             this.btnProximo.BackColor = System.Drawing.Color.LimeGreen;
             this.btnProximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProximo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnProximo.Location = new System.Drawing.Point(181, 387);
+            this.btnProximo.Location = new System.Drawing.Point(181, 311);
             this.btnProximo.Margin = new System.Windows.Forms.Padding(0);
             this.btnProximo.Name = "btnProximo";
             this.btnProximo.Size = new System.Drawing.Size(141, 41);

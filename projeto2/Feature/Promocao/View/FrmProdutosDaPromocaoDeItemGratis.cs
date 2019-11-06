@@ -21,5 +21,10 @@ namespace projeto2.Feature.Promocao.View
         {
 
         }
+
+        private void btnBrinde_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

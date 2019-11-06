@@ -50,11 +50,11 @@
             this.btnSalvarPromocao = new System.Windows.Forms.Button();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
             this.produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lstDeProdutos = new System.Windows.Forms.CheckedListBox();
+            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).BeginInit();
@@ -104,7 +104,7 @@
             this.btnBuscar.BackColor = System.Drawing.Color.LimeGreen;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBuscar.Location = new System.Drawing.Point(194, 71);
+            this.btnBuscar.Location = new System.Drawing.Point(194, 72);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(0);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(48, 24);
@@ -134,7 +134,7 @@
             this.btnAdicionarProdutosSelecionadosNaPromocao.BackColor = System.Drawing.Color.LimeGreen;
             this.btnAdicionarProdutosSelecionadosNaPromocao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarProdutosSelecionadosNaPromocao.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAdicionarProdutosSelecionadosNaPromocao.Location = new System.Drawing.Point(259, 71);
+            this.btnAdicionarProdutosSelecionadosNaPromocao.Location = new System.Drawing.Point(259, 72);
             this.btnAdicionarProdutosSelecionadosNaPromocao.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdicionarProdutosSelecionadosNaPromocao.Name = "btnAdicionarProdutosSelecionadosNaPromocao";
             this.btnAdicionarProdutosSelecionadosNaPromocao.Size = new System.Drawing.Size(138, 24);
@@ -206,6 +206,7 @@
             this.btnBrinde.TabIndex = 17;
             this.btnBrinde.Text = "Selecionar brinde";
             this.btnBrinde.UseVisualStyleBackColor = false;
+            this.btnBrinde.Click += new System.EventHandler(this.btnBrinde_Click);
             // 
             // label1
             // 
@@ -306,14 +307,6 @@
             this.produto.Name = "produto";
             this.produto.ReadOnly = true;
             // 
-            // nomeProdutoDataGridViewTextBoxColumn
-            // 
-            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
-            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Brinde";
-            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
-            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // ValorCompraProduto
             // 
             this.ValorCompraProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -332,10 +325,6 @@
             this.ValorVendaProduto.ReadOnly = true;
             this.ValorVendaProduto.Width = 85;
             // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
-            // 
             // lstDeProdutos
             // 
             this.lstDeProdutos.FormattingEnabled = true;
@@ -343,6 +332,18 @@
             this.lstDeProdutos.Name = "lstDeProdutos";
             this.lstDeProdutos.Size = new System.Drawing.Size(257, 319);
             this.lstDeProdutos.TabIndex = 20;
+            // 
+            // nomeProdutoDataGridViewTextBoxColumn
+            // 
+            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
+            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Brinde";
+            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
+            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
             // 
             // FrmProdutosDaPromocaoDeItemGratis
             // 

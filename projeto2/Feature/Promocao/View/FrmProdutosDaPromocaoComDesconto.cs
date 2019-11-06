@@ -225,7 +225,7 @@ namespace projeto2.Feature.Promocao.View
 
         private void BtnSalvarPromocao_Click(object sender, EventArgs e)
         {
-            new FrmFinalizarCadastroPromocao().ShowDialog();
+            new FrmFinalizaCadastroPromocao().ShowDialog();
         }
     }
 }
