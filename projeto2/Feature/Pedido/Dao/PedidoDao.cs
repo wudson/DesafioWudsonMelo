@@ -55,7 +55,7 @@ namespace projeto2.Feature.Pedido.Dao
             {
                 cmd.Parameters["@prod"].Value = produto.IdProduto;
                 cmd.Parameters["@pedido"].Value = idPedido;
-                cmd.Parameters["@quant"].Value = 10;
+                cmd.Parameters["@quant"].Value = produto.QuantidadeProdutoPedido;
                 cmd.ExecuteNonQuery();
             }
 

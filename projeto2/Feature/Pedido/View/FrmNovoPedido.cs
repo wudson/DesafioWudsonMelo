@@ -103,7 +103,8 @@ namespace projeto2.Feature.Pedido.View
                 .Cast<DataGridViewRow>()
                 .Select(r => new Produto.Produto
                 {
-                    IdProduto = Convert.ToInt32(r.Cells[0].Value.ToString())
+                    IdProduto = Convert.ToInt32(r.Cells[0].Value.ToString()),
+                    QuantidadeProdutoPedido = Convert.ToInt32(r.Cells["quantidade"].Value.ToString())
                 })
                 .ToList();
 
