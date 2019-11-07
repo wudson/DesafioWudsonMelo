@@ -29,11 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lstDeProdutos = new System.Windows.Forms.CheckedListBox();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
+            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnCancelarPromocao = new System.Windows.Forms.Button();
-            this.btnSalvarPromocao = new System.Windows.Forms.Button();
+            this.btnProdutosSelecionados = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,19 +47,15 @@
             this.btnAdicionarProdutosSelecionados = new System.Windows.Forms.Button();
             this.rdbProduto = new System.Windows.Forms.RadioButton();
             this.rdbMarca = new System.Windows.Forms.RadioButton();
-            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).BeginInit();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstDeProdutos
             // 
             this.lstDeProdutos.FormattingEnabled = true;
-            this.lstDeProdutos.Location = new System.Drawing.Point(25, 97);
+            this.lstDeProdutos.Location = new System.Drawing.Point(12, 97);
             this.lstDeProdutos.Name = "lstDeProdutos";
             this.lstDeProdutos.Size = new System.Drawing.Size(257, 319);
             this.lstDeProdutos.TabIndex = 9;
@@ -70,7 +71,7 @@
             this.ValorCompraProduto,
             this.valorVendaProduto});
             this.dgvProdutosDaPromocao.DataSource = this.produtoBindingSource;
-            this.dgvProdutosDaPromocao.Location = new System.Drawing.Point(288, 97);
+            this.dgvProdutosDaPromocao.Location = new System.Drawing.Point(275, 97);
             this.dgvProdutosDaPromocao.MultiSelect = false;
             this.dgvProdutosDaPromocao.Name = "dgvProdutosDaPromocao";
             this.dgvProdutosDaPromocao.ReadOnly = true;
@@ -78,15 +79,49 @@
             this.dgvProdutosDaPromocao.Size = new System.Drawing.Size(708, 319);
             this.dgvProdutosDaPromocao.TabIndex = 10;
             this.dgvProdutosDaPromocao.TabStop = false;
-            this.dgvProdutosDaPromocao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProdutosDaPromocao_CellDoubleClick);
             this.dgvProdutosDaPromocao.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvProdutosDaPromocao_CellFormatting);
+            // 
+            // nomeProdutoDataGridViewTextBoxColumn
+            // 
+            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
+            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
+            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
+            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ValorCompraProduto
+            // 
+            this.ValorCompraProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ValorCompraProduto.DataPropertyName = "ValorCompraProduto";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ValorCompraProduto.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ValorCompraProduto.HeaderText = "Preço de compra";
+            this.ValorCompraProduto.Name = "ValorCompraProduto";
+            this.ValorCompraProduto.ReadOnly = true;
+            // 
+            // valorVendaProduto
+            // 
+            this.valorVendaProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle4;
+            this.valorVendaProduto.HeaderText = "Preço de venda";
+            this.valorVendaProduto.Name = "valorVendaProduto";
+            this.valorVendaProduto.ReadOnly = true;
+            // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
             // 
             // btnCancelarPromocao
             // 
             this.btnCancelarPromocao.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCancelarPromocao.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelarPromocao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarPromocao.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCancelarPromocao.Location = new System.Drawing.Point(855, 419);
+            this.btnCancelarPromocao.Location = new System.Drawing.Point(842, 419);
             this.btnCancelarPromocao.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelarPromocao.Name = "btnCancelarPromocao";
             this.btnCancelarPromocao.Size = new System.Drawing.Size(141, 41);
@@ -94,25 +129,27 @@
             this.btnCancelarPromocao.Text = "Cancelar";
             this.btnCancelarPromocao.UseVisualStyleBackColor = false;
             // 
-            // btnSalvarPromocao
+            // btnProdutosSelecionados
             // 
-            this.btnSalvarPromocao.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSalvarPromocao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvarPromocao.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSalvarPromocao.Location = new System.Drawing.Point(709, 419);
-            this.btnSalvarPromocao.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSalvarPromocao.Name = "btnSalvarPromocao";
-            this.btnSalvarPromocao.Size = new System.Drawing.Size(141, 41);
-            this.btnSalvarPromocao.TabIndex = 13;
-            this.btnSalvarPromocao.Text = "Ok";
-            this.btnSalvarPromocao.UseVisualStyleBackColor = false;
+            this.btnProdutosSelecionados.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnProdutosSelecionados.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnProdutosSelecionados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProdutosSelecionados.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnProdutosSelecionados.Location = new System.Drawing.Point(696, 419);
+            this.btnProdutosSelecionados.Margin = new System.Windows.Forms.Padding(0);
+            this.btnProdutosSelecionados.Name = "btnProdutosSelecionados";
+            this.btnProdutosSelecionados.Size = new System.Drawing.Size(141, 41);
+            this.btnProdutosSelecionados.TabIndex = 13;
+            this.btnProdutosSelecionados.Text = "Ok";
+            this.btnProdutosSelecionados.UseVisualStyleBackColor = false;
+            this.btnProdutosSelecionados.Click += new System.EventHandler(this.BtnProdutosSelecionados_Click);
             // 
             // btnLimpar
             // 
             this.btnLimpar.BackColor = System.Drawing.Color.DarkGray;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLimpar.Location = new System.Drawing.Point(894, 63);
+            this.btnLimpar.Location = new System.Drawing.Point(881, 63);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(0);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(102, 26);
@@ -129,7 +166,7 @@
             this.groupBox3.Controls.Add(this.btnAdicionarProdutosSelecionados);
             this.groupBox3.Controls.Add(this.rdbProduto);
             this.groupBox3.Controls.Add(this.rdbMarca);
-            this.groupBox3.Location = new System.Drawing.Point(25, 2);
+            this.groupBox3.Location = new System.Drawing.Point(12, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(406, 89);
             this.groupBox3.TabIndex = 27;
@@ -202,46 +239,15 @@
             this.rdbMarca.UseVisualStyleBackColor = true;
             this.rdbMarca.CheckedChanged += new System.EventHandler(this.RdbMarca_CheckedChanged);
             // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
-            // 
-            // nomeProdutoDataGridViewTextBoxColumn
-            // 
-            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
-            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
-            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
-            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ValorCompraProduto
-            // 
-            this.ValorCompraProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ValorCompraProduto.DataPropertyName = "ValorCompraProduto";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ValorCompraProduto.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ValorCompraProduto.HeaderText = "Preço de compra";
-            this.ValorCompraProduto.Name = "ValorCompraProduto";
-            this.ValorCompraProduto.ReadOnly = true;
-            // 
-            // valorVendaProduto
-            // 
-            this.valorVendaProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
-            this.valorVendaProduto.HeaderText = "Preço de venda";
-            this.valorVendaProduto.Name = "valorVendaProduto";
-            this.valorVendaProduto.ReadOnly = true;
-            // 
             // FrmProdutosDaPromocaoComDesconto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1021, 465);
+            this.ClientSize = new System.Drawing.Size(995, 465);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnCancelarPromocao);
-            this.Controls.Add(this.btnSalvarPromocao);
+            this.Controls.Add(this.btnProdutosSelecionados);
             this.Controls.Add(this.dgvProdutosDaPromocao);
             this.Controls.Add(this.lstDeProdutos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -252,9 +258,9 @@
             this.Text = "Cadastro de promoção";
             this.Load += new System.EventHandler(this.FrmProdutosDaPromocaoComDesconto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,7 +269,7 @@
         private System.Windows.Forms.CheckedListBox lstDeProdutos;
         private System.Windows.Forms.DataGridView dgvProdutosDaPromocao;
         private System.Windows.Forms.Button btnCancelarPromocao;
-        private System.Windows.Forms.Button btnSalvarPromocao;
+        private System.Windows.Forms.Button btnProdutosSelecionados;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.BindingSource produtoBindingSource;
         private System.Windows.Forms.GroupBox groupBox3;

@@ -4,14 +4,18 @@ using System.Linq;
 using System.Windows.Forms;
 using projeto2.Feature.Grupo.Model;
 using projeto2.Feature.Marca.Model;
+using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Promocao.View
 {
     public partial class FrmProdutosDaPromocaoComDesconto : Form
     {
+        private readonly IList<PromocaoModel> _promocao;
+
         public FrmProdutosDaPromocaoComDesconto()
         {
             InitializeComponent();
+            _promocao = new List<PromocaoModel>();
         }
 
         private void FrmProdutosDaPromocaoComDesconto_Load(object sender, EventArgs e)
@@ -26,8 +30,10 @@ namespace projeto2.Feature.Promocao.View
             {
                 new Produto.Produto
                 {
+                    IdProduto = 1,
                     NomeProduto = "Coca cola",
                     ValorVendaProduto = 10,
+                    ValorCompraProduto = 5,
                     GrupoProduto = new GrupoModel
                     {
                         Grupo = "Bebidas",
@@ -39,8 +45,10 @@ namespace projeto2.Feature.Promocao.View
                 },
                 new Produto.Produto
                 {
+                    IdProduto = 2,
                     NomeProduto = "Cerveja",
-                    ValorVendaProduto = 5,
+                    ValorVendaProduto = 4.80,
+                    ValorCompraProduto = 2.75,
                     GrupoProduto = new GrupoModel
                     {
                         Grupo = "Bebidas",
@@ -52,8 +60,10 @@ namespace projeto2.Feature.Promocao.View
                 },
                 new Produto.Produto
                 {
+                    IdProduto = 3,
                     NomeProduto = "Sprite",
                     ValorVendaProduto = 8,
+                    ValorCompraProduto = 4.25,
                     GrupoProduto = new GrupoModel
                     {
                         Grupo = "Bebidas",
@@ -76,23 +86,23 @@ namespace projeto2.Feature.Promocao.View
             {
                 var grupos = lstDeProdutos.CheckedItems.Cast<GrupoModel>().ToList();
 
-                var zéGotinha = new List<Produto.Produto>();
+                var produtos = new List<Produto.Produto>();
 
                 foreach (var grupo in grupos)
-                    zéGotinha.AddRange(
+                    produtos.AddRange(
                         AtribuirListaProdutos().Where(p => p.GrupoProduto.Grupo.Equals(grupo.Grupo)).ToList());
-                dgvProdutosDaPromocao.DataSource = zéGotinha;
+                dgvProdutosDaPromocao.DataSource = produtos;
             }
             else
             {
                 var marcas = lstDeProdutos.CheckedItems.Cast<MarcaModel>().ToList();
 
-                var zéGotinha = new List<Produto.Produto>();
+                var produtos = new List<Produto.Produto>();
 
                 foreach (var marca in marcas)
-                    zéGotinha.AddRange(
+                    produtos.AddRange(
                         AtribuirListaProdutos().Where(p => p.MarcaProduto.Marca.Equals(marca.Marca)).ToList());
-                dgvProdutosDaPromocao.DataSource = zéGotinha;
+                dgvProdutosDaPromocao.DataSource = produtos;
 
             }
 
@@ -144,16 +154,8 @@ namespace projeto2.Feature.Promocao.View
                 }
             };
 
-        private void BtnLimpar_Click(object sender, EventArgs e)
-        {
+        private void BtnLimpar_Click(object sender, EventArgs e) => 
             dgvProdutosDaPromocao.DataSource = new List<Produto.Produto>();
-        }
-
-        private void DgvProdutosDaPromocao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvProdutosDaPromocao.CurrentRow != null)
-                dgvProdutosDaPromocao.Rows.Remove(dgvProdutosDaPromocao.Rows[e.RowIndex]);
-        }
 
         private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -182,5 +184,23 @@ namespace projeto2.Feature.Promocao.View
                 lstDeProdutos.DisplayMember = "Marca";
             }
         }
+
+        private void BtnProdutosSelecionados_Click(object sender, EventArgs e)
+        {
+            if (dgvProdutosDaPromocao.RowCount <= 0)
+            {
+                MessageBox.Show(@"Nenhum produto selecionado");
+                return;
+            }
+            var produtos = (List<Produto.Produto>) dgvProdutosDaPromocao.DataSource;
+
+            _promocao.Add(new PromocaoModel
+            {
+                Produtos = produtos
+            });
+        }
+
+        public IList<PromocaoModel> RetornarProdutos() => 
+            ShowDialog() == DialogResult.OK ? _promocao : new List<PromocaoModel>();
     }
 }

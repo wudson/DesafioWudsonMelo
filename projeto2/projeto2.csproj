@@ -139,12 +139,6 @@
     <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.Designer.cs">
       <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoDeItemGratis.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoDeItemGratis.Designer.cs">
-      <DependentUpon>FrmProdutosDaPromocaoDeItemGratis.cs</DependentUpon>
-    </Compile>
     <Compile Include="Feature\Promocao\View\FrmPromocoes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,9 +206,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.resx">
       <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Promocao\View\FrmProdutosDaPromocaoDeItemGratis.resx">
-      <DependentUpon>FrmProdutosDaPromocaoDeItemGratis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmPromocoes.resx">
       <DependentUpon>FrmPromocoes.cs</DependentUpon>

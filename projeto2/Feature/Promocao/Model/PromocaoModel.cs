@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace projeto2.Feature.Promocao.Model
 {
@@ -9,5 +10,6 @@ namespace projeto2.Feature.Promocao.Model
         public string TipoPromocao { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
+        public List<Produto.Produto> Produtos { get; set; }
     }
 }
