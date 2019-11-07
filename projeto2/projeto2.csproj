@@ -127,17 +127,11 @@
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Promocao\Model\PromocaoModel.cs" />
-    <Compile Include="Feature\Promocao\View\FrmFinalizaCadastroPromocao.cs">
+    <Compile Include="Feature\Promocao\View\FrmCadastroDePromcao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmFinalizaCadastroPromocao.Designer.cs">
-      <DependentUpon>FrmFinalizaCadastroPromocao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Feature\Promocao\View\FrmPeriodoPromocao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Feature\Promocao\View\FrmPeriodoPromocao.Designer.cs">
-      <DependentUpon>FrmPeriodoPromocao.cs</DependentUpon>
+    <Compile Include="Feature\Promocao\View\FrmCadastroDePromcao.Designer.cs">
+      <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.cs">
       <SubType>Form</SubType>
@@ -156,12 +150,6 @@
     </Compile>
     <Compile Include="Feature\Promocao\View\FrmPromocoes.Designer.cs">
       <DependentUpon>FrmPromocoes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Feature\Promocao\View\FrmSelecionaBrinde.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Feature\Promocao\View\FrmSelecionaBrinde.Designer.cs">
-      <DependentUpon>FrmSelecionaBrinde.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEntrar.cs">
       <SubType>Form</SubType>
@@ -219,11 +207,8 @@
     <EmbeddedResource Include="Feature\Pedido\View\FrmItensPedido.resx">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Promocao\View\FrmFinalizaCadastroPromocao.resx">
-      <DependentUpon>FrmFinalizaCadastroPromocao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Promocao\View\FrmPeriodoPromocao.resx">
-      <DependentUpon>FrmPeriodoPromocao.cs</DependentUpon>
+    <EmbeddedResource Include="Feature\Promocao\View\FrmCadastroDePromcao.resx">
+      <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.resx">
       <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
@@ -233,9 +218,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmPromocoes.resx">
       <DependentUpon>FrmPromocoes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Promocao\View\FrmSelecionaBrinde.resx">
-      <DependentUpon>FrmSelecionaBrinde.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEntrar.resx">
       <DependentUpon>FrmEntrar.cs</DependentUpon>

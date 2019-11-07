@@ -12,7 +12,7 @@ namespace projeto2.Feature.Promocao.View
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
-            new FrmPeriodoPromocao().ShowDialog();
+            new FrmCadastroDePromcao().ShowDialog();
         }
     }
 }

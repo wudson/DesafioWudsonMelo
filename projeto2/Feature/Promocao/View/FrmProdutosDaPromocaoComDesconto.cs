@@ -149,50 +149,10 @@ namespace projeto2.Feature.Promocao.View
             dgvProdutosDaPromocao.DataSource = new List<Produto.Produto>();
         }
 
-        private void DgvProdutosDaPromocao_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-
-            for (var i = 0; i < dgvProdutosDaPromocao.RowCount; i++)
-            {
-                if (rdbValorFixo.Checked)
-                    dgvProdutosDaPromocao.Rows[i].Cells["PreçoComDesconto"].Value =
-                        double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) - double.Parse(txtDesconto.Text);
-                else
-                {
-                    dgvProdutosDaPromocao.Rows[i].Cells["PreçoComDesconto"].Value =
-                        double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) - double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) * double.Parse(txtDesconto.Text)/100;
-                }
-            }
-
-        }
-
         private void DgvProdutosDaPromocao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvProdutosDaPromocao.CurrentRow != null) dgvProdutosDaPromocao.Rows.Remove(dgvProdutosDaPromocao.Rows[e.RowIndex]);
-        }
-
-        private void BtnCancelarPromocao_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void BtnVoltar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void BtnAplicar_Click(object sender, EventArgs e)
-        {
-            for (var i = 0; i < dgvProdutosDaPromocao.RowCount; i++)
-            {
-                if (rdbValorFixo.Checked)
-                    dgvProdutosDaPromocao.Rows[i].Cells["PreçoComDesconto"].Value =
-                        double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) - double.Parse(txtDesconto.Text);
-                else
-                {
-                    dgvProdutosDaPromocao.Rows[i].Cells["PreçoComDesconto"].Value =
-                        double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) - double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) * double.Parse(txtDesconto.Text) / 100;
-                }
-            }
+            if (dgvProdutosDaPromocao.CurrentRow != null)
+                dgvProdutosDaPromocao.Rows.Remove(dgvProdutosDaPromocao.Rows[e.RowIndex]);
         }
 
         private void TxtBuscar_TextChanged(object sender, EventArgs e)
@@ -221,11 +181,6 @@ namespace projeto2.Feature.Promocao.View
 
                 lstDeProdutos.DisplayMember = "Marca";
             }
-        }
-
-        private void BtnSalvarPromocao_Click(object sender, EventArgs e)
-        {
-            new FrmFinalizaCadastroPromocao().ShowDialog();
         }
     }
 }
