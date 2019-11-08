@@ -3,18 +3,24 @@ using projeto2.Feature.Estoque.View;
 using projeto2.Feature.Grupo.View;
 using projeto2.Feature.Marca.View;
 using projeto2.Feature.Pedido.View;
-using projeto2.Feature.Produto.View;
+using projeto2.Feature.Produto.Controller;
+using projeto2.Feature.Promocao.View;
 using System;
 using System.Windows.Forms;
-using projeto2.Feature.Promocao.View;
 
-namespace projeto2
+namespace projeto2.Feature.Principal.View
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal() => InitializeComponent();
+        private readonly ProdutoController _produtoController;
 
-        private void BtnProdutos_Click(object sender, EventArgs e) => new FrmProdutos().ShowDialog();
+        public FrmPrincipal()
+        {
+            InitializeComponent();
+            _produtoController = new ProdutoController();
+        } 
+
+        private void BtnProdutos_Click(object sender, EventArgs e) => _produtoController.AbrirTelaDeProdutos();
 
         private void BtnClientes_Click(object sender, EventArgs e) => new FrmClientes().ShowDialog();
 

@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
+    <Compile Include="Feature\Produto\Controller\CadastroDeProdutoController.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
     <Compile Include="Feature\Pedido\View\FrmItensPedido.cs">
       <SubType>Form</SubType>
@@ -151,10 +152,10 @@
     <Compile Include="FrmEntrar.Designer.cs">
       <DependentUpon>FrmEntrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPrincipal.cs">
+    <Compile Include="Feature\Principal\View\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPrincipal.Designer.cs">
+    <Compile Include="Feature\Principal\View\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Cliente\View\FrmClientes.cs">
@@ -213,7 +214,7 @@
     <EmbeddedResource Include="FrmEntrar.resx">
       <DependentUpon>FrmEntrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrincipal.resx">
+    <EmbeddedResource Include="Feature\Principal\View\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Cliente\View\FrmClientes.resx">

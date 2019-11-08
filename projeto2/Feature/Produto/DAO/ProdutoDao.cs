@@ -15,8 +15,8 @@ namespace projeto2.Feature.Produto.Dao
             conn.Open();
             const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, ID_GRUPO, ID_MARCA, TIPO_PRODUTO, 
                                   QUANTIDADE_ESTOQUE_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO, 
-                                  FORNECEDOR_PRODUTO) 
-                                  Values(@nome, @grupo, @marca, @tipo, @estoque, @compra, @venda, @fornecedor)";
+                                  FORNECEDOR_PRODUTO, CODIGO_DE_BARRA_PRODUTO) 
+                                  Values(@nome, @grupo, @marca, @tipo, @estoque, @compra, @venda, @fornecedor, @codigo)";
 
             var cmd = new FbCommand(mSql, conn);
             try
@@ -28,7 +28,8 @@ namespace projeto2.Feature.Produto.Dao
                 cmd.Parameters.Add("@estoque", FbDbType.Integer).Value = produto.QuantidadeEstoqueProduto;
                 cmd.Parameters.Add("@compra", FbDbType.Numeric).Value = produto.ValorCompraProduto;
                 cmd.Parameters.Add("@venda", FbDbType.Numeric).Value = produto.ValorVendaProduto;
-                cmd.Parameters.Add("@fornecedor", FbDbType.Numeric).Value = produto.FornecedorProduto;
+                cmd.Parameters.Add("@fornecedor", FbDbType.VarChar).Value = produto.FornecedorProduto;
+                cmd.Parameters.Add("@codigo", FbDbType.VarChar).Value = produto.CodigoDeBarras;
 
                 cmd.ExecuteNonQuery();
                 return true;
@@ -61,6 +62,7 @@ namespace projeto2.Feature.Produto.Dao
                     produto.IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]);
                     produto.NomeProduto = dataReader["NOME_PRODUTO"].ToString();
                     produto.FornecedorProduto = dataReader["FORNECEDOR_PRODUTO"].ToString();
+                    produto.CodigoDeBarras = dataReader["CODIGO_DE_BARRA_PRODUTO"].ToString();
                     produto.ValorCompraProduto = Convert.ToDouble(dataReader["VALOR_COMPRA_PRODUTO"]);
                     produto.ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]);
                     produto.GrupoProduto = new GrupoModel
@@ -117,14 +119,23 @@ namespace projeto2.Feature.Produto.Dao
                        INNER JOIN Marca AS m ON p.Id_Marca = m.Id_Marca
                        WHERE (1=1)");
 
-            if (!string.IsNullOrWhiteSpace(filtros.NomeProduto)) sql.Append(" and lower(NOME_PRODUTO) like lower(@prod)");
-            if (!string.IsNullOrWhiteSpace(filtros.GrupoProduto.Grupo)) sql.Append(" and lower(GRUPO) like lower(@grupo)");
-            if (!string.IsNullOrWhiteSpace(filtros.TipoProduto)) sql.Append(" and lower(TIPO_PRODUTO) like lower(@tipo)");
+            if (!string.IsNullOrWhiteSpace(filtros.NomeProduto))
+                sql.Append(" and lower(NOME_PRODUTO) like lower(@prod)");
+
+            if (!string.IsNullOrWhiteSpace(filtros.CodigoDeBarras))
+                sql.Append(" and CODIGO_DE_BARRA_PRODUTO like @codigo");
+
+            if (!string.IsNullOrWhiteSpace(filtros.GrupoProduto.Grupo))
+                sql.Append(" and lower(GRUPO) like lower(@grupo)");
+
+            if (!string.IsNullOrWhiteSpace(filtros.TipoProduto))
+                sql.Append(" and lower(TIPO_PRODUTO) like lower(@tipo)");
 
             var cmd = new FbCommand(sql.ToString(), conn);
             try
             {
                 cmd.Parameters.Add("@prod", FbDbType.VarChar).Value = $"{filtros.NomeProduto}%";
+                cmd.Parameters.Add("@codigo", FbDbType.VarChar).Value = $"{filtros.CodigoDeBarras}%";
                 cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = filtros.GrupoProduto.Grupo;
                 cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = filtros.TipoProduto;
 
@@ -137,6 +148,7 @@ namespace projeto2.Feature.Produto.Dao
                         IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
                         NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
                         FornecedorProduto = dataReader["FORNECEDOR_PRODUTO"].ToString(),
+                        CodigoDeBarras = dataReader["CODIGO_DE_BARRA_PRODUTO"].ToString(),
                         ValorCompraProduto = Convert.ToDouble(dataReader["VALOR_COMPRA_PRODUTO"]),
                         ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
                         GrupoProduto = new GrupoModel
@@ -171,7 +183,8 @@ namespace projeto2.Feature.Produto.Dao
             const string mSql = @"Update PRODUTO set NOME_PRODUTO = @nome, ID_GRUPO = @grupo, 
                                     ID_MARCA = @marca, TIPO_PRODUTO = @tipo, QUANTIDADE_ESTOQUE_PRODUTO = @estoque, 
                                     VALOR_COMPRA_PRODUTO = @compra, VALOR_VENDA_PRODUTO = @venda, 
-                                    FORNECEDOR_PRODUTO = @fornecedor WHERE ID_PRODUTO = @id";
+                                    FORNECEDOR_PRODUTO = @fornecedor, CODIGO_DE_BARRA_PRODUTO = @codigo 
+                                    WHERE ID_PRODUTO = @id";
 
             var cmd = new FbCommand(mSql, conn);
             try
@@ -183,7 +196,8 @@ namespace projeto2.Feature.Produto.Dao
                 cmd.Parameters.Add("@estoque", FbDbType.Integer).Value = produto.QuantidadeEstoqueProduto;
                 cmd.Parameters.Add("@compra", FbDbType.Numeric).Value = produto.ValorCompraProduto;
                 cmd.Parameters.Add("@venda", FbDbType.Numeric).Value = produto.ValorVendaProduto;
-                cmd.Parameters.Add("@fornecedor", FbDbType.Numeric).Value = produto.FornecedorProduto;
+                cmd.Parameters.Add("@fornecedor", FbDbType.VarChar).Value = produto.FornecedorProduto;
+                cmd.Parameters.Add("@codigo", FbDbType.VarChar).Value = produto.CodigoDeBarras;
                 cmd.Parameters.Add("@id", FbDbType.Integer).Value = produto.IdProduto;
 
                 cmd.ExecuteNonQuery();

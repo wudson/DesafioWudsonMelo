@@ -279,6 +279,7 @@
             this.txtBuscar.Size = new System.Drawing.Size(197, 20);
             this.txtBuscar.TabIndex = 1;
             this.txtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
+            this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtBuscar_KeyDown);
             // 
             // label6
             // 

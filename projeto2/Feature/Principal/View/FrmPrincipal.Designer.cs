@@ -1,4 +1,4 @@
-﻿namespace projeto2
+﻿namespace projeto2.Feature.Principal.View
 {
     partial class FrmPrincipal
     {

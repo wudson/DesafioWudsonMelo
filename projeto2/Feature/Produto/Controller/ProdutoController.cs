@@ -7,14 +7,34 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
+using projeto2.Feature.Produto.View;
 
 namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
+        public Produto ProdutoModel { get; set; }
+        private readonly FrmProdutos _frmProdutos;
         private readonly ProdutoDao _dao;
 
-        public ProdutoController() => _dao = new ProdutoDao();
+        private readonly CadastroDeProdutoController _cadastroDeProdutoController;
+        private readonly GrupoController _grupoController;
+        private readonly MarcaController _marcaController;
+
+        public ProdutoController()
+        { 
+            ProdutoModel = new Produto();
+            _dao = new ProdutoDao();
+
+            _frmProdutos = new FrmProdutos(this);
+
+            _cadastroDeProdutoController = new CadastroDeProdutoController();
+            _grupoController = new GrupoController();
+            _marcaController = new MarcaController();
+        }
+
+        public void AbrirTelaDeProdutos() =>
+            _frmProdutos.ShowDialog();
 
         public IList<Produto> ListarDados(Produto filtros)
         {
@@ -87,56 +107,12 @@ namespace projeto2.Feature.Produto.Controller
             return false;
         }
 
-        public bool AlterarDado(Produto produto)
+        public void AbrirTelaDeAlterarECadastrarProdutos(Produto produto = null)
         {
-            try
-            {
-                if (_dao.Alterar(produto))
-                {
-                    MessageBox.Show(@"Produto alterado com sucesso.", @"Sucesso");
-                    return true;
-                }
-            }
-            catch (FbException ex)
-            {
-                MessageBox.Show(@"Problemas no banco de dados ao alterar produto.");
-                Console.WriteLine(ex);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(@"Problemas ao alterar produto", @"Erro");
-                Console.WriteLine(ex);
-            }
-
-            return false;
+            if (produto == null)
+                _cadastroDeProdutoController.AbrirTela();
+            else
+                _cadastroDeProdutoController.AbrirTelaParaAlterar(produto);
         }
-
-        public bool CadastrarDado(Produto produto)
-        {
-            try
-            {
-                if (_dao.Cadastrar(produto))
-                {
-                    MessageBox.Show(@"Produto cadastrado com sucesso.", @"Sucesso");
-                    return true;
-                }
-            }
-            catch (FbException ex)
-            {
-                MessageBox.Show(@"Problemas no banco de dados ao cadastrar produto.");
-                Console.WriteLine(ex);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(@"Problemas ao cadastrar produto.", @"Erro");
-                Console.WriteLine(ex);
-            }
-
-            return false;
-        }
-
-        public IEnumerable<GrupoModel> ListarGrupos() => new GrupoController().ListarGrupos();
-
-        public IEnumerable<MarcaModel> ListarMarcas() => new MarcaController().ListarMarcas();
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
+using projeto2.Feature.Principal.View;
 
 namespace projeto2
 {
@@ -45,6 +47,7 @@ namespace projeto2
             txtUsuario.Focus();
         }
 
+        [DebuggerStepThrough]
         private void FrmEntrar_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)

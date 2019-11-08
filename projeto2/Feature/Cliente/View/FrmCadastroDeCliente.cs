@@ -16,7 +16,6 @@ namespace projeto2.Feature.Cliente.View
             _clienteController = new ClienteController();
             _cliente = cliente;
             btnAlterar.Visible = true;
-            btnSalvarCadastroCliente.Visible = false;
         }
 
         public FrmCadastroDeCliente()
@@ -143,6 +142,10 @@ namespace projeto2.Feature.Cliente.View
 
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)
         {
+            btnSalvarCadastroCliente.Visible = false;
+            txtDataNascimento.MaxDate = DateTime.Now.AddYears(-10);
+            txtDataNascimento.Value = DateTime.Now.AddYears(-18);
+
             if (_cliente == null) return;
             txtNome.Text = _cliente.NomePessoa;
             txtEmail.Text = _cliente.EmailPessoa;

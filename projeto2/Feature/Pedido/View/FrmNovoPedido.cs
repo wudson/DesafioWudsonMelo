@@ -46,6 +46,11 @@ namespace projeto2.Feature.Pedido.View
             if (index == ListBox.NoMatches) return;
 
             var produtoAdicionado = (Produto.Produto)lstProdutos.SelectedItems[0];
+            ProdutoSelecionado(produtoAdicionado);
+        }
+
+        private void ProdutoSelecionado(Produto.Produto produtoAdicionado)
+        {
             txtProduto.Text = produtoAdicionado.NomeProduto;
             txtIdProduto.Text = produtoAdicionado.IdProduto.ToString();
             txtPreco.Text = produtoAdicionado.ValorVendaProduto.ToString(CultureInfo.InvariantCulture);
@@ -150,7 +155,19 @@ namespace projeto2.Feature.Pedido.View
 
         private Produto.Produto Filtrar() => new Produto.Produto
         {
-            NomeProduto = txtBuscar.Text.Trim()
+            CodigoDeBarras = txtBuscar.Text.Trim()
         };
+
+        private void TxtBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter) return;
+            if (string.IsNullOrWhiteSpace(txtBuscar.Text)) return;
+
+            var produtos = (List<Produto.Produto>) lstProdutos.DataSource;
+            var produtoSelecionado = produtos.Where(p => p.CodigoDeBarras.Equals(txtBuscar.Text)).ToList();
+
+            if (produtoSelecionado.Count <= 0) return;
+            ProdutoSelecionado(produtoSelecionado[0]);
+        }
     }
 }

@@ -9,15 +9,15 @@ namespace projeto2.Feature.Produto.View
     {
         private readonly ProdutoController _produtoController;
 
-        public FrmProdutos()
+        public FrmProdutos(ProdutoController controller)
         {
             InitializeComponent();
-            _produtoController = new ProdutoController();
+            _produtoController = controller;
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
         {
-            new FrmCadastroDeProduto().ShowDialog();
+            _produtoController.AbrirTelaDeAlterarECadastrarProdutos();
             AtualizarGridDadosProduto();
         }
 
@@ -41,10 +41,15 @@ namespace projeto2.Feature.Produto.View
         {
             if (e.RowIndex < 0) return;
 
-            var produto =
-                _produtoController.BuscarDado(int.Parse(dgvProduto.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            BuscarProdutoParaAlterar();
+        }
 
-            new FrmCadastroDeProduto(produto).ShowDialog();
+        private void BuscarProdutoParaAlterar()
+        {
+            var produto =
+                _produtoController.BuscarDado(int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
+
+            _produtoController.AbrirTelaDeAlterarECadastrarProdutos(produto);
             AtualizarGridDadosProduto();
         }
 
@@ -58,11 +63,7 @@ namespace projeto2.Feature.Produto.View
         {
             if (!btnEditar.Enabled) return;
 
-            var produto =
-                _produtoController.BuscarDado(int.Parse(dgvProduto.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
-
-            new FrmCadastroDeProduto(produto).ShowDialog();
-            AtualizarGridDadosProduto();
+            BuscarProdutoParaAlterar();
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)

@@ -69,7 +69,7 @@ namespace projeto2.Feature.Pedido.Dao
 
             const string mSql = @"Select pedido.*, p.* from PEDIDO pedido 
                                 INNER JOIN CLIENTE as c ON pedido.ID_CLIENTE = c.ID_CLIENTE
-                                INNER JOIN PESSOA as p ON c.ID_PESSOA = p.ID_PESSOA";
+                                INNER JOIN PESSOA as p ON c.ID_PESSOA = p.ID_PESSOA ORDER BY DATA_PEDIDO";
 
             var cmd = new FbCommand(mSql, conn);
             try
