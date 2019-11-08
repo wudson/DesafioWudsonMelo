@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvPromocoes = new System.Windows.Forms.DataGridView();
+            this.promocaoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAdcionar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.nomePromocaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoPromocao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataFim = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusPromocaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.promocaoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAdcionar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.statusPromocao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPromocoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -53,13 +53,44 @@
             this.TipoPromocao,
             this.DataInicio,
             this.DataFim,
-            this.statusPromocaoDataGridViewTextBoxColumn});
+            this.statusPromocao});
             this.dgvPromocoes.DataSource = this.promocaoModelBindingSource;
             this.dgvPromocoes.Location = new System.Drawing.Point(12, 98);
             this.dgvPromocoes.Name = "dgvPromocoes";
             this.dgvPromocoes.ReadOnly = true;
             this.dgvPromocoes.Size = new System.Drawing.Size(625, 340);
             this.dgvPromocoes.TabIndex = 7;
+            // 
+            // promocaoModelBindingSource
+            // 
+            this.promocaoModelBindingSource.DataSource = typeof(projeto2.Feature.Promocao.Model.PromocaoModel);
+            // 
+            // btnAdcionar
+            // 
+            this.btnAdcionar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnAdcionar.Image = global::projeto2.Properties.Resources.plus;
+            this.btnAdcionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAdcionar.Location = new System.Drawing.Point(12, 7);
+            this.btnAdcionar.Name = "btnAdcionar";
+            this.btnAdcionar.Size = new System.Drawing.Size(91, 85);
+            this.btnAdcionar.TabIndex = 1;
+            this.btnAdcionar.Text = "Adicionar - [ + ]";
+            this.btnAdcionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdcionar.UseVisualStyleBackColor = false;
+            this.btnAdcionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button1.Image = global::projeto2.Properties.Resources.compose;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(109, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 85);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Editar - [ F4 ]";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // nomePromocaoDataGridViewTextBoxColumn
             // 
@@ -96,45 +127,14 @@
             this.DataFim.ReadOnly = true;
             this.DataFim.Width = 85;
             // 
-            // statusPromocaoDataGridViewTextBoxColumn
+            // statusPromocao
             // 
-            this.statusPromocaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.statusPromocaoDataGridViewTextBoxColumn.DataPropertyName = "StatusPromocao";
-            this.statusPromocaoDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusPromocaoDataGridViewTextBoxColumn.Name = "statusPromocaoDataGridViewTextBoxColumn";
-            this.statusPromocaoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusPromocaoDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // promocaoModelBindingSource
-            // 
-            this.promocaoModelBindingSource.DataSource = typeof(projeto2.Feature.Promocao.Model.PromocaoModel);
-            // 
-            // btnAdcionar
-            // 
-            this.btnAdcionar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnAdcionar.Image = global::projeto2.Properties.Resources.plus;
-            this.btnAdcionar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdcionar.Location = new System.Drawing.Point(12, 7);
-            this.btnAdcionar.Name = "btnAdcionar";
-            this.btnAdcionar.Size = new System.Drawing.Size(91, 85);
-            this.btnAdcionar.TabIndex = 1;
-            this.btnAdcionar.Text = "Adicionar - [ + ]";
-            this.btnAdcionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdcionar.UseVisualStyleBackColor = false;
-            this.btnAdcionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button1.Image = global::projeto2.Properties.Resources.compose;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(109, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 85);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Editar - [ F4 ]";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = false;
+            this.statusPromocao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.statusPromocao.DataPropertyName = "StatusPromocao";
+            this.statusPromocao.HeaderText = "Status";
+            this.statusPromocao.Name = "statusPromocao";
+            this.statusPromocao.ReadOnly = true;
+            this.statusPromocao.Width = 70;
             // 
             // FrmPromocoes
             // 
@@ -165,6 +165,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoPromocao;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataFim;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusPromocaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusPromocao;
     }
 }

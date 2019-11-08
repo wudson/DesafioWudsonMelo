@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using projeto2.Feature.Promocao.Model;
 
@@ -40,6 +41,18 @@ namespace projeto2.Feature.Promocao.View
                         double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) -
                         double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorVendaProduto"].Value.ToString()) *
                         double.Parse(txtDesconto.Text) / 100;
+
+            MudarCorValorComDesconto();
+        }
+
+        private void MudarCorValorComDesconto()
+        {
+            for (var i = 0; i < dgvProdutosDaPromocao.RowCount; i++)
+                dgvProdutosDaPromocao.Rows[i].Cells["PreçoComDesconto"].Style.ForeColor =
+                    double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["PreçoComDesconto"].Value.ToString()) >=
+                    double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorCompraProduto"].Value.ToString())
+                        ? Color.Green
+                        : Color.Red;
         }
 
         public IList<PromocaoModel> RetornarPromocao() => 
@@ -77,6 +90,20 @@ namespace projeto2.Feature.Promocao.View
             grupoDesconto.Visible = false;
             dgvProdutosPromocaoItemGratis.Visible = true;
             grupoItemGratis.Visible = true;
+        }
+
+        private void RdbItemDeBrinde_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCompreMenosLeveMais.Enabled = false;
+            txtBrinde.Enabled = true;
+            btnBrinde.Enabled = true;
+        }
+
+        private void RdbCompreMenosLeveMais_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCompreMenosLeveMais.Enabled = true;
+            txtBrinde.Enabled = false;
+            btnBrinde.Enabled = false;
         }
     }
 }

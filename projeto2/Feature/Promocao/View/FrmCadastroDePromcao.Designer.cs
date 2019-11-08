@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSelecionarProdutosDaPromocao = new System.Windows.Forms.Button();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
             this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,8 +58,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTipoPromocao = new System.Windows.Forms.ComboBox();
             this.grupoItemGratis = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtBrinde = new System.Windows.Forms.TextBox();
+            this.txtCompreMenosLeveMais = new System.Windows.Forms.ComboBox();
             this.btnBrinde = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.rdbCompreMenosLeveMais = new System.Windows.Forms.RadioButton();
@@ -127,9 +127,9 @@
             // valorCompraProduto
             // 
             this.valorCompraProduto.DataPropertyName = "ValorCompraProduto";
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.valorCompraProduto.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.valorCompraProduto.DefaultCellStyle = dataGridViewCellStyle1;
             this.valorCompraProduto.HeaderText = "Preço de compra";
             this.valorCompraProduto.Name = "valorCompraProduto";
             this.valorCompraProduto.ReadOnly = true;
@@ -137,18 +137,18 @@
             // valorVendaProduto
             // 
             this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle2;
             this.valorVendaProduto.HeaderText = "Preço de venda";
             this.valorVendaProduto.Name = "valorVendaProduto";
             this.valorVendaProduto.ReadOnly = true;
             // 
             // PreçoComDesconto
             // 
-            dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.PreçoComDesconto.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.PreçoComDesconto.DefaultCellStyle = dataGridViewCellStyle3;
             this.PreçoComDesconto.HeaderText = "Preço com desconto";
             this.PreçoComDesconto.Name = "PreçoComDesconto";
             this.PreçoComDesconto.ReadOnly = true;
@@ -338,8 +338,8 @@
             // 
             // grupoItemGratis
             // 
-            this.grupoItemGratis.Controls.Add(this.textBox1);
-            this.grupoItemGratis.Controls.Add(this.comboBox1);
+            this.grupoItemGratis.Controls.Add(this.txtBrinde);
+            this.grupoItemGratis.Controls.Add(this.txtCompreMenosLeveMais);
             this.grupoItemGratis.Controls.Add(this.btnBrinde);
             this.grupoItemGratis.Controls.Add(this.label7);
             this.grupoItemGratis.Controls.Add(this.rdbCompreMenosLeveMais);
@@ -351,32 +351,34 @@
             this.grupoItemGratis.TabStop = false;
             this.grupoItemGratis.Visible = false;
             // 
-            // textBox1
+            // txtBrinde
             // 
-            this.textBox1.Location = new System.Drawing.Point(218, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 20);
-            this.textBox1.TabIndex = 19;
+            this.txtBrinde.Enabled = false;
+            this.txtBrinde.Location = new System.Drawing.Point(218, 40);
+            this.txtBrinde.Name = "txtBrinde";
+            this.txtBrinde.Size = new System.Drawing.Size(179, 20);
+            this.txtBrinde.TabIndex = 19;
             // 
-            // comboBox1
+            // txtCompreMenosLeveMais
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 40);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(191, 21);
-            this.comboBox1.TabIndex = 18;
+            this.txtCompreMenosLeveMais.FormattingEnabled = true;
+            this.txtCompreMenosLeveMais.Location = new System.Drawing.Point(12, 40);
+            this.txtCompreMenosLeveMais.Name = "txtCompreMenosLeveMais";
+            this.txtCompreMenosLeveMais.Size = new System.Drawing.Size(191, 21);
+            this.txtCompreMenosLeveMais.TabIndex = 18;
             // 
             // btnBrinde
             // 
             this.btnBrinde.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnBrinde.Enabled = false;
             this.btnBrinde.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBrinde.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBrinde.Location = new System.Drawing.Point(400, 37);
+            this.btnBrinde.Location = new System.Drawing.Point(400, 38);
             this.btnBrinde.Margin = new System.Windows.Forms.Padding(0);
             this.btnBrinde.Name = "btnBrinde";
             this.btnBrinde.Size = new System.Drawing.Size(65, 24);
             this.btnBrinde.TabIndex = 17;
-            this.btnBrinde.Text = "Selecionar brinde";
+            this.btnBrinde.Text = "Brinde";
             this.btnBrinde.UseVisualStyleBackColor = false;
             // 
             // label7
@@ -399,6 +401,7 @@
             this.rdbCompreMenosLeveMais.TabStop = true;
             this.rdbCompreMenosLeveMais.Text = "Compre menos, leve mais";
             this.rdbCompreMenosLeveMais.UseVisualStyleBackColor = true;
+            this.rdbCompreMenosLeveMais.CheckedChanged += new System.EventHandler(this.RdbCompreMenosLeveMais_CheckedChanged);
             // 
             // rdbItemDeBrinde
             // 
@@ -409,6 +412,7 @@
             this.rdbItemDeBrinde.TabIndex = 2;
             this.rdbItemDeBrinde.Text = "Item de brinde";
             this.rdbItemDeBrinde.UseVisualStyleBackColor = true;
+            this.rdbItemDeBrinde.CheckedChanged += new System.EventHandler(this.RdbItemDeBrinde_CheckedChanged);
             // 
             // dgvProdutosPromocaoItemGratis
             // 
@@ -427,11 +431,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 510);
-            this.Controls.Add(this.dgvProdutosPromocaoItemGratis);
-            this.Controls.Add(this.grupoItemGratis);
             this.Controls.Add(this.btnSelecionarProdutosDaPromocao);
-            this.Controls.Add(this.dgvProdutosDaPromocao);
-            this.Controls.Add(this.grupoDesconto);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancelar);
@@ -442,6 +442,10 @@
             this.Controls.Add(this.txtDataInicio);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTipoPromocao);
+            this.Controls.Add(this.dgvProdutosPromocaoItemGratis);
+            this.Controls.Add(this.grupoItemGratis);
+            this.Controls.Add(this.grupoDesconto);
+            this.Controls.Add(this.dgvProdutosDaPromocao);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Name = "FrmCadastroDePromcao";
@@ -488,8 +492,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valorVendaProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn PreçoComDesconto;
         private System.Windows.Forms.GroupBox grupoItemGratis;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtBrinde;
+        private System.Windows.Forms.ComboBox txtCompreMenosLeveMais;
         private System.Windows.Forms.Button btnBrinde;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton rdbCompreMenosLeveMais;
