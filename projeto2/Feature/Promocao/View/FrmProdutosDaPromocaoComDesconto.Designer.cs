@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProdutosDaPromocaoComDesconto));
             this.lstDeProdutos = new System.Windows.Forms.CheckedListBox();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
             this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,9 +94,9 @@
             // 
             this.ValorCompraProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ValorCompraProduto.DataPropertyName = "ValorCompraProduto";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ValorCompraProduto.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ValorCompraProduto.DefaultCellStyle = dataGridViewCellStyle1;
             this.ValorCompraProduto.HeaderText = "Preço de compra";
             this.ValorCompraProduto.Name = "ValorCompraProduto";
             this.ValorCompraProduto.ReadOnly = true;
@@ -104,9 +105,9 @@
             // 
             this.valorVendaProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle2;
             this.valorVendaProduto.HeaderText = "Preço de venda";
             this.valorVendaProduto.Name = "valorVendaProduto";
             this.valorVendaProduto.ReadOnly = true;
@@ -117,7 +118,7 @@
             // 
             // btnCancelarPromocao
             // 
-            this.btnCancelarPromocao.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCancelarPromocao.BackColor = System.Drawing.Color.Firebrick;
             this.btnCancelarPromocao.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelarPromocao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarPromocao.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -146,7 +147,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.BackColor = System.Drawing.Color.DarkGray;
+            this.btnLimpar.BackColor = System.Drawing.Color.Firebrick;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLimpar.Location = new System.Drawing.Point(881, 63);
@@ -251,6 +252,7 @@
             this.Controls.Add(this.dgvProdutosDaPromocao);
             this.Controls.Add(this.lstDeProdutos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmProdutosDaPromocaoComDesconto";

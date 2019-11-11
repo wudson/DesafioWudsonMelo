@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPedidos));
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -39,11 +40,11 @@
             this.CelularPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CidadePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
-            this.pedidoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precoTotalPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pedidoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tblBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
@@ -213,10 +214,6 @@
             this.dgvPedidos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvPedidos_CellFormatting);
             this.dgvPedidos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvPedidos_CellMouseClick);
             // 
-            // pedidoModelBindingSource
-            // 
-            this.pedidoModelBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.PedidoModel);
-            // 
             // idPedidoDataGridViewTextBoxColumn
             // 
             this.idPedidoDataGridViewTextBoxColumn.DataPropertyName = "IdPedido";
@@ -234,9 +231,9 @@
             // precoTotalPedidoDataGridViewTextBoxColumn
             // 
             this.precoTotalPedidoDataGridViewTextBoxColumn.DataPropertyName = "PrecoTotalPedido";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.precoTotalPedidoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.precoTotalPedidoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.precoTotalPedidoDataGridViewTextBoxColumn.HeaderText = "Preço Total (R$)";
             this.precoTotalPedidoDataGridViewTextBoxColumn.Name = "precoTotalPedidoDataGridViewTextBoxColumn";
             this.precoTotalPedidoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -248,6 +245,10 @@
             this.Cliente.Name = "Cliente";
             this.Cliente.ReadOnly = true;
             // 
+            // pedidoModelBindingSource
+            // 
+            this.pedidoModelBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.PedidoModel);
+            // 
             // FrmPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,6 +258,7 @@
             this.Controls.Add(this.tblBotoes);
             this.Controls.Add(this.dgvClientes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FrmPedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

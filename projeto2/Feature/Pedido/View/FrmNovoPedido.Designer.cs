@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNovoPedido));
             this.lstProdutos = new System.Windows.Forms.ListBox();
             this.btnCancelarCadastroProduto = new System.Windows.Forms.Button();
             this.btnSalvarPedido = new System.Windows.Forms.Button();
@@ -71,7 +72,7 @@
             // 
             // btnCancelarCadastroProduto
             // 
-            this.btnCancelarCadastroProduto.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCancelarCadastroProduto.BackColor = System.Drawing.Color.Firebrick;
             this.btnCancelarCadastroProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarCadastroProduto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCancelarCadastroProduto.Location = new System.Drawing.Point(530, 458);
@@ -296,6 +297,7 @@
             // 
             // txtCliente
             // 
+            this.txtCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtCliente.FormattingEnabled = true;
             this.txtCliente.Location = new System.Drawing.Point(283, 39);
             this.txtCliente.Name = "txtCliente";
@@ -324,6 +326,7 @@
             this.Controls.Add(this.btnCancelarCadastroProduto);
             this.Controls.Add(this.btnSalvarPedido);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmNovoPedido";

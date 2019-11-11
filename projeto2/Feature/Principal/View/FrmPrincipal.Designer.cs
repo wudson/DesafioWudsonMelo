@@ -181,6 +181,7 @@
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnProdutos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmPrincipal";

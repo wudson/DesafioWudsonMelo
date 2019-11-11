@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroDeCliente));
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblRg = new System.Windows.Forms.Label();
@@ -184,7 +185,7 @@
             // 
             // btnCancelarCadastroCliente
             // 
-            this.btnCancelarCadastroCliente.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCancelarCadastroCliente.BackColor = System.Drawing.Color.Firebrick;
             this.btnCancelarCadastroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarCadastroCliente.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.btnCancelarCadastroCliente.Location = new System.Drawing.Point(688, 285);
@@ -633,6 +634,7 @@
             this.ClientSize = new System.Drawing.Size(916, 392);
             this.Controls.Add(this.pnlFormCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmCadastroDeCliente";

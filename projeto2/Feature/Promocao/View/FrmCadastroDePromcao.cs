@@ -97,6 +97,9 @@ namespace projeto2.Feature.Promocao.View
             txtCompreMenosLeveMais.Enabled = false;
             txtBrinde.Enabled = true;
             btnBrinde.Enabled = true;
+
+            btnBrinde.BackColor = Color.LimeGreen;
+            btnBrinde.ForeColor = Color.White;
         }
 
         private void RdbCompreMenosLeveMais_CheckedChanged(object sender, EventArgs e)
@@ -104,6 +107,10 @@ namespace projeto2.Feature.Promocao.View
             txtCompreMenosLeveMais.Enabled = true;
             txtBrinde.Enabled = false;
             btnBrinde.Enabled = false;
+
+            btnBrinde.BackColor = Color.DarkGray;
+            btnBrinde.ForeColor = Color.White;
+
         }
     }
 }
