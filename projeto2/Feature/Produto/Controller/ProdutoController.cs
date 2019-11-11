@@ -30,9 +30,13 @@ namespace projeto2.Feature.Produto.Controller
 
         public IList<Produto> ListarDados(Produto filtros)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                var produtos = _dao.Listar(filtros);
+                conn.Open();
+                cmd.Connection = conn;
+                var produtos = _dao.Listar(filtros, cmd);
                 if (produtos.Count < 1)
                     MessageBox.Show(@"Nenhum produto foi encontrado.");
                 else
@@ -48,15 +52,24 @@ namespace projeto2.Feature.Produto.Controller
                 MessageBox.Show(@"Problemas ao filtrar produtos.");
                 Console.WriteLine(ex);
             }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
 
             return new List<Produto>();
         }
 
         public Produto BuscarDado(int idProduto)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                var produto = _dao.Buscar(idProduto);
+                conn.Open();
+                cmd.Connection = conn;
+                var produto = _dao.Buscar(idProduto, cmd);
                 if (produto.IdProduto < 1)
                     MessageBox.Show(@"Produto não encontrado.");
                 else
@@ -72,14 +85,23 @@ namespace projeto2.Feature.Produto.Controller
                 MessageBox.Show(@"Problemas ao buscar produto");
                 Console.WriteLine(ex);
             }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
             return new Produto();
         }
 
         public bool ExcluirDado(int idProduto)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                if (_dao.Excluir(idProduto))
+                conn.Open();
+                cmd.Connection = conn;
+                if (_dao.Excluir(idProduto, cmd))
                 {
                     MessageBox.Show(@"Produto excluido com sucesso.", @"Sucesso");
                     return true;
@@ -94,6 +116,11 @@ namespace projeto2.Feature.Produto.Controller
             {
                 MessageBox.Show(@"Problemas ao excluir produto.", @"Erro");
                 Console.WriteLine(ex);
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
             }
 
             return false;

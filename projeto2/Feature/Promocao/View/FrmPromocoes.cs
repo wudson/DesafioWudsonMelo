@@ -1,30 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using projeto2.Feature.Promocao.Controller;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Promocao.View
 {
     public partial class FrmPromocoes : Form
     {
-        private readonly IList<PromocaoModel> _promocao;
+        private readonly PromocoesController _promocoesController;
 
         public FrmPromocoes()
         {
             InitializeComponent();
-            _promocao = new List<PromocaoModel>();
+            _promocoesController = new PromocoesController();
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
-            var promocao = new FrmCadastroDePromcao().RetornarPromocao();
-            if (promocao.Count <= 0) return;
-            _promocao.Add(promocao[0]);
-            dgvPromocoes.DataSource = null;
-            dgvPromocoes.DataSource = _promocao;
-            MessageBox.Show(@"Promoção cadastrada com sucesso.");
+            new FrmCadastroDePromcao().ShowDialog();
+
+            AtualizarGridDePromocoes();
+            
+        }
+
+        private void AtualizarGridDePromocoes()
+        {
+            dgvPromocoes.DataSource = _promocoesController.ListarDados();
+            if (dgvPromocoes.CurrentRow != null) dgvPromocoes.CurrentRow.Selected = false;
+
+            ModificarEnabledDosBotoes(false);
             MudarCorDoStatus();
+        }
+
+        private void ModificarEnabledDosBotoes(bool enabled)
+        {
+            btnEditar.Enabled = enabled;
         }
 
         private void MudarCorDoStatus()
@@ -34,6 +44,11 @@ namespace projeto2.Feature.Promocao.View
                     dgvPromocoes.Rows[i].Cells["statusPromocao"].Value.ToString().Equals("Ativa")
                         ? Color.Green
                         : Color.Red;
+        }
+
+        private void FrmPromocoes_Load(object sender, EventArgs e)
+        {
+            AtualizarGridDePromocoes();
         }
     }
 }

@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using projeto2.Feature.Promocao.Controller;
 using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Promocao.View
 {
     public partial class FrmCadastroDePromcao : Form
     {
+        private readonly PromocoesController _cadastroDePromocoesController;
         private IList<PromocaoModel> _promocao;
 
         public FrmCadastroDePromcao()
         {
             InitializeComponent();
+            _cadastroDePromocoesController = new PromocoesController();
             _promocao = new List<PromocaoModel>();
         }
 
@@ -64,11 +67,22 @@ namespace projeto2.Feature.Promocao.View
         private void BtnSalvarPromocao_Click(object sender, EventArgs e)
         {
             if (_promocao.Count <= 0) return;
+
+            var promocao = AtribuirPromocaoParaModel();
+            _cadastroDePromocoesController.CadastrarDado(promocao);
+        }
+
+        private PromocaoModel AtribuirPromocaoParaModel()
+        {
             _promocao[0].NomePromocao = txtNome.Text.Trim();
             _promocao[0].DataInicio = DateTime.Parse(txtDataInicio.Text);
             _promocao[0].DataFim = DateTime.Parse(txtDataFim.Text);
             _promocao[0].TipoPromocao = txtTipoPromocao.Text;
-            _promocao[0].StatusPromocao = _promocao[0].DataFim >= DateTime.Today ? "Ativa" : "Inativa";
+            _promocao[0].StatusPromocao =
+                _promocao[0].DataInicio <= DateTime.Today || _promocao[0].DataFim >= DateTime.Today
+                    ? "Ativa"
+                    : "Inativa";
+            return _promocao[0];
         }
 
         private void FrmCadastroDePromcao_Load(object sender, EventArgs e)

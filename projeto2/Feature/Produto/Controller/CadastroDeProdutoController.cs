@@ -40,9 +40,13 @@ namespace projeto2.Feature.Produto.Controller
 
         public bool CadastrarDado(Produto produto)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                if (_dao.Cadastrar(produto))
+                conn.Open();
+                cmd.Connection = conn;
+                if (_dao.Cadastrar(produto, cmd))
                 {
                     MessageBox.Show(@"Produto cadastrado com sucesso.", @"Sucesso");
                     return true;
@@ -58,7 +62,11 @@ namespace projeto2.Feature.Produto.Controller
                 MessageBox.Show(@"Problemas ao cadastrar produto.", @"Erro");
                 Console.WriteLine(ex);
             }
-
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
             return false;
         }
 
@@ -68,9 +76,13 @@ namespace projeto2.Feature.Produto.Controller
 
         public bool AlterarDado(Produto produto)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                if (_dao.Alterar(produto))
+                conn.Open();
+                cmd.Connection = conn;
+                if (_dao.Alterar(produto, cmd))
                 {
                     MessageBox.Show(@"Produto alterado com sucesso.", @"Sucesso");
                     return true;
@@ -86,7 +98,11 @@ namespace projeto2.Feature.Produto.Controller
                 MessageBox.Show(@"Problemas ao alterar produto", @"Erro");
                 Console.WriteLine(ex);
             }
-
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
             return false;
         }
     }

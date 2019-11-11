@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Grupo.Model;
+using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Marca.Model;
+using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Promocao.View
@@ -25,55 +28,8 @@ namespace projeto2.Feature.Promocao.View
             lstDeProdutos.DisplayMember = "NomeProduto";
         }
 
-        private static List<Produto.Produto> AtribuirListaProdutos() =>
-            new List<Produto.Produto>
-            {
-                new Produto.Produto
-                {
-                    IdProduto = 1,
-                    NomeProduto = "Coca cola",
-                    ValorVendaProduto = 10,
-                    ValorCompraProduto = 5,
-                    GrupoProduto = new GrupoModel
-                    {
-                        Grupo = "Bebidas",
-                    },
-                    MarcaProduto = new MarcaModel
-                    {
-                        Marca = "Coca-Cola",
-                    }
-                },
-                new Produto.Produto
-                {
-                    IdProduto = 2,
-                    NomeProduto = "Cerveja",
-                    ValorVendaProduto = 4.80,
-                    ValorCompraProduto = 2.75,
-                    GrupoProduto = new GrupoModel
-                    {
-                        Grupo = "Bebidas",
-                    },
-                    MarcaProduto = new MarcaModel
-                    {
-                        Marca = "Skol",
-                    }
-                },
-                new Produto.Produto
-                {
-                    IdProduto = 3,
-                    NomeProduto = "Sprite",
-                    ValorVendaProduto = 8,
-                    ValorCompraProduto = 4.25,
-                    GrupoProduto = new GrupoModel
-                    {
-                        Grupo = "Bebidas",
-                    },
-                    MarcaProduto = new MarcaModel
-                    {
-                        Marca = "Coca-Cola",
-                    }
-                }
-            };
+        private static IList<Produto.Produto> AtribuirListaProdutos() =>
+            new ProdutoController().ListarDados(new Produto.Produto());
 
         private void BtnAdicionarProdutosSelecionadosNaPromocao_Click(object sender, EventArgs e)
         {
@@ -120,14 +76,8 @@ namespace projeto2.Feature.Promocao.View
             lstDeProdutos.DisplayMember = "Grupo";
         }
 
-        private static List<GrupoModel> AtribuirListaGrupos() =>
-            new List<GrupoModel>
-            {
-                new GrupoModel
-                {
-                    Grupo = "Bebidas"
-                }
-            };
+        private static IEnumerable<GrupoModel> AtribuirListaGrupos() =>
+            new GrupoController().ListarGrupos();
 
         private void RdbProduto_CheckedChanged(object sender, EventArgs e)
         {
@@ -141,18 +91,8 @@ namespace projeto2.Feature.Promocao.View
             lstDeProdutos.DisplayMember = "Marca";
         }
 
-        private static List<MarcaModel> AtribuirListaMarcas() =>
-            new List<MarcaModel>
-            {
-                new MarcaModel
-                {
-                    Marca = "Coca-Cola"
-                },
-                new MarcaModel
-                {
-                    Marca = "Skol"
-                }
-            };
+        private static IEnumerable<MarcaModel> AtribuirListaMarcas() =>
+            new MarcaController().ListarMarcas();
 
         private void BtnLimpar_Click(object sender, EventArgs e) => 
             dgvProdutosDaPromocao.DataSource = new List<Produto.Produto>();
