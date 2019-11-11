@@ -117,6 +117,12 @@
     <Compile Include="Feature\Pedido\View\FrmPedidos.Designer.cs">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Pedido\View\FrmSelecionaBrinde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Pedido\View\FrmSelecionaBrinde.Designer.cs">
+      <DependentUpon>FrmSelecionaBrinde.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
     <Compile Include="Feature\Produto\Controller\CadastroDeProdutoController.cs" />
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Pedido\View\FrmItensPedido.resx">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Pedido\View\FrmSelecionaBrinde.resx">
+      <DependentUpon>FrmSelecionaBrinde.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmCadastroDePromcao.resx">
       <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>

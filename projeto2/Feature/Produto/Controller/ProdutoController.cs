@@ -1,13 +1,9 @@
-﻿using projeto2.Feature.Grupo.Controller;
-using projeto2.Feature.Grupo.Model;
-using projeto2.Feature.Marca.Controller;
-using projeto2.Feature.Marca.Model;
+﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Produto.Dao;
+using projeto2.Feature.Produto.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using FirebirdSql.Data.FirebirdClient;
-using projeto2.Feature.Produto.View;
 
 namespace projeto2.Feature.Produto.Controller
 {
@@ -18,8 +14,6 @@ namespace projeto2.Feature.Produto.Controller
         private readonly ProdutoDao _dao;
 
         private readonly CadastroDeProdutoController _cadastroDeProdutoController;
-        private readonly GrupoController _grupoController;
-        private readonly MarcaController _marcaController;
 
         public ProdutoController()
         { 
@@ -29,8 +23,6 @@ namespace projeto2.Feature.Produto.Controller
             _frmProdutos = new FrmProdutos(this);
 
             _cadastroDeProdutoController = new CadastroDeProdutoController();
-            _grupoController = new GrupoController();
-            _marcaController = new MarcaController();
         }
 
         public void AbrirTelaDeProdutos() =>

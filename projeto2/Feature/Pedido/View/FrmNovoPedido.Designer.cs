@@ -65,7 +65,7 @@
             this.lstProdutos.Location = new System.Drawing.Point(5, 94);
             this.lstProdutos.Name = "lstProdutos";
             this.lstProdutos.Size = new System.Drawing.Size(199, 368);
-            this.lstProdutos.TabIndex = 0;
+            this.lstProdutos.TabIndex = 1;
             this.lstProdutos.UseTabStops = false;
             this.lstProdutos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LstProdutos_MouseDoubleClick);
             // 
@@ -125,7 +125,7 @@
             0});
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(159, 20);
-            this.txtQuantidade.TabIndex = 1;
+            this.txtQuantidade.TabIndex = 2;
             this.txtQuantidade.Value = new decimal(new int[] {
             1,
             0,
@@ -141,7 +141,7 @@
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(116, 25);
-            this.btnAdicionar.TabIndex = 2;
+            this.btnAdicionar.TabIndex = 3;
             this.btnAdicionar.Text = "+ Produto";
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.BtnAdicionar_Click);
@@ -259,7 +259,7 @@
             this.groupBox1.Location = new System.Drawing.Point(1, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(209, 467);
-            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Escolha o produto";
             // 
@@ -277,7 +277,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(6, 39);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(197, 20);
-            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TabIndex = 0;
             this.txtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtBuscar_KeyDown);
             // 
@@ -300,7 +300,7 @@
             this.txtCliente.Location = new System.Drawing.Point(283, 39);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(483, 21);
-            this.txtCliente.TabIndex = 17;
+            this.txtCliente.TabIndex = 1;
             // 
             // FrmNovoPedido
             // 

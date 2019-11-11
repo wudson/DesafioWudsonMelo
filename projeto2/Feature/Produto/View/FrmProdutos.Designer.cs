@@ -30,10 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvProduto = new System.Windows.Forms.DataGridView();
+            this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoDeBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedorProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlcontrol = new System.Windows.Forms.Panel();
             this.tblBotoes = new System.Windows.Forms.TableLayoutPanel();
-            this.btnListar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -43,10 +46,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoDeBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fornecedorProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.pnlcontrol.SuspendLayout();
@@ -87,6 +86,39 @@
             this.dgvProduto.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvProduto_CellFormatting);
             this.dgvProduto.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvProduto_CellMouseClick);
             // 
+            // idProdutoDataGridViewTextBoxColumn
+            // 
+            this.idProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "IdProduto";
+            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "Nº";
+            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
+            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idProdutoDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // nomeProdutoDataGridViewTextBoxColumn
+            // 
+            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
+            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
+            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
+            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // CodigoDeBarras
+            // 
+            this.CodigoDeBarras.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CodigoDeBarras.DataPropertyName = "CodigoDeBarras";
+            this.CodigoDeBarras.HeaderText = "Código de barras";
+            this.CodigoDeBarras.Name = "CodigoDeBarras";
+            this.CodigoDeBarras.ReadOnly = true;
+            this.CodigoDeBarras.Width = 150;
+            // 
+            // fornecedorProdutoDataGridViewTextBoxColumn
+            // 
+            this.fornecedorProdutoDataGridViewTextBoxColumn.DataPropertyName = "FornecedorProduto";
+            this.fornecedorProdutoDataGridViewTextBoxColumn.HeaderText = "Fornecedor";
+            this.fornecedorProdutoDataGridViewTextBoxColumn.Name = "fornecedorProdutoDataGridViewTextBoxColumn";
+            this.fornecedorProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // produtoBindingSource
             // 
             this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
@@ -110,7 +142,6 @@
             this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tblBotoes.Controls.Add(this.btnListar, 2, 0);
             this.tblBotoes.Controls.Add(this.btnExcluir, 4, 0);
             this.tblBotoes.Controls.Add(this.btnEditar, 3, 0);
             this.tblBotoes.Controls.Add(this.btnCadastrar, 1, 0);
@@ -123,26 +154,12 @@
             this.tblBotoes.Size = new System.Drawing.Size(758, 92);
             this.tblBotoes.TabIndex = 0;
             // 
-            // btnListar
-            // 
-            this.btnListar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnListar.Image = global::projeto2.Properties.Resources.clipboard;
-            this.btnListar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnListar.Location = new System.Drawing.Point(197, 3);
-            this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(91, 85);
-            this.btnListar.TabIndex = 2;
-            this.btnListar.Text = "Listar - [ F5 ]";
-            this.btnListar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnListar.UseVisualStyleBackColor = false;
-            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
-            // 
             // btnExcluir
             // 
             this.btnExcluir.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnExcluir.Image = global::projeto2.Properties.Resources.garbage;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcluir.Location = new System.Drawing.Point(391, 3);
+            this.btnExcluir.Location = new System.Drawing.Point(294, 3);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(91, 85);
             this.btnExcluir.TabIndex = 4;
@@ -156,7 +173,7 @@
             this.btnEditar.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnEditar.Image = global::projeto2.Properties.Resources.compose;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(294, 3);
+            this.btnEditar.Location = new System.Drawing.Point(197, 3);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(91, 85);
             this.btnEditar.TabIndex = 3;
@@ -232,39 +249,6 @@
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 369;
             // 
-            // idProdutoDataGridViewTextBoxColumn
-            // 
-            this.idProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "IdProduto";
-            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "Nº";
-            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
-            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idProdutoDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // nomeProdutoDataGridViewTextBoxColumn
-            // 
-            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
-            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
-            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
-            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // CodigoDeBarras
-            // 
-            this.CodigoDeBarras.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CodigoDeBarras.DataPropertyName = "CodigoDeBarras";
-            this.CodigoDeBarras.HeaderText = "Código de barras";
-            this.CodigoDeBarras.Name = "CodigoDeBarras";
-            this.CodigoDeBarras.ReadOnly = true;
-            this.CodigoDeBarras.Width = 150;
-            // 
-            // fornecedorProdutoDataGridViewTextBoxColumn
-            // 
-            this.fornecedorProdutoDataGridViewTextBoxColumn.DataPropertyName = "FornecedorProduto";
-            this.fornecedorProdutoDataGridViewTextBoxColumn.HeaderText = "Fornecedor";
-            this.fornecedorProdutoDataGridViewTextBoxColumn.Name = "fornecedorProdutoDataGridViewTextBoxColumn";
-            this.fornecedorProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // FrmProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,7 +279,6 @@
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnEstoque;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;

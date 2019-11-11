@@ -35,8 +35,6 @@ namespace projeto2.Feature.Produto.View
             btnEditar.Enabled = enabled;
         }
 
-        private void BtnListar_Click(object sender, EventArgs e) => AtualizarGridDadosProduto();
-
         private void DgvProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -86,9 +84,6 @@ namespace projeto2.Feature.Produto.View
             {
                 case Keys.Add:
                     BtnCadastrar_Click(sender, e);
-                    break;
-                case Keys.F5:
-                    BtnListar_Click(sender, e);
                     break;
                 case Keys.F4:
                     BtnEditar_Click(sender, e);
