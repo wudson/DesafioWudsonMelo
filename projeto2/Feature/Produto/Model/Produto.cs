@@ -18,6 +18,7 @@ namespace projeto2.Feature.Produto
         public int QuantidadeEstoqueProduto { get; set; }
         public double ValorCompraProduto { get; set; }
         public double ValorVendaProduto { get; set; }
+        public double ValorComDesconto { get; set; }
         public string FornecedorProduto { get; set; }
         public int QuantidadeProdutoPedido { get; set; }
         public string TipoProduto { get; set; }

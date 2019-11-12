@@ -61,7 +61,6 @@ namespace projeto2.Feature.Promocao.View
                 dgvProdutosDaPromocao.DataSource = produtos;
 
             }
-
         }
 
         private void DgvProdutosDaPromocao_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

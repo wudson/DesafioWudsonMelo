@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using projeto2.Feature.Promocao.Controller;
 using projeto2.Feature.Promocao.Model;
@@ -58,9 +59,6 @@ namespace projeto2.Feature.Promocao.View
                         : Color.Red;
         }
 
-        public IList<PromocaoModel> RetornarPromocao() => 
-            ShowDialog() == DialogResult.OK ? _promocao : new List<PromocaoModel>();
-
         private void DgvProdutosDaPromocao_DataSourceChanged(object sender, EventArgs e) => 
             AplicarDescontoNosProdutosSelecionados();
 
@@ -78,12 +76,24 @@ namespace projeto2.Feature.Promocao.View
             _promocao[0].DataInicio = DateTime.Parse(txtDataInicio.Text);
             _promocao[0].DataFim = DateTime.Parse(txtDataFim.Text);
             _promocao[0].TipoPromocao = txtTipoPromocao.Text;
+            _promocao[0].Produtos = PreencherProdutosDaPromocao();
             _promocao[0].StatusPromocao =
-                _promocao[0].DataInicio <= DateTime.Today || _promocao[0].DataFim >= DateTime.Today
+                _promocao[0].DataInicio <= DateTime.Today && _promocao[0].DataFim >= DateTime.Today
                     ? "Ativa"
                     : "Inativa";
             return _promocao[0];
         }
+
+        private List<Produto.Produto> PreencherProdutosDaPromocao()=>
+                dgvProdutosDaPromocao.Rows
+                    .Cast<DataGridViewRow>()
+                    .Select(r => new Produto.Produto
+                    {
+                        IdProduto = Convert.ToInt32(r.Cells[0].Value.ToString()),
+                        ValorComDesconto = Convert.ToDouble(r.Cells["PreçoComDesconto"].Value.ToString())
+                    })
+                    .ToList();
+        
 
         private void FrmCadastroDePromcao_Load(object sender, EventArgs e)
         {

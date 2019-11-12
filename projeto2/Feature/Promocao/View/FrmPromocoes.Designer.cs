@@ -59,8 +59,10 @@
             this.dgvPromocoes.Location = new System.Drawing.Point(12, 98);
             this.dgvPromocoes.Name = "dgvPromocoes";
             this.dgvPromocoes.ReadOnly = true;
+            this.dgvPromocoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPromocoes.Size = new System.Drawing.Size(625, 340);
             this.dgvPromocoes.TabIndex = 7;
+            this.dgvPromocoes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvPromocoes_CellMouseDoubleClick);
             // 
             // TipoPromocao
             // 

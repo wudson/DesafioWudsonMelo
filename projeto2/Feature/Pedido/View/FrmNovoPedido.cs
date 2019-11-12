@@ -7,23 +7,27 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Model;
+using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Pedido.View
 {
     public partial class FrmNovoPedido : Form
     {
         private readonly PedidoController _pedidoController;
+        private List<PromocaoModel> _promocoes;
 
         public FrmNovoPedido()
         {
             InitializeComponent();
             _pedidoController = new PedidoController();
+            _promocoes = new List<PromocaoModel>();
         }
 
         private void FrmPedido_Load(object sender, EventArgs e)
         {
             PreencherListaDeProdutos();
             PreencherComboClientes();
+            BuscarPromocoes();
         }
 
         private void PreencherListaDeProdutos()
@@ -38,6 +42,11 @@ namespace projeto2.Feature.Pedido.View
             txtCliente.DisplayMember = "NomePessoa";
             txtCliente.ValueMember = "IdCliente";
             txtCliente.Text = string.Empty;
+        }
+
+        private void BuscarPromocoes()
+        {
+            _promocoes = _pedidoController.BuscarPromocoes().ToList();
         }
 
         private void LstProdutos_MouseDoubleClick(object sender, MouseEventArgs e)

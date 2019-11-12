@@ -8,6 +8,8 @@ using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Pedido.Dao;
 using projeto2.Feature.Pedido.Model;
 using projeto2.Feature.Produto.Controller;
+using projeto2.Feature.Promocao.Controller;
+using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Pedido.Controller
 {
@@ -104,5 +106,10 @@ namespace projeto2.Feature.Pedido.Controller
 
         public IEnumerable<ClienteModel> ListarClientes() => 
             new ClienteController().ListarDados(new FiltrosClienteModel());
+
+        public IEnumerable<PromocaoModel> BuscarPromocoes()
+        {
+            return new PromocoesController().ListarDados();
+        }
     }
 }

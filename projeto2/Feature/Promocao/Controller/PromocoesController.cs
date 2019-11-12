@@ -22,20 +22,25 @@ namespace projeto2.Feature.Promocao.Controller
             {
                 conn.Open();
                 cmd.Connection = conn;
+                cmd.Transaction = conn.BeginTransaction();
+
                 if (_dao.Cadastrar(promocao, cmd))
                 {
                     MessageBox.Show(@"Promoção cadastrada com sucesso.", @"Sucesso");
+                    cmd.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
                 MessageBox.Show(@"Problemas no banco de dados ao cadastrar promoção.");
+                cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(@"Problemas ao cadastrar promoção.", @"Erro");
+                cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             finally
