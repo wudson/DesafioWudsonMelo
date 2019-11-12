@@ -63,77 +63,77 @@ namespace projeto2.Feature.Cliente.View
         {
             if (string.IsNullOrWhiteSpace(txtNome.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Nome' obrigatorio.");
+                MessageBox.Show(@"Campo 'Nome' obrigatório.");
                 txtNome.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtDataNascimento.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Nascimento' obrigatorio.");
+                MessageBox.Show(@"Campo 'Nascimento' obrigatório.");
                 txtDataNascimento.Focus();
                 return false;
             }
 
             if (!rdbFeminino.Checked && !rdbMasculino.Checked)
             {
-                MessageBox.Show(@"Campo 'Sexo' obrigatorio.");
+                MessageBox.Show(@"Campo 'Sexo' obrigatório.");
                 rdbMasculino.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtCpf.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'CPF' obrigatorio.");
+                MessageBox.Show(@"Campo 'CPF' obrigatório.");
                 txtCpf.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'E-mail' obrigatorio.");
+                MessageBox.Show(@"Campo 'E-mail' obrigatório.");
                 txtEmail.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtCelular.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Celular' obrigatorio.");
+                MessageBox.Show(@"Campo 'Celular' obrigatório.");
                 txtCelular.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtCep.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'CEP' obrigatorio.");
+                MessageBox.Show(@"Campo 'CEP' obrigatório.");
                 txtCep.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtEstado.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Estado' obrigatorio.");
+                MessageBox.Show(@"Campo 'Estado' obrigatório.");
                 txtEstado.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtRua.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Rua' obrigatorio.");
+                MessageBox.Show(@"Campo 'Rua' obrigatório.");
                 txtRua.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtNumero.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Numero' obrigatorio.");
+                MessageBox.Show(@"Campo 'Numero' obrigatório.");
                 txtNumero.Focus();
                 return false;
             }
 
             if (!string.IsNullOrWhiteSpace(txtCidade.Text.Trim())) return true;
 
-            MessageBox.Show(@"Campo 'Cidade' obrigatorio.");
+            MessageBox.Show(@"Campo 'Cidade' obrigatório.");
             txtCidade.Focus();
             return false;
         }

@@ -1,6 +1,5 @@
 ﻿using projeto2.Feature.Produto.Controller;
 using System;
-using System.Globalization;
 using System.Windows.Forms;
 
 namespace projeto2.Feature.Produto.View
@@ -40,41 +39,48 @@ namespace projeto2.Feature.Produto.View
         {
             if (string.IsNullOrWhiteSpace(txtNome.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Nome' obrigatorio.");
+                MessageBox.Show(@"Campo 'Produto' obrigatório.");
                 txtNome.Focus();
                 return false;
             }
 
+            if (string.IsNullOrWhiteSpace(txtCodigoDeBarras.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Código de barras' obrigatório.");
+                txtCodigoDeBarras.Focus();
+                return false;
+            }
+            
             if (string.IsNullOrWhiteSpace(txtGrupo.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Grupo' obrigatorio.");
+                MessageBox.Show(@"Campo 'Grupo' obrigatório.");
                 txtGrupo.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtTipo.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Tipo' obrigatorio.");
+                MessageBox.Show(@"Campo 'Tipo' obrigatório.");
                 txtTipo.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtValorDeCompra.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Compra' obrigatorio.");
+                MessageBox.Show(@"Campo 'Compra' obrigatório.");
                 txtValorDeCompra.Focus();
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtValorDeVenda.Text.Trim()))
             {
-                MessageBox.Show(@"Campo 'Venda' obrigatorio.");
+                MessageBox.Show(@"Campo 'Venda' obrigatório.");
                 txtValorDeVenda.Focus();
                 return false;
             }
 
             if (!string.IsNullOrWhiteSpace(txtFornecedor.Text.Trim())) return true;
-            MessageBox.Show(@"Campo 'Fornecedor' obrigatorio.");
+            MessageBox.Show(@"Campo 'Fornecedor' obrigatório.");
             txtFornecedor.Focus();
             return false;
         }
