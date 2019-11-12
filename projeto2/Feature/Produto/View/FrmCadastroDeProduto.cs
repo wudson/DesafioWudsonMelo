@@ -144,8 +144,8 @@ namespace projeto2.Feature.Produto.View
             txtCodigoDeBarras.Text = _produto.CodigoDeBarras;
             txtFornecedor.Text = _produto.FornecedorProduto;
             txtTipo.Text = _produto.TipoProduto;
-            txtValorDeCompra.Text = _produto.ValorCompraProduto.ToString(CultureInfo.InvariantCulture);
-            txtValorDeVenda.Text = _produto.ValorVendaProduto.ToString(CultureInfo.InvariantCulture);
+            txtValorDeCompra.Value = (decimal) _produto.ValorCompraProduto;
+            txtValorDeVenda.Value = (decimal)_produto.ValorVendaProduto;
             txtQuantidadeEmEstoque.Text = _produto.QuantidadeEstoqueProduto.ToString();
         }
 

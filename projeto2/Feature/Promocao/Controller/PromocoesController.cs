@@ -51,7 +51,7 @@ namespace projeto2.Feature.Promocao.Controller
             return false;
         }
 
-        public IEnumerable<PromocaoModel> ListarDados()
+        public IEnumerable<PromocaoModel> ListarDados(FiltrosPromocaoModel filtros)
         {
             var conn = Conexao.GetInstancia();
             var cmd = new FbCommand();
@@ -59,7 +59,7 @@ namespace projeto2.Feature.Promocao.Controller
             {
                 conn.Open();
                 cmd.Connection = conn;
-                var promocoes = _dao.Listar(cmd).ToList();
+                var promocoes = _dao.Listar(cmd, filtros).ToList();
                 if (promocoes.Count < 1)
                     MessageBox.Show(@"Nenhuma promoção foi encontrada.");
                 else

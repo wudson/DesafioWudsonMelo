@@ -86,9 +86,10 @@ namespace projeto2.Feature.Produto.Dao
         public IList<Produto> Listar(Produto filtros, FbCommand cmd)
         {
             var sql = new StringBuilder();
-            sql.Append(@"Select p.*, m.MARCA, g.GRUPO from PRODUTO p 
+            sql.Append(@"Select p.*, ip.VALOR_COM_DESCONTO, m.MARCA, g.GRUPO from PRODUTO p 
+                       LEFT JOIN ITEM_PROMOCAO AS ip ON p.Id_Produto = ip.Id_Produto 
                        INNER JOIN Grupo AS g ON p.Id_Grupo = g.Id_Grupo 
-                       INNER JOIN Marca AS m ON p.Id_Marca = m.Id_Marca
+                       LEFT JOIN Marca AS m ON p.Id_Marca = m.Id_Marca
                        WHERE (1=1)");
 
             if (!string.IsNullOrWhiteSpace(filtros.NomeProduto))
@@ -122,6 +123,9 @@ namespace projeto2.Feature.Produto.Dao
                     CodigoDeBarras = dataReader["CODIGO_DE_BARRA_PRODUTO"].ToString(),
                     ValorCompraProduto = Convert.ToDouble(dataReader["VALOR_COMPRA_PRODUTO"]),
                     ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
+                    ValorComDesconto = Convert.ToDouble(dataReader["VALOR_COM_DESCONTO"] != DBNull.Value 
+                        ? dataReader["VALOR_COM_DESCONTO"] 
+                        : dataReader["VALOR_VENDA_PRODUTO"]),
                     GrupoProduto = new GrupoModel
                     {
                         IdGrupo = Convert.ToInt32(dataReader["ID_GRUPO"]),
@@ -137,6 +141,8 @@ namespace projeto2.Feature.Produto.Dao
                     TipoProduto = dataReader["TIPO_PRODUTO"].ToString(),
                     QuantidadeEstoqueProduto = Convert.ToInt32(dataReader["QUANTIDADE_ESTOQUE_PRODUTO"])
                 });
+
+               
             }
             return produtos;
         }

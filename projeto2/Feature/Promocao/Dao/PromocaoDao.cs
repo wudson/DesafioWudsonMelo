@@ -50,10 +50,16 @@ namespace projeto2.Feature.Promocao.Dao
             }
         }
 
-        public IEnumerable<PromocaoModel> Listar(FbCommand cmd)
+        public IEnumerable<PromocaoModel> Listar(FbCommand cmd, FiltrosPromocaoModel filtros)
         {
             var sql = new StringBuilder();
             sql.Append(@"Select * from PROMOCAO");
+
+            if (filtros.Ativas)
+                sql.Append(" WHERE STATUS_PROMOCAO = 'Ativa'");
+
+            if (filtros.Inativas)
+                sql.Append(" WHERE STATUS_PROMOCAO = 'Inativa'");
 
             cmd.CommandText = sql.ToString();
 

@@ -44,10 +44,14 @@ namespace projeto2.Feature.Pedido.View
             txtCliente.Text = string.Empty;
         }
 
-        private void BuscarPromocoes()
-        {
-            _promocoes = _pedidoController.BuscarPromocoes().ToList();
-        }
+        private void BuscarPromocoes() => _promocoes = _pedidoController.BuscarPromocoesAtivas(FiltrarPromocao()).ToList();
+
+        private static FiltrosPromocaoModel FiltrarPromocao() =>
+            new FiltrosPromocaoModel
+            {
+                Ativas = true,
+                Inativas = false
+            };
 
         private void LstProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -62,7 +66,18 @@ namespace projeto2.Feature.Pedido.View
         {
             txtProduto.Text = produtoAdicionado.NomeProduto;
             txtIdProduto.Text = produtoAdicionado.IdProduto.ToString();
-            txtPreco.Text = produtoAdicionado.ValorVendaProduto.ToString(CultureInfo.InvariantCulture);
+            if (_promocoes.Any(pr => pr.Produtos.Any(p => p.NomeProduto.Equals(produtoAdicionado.NomeProduto))))
+            {
+                txtPreco.Text = produtoAdicionado.ValorComDesconto.ToString("c2");
+                grpTextoPromocao.Visible = true;
+                lblPrecoComDesconto.Text = produtoAdicionado.ValorComDesconto.ToString("c2");
+                lblPrecoDeVenda.Text = produtoAdicionado.ValorVendaProduto.ToString("c2");
+            }
+            else
+            {
+                txtPreco.Text = produtoAdicionado.ValorVendaProduto.ToString("c2");
+                grpTextoPromocao.Visible = false;
+            }
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
@@ -74,6 +89,7 @@ namespace projeto2.Feature.Pedido.View
             txtPreco.Text = string.Empty;
             txtProduto.Text = string.Empty;
             txtQuantidade.Text = @"1";
+            grpTextoPromocao.Visible = false;
 
             CalcularTotalAPagar();
         }
@@ -162,17 +178,18 @@ namespace projeto2.Feature.Pedido.View
             lstProdutos.DataSource = new ProdutoController().ListarDados(Filtrar());
         }
 
-        private Produto.Produto Filtrar() => new Produto.Produto
-        {
-            CodigoDeBarras = txtBuscar.Text.Trim()
-        };
+        private Produto.Produto Filtrar() =>
+            new Produto.Produto
+            {
+                CodigoDeBarras = txtBuscar.Text.Trim()
+            };
 
         private void TxtBuscar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Enter) return;
             if (string.IsNullOrWhiteSpace(txtBuscar.Text)) return;
 
-            var produtos = (List<Produto.Produto>) lstProdutos.DataSource;
+            var produtos = (List<Produto.Produto>)lstProdutos.DataSource;
             var produtoSelecionado = produtos.Where(p => p.CodigoDeBarras.Equals(txtBuscar.Text)).ToList();
 
             if (produtoSelecionado.Count <= 0) return;

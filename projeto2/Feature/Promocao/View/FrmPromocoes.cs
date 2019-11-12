@@ -1,10 +1,10 @@
 ﻿using projeto2.Feature.Promocao.Controller;
+using projeto2.Feature.Promocao.Model;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Promocao.View
 {
@@ -23,14 +23,15 @@ namespace projeto2.Feature.Promocao.View
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
             new FrmCadastroDePromcao().ShowDialog();
-            
+
             AtualizarGridDePromocoes();
-            
         }
 
         private void AtualizarGridDePromocoes()
         {
-            _promocoes = _promocoesController.ListarDados().ToList();
+            var filtros = Filtrar();
+
+            _promocoes = _promocoesController.ListarDados(filtros).ToList();
             dgvPromocoes.DataSource = _promocoes;
             if (dgvPromocoes.CurrentRow != null) dgvPromocoes.CurrentRow.Selected = false;
 
@@ -38,10 +39,17 @@ namespace projeto2.Feature.Promocao.View
             MudarCorDoStatus();
         }
 
-        private void ModificarEnabledDosBotoes(bool enabled)
+        private FiltrosPromocaoModel Filtrar()
         {
-            btnEditar.Enabled = enabled;
+            if (rdbTodas.Checked) return new FiltrosPromocaoModel();
+            return new FiltrosPromocaoModel
+            {
+                Ativas = rdbAtivas.Checked,
+                Inativas = rdbInativas.Checked
+            };
         }
+
+        private void ModificarEnabledDosBotoes(bool enabled) => btnEditar.Enabled = enabled;
 
         private void MudarCorDoStatus()
         {
@@ -52,10 +60,7 @@ namespace projeto2.Feature.Promocao.View
                         : Color.Red;
         }
 
-        private void FrmPromocoes_Load(object sender, EventArgs e)
-        {
-            AtualizarGridDePromocoes();
-        }
+        private void FrmPromocoes_Load(object sender, EventArgs e) => AtualizarGridDePromocoes();
 
         private void DgvPromocoes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -65,5 +70,14 @@ namespace projeto2.Feature.Promocao.View
 
             new FrmProdutosDaPromocao(promocao).ShowDialog();
         }
+
+        private void RdbInativas_CheckedChanged(object sender, EventArgs e) =>
+            AtualizarGridDePromocoes();
+
+        private void RdbAtivas_CheckedChanged(object sender, EventArgs e) =>
+            AtualizarGridDePromocoes();
+
+        private void RdbTodas_CheckedChanged(object sender, EventArgs e) =>
+            AtualizarGridDePromocoes();
     }
 }
