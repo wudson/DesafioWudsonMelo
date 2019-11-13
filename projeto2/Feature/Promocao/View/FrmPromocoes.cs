@@ -71,13 +71,22 @@ namespace projeto2.Feature.Promocao.View
             new FrmProdutosDaPromocao(promocao).ShowDialog();
         }
 
-        private void RdbInativas_CheckedChanged(object sender, EventArgs e) =>
-            AtualizarGridDePromocoes();
+        private void RdbInativas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbInativas.Checked)
+                AtualizarGridDePromocoes();
+        }
 
-        private void RdbAtivas_CheckedChanged(object sender, EventArgs e) =>
-            AtualizarGridDePromocoes();
+        private void RdbAtivas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbAtivas.Checked)
+                AtualizarGridDePromocoes();
+        }
 
-        private void RdbTodas_CheckedChanged(object sender, EventArgs e) =>
-            AtualizarGridDePromocoes();
+        private void RdbTodas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbTodas.Checked)
+                AtualizarGridDePromocoes();
+        }
     }
 }

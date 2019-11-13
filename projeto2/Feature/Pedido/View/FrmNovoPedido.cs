@@ -3,7 +3,6 @@ using projeto2.Feature.Pedido.Model;
 using projeto2.Feature.Produto.Controller;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Model;
@@ -85,7 +84,7 @@ namespace projeto2.Feature.Pedido.View
             if (string.IsNullOrWhiteSpace(txtProduto.Text)) return;
 
             dgvPedido.Rows.Add(txtIdProduto.Text, txtProduto.Text, txtQuantidade.Text,
-                int.Parse(txtPreco.Text) * int.Parse(txtQuantidade.Text));
+                decimal.Parse(txtPreco.Text.Replace("R$", "")) * decimal.Parse(txtQuantidade.Text));
             txtPreco.Text = string.Empty;
             txtProduto.Text = string.Empty;
             txtQuantidade.Text = @"1";
@@ -98,7 +97,7 @@ namespace projeto2.Feature.Pedido.View
             txtTotalPedido.Text = dgvPedido.Rows
                 .Cast<DataGridViewRow>()
                 .Sum(r => Convert.ToDecimal(r.Cells["preco"].Value))
-                .ToString(CultureInfo.InvariantCulture);
+                .ToString("C2");
 
         private void BtnSalvarPedido_Click(object sender, EventArgs e)
         {
@@ -114,7 +113,7 @@ namespace projeto2.Feature.Pedido.View
             var pedido = new PedidoModel
             {
                 DataPedido = DateTime.Now,
-                PrecoTotalPedido = Convert.ToDouble(txtTotalPedido.Text),
+                PrecoTotalPedido = Convert.ToDouble(txtTotalPedido.Text.Replace("R$", "")),
                 Produtos = PreencherProdutosDoPedido(),
                 Cliente = new ClienteModel
                 {

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNovoPedido));
             this.lstProdutos = new System.Windows.Forms.ListBox();
             this.btnCancelarCadastroProduto = new System.Windows.Forms.Button();
@@ -41,10 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvPedido = new System.Windows.Forms.DataGridView();
-            this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotalPedido = new System.Windows.Forms.TextBox();
             this.txtIdProduto = new System.Windows.Forms.TextBox();
@@ -64,6 +61,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.grpTextoPromocao = new System.Windows.Forms.GroupBox();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -204,41 +205,10 @@
             this.dgvPedido.TabStop = false;
             this.dgvPedido.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPedido_CellDoubleClick);
             // 
-            // idProduto
-            // 
-            this.idProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.idProduto.HeaderText = "Código";
-            this.idProduto.Name = "idProduto";
-            this.idProduto.ReadOnly = true;
-            this.idProduto.Width = 60;
-            // 
-            // produto
-            // 
-            this.produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.produto.HeaderText = "Produto";
-            this.produto.Name = "produto";
-            this.produto.ReadOnly = true;
-            // 
-            // quantidade
-            // 
-            this.quantidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.quantidade.HeaderText = "Quantidade";
-            this.quantidade.Name = "quantidade";
-            this.quantidade.ReadOnly = true;
-            this.quantidade.Width = 65;
-            // 
-            // preco
-            // 
-            this.preco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.preco.HeaderText = "Preço (R$)";
-            this.preco.Name = "preco";
-            this.preco.ReadOnly = true;
-            this.preco.Width = 80;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(661, 452);
+            this.label4.Location = new System.Drawing.Point(664, 452);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 10;
@@ -426,6 +396,40 @@
             // 
             this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
             // 
+            // idProduto
+            // 
+            this.idProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.idProduto.HeaderText = "Código";
+            this.idProduto.Name = "idProduto";
+            this.idProduto.ReadOnly = true;
+            this.idProduto.Width = 60;
+            // 
+            // produto
+            // 
+            this.produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.produto.HeaderText = "Produto";
+            this.produto.Name = "produto";
+            this.produto.ReadOnly = true;
+            // 
+            // quantidade
+            // 
+            this.quantidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.quantidade.HeaderText = "Quantidade";
+            this.quantidade.Name = "quantidade";
+            this.quantidade.ReadOnly = true;
+            this.quantidade.Width = 65;
+            // 
+            // preco
+            // 
+            this.preco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.preco.DefaultCellStyle = dataGridViewCellStyle1;
+            this.preco.HeaderText = "Preço total do produto";
+            this.preco.Name = "preco";
+            this.preco.ReadOnly = true;
+            this.preco.Width = 80;
+            // 
             // FrmNovoPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,10 +491,6 @@
         private System.Windows.Forms.DataGridView dgvPedido;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTotalPedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn preco;
         private System.Windows.Forms.TextBox txtIdProduto;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
@@ -507,5 +507,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox grpTextoPromocao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn preco;
     }
 }

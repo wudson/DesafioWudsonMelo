@@ -83,5 +83,10 @@ namespace projeto2.Feature.Promocao.Controller
 
             return new List<PromocaoModel>();
         }
+
+        public IEnumerable<PromocaoModel> BuscarPromocoesAtivas(FiltrosPromocaoModel filtros)
+        {
+            return new PromocoesController().ListarDados(filtros);
+        }
     }
 }
