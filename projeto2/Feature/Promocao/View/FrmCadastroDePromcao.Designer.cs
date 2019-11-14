@@ -29,14 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroDePromcao));
             this.btnSelecionarProdutosDaPromocao = new System.Windows.Forms.Button();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
+            this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PreçoComDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grupoDesconto = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.txtDesconto = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,18 +73,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.grupoPeriodoENome = new System.Windows.Forms.GroupBox();
-            this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.grupoDesconto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesconto)).BeginInit();
             this.grupoItemGratis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPromocaoItemGratis)).BeginInit();
             this.grupoPeriodoENome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSelecionarProdutosDaPromocao
@@ -115,6 +116,43 @@
             this.dgvProdutosDaPromocao.TabIndex = 34;
             this.dgvProdutosDaPromocao.DataSourceChanged += new System.EventHandler(this.DgvProdutosDaPromocao_DataSourceChanged);
             // 
+            // idProduto
+            // 
+            this.idProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.idProduto.DataPropertyName = "IdProduto";
+            this.idProduto.HeaderText = "Código";
+            this.idProduto.Name = "idProduto";
+            this.idProduto.ReadOnly = true;
+            this.idProduto.Width = 85;
+            // 
+            // nomeProduto
+            // 
+            this.nomeProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProduto.DataPropertyName = "NomeProduto";
+            this.nomeProduto.HeaderText = "NomeProduto";
+            this.nomeProduto.Name = "nomeProduto";
+            this.nomeProduto.ReadOnly = true;
+            // 
+            // valorCompraProduto
+            // 
+            this.valorCompraProduto.DataPropertyName = "ValorCompraProduto";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.valorCompraProduto.DefaultCellStyle = dataGridViewCellStyle1;
+            this.valorCompraProduto.HeaderText = "Preço de compra";
+            this.valorCompraProduto.Name = "valorCompraProduto";
+            this.valorCompraProduto.ReadOnly = true;
+            // 
+            // valorVendaProduto
+            // 
+            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle2;
+            this.valorVendaProduto.HeaderText = "Preço de venda";
+            this.valorVendaProduto.Name = "valorVendaProduto";
+            this.valorVendaProduto.ReadOnly = true;
+            // 
             // PreçoComDesconto
             // 
             dataGridViewCellStyle3.Format = "C2";
@@ -124,8 +162,13 @@
             this.PreçoComDesconto.Name = "PreçoComDesconto";
             this.PreçoComDesconto.ReadOnly = true;
             // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
+            // 
             // grupoDesconto
             // 
+            this.grupoDesconto.Controls.Add(this.label13);
             this.grupoDesconto.Controls.Add(this.btnAplicar);
             this.grupoDesconto.Controls.Add(this.txtDesconto);
             this.grupoDesconto.Controls.Add(this.label5);
@@ -139,9 +182,19 @@
             this.grupoDesconto.TabIndex = 33;
             this.grupoDesconto.TabStop = false;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(224, 23);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(11, 13);
+            this.label13.TabIndex = 39;
+            this.label13.Text = "*";
+            // 
             // btnAplicar
             // 
-            this.btnAplicar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAplicar.BackColor = System.Drawing.Color.DarkGray;
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAplicar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAplicar.Location = new System.Drawing.Point(280, 38);
@@ -236,7 +289,7 @@
             // 
             // btnSalvarPromocao
             // 
-            this.btnSalvarPromocao.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnSalvarPromocao.BackColor = System.Drawing.Color.DarkGray;
             this.btnSalvarPromocao.Enabled = false;
             this.btnSalvarPromocao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvarPromocao.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -462,47 +515,6 @@
             this.grupoPeriodoENome.TabIndex = 18;
             this.grupoPeriodoENome.TabStop = false;
             // 
-            // idProduto
-            // 
-            this.idProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.idProduto.DataPropertyName = "IdProduto";
-            this.idProduto.HeaderText = "Código";
-            this.idProduto.Name = "idProduto";
-            this.idProduto.ReadOnly = true;
-            this.idProduto.Width = 85;
-            // 
-            // nomeProduto
-            // 
-            this.nomeProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProduto.DataPropertyName = "NomeProduto";
-            this.nomeProduto.HeaderText = "NomeProduto";
-            this.nomeProduto.Name = "nomeProduto";
-            this.nomeProduto.ReadOnly = true;
-            // 
-            // valorCompraProduto
-            // 
-            this.valorCompraProduto.DataPropertyName = "ValorCompraProduto";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.valorCompraProduto.DefaultCellStyle = dataGridViewCellStyle1;
-            this.valorCompraProduto.HeaderText = "Preço de compra";
-            this.valorCompraProduto.Name = "valorCompraProduto";
-            this.valorCompraProduto.ReadOnly = true;
-            // 
-            // valorVendaProduto
-            // 
-            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.valorVendaProduto.HeaderText = "Preço de venda";
-            this.valorVendaProduto.Name = "valorVendaProduto";
-            this.valorVendaProduto.ReadOnly = true;
-            // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
-            // 
             // FrmCadastroDePromcao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -528,6 +540,7 @@
             this.Text = "Cadastro de promoção";
             this.Load += new System.EventHandler(this.FrmCadastroDePromcao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.grupoDesconto.ResumeLayout(false);
             this.grupoDesconto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesconto)).EndInit();
@@ -536,7 +549,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPromocaoItemGratis)).EndInit();
             this.grupoPeriodoENome.ResumeLayout(false);
             this.grupoPeriodoENome.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,5 +594,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox grupoPeriodoENome;
+        private System.Windows.Forms.Label label13;
     }
 }

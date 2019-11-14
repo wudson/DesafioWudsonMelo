@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using projeto2.Feature.Grupo.Controller;
+﻿using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Grupo.Model;
 using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Marca.Model;
 using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Promocao.Model;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Promocao.View
 {
@@ -24,8 +25,19 @@ namespace projeto2.Feature.Promocao.View
         private void FrmProdutosDaPromocaoComDesconto_Load(object sender, EventArgs e)
         {
             lstDeProdutos.DataSource = AtribuirListaProdutos();
-
             lstDeProdutos.DisplayMember = "NomeProduto";
+
+            if (_promocao.Count <= 0) return;
+            dgvProdutosDaPromocao.DataSource = _promocao[0].Produtos;
+
+            if (lstDeProdutos.CheckedItems.Count == 0) return;
+            AtivarBotaoDeProdutosSelecionados();
+        }
+
+        private void AtivarBotaoDeProdutosSelecionados()
+        {
+            btnProdutosSelecionados.Enabled = true;
+            btnProdutosSelecionados.BackColor = Color.LimeGreen;
         }
 
         private static IList<Produto.Produto> AtribuirListaProdutos() =>
@@ -35,8 +47,13 @@ namespace projeto2.Feature.Promocao.View
         {
             if (lstDeProdutos.CheckedItems.Count == 0) return;
 
+            AtivarBotaoDeProdutosSelecionados();
+
             if (rdbProduto.Checked)
-                dgvProdutosDaPromocao.DataSource = lstDeProdutos.CheckedItems.Cast<Produto.Produto>().ToList();
+            {
+                var produtosSelecionados = lstDeProdutos.CheckedItems.Cast<Produto.Produto>().ToList();
+                VerificarProdutosComPromocaoAtiva(produtosSelecionados);
+            }
 
             else if (rdbGrupo.Checked)
             {
@@ -47,7 +64,8 @@ namespace projeto2.Feature.Promocao.View
                 foreach (var grupo in grupos)
                     produtos.AddRange(
                         AtribuirListaProdutos().Where(p => p.GrupoProduto.Grupo.Equals(grupo.Grupo)).ToList());
-                dgvProdutosDaPromocao.DataSource = produtos;
+
+                VerificarProdutosComPromocaoAtiva(produtos);
             }
             else
             {
@@ -58,9 +76,34 @@ namespace projeto2.Feature.Promocao.View
                 foreach (var marca in marcas)
                     produtos.AddRange(
                         AtribuirListaProdutos().Where(p => p.MarcaProduto.Marca.Equals(marca.Marca)).ToList());
-                dgvProdutosDaPromocao.DataSource = produtos;
 
+                VerificarProdutosComPromocaoAtiva(produtos);
             }
+        }
+
+        private void VerificarProdutosComPromocaoAtiva(IReadOnlyCollection<Produto.Produto> produtos)
+        {
+            var produtosComPromocao = new List<Produto.Produto>();
+            var produtosAdicionados = (List<Produto.Produto>)dgvProdutosDaPromocao.DataSource;
+
+            foreach (var produto in produtos.Where(produto =>
+                !produto.ValorComDesconto.Equals(produto.ValorVendaProduto)))
+            {
+                MessageBox.Show($@"O produto '{produto.NomeProduto}' já está em outra promoção ativa.");
+                produtosComPromocao.Add(produto);
+            }
+
+            var produtosSemPromocao = produtos.Except(produtosComPromocao);
+
+            if (produtosAdicionados == null) return;
+
+            foreach (var produto in produtosSemPromocao)
+            {
+                if(produtosAdicionados.Any(pa=>pa.IdProduto == produto.IdProduto)) continue;
+                
+                produtosAdicionados.Add(produto);
+            }
+            dgvProdutosDaPromocao.DataSource = produtosAdicionados.ToList();
         }
 
         private void DgvProdutosDaPromocao_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -93,7 +136,7 @@ namespace projeto2.Feature.Promocao.View
         private static IEnumerable<MarcaModel> AtribuirListaMarcas() =>
             new MarcaController().ListarMarcas();
 
-        private void BtnLimpar_Click(object sender, EventArgs e) => 
+        private void BtnLimpar_Click(object sender, EventArgs e) =>
             dgvProdutosDaPromocao.DataSource = new List<Produto.Produto>();
 
         private void TxtBuscar_TextChanged(object sender, EventArgs e)
@@ -131,7 +174,7 @@ namespace projeto2.Feature.Promocao.View
                 MessageBox.Show(@"Nenhum produto selecionado");
                 return;
             }
-            var produtos = (List<Produto.Produto>) dgvProdutosDaPromocao.DataSource;
+            var produtos = (List<Produto.Produto>)dgvProdutosDaPromocao.DataSource;
 
             _promocao.Add(new PromocaoModel
             {
@@ -139,7 +182,11 @@ namespace projeto2.Feature.Promocao.View
             });
         }
 
-        public IList<PromocaoModel> RetornarProdutos() => 
-            ShowDialog() == DialogResult.OK ? _promocao : new List<PromocaoModel>();
+        public IList<PromocaoModel> RetornarProdutos(List<Produto.Produto> produtos)
+        {
+            dgvProdutosDaPromocao.DataSource = produtos;
+            return ShowDialog() == DialogResult.OK ? _promocao : new List<PromocaoModel>();
+        }
+
     }
 }

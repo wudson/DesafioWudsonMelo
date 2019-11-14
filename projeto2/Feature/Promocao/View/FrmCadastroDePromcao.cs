@@ -12,24 +12,29 @@ namespace projeto2.Feature.Promocao.View
     {
         private readonly PromocoesController _cadastroDePromocoesController;
         private IList<PromocaoModel> _promocao;
-        private IList<PromocaoModel> _promocoesAtivas;
 
         public FrmCadastroDePromcao()
         {
             InitializeComponent();
             _cadastroDePromocoesController = new PromocoesController();
             _promocao = new List<PromocaoModel>();
-            _promocoesAtivas = new List<PromocaoModel>();
         }
 
         private void BtnSelecionarProdutosDaPromocao_Click(object sender, EventArgs e)
         {
-            _promocao = new FrmProdutosDaPromocaoComDesconto().RetornarProdutos();
+            _promocao = new FrmProdutosDaPromocaoComDesconto().RetornarProdutos(TemProdutos());
 
             if (_promocao.Count <= 0) return;
             dgvProdutosDaPromocao.DataSource = _promocao[0].Produtos;
 
             grupoDesconto.Enabled = true;
+            btnAplicar.BackColor = Color.LimeGreen;
+        }
+
+        private List<Produto.Produto> TemProdutos()
+        {
+            if (_promocao.Count <= 0) return new List<Produto.Produto>();
+            return _promocao[0].Produtos;
         }
 
         private void BtnAplicar_Click(object sender, EventArgs e)
@@ -111,23 +116,15 @@ namespace projeto2.Feature.Promocao.View
             grupoPeriodoENome.Enabled = false;
             grupoDesconto.Enabled = false;
             btnSalvarPromocao.Enabled = false;
+            btnSalvarPromocao.BackColor = Color.DarkGray;
+            btnAplicar.BackColor = Color.DarkGray;
             dgvProdutosDaPromocao.DataSource = null;
         }
 
         private void FrmCadastroDePromcao_Load(object sender, EventArgs e)
         {
             txtTipoPromocao.Text = txtTipoPromocao.Items[0].ToString();
-            BuscarPromocoes();
         }
-
-        private void BuscarPromocoes() => _promocoesAtivas = _cadastroDePromocoesController.BuscarPromocoesAtivas(FiltrarPromocao()).ToList();
-
-        private static FiltrosPromocaoModel FiltrarPromocao() =>
-            new FiltrosPromocaoModel
-            {
-                Ativas = true,
-                Inativas = false
-            };
 
         private void TxtTipoPromocao_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -171,9 +168,11 @@ namespace projeto2.Feature.Promocao.View
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
                 btnSalvarPromocao.Enabled = false;
+                btnSalvarPromocao.BackColor = Color.DarkGray;
                 return;
             }
             btnSalvarPromocao.Enabled = true;
+            btnSalvarPromocao.BackColor = Color.LimeGreen;
         }
     }
 }

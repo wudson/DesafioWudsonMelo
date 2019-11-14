@@ -132,11 +132,11 @@
             // 
             // btnProdutosSelecionados
             // 
-            this.btnProdutosSelecionados.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnProdutosSelecionados.BackColor = System.Drawing.Color.DarkGray;
             this.btnProdutosSelecionados.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnProdutosSelecionados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProdutosSelecionados.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnProdutosSelecionados.Location = new System.Drawing.Point(696, 419);
+            this.btnProdutosSelecionados.Location = new System.Drawing.Point(691, 419);
             this.btnProdutosSelecionados.Margin = new System.Windows.Forms.Padding(0);
             this.btnProdutosSelecionados.Name = "btnProdutosSelecionados";
             this.btnProdutosSelecionados.Size = new System.Drawing.Size(141, 41);
