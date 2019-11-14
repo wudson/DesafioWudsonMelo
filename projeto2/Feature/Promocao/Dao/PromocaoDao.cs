@@ -84,7 +84,6 @@ namespace projeto2.Feature.Promocao.Dao
 
         private static List<Produto.Produto> BuscarProdutosDaPromocao(int idPromocao, FbConnection conn)
         {
-            
 
             var sql = new StringBuilder();
             sql.Append(@"Select ip.VALOR_COM_DESCONTO, prod.*, m.*, g.* from PROMOCAO p 

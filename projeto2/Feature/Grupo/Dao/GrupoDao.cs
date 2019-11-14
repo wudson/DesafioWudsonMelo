@@ -7,70 +7,43 @@ namespace projeto2.Feature.Grupo.Dao
 {
     public class GrupoDao
     {
-        public bool Cadastrar(GrupoModel grupo)
+        public bool Cadastrar(GrupoModel grupo, FbCommand cmd)
         {
-            var conn = Conexao.GetInstancia();
-            conn.Open();
             const string mSql = @"INSERT into GRUPO (GRUPO) Values(@grupo)";
 
-            var cmd = new FbCommand(mSql, conn);
-            try
-            {
-                cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = grupo.Grupo;
+            cmd.CommandText = mSql;
 
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            finally
-            {
-                cmd.Dispose();
-                conn.Close();
-            }
+            cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = grupo.Grupo;
+
+            cmd.ExecuteNonQuery();
+            return true;
         }
 
-        public IEnumerable<GrupoModel> Listar()
+        public IEnumerable<GrupoModel> Listar(FbCommand cmd)
         {
-            var conn = Conexao.GetInstancia();
-            conn.Open();
-
             const string mSql = @"Select * from GRUPO";
-            var cmd = new FbCommand(mSql, conn);
-            try
-            {
-                var dataReader = cmd.ExecuteReader();
-                var grupos = new List<GrupoModel>();
-                while (dataReader.Read())
-                    grupos.Add(new GrupoModel
-                    {
-                        IdGrupo = Convert.ToInt32(dataReader["ID_GRUPO"]),
-                        Grupo = dataReader["GRUPO"].ToString()
-                    });
-                return grupos;
-            }
-            finally
-            {
-                cmd.Dispose();
-                conn.Close();
-            }
+
+            cmd.CommandText = mSql;
+
+            var dataReader = cmd.ExecuteReader();
+            var grupos = new List<GrupoModel>();
+            while (dataReader.Read())
+                grupos.Add(new GrupoModel
+                {
+                    IdGrupo = Convert.ToInt32(dataReader["ID_GRUPO"]),
+                    Grupo = dataReader["GRUPO"].ToString()
+                });
+            return grupos;
         }
 
-        public bool Excluir(int idGrupo)
+        public bool Excluir(int idGrupo, FbCommand cmd)
         {
-            var conn = Conexao.GetInstancia();
-            conn.Open();
             const string mSql = "DELETE from GRUPO Where ID_GRUPO = @id";
-            var cmd = new FbCommand(mSql, conn);
-            try
-            {
-                cmd.Parameters.Add("@id", FbDbType.Integer).Value = idGrupo;
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            finally
-            {
-                cmd.Dispose();
-                conn.Close();
-            }
+            cmd.CommandText = mSql;
+
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idGrupo;
+            cmd.ExecuteNonQuery();
+            return true;
         }
     }
 }

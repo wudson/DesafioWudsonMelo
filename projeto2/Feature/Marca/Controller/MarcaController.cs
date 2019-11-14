@@ -25,9 +25,14 @@ namespace projeto2.Feature.Marca.Controller
 
         public void CadastrarMarca(MarcaModel novaMarca)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                if (_dao.Cadastrar(novaMarca))
+                conn.Open();
+                cmd.Connection = conn;
+
+                if (_dao.Cadastrar(novaMarca, cmd))
                     MessageBox.Show(@"Marca cadastrada com sucesso.");
             }
             catch (FbException ex)
@@ -40,14 +45,24 @@ namespace projeto2.Feature.Marca.Controller
                 MessageBox.Show(@"Problemas ao cadastrar marca");
                 Console.WriteLine(ex);
             }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
 
         }
 
         public IEnumerable<MarcaModel> ListarMarcas()
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                var marcas = _dao.Listar().ToList();
+                conn.Open();
+                cmd.Connection = conn;
+
+                var marcas = _dao.Listar(cmd).ToList();
                 if (marcas.Count < 1)
                     MessageBox.Show(@"Nenhuma marca foi encontrada.");
                 else
@@ -63,15 +78,25 @@ namespace projeto2.Feature.Marca.Controller
                 MessageBox.Show(@"Problemas ao listar marcas");
                 Console.WriteLine(ex);
             }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
 
             return new List<MarcaModel>();
         }
 
         public bool ExcluirMarca(int idGrupo)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                if (_dao.Excluir(idGrupo))
+                conn.Open();
+                cmd.Connection = conn;
+
+                if (_dao.Excluir(idGrupo, cmd))
                     MessageBox.Show(@"Marca excluida com sucesso.");
                 return true;
             }
@@ -84,6 +109,11 @@ namespace projeto2.Feature.Marca.Controller
             {
                 MessageBox.Show(@"Problemas ao excluir marcas");
                 Console.WriteLine(ex);
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
             }
 
             return false;

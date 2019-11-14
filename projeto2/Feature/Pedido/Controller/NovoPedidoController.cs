@@ -28,23 +28,37 @@ namespace projeto2.Feature.Pedido.Controller
 
         public bool SalvarPedido(PedidoModel pedido)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                if (_dao.Cadastrar(pedido))
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.Transaction = conn.BeginTransaction();
+
+                if (_dao.Cadastrar(pedido, cmd))
                 {
                     MessageBox.Show(@"Pedido efetuado com sucesso.", @"Sucesso");
+                    cmd.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
                 MessageBox.Show(@"Problemas no banco de dados ao efetuar pedido.");
+                cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(@"Problemas ao efetuar pedido");
+                cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
             }
 
             return false;

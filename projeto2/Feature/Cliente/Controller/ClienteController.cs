@@ -32,9 +32,14 @@ namespace projeto2.Feature.Cliente.Controller
 
         public ClienteModel BuscarDado(int idPessoa)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                var cliente = _dao.Buscar(idPessoa);
+                conn.Open();
+                cmd.Connection = conn;
+
+                var cliente = _dao.Buscar(idPessoa, cmd);
                 if (cliente.IdCliente < 1)
                     MessageBox.Show(@"Cliente não encontrado.");
                 else
@@ -50,28 +55,42 @@ namespace projeto2.Feature.Cliente.Controller
                 MessageBox.Show(@"Problemas ao buscar cliente");
                 Console.WriteLine(ex);
             }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
 
             return new ClienteModel();
         }
 
         public bool ExcluirDado(int idPessoa)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                if (_dao.Excluir(idPessoa))
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.Transaction = conn.BeginTransaction();
+
+                if (_dao.Excluir(idPessoa, cmd))
                 {
                     MessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
+                    cmd.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
                 MessageBox.Show(@"Problemas no banco de dados ao excluir cliente.");
+                cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(@"Problemas ao excluir cliente");
+                cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
 
@@ -80,9 +99,14 @@ namespace projeto2.Feature.Cliente.Controller
 
         public IEnumerable<ClienteModel> ListarDados(FiltrosClienteModel filtros)
         {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
             try
             {
-                var clientes = _dao.ListarDados(filtros).ToList();
+                conn.Open();
+                cmd.Connection = conn;
+
+                var clientes = _dao.ListarDados(filtros, cmd).ToList();
                 if (clientes.Count < 1)
                     MessageBox.Show(@"Nenhum cliente foi encontrado.");
                 else
@@ -97,6 +121,11 @@ namespace projeto2.Feature.Cliente.Controller
             {
                 MessageBox.Show(@"Problemas ao listar clientes");
                 Console.WriteLine(ex);
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
             }
 
             return new List<ClienteModel>();

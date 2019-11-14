@@ -1,14 +1,14 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Pessoa.Model;
 using System;
+using projeto2.Feature.Cliente.Model;
 
 namespace projeto2.Feature.Pessoa.Dao
 {
     public class PessoaDao
     {
-        public int Cadastrar(object obj, FbCommand cmd)
+        public int Cadastrar(PessoaModel pessoa, FbCommand cmd)
         {
-            var pessoa = (PessoaModel)obj;
             const string mSql = @"INSERT into PESSOA (NOME_PESSOA, EMAIL_PESSOA, CPF_PESSOA, RG_PESSOA, SEXO_PESSOA, 
                                 DATA_NASCIMENTO_PESSOA, TELEFONE_PESSOA, CELULAR_PESSOA, ESTADO, CIDADE, CEP, RUA, COMPLEMENTO, 
                                 NUMERO, BAIRRO) 
@@ -38,31 +38,17 @@ namespace projeto2.Feature.Pessoa.Dao
 
         public bool Excluir(int idPessoa, FbCommand cmd)
         {
-            try
-            {
-                cmd.Parameters["@id"].Value = idPessoa;
-                const string mSql = "DELETE from PESSOA Where ID_PESSOA = @id";
-                cmd.CommandText = mSql;
-                cmd.ExecuteNonQuery();
+            cmd.Parameters["@id"].Value = idPessoa;
+            const string mSql = "DELETE from PESSOA Where ID_PESSOA = @id";
+            cmd.CommandText = mSql;
 
-                cmd.Transaction.Commit();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                cmd.Transaction.Rollback();
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-            finally
-            {
-                cmd.Dispose();
-            }
+            cmd.ExecuteNonQuery();
+
+            return true;
         }
 
-        public bool Alterar(object obj, FbCommand cmd)
+        public bool Alterar(PessoaModel pessoa, FbCommand cmd)
         {
-            var pessoa = (PessoaModel)obj;
             const string mSql = @"Update PESSOA set NOME_PESSOA = @nome, EMAIL_PESSOA = @email, 
                                     CPF_PESSOA = @cpf, RG_PESSOA = @rg, SEXO_PESSOA = @sexo, DATA_NASCIMENTO_PESSOA = @nascimento,
                                     TELEFONE_PESSOA = @tel, CELULAR_PESSOA = @cel, ESTADO = @estado, CIDADE = @cidade, 
@@ -87,6 +73,7 @@ namespace projeto2.Feature.Pessoa.Dao
             cmd.Parameters.Add("@complemento", FbDbType.VarChar).Value = pessoa.ComplementoPessoa;
             cmd.Parameters.Add("@numero", FbDbType.Integer).Value = pessoa.NumeroPessoa;
             cmd.Parameters.Add("@bairro", FbDbType.VarChar).Value = pessoa.BairroPessoa;
+
             cmd.ExecuteNonQuery();
 
             return true;

@@ -7,72 +7,46 @@ namespace projeto2.Feature.Marca.Dao
 {
     public class MarcaDao
     {
-        public bool Cadastrar(MarcaModel marca)
+        public bool Cadastrar(MarcaModel marca, FbCommand cmd)
         {
-            var conn = Conexao.GetInstancia();
-            conn.Open();
+
             const string mSql = @"INSERT into MARCA (MARCA) Values(@marca)";
 
-            var cmd = new FbCommand(mSql, conn);
-            try
-            {
-                cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca.Marca;
+            cmd.CommandText = mSql;
+            cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca.Marca;
+            cmd.ExecuteNonQuery();
 
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            finally
-            {
-                cmd.Dispose();
-                conn.Close();
-            }
+            return true;
         }
 
-        public IEnumerable<MarcaModel> Listar()
+        public IEnumerable<MarcaModel> Listar(FbCommand cmd)
         {
-            var conn = Conexao.GetInstancia();
-            conn.Open();
-
             const string mSql = @"Select * from MARCA";
-            var cmd = new FbCommand(mSql, conn);
-            try
+
+            cmd.CommandText = mSql;
+
+            var dataReader = cmd.ExecuteReader();
+            var marcas = new List<MarcaModel>();
+            while (dataReader.Read())
             {
-                var dataReader = cmd.ExecuteReader();
-                var marcas = new List<MarcaModel>();
-                while (dataReader.Read())
+                marcas.Add(new MarcaModel()
                 {
-                    marcas.Add(new MarcaModel()
-                    {
-                        IdMarca = Convert.ToInt32(dataReader["ID_MARCA"]),
-                        Marca = dataReader["MARCA"].ToString()
-                    });
-                }
-                return marcas;
+                    IdMarca = Convert.ToInt32(dataReader["ID_MARCA"]),
+                    Marca = dataReader["MARCA"].ToString()
+                });
             }
-            finally
-            {
-                cmd.Dispose();
-                conn.Close();
-            }
+            return marcas;
         }
 
-        public bool Excluir(int idMarca)
+        public bool Excluir(int idMarca, FbCommand cmd)
         {
-            var conn = Conexao.GetInstancia();
-            conn.Open();
             const string mSql = "DELETE from MARCA Where ID_MARCA = @id";
-            var cmd = new FbCommand(mSql, conn);
-            try
-            {
-                cmd.Parameters.Add("@id", FbDbType.Integer).Value = idMarca;
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            finally
-            {
-                cmd.Dispose();
-                conn.Close();
-            }
+
+            cmd.CommandText = mSql;
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idMarca;
+            cmd.ExecuteNonQuery();
+
+            return true;
         }
     }
 }
