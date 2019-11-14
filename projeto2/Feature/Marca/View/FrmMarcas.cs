@@ -10,10 +10,10 @@ namespace projeto2.Feature.Marca.View
         private readonly MarcaController _marcaController;
         private readonly MarcaModel _marcaModel;
 
-        public FrmMarcas()
+        public FrmMarcas(MarcaController controller)
         {
             InitializeComponent();
-            _marcaController = new MarcaController();
+            _marcaController = controller;
             _marcaModel = new MarcaModel();
         }
 
@@ -62,7 +62,7 @@ namespace projeto2.Feature.Marca.View
             if (dgvMarcas.CurrentRow == null) return;
             var idGrupo = Convert.ToInt32(dgvMarcas.CurrentRow.Cells[0].Value);
 
-            if (new MarcaController().ExcluirMarca(idGrupo))
+            if (_marcaController.ExcluirMarca(idGrupo))
                 ListarMarcas();
         }
 

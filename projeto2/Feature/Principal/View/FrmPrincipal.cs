@@ -1,7 +1,4 @@
-﻿using projeto2.Feature.Estoque.View;
-using projeto2.Feature.Grupo.View;
-using projeto2.Feature.Marca.View;
-using projeto2.Feature.Pedido.View;
+﻿using projeto2.Feature.Pedido.View;
 using projeto2.Feature.Principal.Controller;
 using projeto2.Feature.Promocao.View;
 using System;
@@ -64,9 +61,9 @@ namespace projeto2.Feature.Principal.View
 
         private void BtnPedidos_Click(object sender, EventArgs e) => new FrmPedidos().ShowDialog();
 
-        private void BtnMarcas_Click(object sender, EventArgs e) => new FrmMarcas().ShowDialog();
+        private void BtnMarcas_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeMarcas();
 
-        private void BtnGrupos_Click(object sender, EventArgs e) => new FrmGrupos().ShowDialog();
+        private void BtnGrupos_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeGrupos();
 
         private void BtnEstoque_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeEstoqueDeProdutos();
 

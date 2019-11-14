@@ -1,24 +1,36 @@
 ﻿using projeto2.Feature.Cliente.Controller;
 using projeto2.Feature.Estoque.Controller;
+using projeto2.Feature.Grupo.Controller;
+using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Principal.Controller
 {
     public class PrincipalController
     {
-        public void AbrirTelaDeProdutos()
+        private readonly ProdutoController _produtoController;
+        private readonly ClienteController _clienteController;
+        private readonly EstoqueDeProdutoController _estoqueDeProdutoController;
+        private readonly MarcaController _marcaController;
+        private readonly GrupoController _grupoController;
+
+        public PrincipalController()
         {
-            new ProdutoController().AbrirTelaDeProdutos();
+           _produtoController = new ProdutoController();
+           _clienteController = new ClienteController();
+           _estoqueDeProdutoController = new EstoqueDeProdutoController();
+           _marcaController = new MarcaController();
+           _grupoController = new GrupoController();
         }
 
-        public void AbrirTelaDeClientes()
-        {
-            new ClienteController().AbrirTelaDeClientes();
-        }
+        public void AbrirTelaDeProdutos() => _produtoController.AbrirTelaDeProdutos();
 
-        public void AbrirTelaDeEstoqueDeProdutos()
-        {
-            new EstoqueDeProdutoController().AbrirTelaDeEstoque();
-        }
+        public void AbrirTelaDeClientes() => _clienteController.AbrirTelaDeClientes();
+
+        public void AbrirTelaDeEstoqueDeProdutos() => _estoqueDeProdutoController.AbrirTelaDeEstoque();
+
+        public void AbrirTelaDeMarcas() => _marcaController.AbrirTelaDeMarcas();
+
+        public void AbrirTelaDeGrupos() => _grupoController.AbrirTelaDeGrupos();
     }
 }

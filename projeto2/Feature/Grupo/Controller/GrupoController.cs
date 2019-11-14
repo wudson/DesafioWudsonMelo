@@ -5,15 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
+using projeto2.Feature.Grupo.View;
 
 namespace projeto2.Feature.Grupo.Controller
 {
     public class GrupoController
     {
         private readonly GrupoDao _dao;
+        private readonly FrmGrupos _frmGrupos;
 
-        public GrupoController() =>
+        public GrupoController()
+        {
             _dao = new GrupoDao();
+            _frmGrupos = new FrmGrupos(this);
+        }
+
+        public void AbrirTelaDeGrupos() =>
+            _frmGrupos.ShowDialog();
 
         public void CadastrarGrupo(GrupoModel novoGrupo)
         {

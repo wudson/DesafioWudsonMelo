@@ -10,10 +10,10 @@ namespace projeto2.Feature.Grupo.View
         private readonly GrupoController _grupoController;
         private readonly GrupoModel _grupoModel;
 
-        public FrmGrupos()
+        public FrmGrupos(GrupoController controller)
         {
             InitializeComponent();
-            _grupoController = new GrupoController();
+            _grupoController = controller;
             _grupoModel = new GrupoModel();
         }
 

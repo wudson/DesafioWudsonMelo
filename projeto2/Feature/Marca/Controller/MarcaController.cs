@@ -5,15 +5,23 @@ using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Marca.Dao;
 using projeto2.Feature.Marca.Model;
+using projeto2.Feature.Marca.View;
 
 namespace projeto2.Feature.Marca.Controller
 {
     public class MarcaController
     {
         private readonly MarcaDao _dao;
+        private readonly FrmMarcas _frmMarcas;
 
-        public MarcaController() =>
+        public MarcaController()
+        {
             _dao = new MarcaDao();
+            _frmMarcas = new FrmMarcas(this);
+        }
+
+        public void AbrirTelaDeMarcas() =>
+            _frmMarcas.ShowDialog();
 
         public void CadastrarMarca(MarcaModel novaMarca)
         {
