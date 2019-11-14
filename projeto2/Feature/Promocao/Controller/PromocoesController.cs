@@ -5,50 +5,37 @@ using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Promocao.Dao;
 using projeto2.Feature.Promocao.Model;
+using projeto2.Feature.Promocao.View;
 
 namespace projeto2.Feature.Promocao.Controller
 {
     public class PromocoesController
     {
+        private readonly FrmPromocoes _frmPromocoes;
         private readonly PromocaoDao _dao;
 
-        public PromocoesController() => _dao = new PromocaoDao();
+        private readonly CadastroDePromocaoController _cadastroDePromocaoController;
+        private readonly ProdutosDaPromocaoController _produtosDaPromocaoController;
 
-        public bool CadastrarDado(PromocaoModel promocao)
+        public PromocoesController()
         {
-            var conn = Conexao.GetInstancia();
-            var cmd = new FbCommand();
-            try
-            {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.Transaction = conn.BeginTransaction();
+            _dao = new PromocaoDao();
 
-                if (_dao.Cadastrar(promocao, cmd))
-                {
-                    MessageBox.Show(@"Promoção cadastrada com sucesso.", @"Sucesso");
-                    cmd.Transaction.Commit();
-                    return true;
-                }
-            }
-            catch (FbException ex)
-            {
-                MessageBox.Show(@"Problemas no banco de dados ao cadastrar promoção.");
-                cmd.Transaction.Rollback();
-                Console.WriteLine(ex);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(@"Problemas ao cadastrar promoção.", @"Erro");
-                cmd.Transaction.Rollback();
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                cmd.Dispose();
-                conn.Close();
-            }
-            return false;
+            _frmPromocoes = new FrmPromocoes(this);
+
+            _cadastroDePromocaoController = new CadastroDePromocaoController();
+            _produtosDaPromocaoController = new ProdutosDaPromocaoController();
+        }
+
+        public void AbrirTelaDePromocao() =>
+            _frmPromocoes.ShowDialog();
+
+        public void AbrirTelaProdutosDaPromocao(List<PromocaoModel> promocao) => 
+            _produtosDaPromocaoController.AbrirTelaComProdutosDaPromocao(promocao);
+
+        public void AbrirTelaCadastroDePromocao()
+        {
+            _cadastroDePromocaoController.AbrirTelaCadastroDePromocao();
         }
 
         public IEnumerable<PromocaoModel> ListarDados(FiltrosPromocaoModel filtros)
@@ -82,11 +69,6 @@ namespace projeto2.Feature.Promocao.Controller
             }
 
             return new List<PromocaoModel>();
-        }
-
-        public IEnumerable<PromocaoModel> BuscarPromocoesAtivas(FiltrosPromocaoModel filtros)
-        {
-            return new PromocoesController().ListarDados(filtros);
         }
     }
 }

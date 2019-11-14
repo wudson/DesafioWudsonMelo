@@ -1,28 +1,28 @@
-﻿using System;
+﻿using projeto2.Feature.Promocao.Controller;
+using projeto2.Feature.Promocao.Model;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using projeto2.Feature.Promocao.Controller;
-using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Promocao.View
 {
     public partial class FrmCadastroDePromcao : Form
     {
-        private readonly PromocoesController _cadastroDePromocoesController;
+        private readonly CadastroDePromocaoController _cadastroDePromocoesController;
         private IList<PromocaoModel> _promocao;
 
-        public FrmCadastroDePromcao()
+        public FrmCadastroDePromcao(CadastroDePromocaoController controller)
         {
             InitializeComponent();
-            _cadastroDePromocoesController = new PromocoesController();
+            _cadastroDePromocoesController = controller;
             _promocao = new List<PromocaoModel>();
         }
 
         private void BtnSelecionarProdutosDaPromocao_Click(object sender, EventArgs e)
         {
-            _promocao = new FrmProdutosDaPromocaoComDesconto().RetornarProdutos(TemProdutos());
+            _promocao = _cadastroDePromocoesController.RetornarProdutos(TemProdutos());
 
             if (_promocao.Count <= 0) return;
             dgvProdutosDaPromocao.DataSource = _promocao[0].Produtos;
@@ -33,8 +33,7 @@ namespace projeto2.Feature.Promocao.View
 
         private List<Produto.Produto> TemProdutos()
         {
-            if (_promocao.Count <= 0) return new List<Produto.Produto>();
-            return _promocao[0].Produtos;
+            return _promocao.Count <= 0 ? new List<Produto.Produto>() : _promocao[0].Produtos;
         }
 
         private void BtnAplicar_Click(object sender, EventArgs e)

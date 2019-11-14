@@ -1,8 +1,6 @@
-﻿using projeto2.Feature.Grupo.Controller;
-using projeto2.Feature.Grupo.Model;
-using projeto2.Feature.Marca.Controller;
+﻿using projeto2.Feature.Grupo.Model;
 using projeto2.Feature.Marca.Model;
-using projeto2.Feature.Produto.Controller;
+using projeto2.Feature.Promocao.Controller;
 using projeto2.Feature.Promocao.Model;
 using System;
 using System.Collections.Generic;
@@ -14,11 +12,13 @@ namespace projeto2.Feature.Promocao.View
 {
     public partial class FrmProdutosDaPromocaoComDesconto : Form
     {
+        private static ProdutosAdicionadosNaPromocaoController _produtosAdicionadosNaPromocaoController;
         private readonly IList<PromocaoModel> _promocao;
 
         public FrmProdutosDaPromocaoComDesconto()
         {
             InitializeComponent();
+            _produtosAdicionadosNaPromocaoController = new ProdutosAdicionadosNaPromocaoController();
             _promocao = new List<PromocaoModel>();
         }
 
@@ -41,7 +41,7 @@ namespace projeto2.Feature.Promocao.View
         }
 
         private static IList<Produto.Produto> AtribuirListaProdutos() =>
-            new ProdutoController().ListarDados(new Produto.Produto());
+            _produtosAdicionadosNaPromocaoController.ListarProdutos(new Produto.Produto());
 
         private void BtnAdicionarProdutosSelecionadosNaPromocao_Click(object sender, EventArgs e)
         {
@@ -119,7 +119,7 @@ namespace projeto2.Feature.Promocao.View
         }
 
         private static IEnumerable<GrupoModel> AtribuirListaGrupos() =>
-            new GrupoController().ListarGrupos();
+            _produtosAdicionadosNaPromocaoController.ListarGrupos();
 
         private void RdbProduto_CheckedChanged(object sender, EventArgs e)
         {
@@ -134,7 +134,7 @@ namespace projeto2.Feature.Promocao.View
         }
 
         private static IEnumerable<MarcaModel> AtribuirListaMarcas() =>
-            new MarcaController().ListarMarcas();
+            _produtosAdicionadosNaPromocaoController.ListarMarcas();
 
         private void BtnLimpar_Click(object sender, EventArgs e) =>
             dgvProdutosDaPromocao.DataSource = new List<Produto.Produto>();

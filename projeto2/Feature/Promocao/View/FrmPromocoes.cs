@@ -13,25 +13,23 @@ namespace projeto2.Feature.Promocao.View
         private readonly PromocoesController _promocoesController;
         private List<PromocaoModel> _promocoes;
 
-        public FrmPromocoes()
+        public FrmPromocoes( PromocoesController controller)
         {
             InitializeComponent();
-            _promocoesController = new PromocoesController();
+            _promocoesController = controller;
             _promocoes = new List<PromocaoModel>();
         }
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
-            new FrmCadastroDePromcao().ShowDialog();
+            _promocoesController.AbrirTelaCadastroDePromocao();
 
             AtualizarGridDePromocoes();
         }
 
         private void AtualizarGridDePromocoes()
         {
-            var filtros = Filtrar();
-
-            _promocoes = _promocoesController.ListarDados(filtros).ToList();
+            _promocoes = _promocoesController.ListarDados(Filtrar()).ToList();
             dgvPromocoes.DataSource = _promocoes;
             if (dgvPromocoes.CurrentRow != null) dgvPromocoes.CurrentRow.Selected = false;
 
@@ -68,7 +66,7 @@ namespace projeto2.Feature.Promocao.View
                 .Where(p => p.NomePromocao.Equals(dgvPromocoes.CurrentRow?.Cells[0].Value.ToString()))
                 .ToList();
 
-            new FrmProdutosDaPromocao(promocao).ShowDialog();
+            _promocoesController.AbrirTelaProdutosDaPromocao(promocao);
         }
 
         private void RdbInativas_CheckedChanged(object sender, EventArgs e)

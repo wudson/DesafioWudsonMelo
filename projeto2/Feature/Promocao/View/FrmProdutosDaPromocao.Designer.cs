@@ -34,16 +34,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProdutosDaPromocao));
             this.dgvItensPromocao = new System.Windows.Forms.DataGridView();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.GrupoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MarcaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GrupoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MarcaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorCompraProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorVendaProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorComDescontoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnOk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPromocao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -74,16 +74,22 @@
             this.dgvItensPromocao.TabIndex = 1;
             this.dgvItensPromocao.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvItensPromocao_CellFormatting);
             // 
-            // btnOk
+            // idProdutoDataGridViewTextBoxColumn
             // 
-            this.btnOk.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnOk.Location = new System.Drawing.Point(785, 293);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(105, 33);
-            this.btnOk.TabIndex = 5;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = false;
+            this.idProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "IdProduto";
+            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "Código";
+            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
+            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idProdutoDataGridViewTextBoxColumn.Width = 55;
+            // 
+            // nomeProdutoDataGridViewTextBoxColumn
+            // 
+            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
+            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
+            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
+            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // GrupoProduto
             // 
@@ -102,23 +108,6 @@
             this.MarcaProduto.Name = "MarcaProduto";
             this.MarcaProduto.ReadOnly = true;
             this.MarcaProduto.Width = 120;
-            // 
-            // idProdutoDataGridViewTextBoxColumn
-            // 
-            this.idProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.idProdutoDataGridViewTextBoxColumn.DataPropertyName = "IdProduto";
-            this.idProdutoDataGridViewTextBoxColumn.HeaderText = "Código";
-            this.idProdutoDataGridViewTextBoxColumn.Name = "idProdutoDataGridViewTextBoxColumn";
-            this.idProdutoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idProdutoDataGridViewTextBoxColumn.Width = 55;
-            // 
-            // nomeProdutoDataGridViewTextBoxColumn
-            // 
-            this.nomeProdutoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProdutoDataGridViewTextBoxColumn.DataPropertyName = "NomeProduto";
-            this.nomeProdutoDataGridViewTextBoxColumn.HeaderText = "Produto";
-            this.nomeProdutoDataGridViewTextBoxColumn.Name = "nomeProdutoDataGridViewTextBoxColumn";
-            this.nomeProdutoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tipoProdutoDataGridViewTextBoxColumn
             // 
@@ -169,6 +158,18 @@
             // 
             this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
             // 
+            // btnOk
+            // 
+            this.btnOk.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOk.Location = new System.Drawing.Point(785, 293);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(105, 33);
+            this.btnOk.TabIndex = 5;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
+            // 
             // FrmProdutosDaPromocao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,6 +184,7 @@
             this.Name = "FrmProdutosDaPromocao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmProdutosDaPromocao";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmProdutosDaPromocao_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPromocao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.ResumeLayout(false);

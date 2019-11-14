@@ -132,6 +132,9 @@
     <Compile Include="Feature\Pedido\View\FrmItensPedido.Designer.cs">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Promocao\Controller\CadastroDePromocaoController.cs" />
+    <Compile Include="Feature\Promocao\Controller\ProdutosAdicionadosNaPromocaoController.cs" />
+    <Compile Include="Feature\Promocao\Controller\ProdutosDaPromocaoController.cs" />
     <Compile Include="Feature\Promocao\Controller\PromocoesController.cs" />
     <Compile Include="Feature\Promocao\Dao\PromocaoDao.cs" />
     <Compile Include="Feature\Promocao\Model\FiltrosPromocaoModel.cs" />
