@@ -100,7 +100,7 @@ namespace projeto2.Feature.Produto.View
             }
         }
 
-        private void BtnEstoque_Click(object sender, EventArgs e) => new FrmEstoque().ShowDialog();
+        private void BtnEstoque_Click(object sender, EventArgs e) => _produtoController.AbrirTelaDeEstoqueDeProdutos();
 
         private void DgvProduto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) => 
             e.Value = Propriedade.BuscarPropriedadeComPonto(dgvProduto, e);

@@ -78,6 +78,7 @@
     <Compile Include="Feature\Cliente\View\FrmCadastroDeCliente.Designer.cs">
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Estoque\Controller\EstoqueDeProdutoController.cs" />
     <Compile Include="Feature\Estoque\View\FrmEstoque.cs">
       <SubType>Form</SubType>
     </Compile>

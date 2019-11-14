@@ -2,22 +2,23 @@
 using projeto2.Feature.Produto.Controller;
 using System;
 using System.Windows.Forms;
+using projeto2.Feature.Estoque.Controller;
 
 namespace projeto2.Feature.Estoque.View
 {
     public partial class FrmEstoque : Form
     {
-        private readonly ProdutoController _produtoController;
+        private readonly EstoqueDeProdutoController _estoqueDeProdutoController;
 
-        public FrmEstoque()
+        public FrmEstoque(EstoqueDeProdutoController controller)
         {
             InitializeComponent();
-            _produtoController = new ProdutoController();
+            _estoqueDeProdutoController = controller;
         }
 
         private void FrmEstoque_Load(object sender, EventArgs e)
         {
-            dgvEstoque.DataSource = _produtoController.ListarDados(new Produto.Produto());
+            dgvEstoque.DataSource = _estoqueDeProdutoController.ListarDados(new Produto.Produto());
             PreencherGrupos();
             PreencherTipos();
         }
@@ -39,7 +40,7 @@ namespace projeto2.Feature.Estoque.View
         }
 
         private void BtnFiltrar_Click(object sender, EventArgs e) => 
-            dgvEstoque.DataSource = _produtoController.ListarDados(Filtrar());
+            dgvEstoque.DataSource = _estoqueDeProdutoController.ListarDados(Filtrar());
 
         private Produto.Produto Filtrar() =>
             new Produto.Produto

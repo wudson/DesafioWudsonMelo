@@ -4,6 +4,7 @@ using projeto2.Feature.Produto.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using projeto2.Feature.Estoque.Controller;
 
 namespace projeto2.Feature.Produto.Controller
 {
@@ -14,6 +15,7 @@ namespace projeto2.Feature.Produto.Controller
         private readonly ProdutoDao _dao;
 
         private readonly CadastroDeProdutoController _cadastroDeProdutoController;
+        private readonly EstoqueDeProdutoController _estoqueDeProdutoController;
 
         public ProdutoController()
         { 
@@ -23,10 +25,13 @@ namespace projeto2.Feature.Produto.Controller
             _frmProdutos = new FrmProdutos(this);
 
             _cadastroDeProdutoController = new CadastroDeProdutoController();
+            _estoqueDeProdutoController = new EstoqueDeProdutoController();
         }
 
         public void AbrirTelaDeProdutos() =>
             _frmProdutos.ShowDialog();
+
+        public void AbrirTelaDeEstoqueDeProdutos() => _estoqueDeProdutoController.AbrirTelaDeEstoque();
 
         public IList<Produto> ListarDados(Produto filtros)
         {
