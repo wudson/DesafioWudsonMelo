@@ -7,23 +7,24 @@ namespace projeto2.Feature.Cliente.View
 {
     public partial class FrmCadastroDeCliente : Form
     {
-        private readonly ClienteController _clienteController;
-        private readonly ClienteModel _cliente;
+        private readonly CadastroDeClienteController _cadastroDeClienteController;
+        private ClienteModel _cliente;
 
-        public FrmCadastroDeCliente(ClienteModel cliente)
+        public FrmCadastroDeCliente(CadastroDeClienteController controller)
         {
             InitializeComponent();
-            _clienteController = new ClienteController();
-            _cliente = cliente;
+            _cadastroDeClienteController = controller;
             btnAlterar.Visible = true;
+            btnSalvarCadastroCliente.Visible = true;
         }
 
-        public FrmCadastroDeCliente()
+        public void RecebeProdutoParaAlterar(ClienteModel cliente)
         {
-            InitializeComponent();
-            _clienteController = new ClienteController();
-            btnAlterar.Visible = false;
-            btnSalvarCadastroCliente.Visible = true;
+            _cliente = cliente;
+            btnAlterar.Visible = true;
+            btnSalvarCadastroCliente.Visible = false;
+
+            ShowDialog();
         }
 
         private void BtnCancelarCadastroCliente_Click(object sender, EventArgs e) => Close();
@@ -32,7 +33,7 @@ namespace projeto2.Feature.Cliente.View
         {
             if (!ValidarCamposObrigatorios()) return;
 
-            if (_clienteController.CadastrarDado(AtribuirCamposParaModel(0)))
+            if (_cadastroDeClienteController.CadastrarDado(AtribuirCamposParaModel(0)))
                 Close();
         }
 
@@ -143,9 +144,19 @@ namespace projeto2.Feature.Cliente.View
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)
         {
             btnSalvarCadastroCliente.Visible = false;
+
+            ReduzirAnosDosCamposDeData();
+            CarregarDadosDoCliente();
+        }
+
+        private void ReduzirAnosDosCamposDeData()
+        {
             txtDataNascimento.MaxDate = DateTime.Now.AddYears(-10);
             txtDataNascimento.Value = DateTime.Now.AddYears(-18);
+        }
 
+        private void CarregarDadosDoCliente()
+        {
             if (_cliente == null) return;
             txtNome.Text = _cliente.NomePessoa;
             txtEmail.Text = _cliente.EmailPessoa;
@@ -211,8 +222,7 @@ namespace projeto2.Feature.Cliente.View
         {
             if (!ValidarCamposObrigatorios()) return;
 
-            var cliente = AtribuirCamposParaModel(_cliente.IdPessoa);
-            if (_clienteController.AlterarDado(cliente))
+            if (_cadastroDeClienteController.AlterarDado(AtribuirCamposParaModel(_cliente.IdPessoa)))
                 Close();
         }
     }

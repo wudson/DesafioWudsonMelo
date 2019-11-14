@@ -7,22 +7,23 @@ using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Promocao.View;
 using System;
 using System.Windows.Forms;
+using projeto2.Feature.Principal.Controller;
 
 namespace projeto2.Feature.Principal.View
 {
     public partial class FrmPrincipal : Form
     {
-        private readonly ProdutoController _produtoController;
+        private readonly PrincipalController _principalController;
 
         public FrmPrincipal()
         {
             InitializeComponent();
-            _produtoController = new ProdutoController();
+            _principalController = new PrincipalController();
         } 
 
-        private void BtnProdutos_Click(object sender, EventArgs e) => _produtoController.AbrirTelaDeProdutos();
+        private void BtnProdutos_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeProdutos();
 
-        private void BtnClientes_Click(object sender, EventArgs e) => new FrmClientes().ShowDialog();
+        private void BtnClientes_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeClientes();
 
         private void BtnSair_Click(object sender, EventArgs e)
         {

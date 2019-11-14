@@ -9,23 +9,23 @@ namespace projeto2.Feature.Cliente.View
     {
         private readonly ClienteController _clienteController;
 
-        public FrmClientes()
+        public FrmClientes(ClienteController controller)
         {
             InitializeComponent();
-            _clienteController = new ClienteController();
+            _clienteController = controller;
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
         {
-            new FrmCadastroDeCliente().ShowDialog();
+            _clienteController.AbrirTelaDeAlterarECadastrarClientes();
             AtualizarGridDadosCliente();
         }
 
         private void AtualizarGridDadosCliente()
         {
-            var filtros = Filtrar();
-            dgvClientes.DataSource = _clienteController.ListarDados(filtros);
+            dgvClientes.DataSource = _clienteController.ListarDados(Filtrar());
             if (dgvClientes.CurrentRow != null) dgvClientes.CurrentRow.Selected = false;
+
             ModificarEnabledDosBotoes(false);
         }
 
@@ -55,9 +55,14 @@ namespace projeto2.Feature.Cliente.View
         {
             if (e.RowIndex < 0) return;
 
-            var cliente = _clienteController.BuscarDado(int.Parse(dgvClientes.Rows[e.RowIndex].Cells[0].Value.ToString()));
+            BuscarClienteParaAlterar();
+        }
 
-            new FrmCadastroDeCliente(cliente).ShowDialog();
+        private void BuscarClienteParaAlterar()
+        {
+            var cliente = _clienteController.BuscarDado(int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
+
+            _clienteController.AbrirTelaDeAlterarECadastrarClientes(cliente);
             AtualizarGridDadosCliente();
         }
 
@@ -65,10 +70,7 @@ namespace projeto2.Feature.Cliente.View
         {
             if (!btnEditar.Enabled) return;
 
-            var cliente = _clienteController.BuscarDado(int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
-
-            new FrmCadastroDeCliente(cliente).ShowDialog();
-            AtualizarGridDadosCliente();
+            BuscarClienteParaAlterar();
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
@@ -78,8 +80,7 @@ namespace projeto2.Feature.Cliente.View
             var result = MessageBox.Show(@"Deseja excluir esse cliente?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
 
-            var idClienteLinhaAtual = int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "-1");
-            if (_clienteController.ExcluirDado(idClienteLinhaAtual))
+            if (_clienteController.ExcluirDado(int.Parse(dgvClientes.CurrentRow?.Cells[0].Value.ToString() ?? "-1")))
                 AtualizarGridDadosCliente();
         }
 

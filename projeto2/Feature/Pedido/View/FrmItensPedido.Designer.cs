@@ -29,21 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmItensPedido));
             this.dgvItensPedido = new System.Windows.Forms.DataGridView();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnOk = new System.Windows.Forms.Button();
-            this.idItemPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produtosPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPedido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -60,12 +57,7 @@
             this.tipo,
             this.preco,
             this.quantidade,
-            this.valorTotal,
-            this.idItemPedidoDataGridViewTextBoxColumn,
-            this.quantidadeDataGridViewTextBoxColumn,
-            this.pedidoDataGridViewTextBoxColumn,
-            this.produtosPedidoDataGridViewTextBoxColumn,
-            this.precoTotalDataGridViewTextBoxColumn});
+            this.valorTotal});
             this.dgvItensPedido.DataSource = this.produtoBindingSource;
             this.dgvItensPedido.Location = new System.Drawing.Point(2, 12);
             this.dgvItensPedido.Name = "dgvItensPedido";
@@ -73,6 +65,22 @@
             this.dgvItensPedido.Size = new System.Drawing.Size(702, 275);
             this.dgvItensPedido.TabIndex = 0;
             this.dgvItensPedido.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvItensPedido_CellFormatting);
+            // 
+            // btnOk
+            // 
+            this.btnOk.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOk.Location = new System.Drawing.Point(609, 293);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(105, 33);
+            this.btnOk.TabIndex = 4;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
+            // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.ItemPedidoModel);
             // 
             // idProduto
             // 
@@ -104,6 +112,9 @@
             // 
             this.preco.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.preco.DataPropertyName = "ProdutosPedido.ValorVendaProduto";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.preco.DefaultCellStyle = dataGridViewCellStyle1;
             this.preco.HeaderText = "Preço";
             this.preco.Name = "preco";
             this.preco.ReadOnly = true;
@@ -122,61 +133,13 @@
             // 
             this.valorTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.valorTotal.DataPropertyName = "PrecoTotal";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.valorTotal.DefaultCellStyle = dataGridViewCellStyle2;
             this.valorTotal.HeaderText = "Preço Total (R$)";
             this.valorTotal.Name = "valorTotal";
             this.valorTotal.ReadOnly = true;
             this.valorTotal.Width = 80;
-            // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.ItemPedidoModel);
-            // 
-            // btnOk
-            // 
-            this.btnOk.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnOk.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnOk.Location = new System.Drawing.Point(609, 293);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(105, 33);
-            this.btnOk.TabIndex = 4;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = false;
-            this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
-            // 
-            // idItemPedidoDataGridViewTextBoxColumn
-            // 
-            this.idItemPedidoDataGridViewTextBoxColumn.DataPropertyName = "IdItemPedido";
-            this.idItemPedidoDataGridViewTextBoxColumn.HeaderText = "IdItemPedido";
-            this.idItemPedidoDataGridViewTextBoxColumn.Name = "idItemPedidoDataGridViewTextBoxColumn";
-            this.idItemPedidoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantidadeDataGridViewTextBoxColumn
-            // 
-            this.quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
-            this.quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
-            this.quantidadeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pedidoDataGridViewTextBoxColumn
-            // 
-            this.pedidoDataGridViewTextBoxColumn.DataPropertyName = "Pedido";
-            this.pedidoDataGridViewTextBoxColumn.HeaderText = "Pedido";
-            this.pedidoDataGridViewTextBoxColumn.Name = "pedidoDataGridViewTextBoxColumn";
-            this.pedidoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // produtosPedidoDataGridViewTextBoxColumn
-            // 
-            this.produtosPedidoDataGridViewTextBoxColumn.DataPropertyName = "ProdutosPedido";
-            this.produtosPedidoDataGridViewTextBoxColumn.HeaderText = "ProdutosPedido";
-            this.produtosPedidoDataGridViewTextBoxColumn.Name = "produtosPedidoDataGridViewTextBoxColumn";
-            this.produtosPedidoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoTotalDataGridViewTextBoxColumn
-            // 
-            this.precoTotalDataGridViewTextBoxColumn.DataPropertyName = "PrecoTotal";
-            this.precoTotalDataGridViewTextBoxColumn.HeaderText = "PrecoTotal";
-            this.precoTotalDataGridViewTextBoxColumn.Name = "precoTotalDataGridViewTextBoxColumn";
-            this.precoTotalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmItensPedido
             // 
@@ -211,10 +174,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn preco;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idItemPedidoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantidadeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pedidoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn produtosPedidoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoTotalDataGridViewTextBoxColumn;
     }
 }

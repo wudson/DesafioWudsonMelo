@@ -5,72 +5,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
+using projeto2.Feature.Cliente.View;
 
 namespace projeto2.Feature.Cliente.Controller
 {
     public class ClienteController
     {
-        private readonly ClienteDao _clienteDao;
+        private readonly ClienteDao _dao;
+        public ClienteModel ClienteModel { get; set; }
+        private readonly FrmClientes _frmClientes;
+
+        private readonly CadastroDeClienteController _cadastroDeClienteController;
 
         public ClienteController()
         {
-            _clienteDao = new ClienteDao();
+            ClienteModel = new ClienteModel();
+            _dao = new ClienteDao();
+
+            _frmClientes = new FrmClientes(this);
+
+            _cadastroDeClienteController = new CadastroDeClienteController();
         }
 
-        public bool AlterarDado(ClienteModel cliente)
-        {
-            try
-            {
-                if (_clienteDao.Alterar(cliente))
-                {
-                    MessageBox.Show(@"Cliente alterado com sucesso.", @"Sucesso");
-                    return true;
-                }
-            }
-            catch (FbException ex)
-            {
-                MessageBox.Show(@"Problemas no banco de dados ao alterar cliente.");
-                Console.WriteLine(ex);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(@"Problemas ao alterar cliente");
-                Console.WriteLine(ex);
-            }
-            return false;
-        }
-
-        public bool CadastrarDado(ClienteModel cliente)
-        {
-            if (string.IsNullOrWhiteSpace(cliente.NomePessoa)) return false;
-
-            try
-            {
-                if (_clienteDao.Cadastrar(cliente))
-                {
-                    MessageBox.Show(@"Cliente cadastrado com sucesso.", @"Sucesso");
-                    return true;
-                }
-            }
-            catch (FbException ex)
-            {
-                MessageBox.Show(@"Problemas no banco de dados ao cadastrar cliente.");
-                Console.WriteLine(ex);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(@"Problemas ao cadastrar cliente");
-                Console.WriteLine(ex);
-            }
-
-            return false;
-        }
+        public void AbrirTelaDeClientes() =>
+            _frmClientes.ShowDialog();
 
         public ClienteModel BuscarDado(int idPessoa)
         {
             try
             {
-                var cliente = _clienteDao.Buscar(idPessoa);
+                var cliente = _dao.Buscar(idPessoa);
                 if (cliente.IdCliente < 1)
                     MessageBox.Show(@"Cliente não encontrado.");
                 else
@@ -94,7 +58,7 @@ namespace projeto2.Feature.Cliente.Controller
         {
             try
             {
-                if (_clienteDao.Excluir(idPessoa))
+                if (_dao.Excluir(idPessoa))
                 {
                     MessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
                     return true;
@@ -118,7 +82,7 @@ namespace projeto2.Feature.Cliente.Controller
         {
             try
             {
-                var clientes = _clienteDao.ListarDados(filtros).ToList();
+                var clientes = _dao.ListarDados(filtros).ToList();
                 if (clientes.Count < 1)
                     MessageBox.Show(@"Nenhum cliente foi encontrado.");
                 else
@@ -136,6 +100,14 @@ namespace projeto2.Feature.Cliente.Controller
             }
 
             return new List<ClienteModel>();
+        }
+
+        public void AbrirTelaDeAlterarECadastrarClientes(ClienteModel cliente = null)
+        {
+            if (cliente == null)
+                _cadastroDeClienteController.AbrirTela();
+            else
+                _cadastroDeClienteController.AbrirTelaParaAlterar(cliente);
         }
     }
 }
