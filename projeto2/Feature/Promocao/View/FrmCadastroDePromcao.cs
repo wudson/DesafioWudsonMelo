@@ -80,8 +80,7 @@ namespace projeto2.Feature.Promocao.View
                 return;
             }
 
-            var promocao = AtribuirPromocaoParaModel();
-            _cadastroDePromocoesController.CadastrarDado(promocao);
+            _cadastroDePromocoesController.CadastrarDado(AtribuirPromocaoParaModel());
 
             DesabilitarCampos();
         }
@@ -120,10 +119,8 @@ namespace projeto2.Feature.Promocao.View
             dgvProdutosDaPromocao.DataSource = null;
         }
 
-        private void FrmCadastroDePromcao_Load(object sender, EventArgs e)
-        {
+        private void FrmCadastroDePromcao_Load(object sender, EventArgs e) =>
             txtTipoPromocao.Text = txtTipoPromocao.Items[0].ToString();
-        }
 
         private void TxtTipoPromocao_SelectedIndexChanged(object sender, EventArgs e)
         {

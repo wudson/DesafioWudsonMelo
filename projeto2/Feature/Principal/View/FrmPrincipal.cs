@@ -45,6 +45,9 @@ namespace projeto2.Feature.Principal.View
                 case Keys.D4:
                     BtnEstoque_Click(sender, e);
                     break;
+                case Keys.D5:
+                    BtnPromocoes_Click(sender, e);
+                    break;
                 case Keys.D6:
                     BtnGrupos_Click(sender, e);
                     break;

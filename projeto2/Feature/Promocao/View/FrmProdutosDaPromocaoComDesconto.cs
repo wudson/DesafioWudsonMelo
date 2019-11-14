@@ -50,41 +50,58 @@ namespace projeto2.Feature.Promocao.View
             AtivarBotaoDeProdutosSelecionados();
 
             if (rdbProduto.Checked)
-            {
-                var produtosSelecionados = lstDeProdutos.CheckedItems.Cast<Produto.Produto>().ToList();
-                VerificarProdutosComPromocaoAtiva(produtosSelecionados);
-            }
+                AdicionarProdutos();
 
             else if (rdbGrupo.Checked)
-            {
-                var grupos = lstDeProdutos.CheckedItems.Cast<GrupoModel>().ToList();
+                AdicionarProdutosDeUmGrupo();
 
-                var produtos = new List<Produto.Produto>();
-
-                foreach (var grupo in grupos)
-                    produtos.AddRange(
-                        AtribuirListaProdutos().Where(p => p.GrupoProduto.Grupo.Equals(grupo.Grupo)).ToList());
-
-                VerificarProdutosComPromocaoAtiva(produtos);
-            }
             else
-            {
-                var marcas = lstDeProdutos.CheckedItems.Cast<MarcaModel>().ToList();
-
-                var produtos = new List<Produto.Produto>();
-
-                foreach (var marca in marcas)
-                    produtos.AddRange(
-                        AtribuirListaProdutos().Where(p => p.MarcaProduto.Marca.Equals(marca.Marca)).ToList());
-
-                VerificarProdutosComPromocaoAtiva(produtos);
-            }
+                AdicionarProdutosDeUmaMarca();
         }
 
-        private void VerificarProdutosComPromocaoAtiva(IReadOnlyCollection<Produto.Produto> produtos)
+        private void AdicionarProdutos()
+        {
+            var produtosSelecionados = lstDeProdutos.CheckedItems.Cast<Produto.Produto>().ToList();
+            AdicionarSelecionadosNaGrid(produtosSelecionados);
+        }
+
+        private void AdicionarProdutosDeUmGrupo()
+        {
+            var grupos = lstDeProdutos.CheckedItems.Cast<GrupoModel>().ToList();
+            var produtos = new List<Produto.Produto>();
+
+            foreach (var grupo in grupos)
+                produtos.AddRange(
+                    AtribuirListaProdutos().Where(p => p.GrupoProduto.Grupo.Equals(grupo.Grupo)).ToList());
+
+            AdicionarSelecionadosNaGrid(produtos);
+        }
+
+        private void AdicionarProdutosDeUmaMarca()
+        {
+            var marcas = lstDeProdutos.CheckedItems.Cast<MarcaModel>().ToList();
+            var produtos = new List<Produto.Produto>();
+
+            foreach (var marca in marcas)
+                produtos.AddRange(
+                    AtribuirListaProdutos().Where(p => p.MarcaProduto.Marca.Equals(marca.Marca)).ToList());
+
+            AdicionarSelecionadosNaGrid(produtos);
+        }
+
+        private void AdicionarSelecionadosNaGrid(IReadOnlyCollection<Produto.Produto> produtos)
+        {
+            
+
+            var produtosComPromocao = VerificaProdutosComPromocaoAtiva(produtos);
+            var produtosSemPromocao = produtos.Except(produtosComPromocao);
+
+            dgvProdutosDaPromocao.DataSource = RetornaProdutosAdicionadosSemDuplicidade(produtosSemPromocao);
+        }
+
+        private static IEnumerable<Produto.Produto> VerificaProdutosComPromocaoAtiva(IEnumerable<Produto.Produto> produtos)
         {
             var produtosComPromocao = new List<Produto.Produto>();
-            var produtosAdicionados = (List<Produto.Produto>)dgvProdutosDaPromocao.DataSource;
 
             foreach (var produto in produtos.Where(produto =>
                 !produto.ValorComDesconto.Equals(produto.ValorVendaProduto)))
@@ -93,17 +110,22 @@ namespace projeto2.Feature.Promocao.View
                 produtosComPromocao.Add(produto);
             }
 
-            var produtosSemPromocao = produtos.Except(produtosComPromocao);
+            return produtosComPromocao;
+        }
+
+        private List<Produto.Produto> RetornaProdutosAdicionadosSemDuplicidade(IEnumerable<Produto.Produto> produtosSemPromocao)
+        {
+            var produtosAdicionados = (List<Produto.Produto>)dgvProdutosDaPromocao.DataSource;
 
             if (produtosAdicionados == null) return;
-
             foreach (var produto in produtosSemPromocao)
             {
-                if(produtosAdicionados.Any(pa=>pa.IdProduto == produto.IdProduto)) continue;
-                
+                if (produtosAdicionados.Any(pa => pa.IdProduto == produto.IdProduto)) continue;
+
                 produtosAdicionados.Add(produto);
             }
-            dgvProdutosDaPromocao.DataSource = produtosAdicionados.ToList();
+
+            return produtosAdicionados;
         }
 
         private void DgvProdutosDaPromocao_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -143,28 +165,43 @@ namespace projeto2.Feature.Promocao.View
         {
             if (rdbProduto.Checked)
             {
-                lstDeProdutos.DataSource =
-                    AtribuirListaProdutos().Where(p => p.NomeProduto.ToLower().StartsWith(txtBuscar.Text.ToLower()))
-                        .ToList();
-
-                lstDeProdutos.DisplayMember = "NomeProduto";
+                FiltrarPorProduto();
             }
             else if (rdbGrupo.Checked)
             {
-                lstDeProdutos.DataSource =
-                    AtribuirListaGrupos().Where(g => g.Grupo.ToLower().StartsWith(txtBuscar.Text.ToLower()))
-                        .ToList();
-
-                lstDeProdutos.DisplayMember = "Grupo";
+                FiltrarPorGrupo();
             }
             else
             {
-                lstDeProdutos.DataSource =
-                    AtribuirListaMarcas().Where(m => m.Marca.ToLower().StartsWith(txtBuscar.Text.ToLower()))
-                        .ToList();
-
-                lstDeProdutos.DisplayMember = "Marca";
+                FiltrarPorMarca();
             }
+        }
+
+        private void FiltrarPorProduto()
+        {
+            lstDeProdutos.DataSource =
+                AtribuirListaProdutos().Where(p => p.NomeProduto.ToLower().StartsWith(txtBuscar.Text.ToLower()))
+                    .ToList();
+
+            lstDeProdutos.DisplayMember = "NomeProduto";
+        }
+
+        private void FiltrarPorGrupo()
+        {
+            lstDeProdutos.DataSource =
+                AtribuirListaGrupos().Where(g => g.Grupo.ToLower().StartsWith(txtBuscar.Text.ToLower()))
+                    .ToList();
+
+            lstDeProdutos.DisplayMember = "Grupo";
+        }
+
+        private void FiltrarPorMarca()
+        {
+            lstDeProdutos.DataSource =
+                AtribuirListaMarcas().Where(m => m.Marca.ToLower().StartsWith(txtBuscar.Text.ToLower()))
+                    .ToList();
+
+            lstDeProdutos.DisplayMember = "Marca";
         }
 
         private void BtnProdutosSelecionados_Click(object sender, EventArgs e)
@@ -174,7 +211,13 @@ namespace projeto2.Feature.Promocao.View
                 MessageBox.Show(@"Nenhum produto selecionado");
                 return;
             }
-            var produtos = (List<Produto.Produto>)dgvProdutosDaPromocao.DataSource;
+
+            AtribuiListaDeProdutosAPromocao();
+        }
+
+        private void AtribuiListaDeProdutosAPromocao()
+        {
+            var produtos = (List<Produto.Produto>) dgvProdutosDaPromocao.DataSource;
 
             _promocao.Add(new PromocaoModel
             {

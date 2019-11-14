@@ -35,7 +35,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.btnListar = new System.Windows.Forms.Button();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.CelularPessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CidadePessoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,10 +61,9 @@
             this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
             this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tblBotoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 502F));
-            this.tblBotoes.Controls.Add(this.btnExcluir, 6, 0);
             this.tblBotoes.Controls.Add(this.btnCadastrar, 3, 0);
-            this.tblBotoes.Controls.Add(this.btnEditar, 5, 0);
-            this.tblBotoes.Controls.Add(this.btnListar, 4, 0);
+            this.tblBotoes.Controls.Add(this.btnEditar, 4, 0);
+            this.tblBotoes.Controls.Add(this.btnExcluir, 5, 0);
             this.tblBotoes.Dock = System.Windows.Forms.DockStyle.Top;
             this.tblBotoes.Location = new System.Drawing.Point(0, 0);
             this.tblBotoes.Name = "tblBotoes";
@@ -80,7 +78,7 @@
             this.btnExcluir.Enabled = false;
             this.btnExcluir.Image = global::projeto2.Properties.Resources.garbage;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcluir.Location = new System.Drawing.Point(295, 3);
+            this.btnExcluir.Location = new System.Drawing.Point(197, 3);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(91, 85);
             this.btnExcluir.TabIndex = 3;
@@ -109,7 +107,7 @@
             this.btnEditar.Enabled = false;
             this.btnEditar.Image = global::projeto2.Properties.Resources.compose;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(197, 3);
+            this.btnEditar.Location = new System.Drawing.Point(100, 3);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(91, 85);
             this.btnEditar.TabIndex = 2;
@@ -117,20 +115,6 @@
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
-            // 
-            // btnListar
-            // 
-            this.btnListar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnListar.Image = global::projeto2.Properties.Resources.clipboard;
-            this.btnListar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnListar.Location = new System.Drawing.Point(100, 3);
-            this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(91, 85);
-            this.btnListar.TabIndex = 1;
-            this.btnListar.Text = "Listar - [ F5 ]";
-            this.btnListar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnListar.UseVisualStyleBackColor = false;
-            this.btnListar.Click += new System.EventHandler(this.BtnListar_Click);
             // 
             // dgvClientes
             // 
@@ -280,7 +264,6 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.DataGridViewTextBoxColumn CelularPessoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn CidadePessoa;

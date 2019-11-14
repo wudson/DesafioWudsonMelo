@@ -20,8 +20,6 @@ namespace projeto2.Feature.Pedido.View
             AtualizarGridPedidos();
         }
 
-        private void BtnListar_Click(object sender, EventArgs e) => AtualizarGridPedidos();
-
         private void FrmPedidos_Load(object sender, EventArgs e) => AtualizarGridPedidos();
 
         private void AtualizarGridPedidos()
@@ -76,9 +74,6 @@ namespace projeto2.Feature.Pedido.View
             {
                 case Keys.Add:
                     BtnCadastrar_Click(sender, e);
-                    break;
-                case Keys.F5:
-                    BtnListar_Click(sender, e);
                     break;
                 case Keys.F4:
                     BtnEditar_Click(sender, e);
