@@ -19,7 +19,7 @@ namespace projeto2.Feature.Promocao.Controller
 
         public ProdutosAdicionadosNaPromocaoController()
         {
-            _frmProdutosDaPromocaoComDesconto = new FrmProdutosDaPromocaoComDesconto();
+            _frmProdutosDaPromocaoComDesconto = new FrmProdutosDaPromocaoComDesconto(this);
 
             _marcaController = new MarcaController();
             _grupoController = new GrupoController();

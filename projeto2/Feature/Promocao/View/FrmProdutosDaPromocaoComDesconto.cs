@@ -12,13 +12,13 @@ namespace projeto2.Feature.Promocao.View
 {
     public partial class FrmProdutosDaPromocaoComDesconto : Form
     {
-        private static ProdutosAdicionadosNaPromocaoController _produtosAdicionadosNaPromocaoController;
+        private readonly ProdutosAdicionadosNaPromocaoController _produtosAdicionadosNaPromocaoController;
         private readonly IList<PromocaoModel> _promocao;
 
-        public FrmProdutosDaPromocaoComDesconto()
+        public FrmProdutosDaPromocaoComDesconto(ProdutosAdicionadosNaPromocaoController controller)
         {
             InitializeComponent();
-            _produtosAdicionadosNaPromocaoController = new ProdutosAdicionadosNaPromocaoController();
+            _produtosAdicionadosNaPromocaoController = controller;
             _promocao = new List<PromocaoModel>();
         }
 
@@ -40,7 +40,7 @@ namespace projeto2.Feature.Promocao.View
             btnProdutosSelecionados.BackColor = Color.LimeGreen;
         }
 
-        private static IList<Produto.Produto> AtribuirListaProdutos() =>
+        private IList<Produto.Produto> AtribuirListaProdutos() =>
             _produtosAdicionadosNaPromocaoController.ListarProdutos(new Produto.Produto());
 
         private void BtnAdicionarProdutosSelecionadosNaPromocao_Click(object sender, EventArgs e)
@@ -118,7 +118,7 @@ namespace projeto2.Feature.Promocao.View
             lstDeProdutos.DisplayMember = "Grupo";
         }
 
-        private static IEnumerable<GrupoModel> AtribuirListaGrupos() =>
+        private IEnumerable<GrupoModel> AtribuirListaGrupos() =>
             _produtosAdicionadosNaPromocaoController.ListarGrupos();
 
         private void RdbProduto_CheckedChanged(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace projeto2.Feature.Promocao.View
             lstDeProdutos.DisplayMember = "Marca";
         }
 
-        private static IEnumerable<MarcaModel> AtribuirListaMarcas() =>
+        private IEnumerable<MarcaModel> AtribuirListaMarcas() =>
             _produtosAdicionadosNaPromocaoController.ListarMarcas();
 
         private void BtnLimpar_Click(object sender, EventArgs e) =>

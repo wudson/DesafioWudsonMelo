@@ -1,5 +1,4 @@
 ﻿using projeto2.Feature.Principal.Controller;
-using projeto2.Feature.Promocao.View;
 using System;
 using System.Windows.Forms;
 
@@ -67,9 +66,6 @@ namespace projeto2.Feature.Principal.View
         private void BtnEstoque_Click(object sender, EventArgs e) =>
             _principalController.AbrirTelaDeEstoqueDeProdutos();
 
-        private void btnPromocoes_Click(object sender, EventArgs e)
-        {
-            new FrmPromocoes().ShowDialog();
-        }
+        private void BtnPromocoes_Click(object sender, EventArgs e) => _principalController.AbrirTelaDePromocoes();
     }
 }
