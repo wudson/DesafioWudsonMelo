@@ -1,5 +1,4 @@
-﻿using projeto2.Feature.Pedido.View;
-using projeto2.Feature.Principal.Controller;
+﻿using projeto2.Feature.Principal.Controller;
 using projeto2.Feature.Promocao.View;
 using System;
 using System.Windows.Forms;
@@ -14,7 +13,7 @@ namespace projeto2.Feature.Principal.View
         {
             InitializeComponent();
             _principalController = new PrincipalController();
-        } 
+        }
 
         private void BtnProdutos_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeProdutos();
 
@@ -59,13 +58,14 @@ namespace projeto2.Feature.Principal.View
             }
         }
 
-        private void BtnPedidos_Click(object sender, EventArgs e) => new FrmPedidos().ShowDialog();
+        private void BtnPedidos_Click(object sender, EventArgs e) => _principalController.AbrirTelaDePedidos();
 
         private void BtnMarcas_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeMarcas();
 
         private void BtnGrupos_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeGrupos();
 
-        private void BtnEstoque_Click(object sender, EventArgs e) => _principalController.AbrirTelaDeEstoqueDeProdutos();
+        private void BtnEstoque_Click(object sender, EventArgs e) =>
+            _principalController.AbrirTelaDeEstoqueDeProdutos();
 
         private void btnPromocoes_Click(object sender, EventArgs e)
         {

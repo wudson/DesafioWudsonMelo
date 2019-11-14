@@ -103,6 +103,8 @@
     <Compile Include="Feature\Marca\View\FrmMarcas.Designer.cs">
       <DependentUpon>FrmMarcas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Pedido\Controller\ItensPedidoController.cs" />
+    <Compile Include="Feature\Pedido\Controller\NovoPedidoController.cs" />
     <Compile Include="Feature\Pedido\Controller\PedidoController.cs" />
     <Compile Include="Feature\Pedido\Dao\PedidoDao.cs" />
     <Compile Include="Feature\Pedido\Model\ItemPedidoModel.cs" />

@@ -1,47 +1,38 @@
-﻿using System;
+﻿using FirebirdSql.Data.FirebirdClient;
+using projeto2.Feature.Pedido.Dao;
+using projeto2.Feature.Pedido.Model;
+using projeto2.Feature.Pedido.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using FirebirdSql.Data.FirebirdClient;
-using projeto2.Feature.Cliente.Controller;
-using projeto2.Feature.Cliente.Model;
-using projeto2.Feature.Pedido.Dao;
-using projeto2.Feature.Pedido.Model;
-using projeto2.Feature.Produto.Controller;
-using projeto2.Feature.Promocao.Controller;
-using projeto2.Feature.Promocao.Model;
 
 namespace projeto2.Feature.Pedido.Controller
 {
     public class PedidoController
     {
         private readonly PedidoDao _dao;
+        private readonly FrmPedidos _frmPedidos;
 
-        public PedidoController() => _dao = new PedidoDao();
+        private readonly NovoPedidoController _novoPedidoController;
+        private readonly ItensPedidoController _itensPedidoController;
 
-        public bool SalvarPedido(PedidoModel pedido)
+        public PedidoController()
         {
-            try
-            {
-                if (_dao.Cadastrar(pedido))
-                {
-                    MessageBox.Show(@"Pedido efetuado com sucesso.", @"Sucesso");
-                    return true;
-                }
-            }
-            catch (FbException ex)
-            {
-                MessageBox.Show(@"Problemas no banco de dados ao efetuar pedido.");
-                Console.WriteLine(ex);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(@"Problemas ao efetuar pedido");
-                Console.WriteLine(ex);
-            }
+            _dao = new PedidoDao();
+            _frmPedidos = new FrmPedidos(this);
 
-            return false;
+            _novoPedidoController = new NovoPedidoController();
+            _itensPedidoController = new ItensPedidoController();
         }
+
+        public void AbrirTelaDePedidos() =>
+            _frmPedidos.ShowDialog();
+
+        public void AbrirTelaDeNovoPedido() => _novoPedidoController.AbrirTelaDeNovoPedido();
+
+        public void AbrirTelaParaExibirItensDoPedido(IEnumerable<ItemPedidoModel> pedido) =>
+            _itensPedidoController.AbrirTelaParaExibirItensDoPedido(pedido);
 
         public IEnumerable<PedidoModel> BuscarTodosOsDados()
         {
@@ -89,27 +80,6 @@ namespace projeto2.Feature.Pedido.Controller
             }
 
             return new List<ItemPedidoModel>();
-        }
-
-        public bool ExcluirDado(int idProduto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PedidoModel BuscarDado(int idPedidoLinhaAtual)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Produto.Produto> ListarProdutos() =>
-            new ProdutoController().ListarDados(new Produto.Produto());
-
-        public IEnumerable<ClienteModel> ListarClientes() => 
-            new ClienteController().ListarDados(new FiltrosClienteModel());
-
-        public IEnumerable<PromocaoModel> BuscarPromocoesAtivas(FiltrosPromocaoModel filtros)
-        {
-            return new PromocoesController().ListarDados(filtros);
         }
     }
 }

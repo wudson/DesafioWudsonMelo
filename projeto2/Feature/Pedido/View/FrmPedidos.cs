@@ -8,15 +8,15 @@ namespace projeto2.Feature.Pedido.View
     {
         private readonly PedidoController _pedidoController;
 
-        public FrmPedidos()
+        public FrmPedidos(PedidoController controller)
         {
             InitializeComponent();
-            _pedidoController = new PedidoController();
+            _pedidoController = controller;
         }
 
         private void BtnCadastrar_Click(object sender, EventArgs e)
         {
-            new FrmNovoPedido().ShowDialog();
+            _pedidoController.AbrirTelaDeNovoPedido();
             AtualizarGridPedidos();
         }
 
@@ -46,7 +46,7 @@ namespace projeto2.Feature.Pedido.View
                 _pedidoController.BuscarProdutosPedido(
                     int.Parse(dgvPedidos.Rows[e.RowIndex].Cells[0].Value.ToString()));
 
-            new FrmItensPedido(pedido).ShowDialog();
+            _pedidoController.AbrirTelaParaExibirItensDoPedido(pedido);
             AtualizarGridPedidos();
         }
 
@@ -60,10 +60,6 @@ namespace projeto2.Feature.Pedido.View
         {
             if (!btnEditar.Enabled) return;
 
-            //var pedido =
-            //    _pedidoController.BuscarDado(
-            //        int.Parse(dgvPedidos.CurrentRow?.Cells[0].Value.ToString() ?? "-1"));
-
             AtualizarGridPedidos();
         }
 
@@ -71,11 +67,7 @@ namespace projeto2.Feature.Pedido.View
         {
             if (!btnExcluir.Enabled) return;
 
-            var resultado = MessageBox.Show(@"Deseja cancelar esse pedido?", @"Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            if (!resultado.Equals(DialogResult.OK)) return;
-
-            if (_pedidoController.ExcluirDado(int.Parse(dgvPedidos.CurrentRow?.Cells[0].Value.ToString() ?? "-1")))
-                AtualizarGridPedidos();
+            AtualizarGridPedidos();
         }
 
         private void FrmPedidos_KeyDown(object sender, KeyEventArgs e)

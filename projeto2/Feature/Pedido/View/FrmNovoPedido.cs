@@ -12,13 +12,13 @@ namespace projeto2.Feature.Pedido.View
 {
     public partial class FrmNovoPedido : Form
     {
-        private readonly PedidoController _pedidoController;
+        private readonly NovoPedidoController _novoPedidoController;
         private List<PromocaoModel> _promocoes;
 
-        public FrmNovoPedido()
+        public FrmNovoPedido(NovoPedidoController controller)
         {
             InitializeComponent();
-            _pedidoController = new PedidoController();
+            _novoPedidoController = controller;
             _promocoes = new List<PromocaoModel>();
         }
 
@@ -31,19 +31,20 @@ namespace projeto2.Feature.Pedido.View
 
         private void PreencherListaDeProdutos()
         {
-            lstProdutos.DataSource = _pedidoController.ListarProdutos();
+            lstProdutos.DataSource = _novoPedidoController.ListarProdutos();
             lstProdutos.DisplayMember = "NomeProduto";
         }
 
         private void PreencherComboClientes()
         {
-            txtCliente.DataSource = _pedidoController.ListarClientes();
+            txtCliente.DataSource = _novoPedidoController.ListarClientes();
             txtCliente.DisplayMember = "NomePessoa";
             txtCliente.ValueMember = "IdCliente";
             txtCliente.Text = string.Empty;
         }
 
-        private void BuscarPromocoes() => _promocoes = _pedidoController.BuscarPromocoesAtivas(FiltrarPromocao()).ToList();
+        private void BuscarPromocoes() =>
+            _promocoes = _novoPedidoController.BuscarPromocoesAtivas(FiltrarPromocao()).ToList();
 
         private static FiltrosPromocaoModel FiltrarPromocao() =>
             new FiltrosPromocaoModel
@@ -57,14 +58,14 @@ namespace projeto2.Feature.Pedido.View
             var index = lstProdutos.IndexFromPoint(e.Location);
             if (index == ListBox.NoMatches) return;
 
-            var produtoAdicionado = (Produto.Produto)lstProdutos.SelectedItems[0];
-            ProdutoSelecionado(produtoAdicionado);
+            ProdutoSelecionado((Produto.Produto)lstProdutos.SelectedItems[0]);
         }
 
         private void ProdutoSelecionado(Produto.Produto produtoAdicionado)
         {
             txtProduto.Text = produtoAdicionado.NomeProduto;
             txtIdProduto.Text = produtoAdicionado.IdProduto.ToString();
+
             if (_promocoes.Any(pr => pr.Produtos.Any(p => p.NomeProduto.Equals(produtoAdicionado.NomeProduto))))
             {
                 txtPreco.Text = produtoAdicionado.ValorComDesconto.ToString("c2");
@@ -110,7 +111,21 @@ namespace projeto2.Feature.Pedido.View
                 return;
             }
 
-            var pedido = new PedidoModel
+            SalvarPedido();
+        }
+
+        private void SalvarPedido()
+        {
+            var pedido = PreencherModelDePedido();
+
+            if (!_novoPedidoController.SalvarPedido(pedido)) return;
+            dgvPedido.Rows.Clear();
+            txtTotalPedido.Text = string.Empty;
+            txtCliente.Text = string.Empty;
+        }
+
+        private PedidoModel PreencherModelDePedido() =>
+            new PedidoModel
             {
                 DataPedido = DateTime.Now,
                 PrecoTotalPedido = Convert.ToDouble(txtTotalPedido.Text.Replace("R$", "")),
@@ -120,12 +135,6 @@ namespace projeto2.Feature.Pedido.View
                     IdCliente = int.Parse(txtCliente.SelectedValue.ToString())
                 }
             };
-
-            if (!_pedidoController.SalvarPedido(pedido)) return;
-            dgvPedido.Rows.Clear();
-            txtTotalPedido.Text = string.Empty;
-            txtCliente.Text = string.Empty;
-        }
 
         private IList<Produto.Produto> PreencherProdutosDoPedido() =>
             dgvPedido.Rows
@@ -141,7 +150,8 @@ namespace projeto2.Feature.Pedido.View
 
         private void DgvPedido_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var resultado = MessageBox.Show(@"Deseja remover esse item do pedido?", @"Pedido", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            var resultado = MessageBox.Show(@"Deseja remover esse item do pedido?", @"Pedido",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 
             if (e.RowIndex < 0) return;

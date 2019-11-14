@@ -2,6 +2,7 @@
 using projeto2.Feature.Estoque.Controller;
 using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Marca.Controller;
+using projeto2.Feature.Pedido.Controller;
 using projeto2.Feature.Produto.Controller;
 
 namespace projeto2.Feature.Principal.Controller
@@ -13,6 +14,7 @@ namespace projeto2.Feature.Principal.Controller
         private readonly EstoqueDeProdutoController _estoqueDeProdutoController;
         private readonly MarcaController _marcaController;
         private readonly GrupoController _grupoController;
+        private readonly PedidoController _pedidoController;
 
         public PrincipalController()
         {
@@ -21,6 +23,7 @@ namespace projeto2.Feature.Principal.Controller
            _estoqueDeProdutoController = new EstoqueDeProdutoController();
            _marcaController = new MarcaController();
            _grupoController = new GrupoController();
+           _pedidoController = new PedidoController();
         }
 
         public void AbrirTelaDeProdutos() => _produtoController.AbrirTelaDeProdutos();
@@ -32,5 +35,7 @@ namespace projeto2.Feature.Principal.Controller
         public void AbrirTelaDeMarcas() => _marcaController.AbrirTelaDeMarcas();
 
         public void AbrirTelaDeGrupos() => _grupoController.AbrirTelaDeGrupos();
+
+        public void AbrirTelaDePedidos() => _pedidoController.AbrirTelaDePedidos();
     }
 }

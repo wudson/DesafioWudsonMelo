@@ -1,5 +1,4 @@
-﻿using projeto2.Feature.Estoque.View;
-using projeto2.Feature.Produto.Controller;
+﻿using projeto2.Feature.Produto.Controller;
 using System;
 using System.Windows.Forms;
 
