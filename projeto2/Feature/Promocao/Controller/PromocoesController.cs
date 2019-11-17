@@ -27,8 +27,12 @@ namespace projeto2.Feature.Promocao.Controller
             _produtosDaPromocaoController = new ProdutosDaPromocaoController();
         }
 
-        public void AbrirTelaDePromocao() =>
-            _frmPromocoes.ShowDialog();
+        public void AbrirTelaDePromocao()
+        {
+            new FrmPromocoes(this).ShowDialog();
+            _frmPromocoes.Dispose();
+        }
+
 
         public void AbrirTelaProdutosDaPromocao(List<PromocaoModel> promocao) => 
             _produtosDaPromocaoController.AbrirTelaComProdutosDaPromocao(promocao);

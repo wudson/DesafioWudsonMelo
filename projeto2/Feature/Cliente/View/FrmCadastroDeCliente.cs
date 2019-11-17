@@ -14,15 +14,15 @@ namespace projeto2.Feature.Cliente.View
         {
             InitializeComponent();
             _cadastroDeClienteController = controller;
-            btnAlterar.Visible = true;
-            btnSalvarCadastroCliente.Visible = true;
+            btnEditar.Visible = false;
+            btnSalvarCliente.Visible = true;
         }
 
-        public void RecebeProdutoParaAlterar(ClienteModel cliente)
+        public void RecebeClienteParaAlterar(ClienteModel cliente)
         {
             _cliente = cliente;
-            btnAlterar.Visible = true;
-            btnSalvarCadastroCliente.Visible = false;
+            btnEditar.Visible = true;
+            btnSalvarCliente.Visible = false;
 
             ShowDialog();
         }
@@ -143,8 +143,6 @@ namespace projeto2.Feature.Cliente.View
 
         private void FrmCadastroDeCliente_Load(object sender, EventArgs e)
         {
-            btnSalvarCadastroCliente.Visible = false;
-
             ReduzirAnosDosCamposDeData();
             CarregarDadosDoCliente();
         }
@@ -193,7 +191,7 @@ namespace projeto2.Feature.Cliente.View
 
         private void CadastrarOuAlterar(object sender, EventArgs e)
         {
-            if (btnSalvarCadastroCliente.Visible)
+            if (btnSalvarCliente.Visible)
                 BtnSalvarCadastroCliente_Click(sender, e);
             else
                 BtnAlterar_Click(sender, e);

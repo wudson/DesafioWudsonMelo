@@ -11,19 +11,20 @@ namespace projeto2.Feature.Promocao.Controller
     public class CadastroDePromocaoController
     {
         private readonly PromocaoDao _dao;
-        private readonly FrmCadastroDePromcao _frmCadastroDePromcao;
-
+        private FrmCadastroDePromcao _frmCadastroDePromcao;
         private readonly ProdutosAdicionadosNaPromocaoController _produtosAdicionadosNaPromocaoController;
 
         public CadastroDePromocaoController()
         {
             _dao = new PromocaoDao();
-            _frmCadastroDePromcao = new FrmCadastroDePromcao(this);
-
             _produtosAdicionadosNaPromocaoController = new ProdutosAdicionadosNaPromocaoController();
         }
 
-        public void AbrirTelaCadastroDePromocao() => _frmCadastroDePromcao.ShowDialog();
+        public void AbrirTelaCadastroDePromocao()
+        {
+            (_frmCadastroDePromcao = new FrmCadastroDePromcao(this)).ShowDialog();
+            _frmCadastroDePromcao.Dispose();
+        }
 
         public IList<PromocaoModel> RetornarProdutos(List<Produto.Produto> produtos) => 
             _produtosAdicionadosNaPromocaoController.RetornarProdutos(produtos);

@@ -25,7 +25,7 @@ namespace projeto2.Feature.Cliente.Controller
 
         public void AbrirTelaParaAlterar(ClienteModel cliente)
         {
-            (_frmCadastroDeCliente = new FrmCadastroDeCliente(this)).RecebeProdutoParaAlterar(cliente);
+            (_frmCadastroDeCliente = new FrmCadastroDeCliente(this)).RecebeClienteParaAlterar(cliente);
             _frmCadastroDeCliente.Dispose();
         }
 

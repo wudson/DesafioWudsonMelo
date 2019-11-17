@@ -33,12 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmItensPedido));
             this.dgvItensPedido = new System.Windows.Forms.DataGridView();
-            this.btnOk = new System.Windows.Forms.Button();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnOk = new System.Windows.Forms.Button();
             this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProdutosPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPedido)).BeginInit();
@@ -56,6 +57,7 @@
             this.produto,
             this.tipo,
             this.preco,
+            this.ProdutosPedido,
             this.quantidade,
             this.valorTotal});
             this.dgvItensPedido.DataSource = this.produtoBindingSource;
@@ -65,6 +67,10 @@
             this.dgvItensPedido.Size = new System.Drawing.Size(702, 275);
             this.dgvItensPedido.TabIndex = 0;
             this.dgvItensPedido.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvItensPedido_CellFormatting);
+            // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.ItemPedidoModel);
             // 
             // btnOk
             // 
@@ -77,10 +83,6 @@
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
-            // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Pedido.Model.ItemPedidoModel);
             // 
             // idProduto
             // 
@@ -115,10 +117,19 @@
             dataGridViewCellStyle1.Format = "C2";
             dataGridViewCellStyle1.NullValue = null;
             this.preco.DefaultCellStyle = dataGridViewCellStyle1;
-            this.preco.HeaderText = "Preço";
+            this.preco.HeaderText = "Preço de venda";
             this.preco.Name = "preco";
             this.preco.ReadOnly = true;
             this.preco.Width = 80;
+            // 
+            // ProdutosPedido
+            // 
+            this.ProdutosPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ProdutosPedido.DataPropertyName = "ProdutosPedido.ValorComDesconto";
+            this.ProdutosPedido.HeaderText = "Preço com desconto";
+            this.ProdutosPedido.Name = "ProdutosPedido";
+            this.ProdutosPedido.ReadOnly = true;
+            this.ProdutosPedido.Width = 80;
             // 
             // quantidade
             // 
@@ -172,6 +183,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn produto;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn preco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProdutosPedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorTotal;
     }

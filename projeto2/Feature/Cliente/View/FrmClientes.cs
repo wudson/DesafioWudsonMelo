@@ -29,6 +29,15 @@ namespace projeto2.Feature.Cliente.View
             ModificarEnabledDosBotoes(false);
         }
 
+        private FiltrosClienteModel Filtrar() =>
+            new FiltrosClienteModel
+            {
+                NomePessoa = txtNome.Text.Trim(),
+                CidadePessoa = txtCidade.Text.Trim(),
+                DataInicio = txtDataInicio.Text,
+                DataFim = txtDataFim.Text
+            };
+
         private void ModificarEnabledDosBotoes(bool enabled)
         {
             btnExcluir.Enabled = enabled;
@@ -110,15 +119,6 @@ namespace projeto2.Feature.Cliente.View
         }
 
         private void BtnFiltrar_Click(object sender, EventArgs e) => AtualizarGridDadosCliente();
-
-        private FiltrosClienteModel Filtrar() =>
-            new FiltrosClienteModel
-            {
-                NomePessoa = txtNome.Text.Trim(),
-                CidadePessoa = txtCidade.Text.Trim(),
-                DataInicio = txtDataInicio.Text,
-                DataFim = txtDataFim.Text
-            };
 
         private void TxtDataInicio_ValueChanged(object sender, EventArgs e)
         {

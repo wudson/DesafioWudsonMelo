@@ -81,6 +81,7 @@
             this.dgvProdutosDaPromocao.TabIndex = 10;
             this.dgvProdutosDaPromocao.TabStop = false;
             this.dgvProdutosDaPromocao.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgvProdutosDaPromocao_CellFormatting);
+            this.dgvProdutosDaPromocao.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DgvProdutosDaPromocao_DataBindingComplete);
             // 
             // nomeProdutoDataGridViewTextBoxColumn
             // 
@@ -134,6 +135,7 @@
             // 
             this.btnProdutosSelecionados.BackColor = System.Drawing.Color.DarkGray;
             this.btnProdutosSelecionados.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnProdutosSelecionados.Enabled = false;
             this.btnProdutosSelecionados.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProdutosSelecionados.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnProdutosSelecionados.Location = new System.Drawing.Point(691, 419);

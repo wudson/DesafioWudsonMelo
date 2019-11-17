@@ -40,7 +40,7 @@
             this.rdbFeminino = new System.Windows.Forms.RadioButton();
             this.lblSexo = new System.Windows.Forms.Label();
             this.btnCancelarCadastroCliente = new System.Windows.Forms.Button();
-            this.btnSalvarCadastroCliente = new System.Windows.Forms.Button();
+            this.btnSalvarCliente = new System.Windows.Forms.Button();
             this.lblTelefone = new System.Windows.Forms.Label();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txtDataNascimento = new System.Windows.Forms.DateTimePicker();
@@ -48,7 +48,7 @@
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.pnlFormCliente = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -197,19 +197,19 @@
             this.btnCancelarCadastroCliente.UseVisualStyleBackColor = false;
             this.btnCancelarCadastroCliente.Click += new System.EventHandler(this.BtnCancelarCadastroCliente_Click);
             // 
-            // btnSalvarCadastroCliente
+            // btnSalvarCliente
             // 
-            this.btnSalvarCadastroCliente.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSalvarCadastroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvarCadastroCliente.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnSalvarCadastroCliente.Location = new System.Drawing.Point(535, 285);
-            this.btnSalvarCadastroCliente.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSalvarCadastroCliente.Name = "btnSalvarCadastroCliente";
-            this.btnSalvarCadastroCliente.Size = new System.Drawing.Size(141, 42);
-            this.btnSalvarCadastroCliente.TabIndex = 4;
-            this.btnSalvarCadastroCliente.Text = "Salvar";
-            this.btnSalvarCadastroCliente.UseVisualStyleBackColor = false;
-            this.btnSalvarCadastroCliente.Click += new System.EventHandler(this.BtnSalvarCadastroCliente_Click);
+            this.btnSalvarCliente.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnSalvarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvarCliente.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSalvarCliente.Location = new System.Drawing.Point(535, 285);
+            this.btnSalvarCliente.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSalvarCliente.Name = "btnSalvarCliente";
+            this.btnSalvarCliente.Size = new System.Drawing.Size(141, 42);
+            this.btnSalvarCliente.TabIndex = 4;
+            this.btnSalvarCliente.Text = "Salvar";
+            this.btnSalvarCliente.UseVisualStyleBackColor = false;
+            this.btnSalvarCliente.Click += new System.EventHandler(this.BtnSalvarCadastroCliente_Click);
             // 
             // lblTelefone
             // 
@@ -260,12 +260,12 @@
             // pnlFormCliente
             // 
             this.pnlFormCliente.Controls.Add(this.label9);
-            this.pnlFormCliente.Controls.Add(this.btnAlterar);
+            this.pnlFormCliente.Controls.Add(this.btnEditar);
             this.pnlFormCliente.Controls.Add(this.groupBox1);
             this.pnlFormCliente.Controls.Add(this.grpContato);
             this.pnlFormCliente.Controls.Add(this.grpDadosPessoais);
             this.pnlFormCliente.Controls.Add(this.btnCancelarCadastroCliente);
-            this.pnlFormCliente.Controls.Add(this.btnSalvarCadastroCliente);
+            this.pnlFormCliente.Controls.Add(this.btnSalvarCliente);
             this.pnlFormCliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFormCliente.Location = new System.Drawing.Point(0, 0);
             this.pnlFormCliente.Name = "pnlFormCliente";
@@ -282,20 +282,20 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "( * ) Obrigatorio";
             // 
-            // btnAlterar
+            // btnEditar
             // 
-            this.btnAlterar.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnAlterar.Location = new System.Drawing.Point(535, 285);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(141, 42);
-            this.btnAlterar.TabIndex = 3;
-            this.btnAlterar.Text = "Salvar";
-            this.btnAlterar.UseVisualStyleBackColor = false;
-            this.btnAlterar.Visible = false;
-            this.btnAlterar.Click += new System.EventHandler(this.BtnAlterar_Click);
+            this.btnEditar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnEditar.Location = new System.Drawing.Point(535, 285);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(141, 42);
+            this.btnEditar.TabIndex = 3;
+            this.btnEditar.Text = "Salvar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Visible = false;
+            this.btnEditar.Click += new System.EventHandler(this.BtnAlterar_Click);
             // 
             // groupBox1
             // 
@@ -377,6 +377,7 @@
             // 
             // txtCidade
             // 
+            this.txtCidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtCidade.FormattingEnabled = true;
             this.txtCidade.Location = new System.Drawing.Point(25, 176);
             this.txtCidade.MaxLength = 100;
@@ -422,6 +423,7 @@
             // 
             // txtEstado
             // 
+            this.txtEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtEstado.FormattingEnabled = true;
             this.txtEstado.Items.AddRange(new object[] {
             "São Paulo",
@@ -667,7 +669,7 @@
         private System.Windows.Forms.RadioButton rdbFeminino;
         private System.Windows.Forms.Label lblSexo;
         private System.Windows.Forms.Button btnCancelarCadastroCliente;
-        private System.Windows.Forms.Button btnSalvarCadastroCliente;
+        private System.Windows.Forms.Button btnSalvarCliente;
         private System.Windows.Forms.Label lblTelefone;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.DateTimePicker txtDataNascimento;
@@ -693,7 +695,7 @@
         private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox txtCidade;
-        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;

@@ -31,10 +31,8 @@ namespace projeto2.Feature.Promocao.View
             btnAplicar.BackColor = Color.LimeGreen;
         }
 
-        private List<Produto.Produto> TemProdutos()
-        {
-            return _promocao.Count <= 0 ? new List<Produto.Produto>() : _promocao[0].Produtos;
-        }
+        private List<Produto.Produto> TemProdutos() => 
+            _promocao.Count <= 0 ? new List<Produto.Produto>() : _promocao[0].Produtos;
 
         private void BtnAplicar_Click(object sender, EventArgs e)
         {

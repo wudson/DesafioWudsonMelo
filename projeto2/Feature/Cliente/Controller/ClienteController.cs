@@ -93,6 +93,11 @@ namespace projeto2.Feature.Cliente.Controller
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
 
             return false;
         }
