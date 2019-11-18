@@ -367,5 +367,9 @@
   <ItemGroup>
     <None Include="Resources\star.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Feature\Promocao\View\DevExpress\" />
+    <Folder Include="Feature\Promocao\View\WinForms\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

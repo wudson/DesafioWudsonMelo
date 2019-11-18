@@ -183,5 +183,16 @@ namespace projeto2.Feature.Produto.View
             else
                 BtnEditar_Click(sender, e);
         }
+
+        private void TxtValorDeVenda_Enter(object sender, EventArgs e) =>
+            txtValorDeVenda.Select(0, txtValorDeVenda.Text.Length);
+
+        private void TxtValorDeCompra_Enter(object sender, EventArgs e) => 
+            txtValorDeCompra.Select(0, txtValorDeCompra.Text.Length);
+
+        private void TxtValorDeCompra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.' || e.KeyChar == '-') e.Handled = true;
+        }
     }
 }

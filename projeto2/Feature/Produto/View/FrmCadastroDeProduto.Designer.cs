@@ -68,7 +68,7 @@
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(32, 53);
-            this.txtNome.MaxLength = 100;
+            this.txtNome.MaxLength = 50;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(554, 20);
             this.txtNome.TabIndex = 0;
@@ -239,7 +239,7 @@
             // txtCodigoDeBarras
             // 
             this.txtCodigoDeBarras.Location = new System.Drawing.Point(32, 96);
-            this.txtCodigoDeBarras.MaxLength = 100;
+            this.txtCodigoDeBarras.MaxLength = 50;
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
             this.txtCodigoDeBarras.Size = new System.Drawing.Size(554, 20);
             this.txtCodigoDeBarras.TabIndex = 1;
@@ -327,6 +327,7 @@
             this.txtValorDeVenda.Name = "txtValorDeVenda";
             this.txtValorDeVenda.Size = new System.Drawing.Size(274, 20);
             this.txtValorDeVenda.TabIndex = 7;
+            this.txtValorDeVenda.Enter += new System.EventHandler(this.TxtValorDeVenda_Enter);
             // 
             // txtValorDeCompra
             // 
@@ -340,6 +341,8 @@
             this.txtValorDeCompra.Name = "txtValorDeCompra";
             this.txtValorDeCompra.Size = new System.Drawing.Size(274, 20);
             this.txtValorDeCompra.TabIndex = 6;
+            this.txtValorDeCompra.Enter += new System.EventHandler(this.TxtValorDeCompra_Enter);
+            this.txtValorDeCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValorDeCompra_KeyPress);
             // 
             // txtQuantidadeEmEstoque
             // 

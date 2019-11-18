@@ -152,7 +152,7 @@
             // txtPesquisa
             // 
             this.txtPesquisa.Location = new System.Drawing.Point(6, 39);
-            this.txtPesquisa.MaxLength = 100;
+            this.txtPesquisa.MaxLength = 50;
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(174, 20);
             this.txtPesquisa.TabIndex = 0;
@@ -220,6 +220,7 @@
             // 
             // txtTipo
             // 
+            this.txtTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtTipo.FormattingEnabled = true;
             this.txtTipo.Location = new System.Drawing.Point(6, 138);
             this.txtTipo.MaxLength = 100;
@@ -238,6 +239,7 @@
             // 
             // txtGrupo
             // 
+            this.txtGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtGrupo.FormattingEnabled = true;
             this.txtGrupo.Location = new System.Drawing.Point(6, 87);
             this.txtGrupo.MaxLength = 100;

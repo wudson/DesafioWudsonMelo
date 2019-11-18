@@ -115,6 +115,7 @@ namespace projeto2.Feature.Promocao.View
             btnSalvarPromocao.BackColor = Color.DarkGray;
             btnAplicar.BackColor = Color.DarkGray;
             dgvProdutosDaPromocao.DataSource = null;
+            _promocao[0].Produtos.Clear();
         }
 
         private void FrmCadastroDePromcao_Load(object sender, EventArgs e) =>

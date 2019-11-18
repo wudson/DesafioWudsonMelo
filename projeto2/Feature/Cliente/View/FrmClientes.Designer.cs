@@ -307,6 +307,7 @@
             // 
             // txtCidade
             // 
+            this.txtCidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtCidade.FormattingEnabled = true;
             this.txtCidade.Location = new System.Drawing.Point(18, 94);
             this.txtCidade.Name = "txtCidade";
@@ -325,6 +326,7 @@
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(18, 46);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(223, 20);
             this.txtNome.TabIndex = 0;

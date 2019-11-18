@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using projeto2.Feature.Promocao.View;
 
 namespace projeto2
 {
@@ -12,6 +11,7 @@ namespace projeto2
         [STAThread]
         private static void Main()
         {
+            //ClasseComVariaveisGlobais.UsarDevExpress = false;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmEntrar());

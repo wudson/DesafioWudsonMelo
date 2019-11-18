@@ -11,23 +11,19 @@ namespace projeto2.Feature.Promocao.Controller
 {
     public class ProdutosAdicionadosNaPromocaoController
     {
-        private readonly FrmProdutosDaPromocaoComDesconto _frmProdutosDaPromocaoComDesconto;
-
         private readonly MarcaController _marcaController;
         private readonly GrupoController _grupoController;
         private readonly ProdutoController _produtoController;
 
         public ProdutosAdicionadosNaPromocaoController()
         {
-            _frmProdutosDaPromocaoComDesconto = new FrmProdutosDaPromocaoComDesconto(this);
-
             _marcaController = new MarcaController();
             _grupoController = new GrupoController();
             _produtoController = new ProdutoController();
         }
 
-        public IList<PromocaoModel> RetornarProdutos(List<Produto.Produto> produtos) => 
-            _frmProdutosDaPromocaoComDesconto.RetornarProdutos(produtos);
+        public IList<PromocaoModel> RetornarProdutos(List<Produto.Produto> produtos) =>
+            new FrmProdutosDaPromocaoComDesconto(this).RetornarProdutos(produtos);
 
         public IEnumerable<MarcaModel> ListarMarcas() => _marcaController.ListarMarcas();
 

@@ -44,7 +44,6 @@
             this.lblTelefone = new System.Windows.Forms.Label();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txtDataNascimento = new System.Windows.Forms.DateTimePicker();
-            this.txtRg = new System.Windows.Forms.MaskedTextBox();
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.pnlFormCliente = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtRg = new System.Windows.Forms.TextBox();
             this.pnlFormCliente.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpContato.SuspendLayout();
@@ -136,7 +136,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(20, 37);
-            this.txtEmail.MaxLength = 100;
+            this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(381, 20);
             this.txtEmail.TabIndex = 0;
@@ -239,14 +239,6 @@
             this.txtDataNascimento.Size = new System.Drawing.Size(180, 20);
             this.txtDataNascimento.TabIndex = 1;
             this.txtDataNascimento.Value = new System.DateTime(2019, 10, 17, 0, 0, 0, 0);
-            // 
-            // txtRg
-            // 
-            this.txtRg.Location = new System.Drawing.Point(20, 177);
-            this.txtRg.Name = "txtRg";
-            this.txtRg.Size = new System.Drawing.Size(179, 20);
-            this.txtRg.TabIndex = 4;
-            this.txtRg.ValidatingType = typeof(System.DateTime);
             // 
             // txtCpf
             // 
@@ -388,7 +380,7 @@
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(228, 96);
-            this.txtNumero.MaxLength = 100;
+            this.txtNumero.MaxLength = 7;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(179, 20);
             this.txtNumero.TabIndex = 3;
@@ -406,7 +398,7 @@
             // txtComplemento
             // 
             this.txtComplemento.Location = new System.Drawing.Point(25, 139);
-            this.txtComplemento.MaxLength = 100;
+            this.txtComplemento.MaxLength = 50;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(179, 20);
             this.txtComplemento.TabIndex = 4;
@@ -438,7 +430,7 @@
             // txtBairro
             // 
             this.txtBairro.Location = new System.Drawing.Point(228, 139);
-            this.txtBairro.MaxLength = 100;
+            this.txtBairro.MaxLength = 50;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(179, 20);
             this.txtBairro.TabIndex = 5;
@@ -456,7 +448,7 @@
             // txtCep
             // 
             this.txtCep.Location = new System.Drawing.Point(25, 56);
-            this.txtCep.MaxLength = 100;
+            this.txtCep.MaxLength = 15;
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(179, 20);
             this.txtCep.TabIndex = 0;
@@ -504,7 +496,7 @@
             // txtRua
             // 
             this.txtRua.Location = new System.Drawing.Point(25, 97);
-            this.txtRua.MaxLength = 100;
+            this.txtRua.MaxLength = 50;
             this.txtRua.Name = "txtRua";
             this.txtRua.Size = new System.Drawing.Size(179, 20);
             this.txtRua.TabIndex = 2;
@@ -567,6 +559,7 @@
             // 
             // grpDadosPessoais
             // 
+            this.grpDadosPessoais.Controls.Add(this.txtRg);
             this.grpDadosPessoais.Controls.Add(this.label17);
             this.grpDadosPessoais.Controls.Add(this.label18);
             this.grpDadosPessoais.Controls.Add(this.label19);
@@ -579,7 +572,6 @@
             this.grpDadosPessoais.Controls.Add(this.txtCpf);
             this.grpDadosPessoais.Controls.Add(this.lblCpf);
             this.grpDadosPessoais.Controls.Add(this.lblRg);
-            this.grpDadosPessoais.Controls.Add(this.txtRg);
             this.grpDadosPessoais.Controls.Add(this.txtDataNascimento);
             this.grpDadosPessoais.Controls.Add(this.lblNome);
             this.grpDadosPessoais.Location = new System.Drawing.Point(23, 31);
@@ -629,6 +621,14 @@
             this.label10.TabIndex = 14;
             this.label10.Text = "*";
             // 
+            // txtRg
+            // 
+            this.txtRg.Location = new System.Drawing.Point(20, 178);
+            this.txtRg.MaxLength = 15;
+            this.txtRg.Name = "txtRg";
+            this.txtRg.Size = new System.Drawing.Size(179, 20);
+            this.txtRg.TabIndex = 15;
+            // 
             // FrmCadastroDeCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -673,7 +673,6 @@
         private System.Windows.Forms.Label lblTelefone;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.DateTimePicker txtDataNascimento;
-        private System.Windows.Forms.MaskedTextBox txtRg;
         private System.Windows.Forms.MaskedTextBox txtCpf;
         private System.Windows.Forms.Panel pnlFormCliente;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -708,5 +707,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtRg;
     }
 }

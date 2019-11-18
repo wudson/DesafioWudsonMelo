@@ -16,7 +16,7 @@ namespace projeto2.Feature.Pedido.Controller
     public class NovoPedidoController
     {
         private readonly PedidoDao _dao;
-        private readonly FrmNovoPedido _frmNovoPedido;
+        private FrmNovoPedido _frmNovoPedido;
 
         public NovoPedidoController()
         {
@@ -24,7 +24,11 @@ namespace projeto2.Feature.Pedido.Controller
             _frmNovoPedido = new FrmNovoPedido(this);
         }
 
-        public void AbrirTelaDeNovoPedido() => _frmNovoPedido.ShowDialog();
+        public void AbrirTelaDeNovoPedido()
+        {
+            (_frmNovoPedido = new FrmNovoPedido(this)).ShowDialog();
+            _frmNovoPedido.Dispose();
+        }
 
         public bool SalvarPedido(PedidoModel pedido)
         {

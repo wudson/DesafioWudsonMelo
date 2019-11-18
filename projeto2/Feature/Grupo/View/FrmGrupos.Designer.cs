@@ -125,7 +125,7 @@
             // txtGrupo
             // 
             this.txtGrupo.Location = new System.Drawing.Point(25, 34);
-            this.txtGrupo.MaxLength = 100;
+            this.txtGrupo.MaxLength = 25;
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(335, 20);
             this.txtGrupo.TabIndex = 0;

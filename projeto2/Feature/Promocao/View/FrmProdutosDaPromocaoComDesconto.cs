@@ -185,7 +185,9 @@ namespace projeto2.Feature.Promocao.View
         public IList<PromocaoModel> RetornarProdutos(List<Produto.Produto> produtos)
         {
             dgvProdutosDaPromocao.DataSource = produtos;
-            return ShowDialog() == DialogResult.OK ? _promocao : new List<PromocaoModel>();
+            return ShowDialog() == DialogResult.OK
+                ? _promocao
+                : new List<PromocaoModel> {new PromocaoModel {Produtos = produtos}};
         }
 
         private void DgvProdutosDaPromocao_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

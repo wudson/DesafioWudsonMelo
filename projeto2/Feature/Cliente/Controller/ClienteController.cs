@@ -13,7 +13,7 @@ namespace projeto2.Feature.Cliente.Controller
     {
         private readonly ClienteDao _dao;
         public ClienteModel ClienteModel { get; set; }
-        private readonly FrmClientes _frmClientes;
+        private FrmClientes _frmClientes;
 
         private readonly CadastroDeClienteController _cadastroDeClienteController;
 
@@ -27,8 +27,11 @@ namespace projeto2.Feature.Cliente.Controller
             _cadastroDeClienteController = new CadastroDeClienteController();
         }
 
-        public void AbrirTelaDeClientes() =>
-            _frmClientes.ShowDialog();
+        public void AbrirTelaDeClientes()
+        {
+            (_frmClientes = new FrmClientes(this)).ShowDialog();
+            _frmClientes.Dispose();
+        }
 
         public ClienteModel BuscarDado(int idPessoa)
         {

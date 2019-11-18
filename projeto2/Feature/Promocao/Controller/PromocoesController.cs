@@ -11,7 +11,7 @@ namespace projeto2.Feature.Promocao.Controller
 {
     public class PromocoesController
     {
-        private readonly FrmPromocoes _frmPromocoes;
+        private FrmPromocoes _frmPromocoes;
         private readonly PromocaoDao _dao;
 
         private readonly CadastroDePromocaoController _cadastroDePromocaoController;
@@ -29,7 +29,7 @@ namespace projeto2.Feature.Promocao.Controller
 
         public void AbrirTelaDePromocao()
         {
-            new FrmPromocoes(this).ShowDialog();
+            (_frmPromocoes = new FrmPromocoes(this)).ShowDialog();
             _frmPromocoes.Dispose();
         }
 
