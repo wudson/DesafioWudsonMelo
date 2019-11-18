@@ -34,10 +34,12 @@
             this.idGrupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grupoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grupoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnExcluirGrupo = new System.Windows.Forms.Button();
             this.btnSalvarGrupo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.TextBox();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnExcluirGrupo = new System.Windows.Forms.Button();
+            this.txtId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grupoModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -84,32 +86,20 @@
             // 
             this.grupoModelBindingSource.DataSource = typeof(projeto2.Feature.Grupo.Model.GrupoModel);
             // 
-            // btnExcluirGrupo
-            // 
-            this.btnExcluirGrupo.BackColor = System.Drawing.Color.DarkGray;
-            this.btnExcluirGrupo.Enabled = false;
-            this.btnExcluirGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirGrupo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnExcluirGrupo.Location = new System.Drawing.Point(499, 29);
-            this.btnExcluirGrupo.Margin = new System.Windows.Forms.Padding(0);
-            this.btnExcluirGrupo.Name = "btnExcluirGrupo";
-            this.btnExcluirGrupo.Size = new System.Drawing.Size(111, 32);
-            this.btnExcluirGrupo.TabIndex = 2;
-            this.btnExcluirGrupo.Text = "Deletar";
-            this.btnExcluirGrupo.UseVisualStyleBackColor = false;
-            this.btnExcluirGrupo.Click += new System.EventHandler(this.BtnExcluirGrupo_Click);
-            // 
             // btnSalvarGrupo
             // 
-            this.btnSalvarGrupo.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSalvarGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvarGrupo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSalvarGrupo.Location = new System.Drawing.Point(385, 29);
+            this.btnSalvarGrupo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnSalvarGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvarGrupo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSalvarGrupo.Image = global::projeto2.Properties.Resources.plus;
+            this.btnSalvarGrupo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSalvarGrupo.Location = new System.Drawing.Point(346, 1);
             this.btnSalvarGrupo.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalvarGrupo.Name = "btnSalvarGrupo";
-            this.btnSalvarGrupo.Size = new System.Drawing.Size(111, 32);
+            this.btnSalvarGrupo.Size = new System.Drawing.Size(83, 84);
             this.btnSalvarGrupo.TabIndex = 1;
-            this.btnSalvarGrupo.Text = "Salvar";
+            this.btnSalvarGrupo.Text = "Salvar [ + ]";
+            this.btnSalvarGrupo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvarGrupo.UseVisualStyleBackColor = false;
             this.btnSalvarGrupo.Click += new System.EventHandler(this.BtnSalvarGrupo_Click);
             // 
@@ -127,16 +117,64 @@
             this.txtGrupo.Location = new System.Drawing.Point(25, 34);
             this.txtGrupo.MaxLength = 25;
             this.txtGrupo.Name = "txtGrupo";
-            this.txtGrupo.Size = new System.Drawing.Size(335, 20);
+            this.txtGrupo.Size = new System.Drawing.Size(317, 20);
             this.txtGrupo.TabIndex = 0;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnEditar.Enabled = false;
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEditar.Image = global::projeto2.Properties.Resources.compose;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditar.Location = new System.Drawing.Point(437, 1);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(83, 84);
+            this.btnEditar.TabIndex = 5;
+            this.btnEditar.Text = "Editar [ F4 ]";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            // 
+            // btnExcluirGrupo
+            // 
+            this.btnExcluirGrupo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnExcluirGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirGrupo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnExcluirGrupo.Image = global::projeto2.Properties.Resources.garbage;
+            this.btnExcluirGrupo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnExcluirGrupo.Location = new System.Drawing.Point(528, 1);
+            this.btnExcluirGrupo.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExcluirGrupo.Name = "btnExcluirGrupo";
+            this.btnExcluirGrupo.Size = new System.Drawing.Size(83, 84);
+            this.btnExcluirGrupo.TabIndex = 5;
+            this.btnExcluirGrupo.Text = " Excluir [Del]";
+            this.btnExcluirGrupo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcluirGrupo.UseVisualStyleBackColor = false;
+            this.btnExcluirGrupo.Click += new System.EventHandler(this.BtnExcluirGrupo_Click);
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(26, 60);
+            this.txtId.MaxLength = 25;
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(62, 20);
+            this.txtId.TabIndex = 6;
+            this.txtId.Text = "0";
+            this.txtId.Visible = false;
             // 
             // FrmGrupos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 298);
-            this.Controls.Add(this.dgvGrupo);
+            this.ClientSize = new System.Drawing.Size(621, 291);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnExcluirGrupo);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.dgvGrupo);
             this.Controls.Add(this.btnSalvarGrupo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtGrupo);
@@ -159,12 +197,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvGrupo;
-        private System.Windows.Forms.Button btnExcluirGrupo;
         private System.Windows.Forms.Button btnSalvarGrupo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtGrupo;
         private System.Windows.Forms.BindingSource grupoModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idGrupoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn grupoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnExcluirGrupo;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

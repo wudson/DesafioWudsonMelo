@@ -48,5 +48,18 @@ namespace projeto2.Feature.Marca.Dao
 
             return true;
         }
+
+        public bool Alterar(MarcaModel marca, FbCommand cmd)
+        {
+            const string mSql = @"UPDATE MARCA set MARCA = @marca WHERE ID_MARCA = @id";
+
+            cmd.CommandText = mSql;
+
+            cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca.Marca;
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = marca.IdMarca;
+
+            cmd.ExecuteNonQuery();
+            return true;
+        }
     }
 }

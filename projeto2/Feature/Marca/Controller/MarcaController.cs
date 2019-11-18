@@ -118,5 +118,34 @@ namespace projeto2.Feature.Marca.Controller
 
             return false;
         }
+
+        public void AlterarMarca(MarcaModel marca)
+        {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+
+                if (_dao.Alterar(marca, cmd))
+                    MessageBox.Show(@"Marca alterada com sucesso.");
+            }
+            catch (FbException ex)
+            {
+                MessageBox.Show(@"Problemas no banco de dados ao alterar marca.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao alterar marca");
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
+        }
     }
 }

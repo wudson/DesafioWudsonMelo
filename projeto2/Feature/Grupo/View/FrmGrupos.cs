@@ -24,8 +24,11 @@ namespace projeto2.Feature.Grupo.View
                 case Keys.Escape:
                     Close();
                     break;
-                case Keys.Enter:
+                case Keys.Add:
                     BtnSalvarGrupo_Click(sender, e);
+                    break;
+                case Keys.F4:
+                    BtnEditar_Click(sender, e);
                     break;
                 case Keys.Delete:
                     BtnExcluirGrupo_Click(sender, e);
@@ -37,8 +40,17 @@ namespace projeto2.Feature.Grupo.View
         {
             if (string.IsNullOrWhiteSpace(txtGrupo.Text)) return;
 
-            _grupoModel.Grupo = txtGrupo.Text.Trim();
-            _grupoController.CadastrarGrupo(_grupoModel);
+            if (int.Parse(txtId.Text) > 0)
+            {
+                _grupoModel.Grupo = txtGrupo.Text.Trim();
+                _grupoModel.IdGrupo = int.Parse(txtId.Text);
+                _grupoController.AlterarGrupo(_grupoModel);
+            }
+            else
+            {
+                _grupoModel.Grupo = txtGrupo.Text.Trim();
+                _grupoController.CadastrarGrupo(_grupoModel);
+            }
 
             ListarGrupos();
         }
@@ -48,14 +60,21 @@ namespace projeto2.Feature.Grupo.View
             dgvGrupo.DataSource = _grupoController.ListarGrupos();
 
             txtGrupo.Text = string.Empty;
+            txtId.Text = @"0";
             if (dgvGrupo.CurrentRow != null) dgvGrupo.CurrentRow.Selected = false;
-            btnExcluirGrupo.Enabled = false;
+            ModificarEnabledDosBotoes(false);
+        }
+
+        private void ModificarEnabledDosBotoes(bool enabled)
+        {
+            btnExcluirGrupo.Enabled = enabled;
+            btnEditar.Enabled = enabled;
         }
 
         private void DgvGrupo_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            btnExcluirGrupo.Enabled = true;
+            ModificarEnabledDosBotoes(true);
         }
 
         private void BtnExcluirGrupo_Click(object sender, EventArgs e)
@@ -73,5 +92,13 @@ namespace projeto2.Feature.Grupo.View
 
         private void FrmGrupos_Load(object sender, EventArgs e) =>
             ListarGrupos();
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            if (btnEditar.Enabled == false) return;
+
+            txtGrupo.Text = dgvGrupo.CurrentRow?.Cells[1].Value.ToString();
+            txtId.Text = dgvGrupo.CurrentRow?.Cells[0].Value.ToString();
+        }
     }
 }

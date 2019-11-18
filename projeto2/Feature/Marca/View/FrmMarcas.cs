@@ -37,8 +37,17 @@ namespace projeto2.Feature.Marca.View
         {
             if (string.IsNullOrWhiteSpace(txtMarca.Text)) return;
 
-            _marcaModel.Marca = txtMarca.Text.Trim();
-            _marcaController.CadastrarMarca(_marcaModel);
+            if (int.Parse(txtId.Text) > 0)
+            {
+                _marcaModel.Marca = txtMarca.Text.Trim();
+                _marcaModel.IdMarca = int.Parse(txtId.Text);
+                _marcaController.AlterarMarca(_marcaModel);
+            }
+            else
+            {
+                _marcaModel.Marca = txtMarca.Text.Trim();
+                _marcaController.CadastrarMarca(_marcaModel);
+            }
 
             ListarMarcas();
         }
@@ -48,8 +57,15 @@ namespace projeto2.Feature.Marca.View
             dgvMarcas.DataSource = _marcaController.ListarMarcas();
 
             txtMarca.Text = string.Empty;
+            txtId.Text = @"0";
             if (dgvMarcas.CurrentRow != null) dgvMarcas.CurrentRow.Selected = false;
-            btnExcluirMarca.Enabled = false;
+            ModificarEnabledDosBotoes(false);
+        }
+
+        private void ModificarEnabledDosBotoes(bool enabled)
+        {
+            btnExcluirMarca.Enabled = enabled;
+            btnEditar.Enabled = enabled;
         }
 
         private void BtnExcluirMarca_Click(object sender, EventArgs e)
@@ -69,9 +85,17 @@ namespace projeto2.Feature.Marca.View
         private void DgvMarcas_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            btnExcluirMarca.Enabled = true;
+            ModificarEnabledDosBotoes(true);
         }
 
         private void FrmMarcas_Load(object sender, EventArgs e) => ListarMarcas();
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            if (btnEditar.Enabled == false) return;
+
+            txtMarca.Text = dgvMarcas.CurrentRow?.Cells[1].Value.ToString();
+            txtId.Text = dgvMarcas.CurrentRow?.Cells[0].Value.ToString();
+        }
     }
 }

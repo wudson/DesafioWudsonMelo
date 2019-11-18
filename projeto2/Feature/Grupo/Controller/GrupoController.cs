@@ -116,5 +116,34 @@ namespace projeto2.Feature.Grupo.Controller
             }
             return false;
         }
+
+        public void AlterarGrupo(GrupoModel grupo)
+        {
+            var conn = Conexao.GetInstancia();
+            var cmd = new FbCommand();
+            try
+            {
+                conn.Open();
+                cmd.Connection = conn;
+
+                if (_dao.Alterar(grupo, cmd))
+                    MessageBox.Show(@"Grupo alterado com sucesso.");
+            }
+            catch (FbException ex)
+            {
+                MessageBox.Show(@"Problemas no banco de dados ao alterar grupo.");
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Problemas ao alterar grupo");
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cmd.Dispose();
+                conn.Close();
+            }
+        }
     }
 }

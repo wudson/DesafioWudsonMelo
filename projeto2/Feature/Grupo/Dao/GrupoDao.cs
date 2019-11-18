@@ -45,5 +45,18 @@ namespace projeto2.Feature.Grupo.Dao
             cmd.ExecuteNonQuery();
             return true;
         }
+
+        public bool Alterar(GrupoModel grupo, FbCommand cmd)
+        {
+            const string mSql = @"UPDATE GRUPO set GRUPO = @grupo WHERE ID_GRUPO = @id";
+
+            cmd.CommandText = mSql;
+
+            cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = grupo.Grupo;
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = grupo.IdGrupo;
+
+            cmd.ExecuteNonQuery();
+            return true;
+        }
     }
 }
