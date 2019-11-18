@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using FirebirdSql.Data.FirebirdClient;
+﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Promocao.Dao;
 using projeto2.Feature.Promocao.Model;
 using projeto2.Feature.Promocao.View;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Promocao.Controller
 {

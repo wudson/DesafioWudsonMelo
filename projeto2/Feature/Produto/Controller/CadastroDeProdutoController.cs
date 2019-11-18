@@ -1,5 +1,4 @@
-﻿
-using FirebirdSql.Data.FirebirdClient;
+﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Grupo.Model;
 using projeto2.Feature.Marca.Controller;
