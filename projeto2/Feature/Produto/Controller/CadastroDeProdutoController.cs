@@ -104,5 +104,9 @@ namespace projeto2.Feature.Produto.Controller
             }
             return false;
         }
+
+        public void AbrirCadastroDeGrupo() => _grupoController.AbrirTelaDeGrupos();
+
+        public void AbrirCadastroDeMarca() => _marcaController.AbrirTelaDeMarcas();
     }
 }

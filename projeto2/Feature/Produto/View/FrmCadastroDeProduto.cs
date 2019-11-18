@@ -194,5 +194,23 @@ namespace projeto2.Feature.Produto.View
         {
             if (e.KeyChar == '.' || e.KeyChar == '-') e.Handled = true;
         }
+
+        private void BtnNovoGrupo_Click(object sender, EventArgs e)
+        {
+            _cadastroDeProdutoController.AbrirCadastroDeGrupo();
+            PreencherGrupos();
+        }
+
+        private void BtnNovaMarca_Click(object sender, EventArgs e)
+        {
+            _cadastroDeProdutoController.AbrirCadastroDeMarca();
+            PreencherMarcas();
+        }
+
+        private void BtnNovoGrupo_MouseHover(object sender, EventArgs e) => 
+            new ToolTip().SetToolTip(btnNovoGrupo, "Cadastrar novo grupo.");
+
+        private void BtnNovaMarca_MouseHover(object sender, EventArgs e) => 
+            new ToolTip().SetToolTip(btnNovaMarca, "Cadastrar nova marca.");
     }
 }
