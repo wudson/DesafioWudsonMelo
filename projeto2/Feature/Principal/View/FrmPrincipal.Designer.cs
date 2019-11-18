@@ -92,7 +92,7 @@
             this.btnGrupos.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnGrupos.FlatAppearance.BorderSize = 0;
             this.btnGrupos.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnGrupos.Image = global::projeto2.Properties.Resources.data_collection;
+            this.btnGrupos.Image = global::projeto2.Properties.Resources.connection;
             this.btnGrupos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnGrupos.Location = new System.Drawing.Point(160, 118);
             this.btnGrupos.Name = "btnGrupos";
@@ -108,7 +108,7 @@
             this.btnPedidos.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnPedidos.FlatAppearance.BorderSize = 0;
             this.btnPedidos.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnPedidos.Image = global::projeto2.Properties.Resources.shopping_bag;
+            this.btnPedidos.Image = global::projeto2.Properties.Resources.shopping_cart;
             this.btnPedidos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnPedidos.Location = new System.Drawing.Point(308, 12);
             this.btnPedidos.Name = "btnPedidos";
