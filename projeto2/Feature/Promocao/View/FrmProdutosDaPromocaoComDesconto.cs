@@ -169,11 +169,8 @@ namespace projeto2.Feature.Promocao.View
 
         private void BtnProdutosSelecionados_Click(object sender, EventArgs e)
         {
-            if (dgvProdutosDaPromocao.RowCount <= 0)
-            {
-                MessageBox.Show(@"Nenhum produto selecionado");
-                return;
-            }
+            if (dgvProdutosDaPromocao.RowCount <= 0) return;
+            
             var produtos = (List<Produto.Produto>)dgvProdutosDaPromocao.DataSource;
 
             _promocao.Add(new PromocaoModel
@@ -202,6 +199,22 @@ namespace projeto2.Feature.Promocao.View
         {
             btnProdutosSelecionados.Enabled = false;
             btnProdutosSelecionados.BackColor = Color.DarkGray;
+        }
+
+        private void FrmProdutosDaPromocaoComDesconto_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Add:
+                    BtnAdicionarProdutosSelecionadosNaPromocao_Click(sender, e);
+                    break;
+                case Keys.Delete:
+                   BtnLimpar_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
         }
     }
 }

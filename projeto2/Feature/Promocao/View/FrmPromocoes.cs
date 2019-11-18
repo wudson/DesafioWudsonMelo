@@ -13,7 +13,7 @@ namespace projeto2.Feature.Promocao.View
         private readonly PromocoesController _promocoesController;
         private List<PromocaoModel> _promocoes;
 
-        public FrmPromocoes( PromocoesController controller)
+        public FrmPromocoes(PromocoesController controller)
         {
             InitializeComponent();
             _promocoesController = controller;
@@ -85,6 +85,19 @@ namespace projeto2.Feature.Promocao.View
         {
             if (rdbTodas.Checked)
                 AtualizarGridDePromocoes();
+        }
+
+        private void FrmPromocoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Add:
+                    BtnAdicionar_Click(sender, e);
+                    break;
+                case Keys.Escape: 
+                    Close();
+                    break;
+            }
         }
     }
 }

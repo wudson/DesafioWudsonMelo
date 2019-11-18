@@ -91,7 +91,7 @@
             this.btnSelecionarProdutosDaPromocao.Margin = new System.Windows.Forms.Padding(0);
             this.btnSelecionarProdutosDaPromocao.Name = "btnSelecionarProdutosDaPromocao";
             this.btnSelecionarProdutosDaPromocao.Size = new System.Drawing.Size(142, 24);
-            this.btnSelecionarProdutosDaPromocao.TabIndex = 31;
+            this.btnSelecionarProdutosDaPromocao.TabIndex = 1;
             this.btnSelecionarProdutosDaPromocao.Text = "Selecionar produtos";
             this.btnSelecionarProdutosDaPromocao.UseVisualStyleBackColor = false;
             this.btnSelecionarProdutosDaPromocao.Click += new System.EventHandler(this.BtnSelecionarProdutosDaPromocao_Click);
@@ -113,7 +113,7 @@
             this.dgvProdutosDaPromocao.Name = "dgvProdutosDaPromocao";
             this.dgvProdutosDaPromocao.ReadOnly = true;
             this.dgvProdutosDaPromocao.Size = new System.Drawing.Size(710, 294);
-            this.dgvProdutosDaPromocao.TabIndex = 34;
+            this.dgvProdutosDaPromocao.TabIndex = 6;
             this.dgvProdutosDaPromocao.DataSourceChanged += new System.EventHandler(this.DgvProdutosDaPromocao_DataSourceChanged);
             // 
             // idProduto
@@ -179,7 +179,7 @@
             this.grupoDesconto.Location = new System.Drawing.Point(14, 47);
             this.grupoDesconto.Name = "grupoDesconto";
             this.grupoDesconto.Size = new System.Drawing.Size(505, 67);
-            this.grupoDesconto.TabIndex = 33;
+            this.grupoDesconto.TabIndex = 2;
             this.grupoDesconto.TabStop = false;
             // 
             // label13
@@ -201,7 +201,7 @@
             this.btnAplicar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(79, 24);
-            this.btnAplicar.TabIndex = 17;
+            this.btnAplicar.TabIndex = 1;
             this.btnAplicar.Text = "Aplicar";
             this.btnAplicar.UseVisualStyleBackColor = false;
             this.btnAplicar.Click += new System.EventHandler(this.BtnAplicar_Click);
@@ -211,7 +211,7 @@
             this.txtDesconto.Location = new System.Drawing.Point(190, 42);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(78, 20);
-            this.txtDesconto.TabIndex = 3;
+            this.txtDesconto.TabIndex = 0;
             // 
             // label5
             // 
@@ -230,7 +230,7 @@
             this.rdbValorFixo.Location = new System.Drawing.Point(11, 42);
             this.rdbValorFixo.Name = "rdbValorFixo";
             this.rdbValorFixo.Size = new System.Drawing.Size(68, 17);
-            this.rdbValorFixo.TabIndex = 1;
+            this.rdbValorFixo.TabIndex = 2;
             this.rdbValorFixo.TabStop = true;
             this.rdbValorFixo.Text = "Valor fixo";
             this.rdbValorFixo.UseVisualStyleBackColor = true;
@@ -241,7 +241,7 @@
             this.rdbPorcentagem.Location = new System.Drawing.Point(86, 42);
             this.rdbPorcentagem.Name = "rdbPorcentagem";
             this.rdbPorcentagem.Size = new System.Drawing.Size(88, 17);
-            this.rdbPorcentagem.TabIndex = 2;
+            this.rdbPorcentagem.TabIndex = 3;
             this.rdbPorcentagem.Text = "Porcentagem";
             this.rdbPorcentagem.UseVisualStyleBackColor = true;
             // 
@@ -261,7 +261,7 @@
             this.txtNome.MaxLength = 150;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(491, 20);
-            this.txtNome.TabIndex = 32;
+            this.txtNome.TabIndex = 2;
             this.txtNome.TextChanged += new System.EventHandler(this.TxtNome_TextChanged);
             // 
             // label4
@@ -284,7 +284,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(88, 36);
-            this.btnCancelar.TabIndex = 29;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -298,7 +298,7 @@
             this.btnSalvarPromocao.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalvarPromocao.Name = "btnSalvarPromocao";
             this.btnSalvarPromocao.Size = new System.Drawing.Size(88, 36);
-            this.btnSalvarPromocao.TabIndex = 28;
+            this.btnSalvarPromocao.TabIndex = 4;
             this.btnSalvarPromocao.Text = "Finalizar";
             this.btnSalvarPromocao.UseVisualStyleBackColor = false;
             this.btnSalvarPromocao.Click += new System.EventHandler(this.BtnSalvarPromocao_Click);
@@ -318,7 +318,7 @@
             this.txtDataFim.Location = new System.Drawing.Point(261, 26);
             this.txtDataFim.Name = "txtDataFim";
             this.txtDataFim.Size = new System.Drawing.Size(241, 20);
-            this.txtDataFim.TabIndex = 26;
+            this.txtDataFim.TabIndex = 1;
             // 
             // label2
             // 
@@ -335,7 +335,7 @@
             this.txtDataInicio.Location = new System.Drawing.Point(11, 26);
             this.txtDataInicio.Name = "txtDataInicio";
             this.txtDataInicio.Size = new System.Drawing.Size(241, 20);
-            this.txtDataInicio.TabIndex = 24;
+            this.txtDataInicio.TabIndex = 0;
             // 
             // label1
             // 
@@ -355,7 +355,7 @@
             this.txtTipoPromocao.Location = new System.Drawing.Point(14, 24);
             this.txtTipoPromocao.Name = "txtTipoPromocao";
             this.txtTipoPromocao.Size = new System.Drawing.Size(505, 21);
-            this.txtTipoPromocao.TabIndex = 22;
+            this.txtTipoPromocao.TabIndex = 0;
             this.txtTipoPromocao.SelectedIndexChanged += new System.EventHandler(this.TxtTipoPromocao_SelectedIndexChanged);
             // 
             // grupoItemGratis
@@ -513,7 +513,7 @@
             this.grupoPeriodoENome.Location = new System.Drawing.Point(14, 414);
             this.grupoPeriodoENome.Name = "grupoPeriodoENome";
             this.grupoPeriodoENome.Size = new System.Drawing.Size(516, 94);
-            this.grupoPeriodoENome.TabIndex = 18;
+            this.grupoPeriodoENome.TabIndex = 3;
             this.grupoPeriodoENome.TabStop = false;
             // 
             // FrmCadastroDePromcao
@@ -540,6 +540,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de promoção";
             this.Load += new System.EventHandler(this.FrmCadastroDePromcao_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroDePromcao_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.grupoDesconto.ResumeLayout(false);

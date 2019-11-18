@@ -208,6 +208,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Promoções";
             this.Load += new System.EventHandler(this.FrmPromocoes_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPromocoes_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPromocoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource)).EndInit();
             this.ResumeLayout(false);

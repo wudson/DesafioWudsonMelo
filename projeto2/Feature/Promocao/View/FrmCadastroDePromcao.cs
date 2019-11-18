@@ -29,6 +29,7 @@ namespace projeto2.Feature.Promocao.View
 
             grupoDesconto.Enabled = true;
             btnAplicar.BackColor = Color.LimeGreen;
+            txtDesconto.Focus();
         }
 
         private List<Produto.Produto> TemProdutos() => 
@@ -168,6 +169,19 @@ namespace projeto2.Feature.Promocao.View
             }
             btnSalvarPromocao.Enabled = true;
             btnSalvarPromocao.BackColor = Color.LimeGreen;
+        }
+
+        private void FrmCadastroDePromcao_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Add:
+                    BtnSelecionarProdutosDaPromocao_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
         }
     }
 }
