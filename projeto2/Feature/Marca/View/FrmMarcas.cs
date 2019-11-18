@@ -24,8 +24,11 @@ namespace projeto2.Feature.Marca.View
                 case Keys.Escape:
                     Close();
                     break;
-                case Keys.Enter:
+                case Keys.Add:
                     BtnSalvarMarca_Click(sender, e);
+                    break;
+                case Keys.F4:
+                    BtnEditar_Click(sender, e);
                     break;
                 case Keys.Delete:
                     BtnExcluirMarca_Click(sender, e);
@@ -37,17 +40,9 @@ namespace projeto2.Feature.Marca.View
         {
             if (string.IsNullOrWhiteSpace(txtMarca.Text)) return;
 
-            if (int.Parse(txtId.Text) > 0)
-            {
-                _marcaModel.Marca = txtMarca.Text.Trim();
-                _marcaModel.IdMarca = int.Parse(txtId.Text);
-                _marcaController.AlterarMarca(_marcaModel);
-            }
-            else
-            {
-                _marcaModel.Marca = txtMarca.Text.Trim();
-                _marcaController.CadastrarMarca(_marcaModel);
-            }
+            _marcaModel.Marca = txtMarca.Text.Trim();
+            _marcaModel.IdMarca = int.Parse(txtId.Text);
+            _marcaController.AlterarOuCadastrarMarca(_marcaModel);
 
             ListarMarcas();
         }

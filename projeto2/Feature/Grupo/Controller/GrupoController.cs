@@ -145,5 +145,13 @@ namespace projeto2.Feature.Grupo.Controller
                 conn.Close();
             }
         }
+
+        public void AlterarOuCadastrarGrupo(GrupoModel grupo)
+        {
+            if (grupo.IdGrupo > 0)
+                AlterarGrupo(grupo);
+            else 
+                CadastrarGrupo(grupo);
+        }
     }
 }

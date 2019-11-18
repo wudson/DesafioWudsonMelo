@@ -40,17 +40,9 @@ namespace projeto2.Feature.Grupo.View
         {
             if (string.IsNullOrWhiteSpace(txtGrupo.Text)) return;
 
-            if (int.Parse(txtId.Text) > 0)
-            {
-                _grupoModel.Grupo = txtGrupo.Text.Trim();
-                _grupoModel.IdGrupo = int.Parse(txtId.Text);
-                _grupoController.AlterarGrupo(_grupoModel);
-            }
-            else
-            {
-                _grupoModel.Grupo = txtGrupo.Text.Trim();
-                _grupoController.CadastrarGrupo(_grupoModel);
-            }
+            _grupoModel.Grupo = txtGrupo.Text.Trim();
+            _grupoModel.IdGrupo = int.Parse(txtId.Text);
+            _grupoController.AlterarOuCadastrarGrupo(_grupoModel);
 
             ListarGrupos();
         }

@@ -147,5 +147,13 @@ namespace projeto2.Feature.Marca.Controller
                 conn.Close();
             }
         }
+
+        public void AlterarOuCadastrarMarca(MarcaModel marca)
+        {
+            if(marca.IdMarca > 0)
+                AlterarMarca(marca);
+            else
+                CadastrarMarca(marca);
+        }
     }
 }
