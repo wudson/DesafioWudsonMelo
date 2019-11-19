@@ -63,7 +63,7 @@
             this.dgvMarcas.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvMarcas.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
             this.dgvMarcas.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.dgvMarcas.Location = new System.Drawing.Point(0, 116);
+            this.dgvMarcas.Location = new System.Drawing.Point(0, 120);
             this.dgvMarcas.MainView = this.gvMarcas;
             this.dgvMarcas.Name = "dgvMarcas";
             this.dgvMarcas.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -71,7 +71,7 @@
             this.repositoryItemCalcEdit1,
             this.repositoryItemSpinEdit1,
             this.repositoryItemTextEdit1});
-            this.dgvMarcas.Size = new System.Drawing.Size(722, 217);
+            this.dgvMarcas.Size = new System.Drawing.Size(728, 217);
             this.dgvMarcas.TabIndex = 5;
             this.dgvMarcas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMarcas});
@@ -240,7 +240,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 333);
+            this.ClientSize = new System.Drawing.Size(728, 337);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnExcluirMarca);
@@ -249,6 +249,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.dgvMarcas);
             this.IconOptions.Image = global::projeto2.Properties.Resources.salesman__2_;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FrmMarcasDev";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

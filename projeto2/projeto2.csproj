@@ -50,17 +50,21 @@
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.1.1.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.1.1\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -145,6 +149,12 @@
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
     <Compile Include="Feature\Pessoa\Model\PessoaModel.cs" />
     <Compile Include="Feature\Principal\Controller\PrincipalController.cs" />
+    <Compile Include="Feature\Principal\View\Dev\FrmPrincipalDev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Principal\View\Dev\FrmPrincipalDev.Designer.cs">
+      <DependentUpon>FrmPrincipalDev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Produto\Controller\CadastroDeProdutoController.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
     <Compile Include="Feature\Pedido\View\FrmItensPedido.cs">
@@ -204,16 +214,16 @@
     </Compile>
     <Compile Include="Feature\Produto\Controller\ProdutoController.cs" />
     <Compile Include="Feature\Produto\Dao\ProdutoDao.cs" />
-    <Compile Include="Feature\Produto\View\FrmProdutos.cs">
+    <Compile Include="Feature\Produto\View\WinForms\FrmProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Produto\View\FrmProdutos.Designer.cs">
+    <Compile Include="Feature\Produto\View\WinForms\FrmProdutos.Designer.cs">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feature\Produto\View\FrmCadastroDeProduto.cs">
+    <Compile Include="Feature\Produto\View\WinForms\FrmCadastroDeProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Produto\View\FrmCadastroDeProduto.Designer.cs">
+    <Compile Include="Feature\Produto\View\WinForms\FrmCadastroDeProduto.Designer.cs">
       <DependentUpon>FrmCadastroDeProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -243,6 +253,9 @@
     <EmbeddedResource Include="Feature\Pedido\View\FrmItensPedido.resx">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Principal\View\Dev\FrmPrincipalDev.resx">
+      <DependentUpon>FrmPrincipalDev.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmCadastroDePromcao.resx">
       <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,10 +277,10 @@
     <EmbeddedResource Include="Feature\Cliente\View\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Produto\View\FrmCadastroDeProduto.resx">
+    <EmbeddedResource Include="Feature\Produto\View\WinForms\FrmCadastroDeProduto.resx">
       <DependentUpon>FrmCadastroDeProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Produto\View\FrmProdutos.resx">
+    <EmbeddedResource Include="Feature\Produto\View\WinForms\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -393,7 +406,7 @@
     <None Include="Resources\star.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Feature\Principal\View\Dev\" />
+    <Folder Include="Feature\Produto\View\Dev\" />
     <Folder Include="Feature\Promocao\View\DevExpress\" />
     <Folder Include="Feature\Promocao\View\WinForms\" />
   </ItemGroup>

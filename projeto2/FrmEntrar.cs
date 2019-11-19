@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using projeto2.Feature.Principal.View;
+using projeto2.Feature.Principal.View.Dev;
 using projeto2.Feature.Principal.View.WinForms;
 
 namespace projeto2
@@ -28,10 +28,20 @@ namespace projeto2
                 }
                 else
                 {
-                    Hide();
-                    var principal = new FrmPrincipal();
-                    principal.Closed += (s, args) => Close();
-                    principal.Show();
+                    if (!ClasseComVariaveisGlobais.UsarDev)
+                    {
+                        Hide();
+                        var principal = new FrmPrincipal();
+                        principal.Closed += (s, args) => Close();
+                        principal.Show();
+                    }
+                    else
+                    {
+                        Hide();
+                        var principal = new FrmPrincipalDev();
+                        principal.Closed += (s, args) => Close();
+                        principal.Show();
+                    }
                 }
             }
             else

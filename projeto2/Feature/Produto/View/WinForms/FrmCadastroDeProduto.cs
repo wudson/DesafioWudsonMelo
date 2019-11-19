@@ -1,8 +1,8 @@
-﻿using projeto2.Feature.Produto.Controller;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Produto.Controller;
 
-namespace projeto2.Feature.Produto.View
+namespace projeto2.Feature.Produto.View.WinForms
 {
     public partial class FrmCadastroDeProduto : Form
     {

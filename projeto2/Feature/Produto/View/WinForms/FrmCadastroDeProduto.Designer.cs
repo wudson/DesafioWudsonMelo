@@ -1,4 +1,4 @@
-﻿namespace projeto2.Feature.Produto.View
+﻿namespace projeto2.Feature.Produto.View.WinForms
 {
     partial class FrmCadastroDeProduto
     {

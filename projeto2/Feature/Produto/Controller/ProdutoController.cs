@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using projeto2.Feature.Estoque.Controller;
+using projeto2.Feature.Produto.View.WinForms;
 
 namespace projeto2.Feature.Produto.Controller
 {
