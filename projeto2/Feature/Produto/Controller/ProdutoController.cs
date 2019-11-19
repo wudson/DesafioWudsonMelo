@@ -1,6 +1,6 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Produto.Dao;
-using projeto2.Feature.Produto.View;
+using projeto2.Feature.Produto.View.Dev;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -11,8 +11,8 @@ namespace projeto2.Feature.Produto.Controller
 {
     public class ProdutoController
     {
-        public Produto ProdutoModel { get; set; }
         private readonly FrmProdutos _frmProdutos;
+        private readonly FrmProdutosDev _frmProdutosDev;
         private readonly ProdutoDao _dao;
 
         private readonly CadastroDeProdutoController _cadastroDeProdutoController;
@@ -20,17 +20,22 @@ namespace projeto2.Feature.Produto.Controller
 
         public ProdutoController()
         { 
-            ProdutoModel = new Produto();
             _dao = new ProdutoDao();
 
             _frmProdutos = new FrmProdutos(this);
+            _frmProdutosDev = new FrmProdutosDev(this);
 
             _cadastroDeProdutoController = new CadastroDeProdutoController();
             _estoqueDeProdutoController = new EstoqueDeProdutoController();
         }
 
-        public void AbrirTelaDeProdutos() =>
-            _frmProdutos.ShowDialog();
+        public void AbrirTelaDeProdutos()
+        {
+            if (!ClasseComVariaveisGlobais.UsarDev)
+                _frmProdutos.ShowDialog();
+            else
+                _frmProdutosDev.ShowDialog();
+        }
 
         public void AbrirTelaDeEstoqueDeProdutos() => _estoqueDeProdutoController.AbrirTelaDeEstoque();
 

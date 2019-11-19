@@ -97,6 +97,8 @@
             this.gvMarcas.OptionsPrint.EnableAppearanceEvenRow = true;
             this.gvMarcas.OptionsPrint.PrintSelectedRowsOnly = true;
             this.gvMarcas.OptionsPrint.PrintVertLines = false;
+            this.gvMarcas.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvMarcas.OptionsView.ShowIndicator = false;
             this.gvMarcas.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GvMarcas_FocusedRowChanged);
             // 
             // gridColumn1

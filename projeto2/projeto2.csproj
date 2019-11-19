@@ -163,6 +163,12 @@
     <Compile Include="Feature\Pedido\View\FrmItensPedido.Designer.cs">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Produto\View\Dev\FrmProdutosDev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Produto\View\Dev\FrmProdutosDev.Designer.cs">
+      <DependentUpon>FrmProdutosDev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Promocao\Controller\CadastroDePromocaoController.cs" />
     <Compile Include="Feature\Promocao\Controller\ProdutosAdicionadosNaPromocaoController.cs" />
     <Compile Include="Feature\Promocao\Controller\ProdutosDaPromocaoController.cs" />
@@ -255,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Principal\View\Dev\FrmPrincipalDev.resx">
       <DependentUpon>FrmPrincipalDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Produto\View\Dev\FrmProdutosDev.resx">
+      <DependentUpon>FrmProdutosDev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmCadastroDePromcao.resx">
       <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>
@@ -406,7 +415,6 @@
     <None Include="Resources\star.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Feature\Produto\View\Dev\" />
     <Folder Include="Feature\Promocao\View\DevExpress\" />
     <Folder Include="Feature\Promocao\View\WinForms\" />
   </ItemGroup>
@@ -442,6 +450,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boproductgroup_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barcode %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bocustomer_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
