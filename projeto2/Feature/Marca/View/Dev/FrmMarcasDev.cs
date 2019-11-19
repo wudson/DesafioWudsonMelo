@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Marca.Model;
 
-namespace projeto2.Feature.Marca.View.WinForms
+namespace projeto2.Feature.Marca.View.Dev
 {
-    public partial class FrmMarcas : Form
+    public partial class FrmMarcasDev : XtraForm
     {
         private readonly MarcaController _marcaController;
         private readonly MarcaModel _marcaModel;
 
-        public FrmMarcas(MarcaController controller)
+        public FrmMarcasDev(MarcaController controller)
         {
             InitializeComponent();
             _marcaController = controller;
             _marcaModel = new MarcaModel();
         }
+
+        private void FrmMarcasDev_Load(object sender, EventArgs e) => ListarMarcas();
 
         private void FrmMarcas_KeyDown(object sender, KeyEventArgs e)
         {
@@ -53,7 +56,6 @@ namespace projeto2.Feature.Marca.View.WinForms
 
             txtMarca.Text = string.Empty;
             txtId.Text = @"0";
-            if (dgvMarcas.CurrentRow != null) dgvMarcas.CurrentRow.Selected = false;
             ModificarEnabledDosBotoes(false);
         }
 
@@ -70,27 +72,24 @@ namespace projeto2.Feature.Marca.View.WinForms
             var resultado = MessageBox.Show(@"Deseja excluir essa marca?", @"Marca", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 
-            if (dgvMarcas.CurrentRow == null) return;
-            var idMarca = Convert.ToInt32(dgvMarcas.CurrentRow.Cells[0].Value);
+            var idMarca = Convert.ToInt32(gvMarcas.GetFocusedRowCellValue("IdMarca"));
 
             if (_marcaController.ExcluirMarca(idMarca))
                 ListarMarcas();
         }
 
-        private void DgvMarcas_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex < 0) return;
-            ModificarEnabledDosBotoes(true);
-        }
-
-        private void FrmMarcas_Load(object sender, EventArgs e) => ListarMarcas();
-
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             if (btnEditar.Enabled == false) return;
 
-            txtMarca.Text = dgvMarcas.CurrentRow?.Cells[1].Value.ToString();
-            txtId.Text = dgvMarcas.CurrentRow?.Cells[0].Value.ToString();
+            txtId.Text = gvMarcas.GetFocusedRowCellValue("IdMarca").ToString();
+            txtMarca.Text = gvMarcas.GetFocusedRowCellValue("Marca").ToString();
+        }
+
+        private void GvMarcas_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (e.FocusedRowHandle < 0) return;
+            ModificarEnabledDosBotoes(true);
         }
     }
 }

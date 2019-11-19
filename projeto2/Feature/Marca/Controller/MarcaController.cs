@@ -5,8 +5,8 @@ using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Marca.Dao;
 using projeto2.Feature.Marca.Model;
-using projeto2.Feature.Marca.View;
 using projeto2.Feature.Marca.View.WinForms;
+using projeto2.Feature.Marca.View.Dev;
 
 namespace projeto2.Feature.Marca.Controller
 {
@@ -14,15 +14,22 @@ namespace projeto2.Feature.Marca.Controller
     {
         private readonly MarcaDao _dao;
         private readonly FrmMarcas _frmMarcas;
+        private readonly FrmMarcasDev _frmMarcasDev;
 
         public MarcaController()
         {
             _dao = new MarcaDao();
             _frmMarcas = new FrmMarcas(this);
+            _frmMarcasDev = new FrmMarcasDev(this);
         }
 
-        public void AbrirTelaDeMarcas() =>
-            _frmMarcas.ShowDialog();
+        public void AbrirTelaDeMarcas()
+        {
+            if (!ClasseComVariaveisGlobais.UsarDev)
+                _frmMarcas.ShowDialog();
+            else
+                _frmMarcasDev.ShowDialog();
+        }
 
         public void CadastrarMarca(MarcaModel novaMarca)
         {
@@ -88,7 +95,7 @@ namespace projeto2.Feature.Marca.Controller
             return new List<MarcaModel>();
         }
 
-        public bool ExcluirMarca(int idGrupo)
+        public bool ExcluirMarca(int idMarca)
         {
             var conn = Conexao.GetInstancia();
             var cmd = new FbCommand();
@@ -97,7 +104,7 @@ namespace projeto2.Feature.Marca.Controller
                 conn.Open();
                 cmd.Connection = conn;
 
-                if (_dao.Excluir(idGrupo, cmd))
+                if (_dao.Excluir(idMarca, cmd))
                     MessageBox.Show(@"Marca excluida com sucesso.");
                 return true;
             }

@@ -1,8 +1,8 @@
-﻿using projeto2.Feature.Principal.Controller;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Principal.Controller;
 
-namespace projeto2.Feature.Principal.View
+namespace projeto2.Feature.Principal.View.WinForms
 {
     public partial class FrmPrincipal : Form
     {

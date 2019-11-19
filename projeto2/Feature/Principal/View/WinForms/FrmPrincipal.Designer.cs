@@ -1,4 +1,4 @@
-﻿namespace projeto2.Feature.Principal.View
+﻿namespace projeto2.Feature.Principal.View.WinForms
 {
     partial class FrmPrincipal
     {

@@ -11,7 +11,7 @@ namespace projeto2
         [STAThread]
         private static void Main()
         {
-            //ClasseComVariaveisGlobais.UsarDevExpress = false;
+            ClasseComVariaveisGlobais.UsarDevExpress = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmEntrar());

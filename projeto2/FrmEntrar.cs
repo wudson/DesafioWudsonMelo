@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 using projeto2.Feature.Principal.View;
+using projeto2.Feature.Principal.View.WinForms;
 
 namespace projeto2
 {
