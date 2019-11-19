@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Marca.Model;
 
-namespace projeto2.Feature.Marca.View
+namespace projeto2.Feature.Marca.View.WinForms
 {
     public partial class FrmMarcas : Form
     {

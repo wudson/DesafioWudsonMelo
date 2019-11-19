@@ -1,4 +1,4 @@
-﻿namespace projeto2.Feature.Marca.View
+﻿namespace projeto2.Feature.Marca.View.WinForms
 {
     partial class FrmMarcas
     {

@@ -48,13 +48,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=7.1.1.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.7.1.1\lib\net452\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -97,10 +110,16 @@
     <Compile Include="Feature\Marca\Controller\MarcaController.cs" />
     <Compile Include="Feature\Marca\Dao\MarcaDao.cs" />
     <Compile Include="Feature\Marca\Model\MarcaModel.cs" />
-    <Compile Include="Feature\Marca\View\FrmMarcas.cs">
+    <Compile Include="Feature\Marca\View\Dev\FrmMarcas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Marca\View\FrmMarcas.Designer.cs">
+    <Compile Include="Feature\Marca\View\Dev\FrmMarcas.Designer.cs">
+      <DependentUpon>FrmMarcas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Marca\View\WinForms\FrmMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Marca\View\WinForms\FrmMarcas.Designer.cs">
       <DependentUpon>FrmMarcas.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Pedido\Controller\ItensPedidoController.cs" />
@@ -207,7 +226,10 @@
     <EmbeddedResource Include="Feature\Grupo\View\FrmGrupos.resx">
       <DependentUpon>FrmGrupos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Marca\View\FrmMarcas.resx">
+    <EmbeddedResource Include="Feature\Marca\View\Dev\FrmMarcas.resx">
+      <DependentUpon>FrmMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Marca\View\WinForms\FrmMarcas.resx">
       <DependentUpon>FrmMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Pedido\View\FrmNovoPedido.resx">
@@ -246,6 +268,7 @@
     <EmbeddedResource Include="Feature\Produto\View\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
