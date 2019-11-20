@@ -223,6 +223,16 @@ namespace projeto2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clearfilter_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("clearfilter_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clipboard {
             get {
                 object obj = ResourceManager.GetObject("clipboard", resourceCulture);
@@ -346,6 +356,16 @@ namespace projeto2.Properties {
         internal static System.Drawing.Bitmap error16x {
             get {
                 object obj = ResourceManager.GetObject("error16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap filter_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("filter_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

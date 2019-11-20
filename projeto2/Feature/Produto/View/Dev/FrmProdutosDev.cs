@@ -2,6 +2,7 @@
 using projeto2.Feature.Produto.Controller;
 using System;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace projeto2.Feature.Produto.View.Dev
 {
@@ -87,7 +88,7 @@ namespace projeto2.Feature.Produto.View.Dev
 
         private void BtnEstoque_Click(object sender, EventArgs e) => _produtoController.AbrirTelaDeEstoqueDeProdutos();
 
-        private void GvProdutos_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void GvProdutos_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             if (e.FocusedRowHandle < 0) return;
             ModificarEnabledDosBotoes(true);

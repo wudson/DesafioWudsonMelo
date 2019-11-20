@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using projeto2.Feature.Cliente.Controller;
+﻿using projeto2.Feature.Cliente.Controller;
 using projeto2.Feature.Cliente.Model;
+using System;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Cliente.View.WinForms
 {
@@ -103,7 +103,7 @@ namespace projeto2.Feature.Cliente.View.WinForms
                 case Keys.Enter:
                     BtnFiltrar_Click(sender, e);
                     break;
-                case Keys.R:
+                case Keys.F10:
                     BtnLimpar_Click(sender, e);
                     break;
                 case Keys.F4:

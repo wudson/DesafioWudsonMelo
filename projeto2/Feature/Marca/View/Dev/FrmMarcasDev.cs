@@ -1,8 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Marca.Model;
+using System;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Marca.View.Dev
 {
@@ -86,7 +87,7 @@ namespace projeto2.Feature.Marca.View.Dev
             txtMarca.Text = gvMarcas.GetFocusedRowCellValue("Marca").ToString();
         }
 
-        private void GvMarcas_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void GvMarcas_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             if (e.FocusedRowHandle < 0) return;
             ModificarEnabledDosBotoes(true);

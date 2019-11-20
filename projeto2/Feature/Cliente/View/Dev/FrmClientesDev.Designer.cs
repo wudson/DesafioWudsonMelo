@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClientesDev));
-            this.dgvProdutos = new DevExpress.XtraGrid.GridControl();
+            this.dgvClientes = new DevExpress.XtraGrid.GridControl();
             this.clienteModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gvProdutos = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvClientes = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIdPessoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNomePessoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmailPessoa = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,46 +49,66 @@
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
             this.gpcBotoes = new DevExpress.XtraEditors.GroupControl();
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnFiltrar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLimpar = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtDataInicio = new DevExpress.XtraEditors.DateEdit();
+            this.txtDataFim = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtCidade = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtNome = new DevExpress.XtraEditors.TextEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gpcBotoes)).BeginInit();
             this.gpcBotoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataFim.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataFim.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCidade.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvProdutos
+            // dgvClientes
             // 
-            this.dgvProdutos.DataSource = this.clienteModelBindingSource;
-            this.dgvProdutos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProdutos.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.dgvProdutos.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.dgvProdutos.Location = new System.Drawing.Point(0, 87);
-            this.dgvProdutos.MainView = this.gvProdutos;
-            this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.dgvClientes.DataSource = this.clienteModelBindingSource;
+            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientes.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.dgvClientes.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.dgvClientes.Location = new System.Drawing.Point(0, 83);
+            this.dgvClientes.MainView = this.gvClientes;
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
             this.repositoryItemCalcEdit1,
             this.repositoryItemSpinEdit1,
             this.repositoryItemTextEdit1});
-            this.dgvProdutos.Size = new System.Drawing.Size(761, 347);
-            this.dgvProdutos.TabIndex = 16;
-            this.dgvProdutos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvProdutos});
+            this.dgvClientes.Size = new System.Drawing.Size(470, 675);
+            this.dgvClientes.TabIndex = 16;
+            this.dgvClientes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvClientes});
             // 
             // clienteModelBindingSource
             // 
             this.clienteModelBindingSource.DataSource = typeof(projeto2.Feature.Cliente.Model.ClienteModel);
             // 
-            // gvProdutos
+            // gvClientes
             // 
-            this.gvProdutos.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.gvProdutos.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvClientes.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gvClientes.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colIdPessoa,
             this.colNomePessoa,
             this.colEmailPessoa,
@@ -97,20 +117,21 @@
             this.colCidadePessoa,
             this.colDataEdicaoCliente,
             this.colDataCadastroCliente});
-            this.gvProdutos.GridControl = this.dgvProdutos;
-            this.gvProdutos.GroupPanelText = " ";
-            this.gvProdutos.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            this.gvClientes.GridControl = this.dgvClientes;
+            this.gvClientes.GroupPanelText = " ";
+            this.gvClientes.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "OrderID", null, "")});
-            this.gvProdutos.Name = "gvProdutos";
-            this.gvProdutos.OptionsBehavior.AllowPixelScrolling = DevExpress.Utils.DefaultBoolean.True;
-            this.gvProdutos.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.Formatted;
-            this.gvProdutos.OptionsDetail.EnableMasterViewMode = false;
-            this.gvProdutos.OptionsPrint.EnableAppearanceEvenRow = true;
-            this.gvProdutos.OptionsPrint.PrintSelectedRowsOnly = true;
-            this.gvProdutos.OptionsPrint.PrintVertLines = false;
-            this.gvProdutos.OptionsView.EnableAppearanceEvenRow = true;
-            this.gvProdutos.OptionsView.ShowFooter = true;
-            this.gvProdutos.OptionsView.ShowIndicator = false;
+            this.gvClientes.Name = "gvClientes";
+            this.gvClientes.OptionsBehavior.AllowPixelScrolling = DevExpress.Utils.DefaultBoolean.True;
+            this.gvClientes.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.Formatted;
+            this.gvClientes.OptionsDetail.EnableMasterViewMode = false;
+            this.gvClientes.OptionsPrint.EnableAppearanceEvenRow = true;
+            this.gvClientes.OptionsPrint.PrintSelectedRowsOnly = true;
+            this.gvClientes.OptionsPrint.PrintVertLines = false;
+            this.gvClientes.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvClientes.OptionsView.ShowFooter = true;
+            this.gvClientes.OptionsView.ShowIndicator = false;
+            this.gvClientes.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GvClientes_FocusedRowChanged);
             // 
             // colIdPessoa
             // 
@@ -278,6 +299,7 @@
             this.btnSalvar.Size = new System.Drawing.Size(102, 57);
             this.btnSalvar.TabIndex = 12;
             this.btnSalvar.Text = "Novo [ + ]";
+            this.btnSalvar.Click += new System.EventHandler(this.BtnCadastrar_Click);
             // 
             // btnEditar
             // 
@@ -289,6 +311,7 @@
             this.btnEditar.Size = new System.Drawing.Size(102, 57);
             this.btnEditar.TabIndex = 14;
             this.btnEditar.Text = "Editar [ F4 ]";
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // btnExcluir
             // 
@@ -300,6 +323,7 @@
             this.btnExcluir.Size = new System.Drawing.Size(102, 57);
             this.btnExcluir.TabIndex = 13;
             this.btnExcluir.Text = "Excluir [Del]";
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // gpcBotoes
             // 
@@ -310,32 +334,145 @@
             this.gpcBotoes.Location = new System.Drawing.Point(0, 0);
             this.gpcBotoes.Name = "gpcBotoes";
             this.gpcBotoes.ShowCaption = false;
-            this.gpcBotoes.Size = new System.Drawing.Size(761, 87);
+            this.gpcBotoes.Size = new System.Drawing.Size(761, 83);
             this.gpcBotoes.TabIndex = 17;
             // 
-            // dockManager1
+            // groupControl1
             // 
-            this.dockManager1.Form = this;
-            this.dockManager1.TopZIndexControls.AddRange(new string[] {
-            "DevExpress.XtraBars.BarDockControl",
-            "DevExpress.XtraBars.StandaloneBarDockControl",
-            "System.Windows.Forms.StatusBar",
-            "System.Windows.Forms.MenuStrip",
-            "System.Windows.Forms.StatusStrip",
-            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
-            "DevExpress.XtraBars.Ribbon.RibbonControl",
-            "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
-            "DevExpress.XtraBars.Navigation.TileNavPane",
-            "DevExpress.XtraBars.TabFormControl",
-            "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
-            "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
+            this.groupControl1.Controls.Add(this.btnFiltrar);
+            this.groupControl1.Controls.Add(this.btnLimpar);
+            this.groupControl1.Controls.Add(this.groupControl2);
+            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Controls.Add(this.txtCidade);
+            this.groupControl1.Controls.Add(this.labelControl1);
+            this.groupControl1.Controls.Add(this.txtNome);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupControl1.Location = new System.Drawing.Point(470, 83);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(291, 675);
+            this.groupControl1.TabIndex = 18;
+            this.groupControl1.Text = "Filtros";
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnFiltrar.Appearance.Options.UseBackColor = true;
+            this.btnFiltrar.ImageOptions.Image = global::projeto2.Properties.Resources.filter_32x32;
+            this.btnFiltrar.Location = new System.Drawing.Point(40, 578);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(107, 36);
+            this.btnFiltrar.TabIndex = 16;
+            this.btnFiltrar.Text = "Filtrar [Enter]";
+            this.btnFiltrar.Click += new System.EventHandler(this.BtnFiltrar_Click);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnLimpar.Appearance.Options.UseBackColor = true;
+            this.btnLimpar.ImageOptions.Image = global::projeto2.Properties.Resources.clearfilter_32x32;
+            this.btnLimpar.Location = new System.Drawing.Point(153, 578);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(107, 36);
+            this.btnLimpar.TabIndex = 15;
+            this.btnLimpar.Text = "Limpar [F10]";
+            this.btnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.labelControl3);
+            this.groupControl2.Controls.Add(this.labelControl4);
+            this.groupControl2.Controls.Add(this.txtDataInicio);
+            this.groupControl2.Controls.Add(this.txtDataFim);
+            this.groupControl2.Location = new System.Drawing.Point(5, 152);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(281, 117);
+            this.groupControl2.TabIndex = 6;
+            this.groupControl2.Text = "Data de cadastro";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(8, 71);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(17, 13);
+            this.labelControl3.TabIndex = 7;
+            this.labelControl3.Text = "Até";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(8, 28);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(13, 13);
+            this.labelControl4.TabIndex = 8;
+            this.labelControl4.Text = "De";
+            // 
+            // txtDataInicio
+            // 
+            this.txtDataInicio.EditValue = null;
+            this.txtDataInicio.Location = new System.Drawing.Point(8, 47);
+            this.txtDataInicio.Name = "txtDataInicio";
+            this.txtDataInicio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDataInicio.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDataInicio.Size = new System.Drawing.Size(262, 20);
+            this.txtDataInicio.TabIndex = 3;
+            // 
+            // txtDataFim
+            // 
+            this.txtDataFim.EditValue = null;
+            this.txtDataFim.Location = new System.Drawing.Point(8, 90);
+            this.txtDataFim.Name = "txtDataFim";
+            this.txtDataFim.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDataFim.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDataFim.Size = new System.Drawing.Size(262, 20);
+            this.txtDataFim.TabIndex = 4;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(8, 93);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(33, 13);
+            this.labelControl2.TabIndex = 5;
+            this.labelControl2.Text = "Cidade";
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.Location = new System.Drawing.Point(8, 112);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtCidade.Properties.Items.AddRange(new object[] {
+            "Jales",
+            "Urânia",
+            "Angra dos Reis",
+            "Rio de Janeiro"});
+            this.txtCidade.Size = new System.Drawing.Size(262, 20);
+            this.txtCidade.TabIndex = 2;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(8, 41);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(27, 13);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "Nome";
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(8, 60);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(262, 20);
+            this.txtNome.TabIndex = 0;
             // 
             // FrmClientesDev
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 434);
-            this.Controls.Add(this.dgvProdutos);
+            this.ClientSize = new System.Drawing.Size(761, 758);
+            this.Controls.Add(this.dgvClientes);
+            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gpcBotoes);
             this.IconOptions.Image = global::projeto2.Properties.Resources.salesman__2_;
             this.KeyPreview = true;
@@ -343,24 +480,37 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
+            this.Load += new System.EventHandler(this.FrmClientes_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmClientes_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gpcBotoes)).EndInit();
             this.gpcBotoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataFim.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDataFim.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCidade.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl dgvProdutos;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvProdutos;
+        private DevExpress.XtraGrid.GridControl dgvClientes;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvClientes;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
@@ -378,6 +528,17 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTelefonePessoa;
         private DevExpress.XtraGrid.Columns.GridColumn colCelularPessoa;
         private DevExpress.XtraGrid.Columns.GridColumn colCidadePessoa;
-        private DevExpress.XtraBars.Docking.DockManager dockManager1;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.TextEdit txtNome;
+        private DevExpress.XtraEditors.DateEdit txtDataInicio;
+        private DevExpress.XtraEditors.ComboBoxEdit txtCidade;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.DateEdit txtDataFim;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnFiltrar;
+        private DevExpress.XtraEditors.SimpleButton btnLimpar;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }
