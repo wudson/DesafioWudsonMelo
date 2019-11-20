@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
-using projeto2.Feature.Cliente.View;
+using projeto2.Feature.Cliente.View.Dev;
 using projeto2.Feature.Cliente.View.WinForms;
 
 namespace projeto2.Feature.Cliente.Controller
@@ -12,6 +12,7 @@ namespace projeto2.Feature.Cliente.Controller
     {
         private readonly ClienteDao _dao;
         private FrmCadastroDeCliente _frmCadastroDeCliente;
+        private FrmCadastroDeClienteDev _frmCadastroDeClienteDev;
 
         public CadastroDeClienteController()
         {
@@ -20,14 +21,30 @@ namespace projeto2.Feature.Cliente.Controller
 
         public void AbrirTela()
         {
-            (_frmCadastroDeCliente = new FrmCadastroDeCliente(this)).ShowDialog();
-            _frmCadastroDeCliente.Dispose();
+            if (!ClasseComVariaveisGlobais.UsarDev)
+            {
+                (_frmCadastroDeCliente = new FrmCadastroDeCliente(this)).ShowDialog();
+                _frmCadastroDeCliente.Dispose();
+            }
+            else
+            {
+                (_frmCadastroDeClienteDev = new FrmCadastroDeClienteDev(this)).ShowDialog();
+                _frmCadastroDeClienteDev.Dispose();
+            }
         }
 
         public void AbrirTelaParaAlterar(ClienteModel cliente)
         {
-            (_frmCadastroDeCliente = new FrmCadastroDeCliente(this)).RecebeClienteParaAlterar(cliente);
-            _frmCadastroDeCliente.Dispose();
+            if (!ClasseComVariaveisGlobais.UsarDev)
+            {
+                (_frmCadastroDeCliente = new FrmCadastroDeCliente(this)).RecebeClienteParaAlterar(cliente);
+                _frmCadastroDeCliente.Dispose();
+            }
+            else
+            {
+                (_frmCadastroDeClienteDev = new FrmCadastroDeClienteDev(this)).RecebeClienteParaAlterar(cliente);
+                _frmCadastroDeClienteDev.Dispose();
+            }
         }
 
         public bool AlterarDado(ClienteModel cliente)

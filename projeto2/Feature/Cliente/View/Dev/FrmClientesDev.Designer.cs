@@ -242,6 +242,8 @@
             this.colDataCadastroCliente.FieldName = "DataCadastroCliente";
             this.colDataCadastroCliente.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("colDataCadastroCliente.ImageOptions.Image")));
             this.colDataCadastroCliente.Name = "colDataCadastroCliente";
+            this.colDataCadastroCliente.OptionsColumn.AllowEdit = false;
+            this.colDataCadastroCliente.OptionsColumn.AllowFocus = false;
             this.colDataCadastroCliente.OptionsColumn.AllowMove = false;
             this.colDataCadastroCliente.OptionsColumn.AllowShowHide = false;
             this.colDataCadastroCliente.OptionsColumn.AllowSize = false;

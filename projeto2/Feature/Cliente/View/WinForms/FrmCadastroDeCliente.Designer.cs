@@ -74,11 +74,11 @@
             this.lblCelular = new System.Windows.Forms.Label();
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.grpDadosPessoais = new System.Windows.Forms.GroupBox();
+            this.txtRg = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtRg = new System.Windows.Forms.TextBox();
             this.pnlFormCliente.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpContato.SuspendLayout();
@@ -581,6 +581,14 @@
             this.grpDadosPessoais.TabStop = false;
             this.grpDadosPessoais.Text = "Dados Pessoais";
             // 
+            // txtRg
+            // 
+            this.txtRg.Location = new System.Drawing.Point(20, 178);
+            this.txtRg.MaxLength = 15;
+            this.txtRg.Name = "txtRg";
+            this.txtRg.Size = new System.Drawing.Size(179, 20);
+            this.txtRg.TabIndex = 15;
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -620,14 +628,6 @@
             this.label10.Size = new System.Drawing.Size(11, 13);
             this.label10.TabIndex = 14;
             this.label10.Text = "*";
-            // 
-            // txtRg
-            // 
-            this.txtRg.Location = new System.Drawing.Point(20, 178);
-            this.txtRg.MaxLength = 15;
-            this.txtRg.Name = "txtRg";
-            this.txtRg.Size = new System.Drawing.Size(179, 20);
-            this.txtRg.TabIndex = 15;
             // 
             // FrmCadastroDeCliente
             // 

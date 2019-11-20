@@ -54,7 +54,7 @@ namespace projeto2.Feature.Cliente.View.Dev
 
         private void BuscarClienteParaAlterar()
         {
-            var cliente = _clienteController.BuscarDado(Convert.ToInt32(gvClientes.GetFocusedRowCellValue("IdCliente")));
+            var cliente = _clienteController.BuscarDado(Convert.ToInt32(gvClientes.GetFocusedRowCellValue("IdPessoa")));
 
             _clienteController.AbrirTelaDeAlterarECadastrarClientes(cliente);
             AtualizarGridDadosCliente();
@@ -74,7 +74,7 @@ namespace projeto2.Feature.Cliente.View.Dev
             var result = MessageBox.Show(@"Deseja excluir esse cliente?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
 
-            if (_clienteController.ExcluirDado(Convert.ToInt32(gvClientes.GetFocusedRowCellValue("IdCliente"))))
+            if (_clienteController.ExcluirDado(Convert.ToInt32(gvClientes.GetFocusedRowCellValue("IdPessoa"))))
                 AtualizarGridDadosCliente();
         }
 
