@@ -4,6 +4,7 @@ using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Cliente.View;
+using projeto2.Feature.Cliente.View.WinForms;
 
 namespace projeto2.Feature.Cliente.Controller
 {

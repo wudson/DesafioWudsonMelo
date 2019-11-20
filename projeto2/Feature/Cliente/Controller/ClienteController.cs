@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.View;
+using projeto2.Feature.Cliente.View.WinForms;
 
 namespace projeto2.Feature.Cliente.Controller
 {

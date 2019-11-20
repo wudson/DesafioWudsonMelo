@@ -1,4 +1,4 @@
-﻿namespace projeto2.Feature.Cliente.View
+﻿namespace projeto2.Feature.Cliente.View.WinForms
 {
     partial class FrmCadastroDeCliente
     {

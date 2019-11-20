@@ -1,9 +1,9 @@
-﻿using projeto2.Feature.Cliente.Controller;
-using projeto2.Feature.Cliente.Model;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Cliente.Controller;
+using projeto2.Feature.Cliente.Model;
 
-namespace projeto2.Feature.Cliente.View
+namespace projeto2.Feature.Cliente.View.WinForms
 {
     public partial class FrmCadastroDeCliente : Form
     {
