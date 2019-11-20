@@ -163,11 +163,23 @@
     <Compile Include="Feature\Pedido\View\FrmItensPedido.Designer.cs">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Produto\View\Dev\FrmCadastroDeProdutoDev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Produto\View\Dev\FrmCadastroDeProdutoDev.Designer.cs">
+      <DependentUpon>FrmCadastroDeProdutoDev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Produto\View\Dev\FrmProdutosDev.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Feature\Produto\View\Dev\FrmProdutosDev.Designer.cs">
       <DependentUpon>FrmProdutosDev.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Produto\View\WinForms\RibbonForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Produto\View\WinForms\RibbonForm1.Designer.cs">
+      <DependentUpon>RibbonForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Promocao\Controller\CadastroDePromocaoController.cs" />
     <Compile Include="Feature\Promocao\Controller\ProdutosAdicionadosNaPromocaoController.cs" />
@@ -262,8 +274,14 @@
     <EmbeddedResource Include="Feature\Principal\View\Dev\FrmPrincipalDev.resx">
       <DependentUpon>FrmPrincipalDev.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Produto\View\Dev\FrmCadastroDeProdutoDev.resx">
+      <DependentUpon>FrmCadastroDeProdutoDev.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Feature\Produto\View\Dev\FrmProdutosDev.resx">
       <DependentUpon>FrmProdutosDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Produto\View\WinForms\RibbonForm1.resx">
+      <DependentUpon>RibbonForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\FrmCadastroDePromcao.resx">
       <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>
@@ -459,6 +477,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bocustomer_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boproductgroup_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boproduct_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

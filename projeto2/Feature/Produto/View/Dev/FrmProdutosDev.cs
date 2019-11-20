@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using projeto2.Feature.Produto.Controller;
+using System;
+using System.Windows.Forms;
 
 namespace projeto2.Feature.Produto.View.Dev
 {
@@ -22,11 +15,82 @@ namespace projeto2.Feature.Produto.View.Dev
             _produtoController = controller;
         }
 
+        private void BtnCadastrar_Click(object sender, EventArgs e)
+        {
+            _produtoController.AbrirTelaDeAlterarECadastrarProdutos();
+            AtualizarGridDadosProduto();
+        }
+
         private void AtualizarGridDadosProduto()
         {
             dgvProdutos.DataSource = _produtoController.ListarDados(new Produto());
+            ModificarEnabledDosBotoes(false);
         }
 
-        private void FrmProdutosDev_Load(object sender, EventArgs e) => AtualizarGridDadosProduto();
+        private void ModificarEnabledDosBotoes(bool enabled)
+        {
+            btnExcluir.Enabled = enabled;
+            btnEditar.Enabled = enabled;
+        }
+
+        private void BuscarProdutoParaAlterar()
+        {
+            var produto =
+                _produtoController.BuscarDado(Convert.ToInt32(gvProdutos.GetFocusedRowCellValue("IdProduto")));
+
+            _produtoController.AbrirTelaDeAlterarECadastrarProdutos(produto);
+            AtualizarGridDadosProduto();
+        }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            if (!btnEditar.Enabled) return;
+
+            BuscarProdutoParaAlterar();
+        }
+
+        private void BtnExcluir_Click(object sender, EventArgs e)
+        {
+            if (!btnExcluir.Enabled) return;
+
+            var resultado = MessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information);
+            if (!resultado.Equals(DialogResult.OK)) return;
+
+            if (_produtoController.ExcluirDado(Convert.ToInt32(gvProdutos.GetFocusedRowCellValue("IdProduto"))))
+                AtualizarGridDadosProduto();
+        }
+
+        private void FrmProdutos_Load(object sender, EventArgs e) => AtualizarGridDadosProduto();
+
+        private void FrmProdutos_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Add:
+                    BtnCadastrar_Click(sender, e);
+                    break;
+                case Keys.F4:
+                    BtnEditar_Click(sender, e);
+                    break;
+                case Keys.E:
+                    BtnEstoque_Click(sender, e);
+                    break;
+                case Keys.Delete:
+                    BtnExcluir_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    Close();
+                    break;
+            }
+        }
+
+        private void BtnEstoque_Click(object sender, EventArgs e) => _produtoController.AbrirTelaDeEstoqueDeProdutos();
+
+        private void GvProdutos_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (e.FocusedRowHandle < 0) return;
+            ModificarEnabledDosBotoes(true);
+        }
     }
 }

@@ -43,8 +43,9 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.btnExcluir = new DevExpress.XtraEditors.SimpleButton();
-            this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
             this.gpcBotoes = new DevExpress.XtraEditors.GroupControl();
+            this.btnEstoque = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProdutos)).BeginInit();
@@ -101,6 +102,7 @@
             this.gvProdutos.OptionsView.EnableAppearanceEvenRow = true;
             this.gvProdutos.OptionsView.ShowFooter = true;
             this.gvProdutos.OptionsView.ShowIndicator = false;
+            this.gvProdutos.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GvProdutos_FocusedRowChanged);
             // 
             // IdProduto
             // 
@@ -209,36 +211,28 @@
             this.btnEditar.Appearance.BackColor = System.Drawing.Color.White;
             this.btnEditar.Appearance.Options.UseBackColor = true;
             this.btnEditar.ImageOptions.Image = global::projeto2.Properties.Resources.edit_32x321;
-            this.btnEditar.Location = new System.Drawing.Point(115, 15);
+            this.btnEditar.Location = new System.Drawing.Point(228, 15);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(102, 57);
             this.btnEditar.TabIndex = 14;
             this.btnEditar.Text = "Editar [ F4 ]";
+            this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // btnExcluir
             // 
             this.btnExcluir.Appearance.BackColor = System.Drawing.Color.White;
             this.btnExcluir.Appearance.Options.UseBackColor = true;
             this.btnExcluir.ImageOptions.Image = global::projeto2.Properties.Resources.delete_32x32;
-            this.btnExcluir.Location = new System.Drawing.Point(223, 15);
+            this.btnExcluir.Location = new System.Drawing.Point(336, 15);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(102, 57);
             this.btnExcluir.TabIndex = 13;
             this.btnExcluir.Text = "Excluir [Del]";
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Appearance.BackColor = System.Drawing.Color.White;
-            this.btnSalvar.Appearance.Options.UseBackColor = true;
-            this.btnSalvar.ImageOptions.Image = global::projeto2.Properties.Resources.add_32x321;
-            this.btnSalvar.Location = new System.Drawing.Point(7, 15);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(102, 57);
-            this.btnSalvar.TabIndex = 12;
-            this.btnSalvar.Text = "Salvar [ + ]";
+            this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // gpcBotoes
             // 
+            this.gpcBotoes.Controls.Add(this.btnEstoque);
             this.gpcBotoes.Controls.Add(this.btnSalvar);
             this.gpcBotoes.Controls.Add(this.btnEditar);
             this.gpcBotoes.Controls.Add(this.btnExcluir);
@@ -248,6 +242,30 @@
             this.gpcBotoes.ShowCaption = false;
             this.gpcBotoes.Size = new System.Drawing.Size(861, 87);
             this.gpcBotoes.TabIndex = 15;
+            // 
+            // btnEstoque
+            // 
+            this.btnEstoque.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnEstoque.Appearance.Options.UseBackColor = true;
+            this.btnEstoque.ImageOptions.Image = global::projeto2.Properties.Resources.boproduct_32x32;
+            this.btnEstoque.Location = new System.Drawing.Point(12, 15);
+            this.btnEstoque.Name = "btnEstoque";
+            this.btnEstoque.Size = new System.Drawing.Size(102, 57);
+            this.btnEstoque.TabIndex = 15;
+            this.btnEstoque.Text = "Estoque [ E ]";
+            this.btnEstoque.Click += new System.EventHandler(this.BtnEstoque_Click);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnSalvar.Appearance.Options.UseBackColor = true;
+            this.btnSalvar.ImageOptions.Image = global::projeto2.Properties.Resources.add_32x321;
+            this.btnSalvar.Location = new System.Drawing.Point(120, 15);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(102, 57);
+            this.btnSalvar.TabIndex = 12;
+            this.btnSalvar.Text = "Novo [ + ]";
+            this.btnSalvar.Click += new System.EventHandler(this.BtnCadastrar_Click);
             // 
             // FrmProdutosDev
             // 
@@ -263,7 +281,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmProdutosDev_Load);
+            this.Load += new System.EventHandler(this.FrmProdutos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmProdutos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProdutos)).EndInit();
@@ -292,7 +311,8 @@
         private System.Windows.Forms.BindingSource produtoBindingSource;
         private DevExpress.XtraEditors.SimpleButton btnEditar;
         private DevExpress.XtraEditors.SimpleButton btnExcluir;
-        private DevExpress.XtraEditors.SimpleButton btnSalvar;
         private DevExpress.XtraEditors.GroupControl gpcBotoes;
+        private DevExpress.XtraEditors.SimpleButton btnEstoque;
+        private DevExpress.XtraEditors.SimpleButton btnSalvar;
     }
 }

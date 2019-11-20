@@ -41,8 +41,6 @@
             this.btnSalvarCadastroProduto = new System.Windows.Forms.Button();
             this.btnCancelarCadastroProduto = new System.Windows.Forms.Button();
             this.pnlControl = new System.Windows.Forms.Panel();
-            this.btnNovoGrupo = new System.Windows.Forms.Button();
-            this.btnNovaMarca = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txtCodigoDeBarras = new System.Windows.Forms.TextBox();
@@ -61,6 +59,8 @@
             this.txtGrupo = new System.Windows.Forms.ComboBox();
             this.txtMarca = new System.Windows.Forms.ComboBox();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNovoGrupo = new System.Windows.Forms.Button();
+            this.btnNovaMarca = new System.Windows.Forms.Button();
             this.pnlControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtValorDeVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra)).BeginInit();
@@ -158,7 +158,7 @@
             this.btnSalvarCadastroProduto.BackColor = System.Drawing.Color.LimeGreen;
             this.btnSalvarCadastroProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvarCadastroProduto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSalvarCadastroProduto.Location = new System.Drawing.Point(165, 324);
+            this.btnSalvarCadastroProduto.Location = new System.Drawing.Point(115, 324);
             this.btnSalvarCadastroProduto.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalvarCadastroProduto.Name = "btnSalvarCadastroProduto";
             this.btnSalvarCadastroProduto.Size = new System.Drawing.Size(141, 41);
@@ -219,28 +219,6 @@
             this.pnlControl.Name = "pnlControl";
             this.pnlControl.Size = new System.Drawing.Size(620, 381);
             this.pnlControl.TabIndex = 0;
-            // 
-            // btnNovoGrupo
-            // 
-            this.btnNovoGrupo.Image = global::projeto2.Properties.Resources.plus__1_;
-            this.btnNovoGrupo.Location = new System.Drawing.Point(281, 140);
-            this.btnNovoGrupo.Name = "btnNovoGrupo";
-            this.btnNovoGrupo.Size = new System.Drawing.Size(26, 23);
-            this.btnNovoGrupo.TabIndex = 30;
-            this.btnNovoGrupo.UseVisualStyleBackColor = true;
-            this.btnNovoGrupo.Click += new System.EventHandler(this.BtnNovoGrupo_Click);
-            this.btnNovoGrupo.MouseHover += new System.EventHandler(this.BtnNovoGrupo_MouseHover);
-            // 
-            // btnNovaMarca
-            // 
-            this.btnNovaMarca.Image = global::projeto2.Properties.Resources.plus__1_;
-            this.btnNovaMarca.Location = new System.Drawing.Point(560, 140);
-            this.btnNovaMarca.Name = "btnNovaMarca";
-            this.btnNovaMarca.Size = new System.Drawing.Size(26, 23);
-            this.btnNovaMarca.TabIndex = 29;
-            this.btnNovaMarca.UseVisualStyleBackColor = true;
-            this.btnNovaMarca.Click += new System.EventHandler(this.BtnNovaMarca_Click);
-            this.btnNovaMarca.MouseHover += new System.EventHandler(this.BtnNovaMarca_MouseHover);
             // 
             // label11
             // 
@@ -448,6 +426,28 @@
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            // 
+            // btnNovoGrupo
+            // 
+            this.btnNovoGrupo.Image = global::projeto2.Properties.Resources.plus__1_;
+            this.btnNovoGrupo.Location = new System.Drawing.Point(281, 140);
+            this.btnNovoGrupo.Name = "btnNovoGrupo";
+            this.btnNovoGrupo.Size = new System.Drawing.Size(26, 23);
+            this.btnNovoGrupo.TabIndex = 30;
+            this.btnNovoGrupo.UseVisualStyleBackColor = true;
+            this.btnNovoGrupo.Click += new System.EventHandler(this.BtnNovoGrupo_Click);
+            this.btnNovoGrupo.MouseHover += new System.EventHandler(this.BtnNovoGrupo_MouseHover);
+            // 
+            // btnNovaMarca
+            // 
+            this.btnNovaMarca.Image = global::projeto2.Properties.Resources.plus__1_;
+            this.btnNovaMarca.Location = new System.Drawing.Point(560, 140);
+            this.btnNovaMarca.Name = "btnNovaMarca";
+            this.btnNovaMarca.Size = new System.Drawing.Size(26, 23);
+            this.btnNovaMarca.TabIndex = 29;
+            this.btnNovaMarca.UseVisualStyleBackColor = true;
+            this.btnNovaMarca.Click += new System.EventHandler(this.BtnNovaMarca_Click);
+            this.btnNovaMarca.MouseHover += new System.EventHandler(this.BtnNovaMarca_MouseHover);
             // 
             // FrmCadastroDeProduto
             // 

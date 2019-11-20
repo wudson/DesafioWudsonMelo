@@ -4,10 +4,10 @@ using projeto2.Feature.Grupo.Model;
 using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Marca.Model;
 using projeto2.Feature.Produto.Dao;
-using projeto2.Feature.Produto.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using projeto2.Feature.Produto.View.Dev;
 using projeto2.Feature.Produto.View.WinForms;
 
 namespace projeto2.Feature.Produto.Controller
@@ -16,6 +16,7 @@ namespace projeto2.Feature.Produto.Controller
     {
         private readonly ProdutoDao _dao;
         private FrmCadastroDeProduto _frmCadastroDeProdutos;
+        private FrmCadastroDeProdutoDev _frmCadastroDeProdutosDev;
         private readonly GrupoController _grupoController;
         private readonly MarcaController _marcaController;
 
@@ -28,14 +29,30 @@ namespace projeto2.Feature.Produto.Controller
 
         public void AbrirTela()
         {
-            (_frmCadastroDeProdutos = new FrmCadastroDeProduto(this)).ShowDialog();
-            _frmCadastroDeProdutos.Dispose();
+            if (!ClasseComVariaveisGlobais.UsarDev)
+            {
+                (_frmCadastroDeProdutos = new FrmCadastroDeProduto(this)).ShowDialog();
+                _frmCadastroDeProdutos.Dispose();
+            }
+            else
+            {
+                (_frmCadastroDeProdutosDev = new FrmCadastroDeProdutoDev(this)).ShowDialog();
+                _frmCadastroDeProdutosDev.Dispose();
+            }
         }
 
         public void AbrirTelaParaAlterar(Produto produto)
         {
-            (_frmCadastroDeProdutos = new FrmCadastroDeProduto(this)).RecebeProdutoParaAlterar(produto);
-            _frmCadastroDeProdutos.Dispose();
+            if (!ClasseComVariaveisGlobais.UsarDev)
+            {
+                (_frmCadastroDeProdutos = new FrmCadastroDeProduto(this)).RecebeProdutoParaAlterar(produto);
+                _frmCadastroDeProdutos.Dispose();
+            }
+            else
+            {
+                (_frmCadastroDeProdutosDev = new FrmCadastroDeProdutoDev(this)).RecebeProdutoParaAlterar(produto);
+                _frmCadastroDeProdutosDev.Dispose();
+            }
         }
 
         public bool CadastrarDado(Produto produto)
