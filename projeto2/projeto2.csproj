@@ -511,5 +511,14 @@
   <ItemGroup>
     <None Include="Resources\add_16x16.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureshapeoutlinecolor_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gridhorizontallines_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bopermission_16x16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

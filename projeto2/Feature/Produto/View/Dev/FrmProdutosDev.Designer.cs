@@ -108,7 +108,7 @@
             // 
             this.IdProduto.Caption = "Código";
             this.IdProduto.FieldName = "IdProduto";
-            this.IdProduto.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("IdProduto.ImageOptions.SvgImage")));
+            this.IdProduto.ImageOptions.Image = global::projeto2.Properties.Resources.bopermission_16x16;
             this.IdProduto.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.IdProduto.Name = "IdProduto";
             this.IdProduto.OptionsColumn.AllowEdit = false;

@@ -1,37 +1,45 @@
-﻿using System;
+﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
+using projeto2.Feature.Cliente.View.Dev;
+using projeto2.Feature.Cliente.View.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using FirebirdSql.Data.FirebirdClient;
-using projeto2.Feature.Cliente.View;
-using projeto2.Feature.Cliente.View.WinForms;
 
 namespace projeto2.Feature.Cliente.Controller
 {
     public class ClienteController
     {
         private readonly ClienteDao _dao;
-        public ClienteModel ClienteModel { get; set; }
         private FrmClientes _frmClientes;
+        private FrmClientesDev _frmClientesDev;
 
         private readonly CadastroDeClienteController _cadastroDeClienteController;
 
         public ClienteController()
         {
-            ClienteModel = new ClienteModel();
             _dao = new ClienteDao();
 
             _frmClientes = new FrmClientes(this);
+            _frmClientesDev = new FrmClientesDev(this);
 
             _cadastroDeClienteController = new CadastroDeClienteController();
         }
 
         public void AbrirTelaDeClientes()
         {
-            (_frmClientes = new FrmClientes(this)).ShowDialog();
-            _frmClientes.Dispose();
+            if (!ClasseComVariaveisGlobais.UsarDev)
+            {
+                (_frmClientes = new FrmClientes(this)).ShowDialog();
+                _frmClientes.Dispose();
+            }
+            else
+            {
+                (_frmClientesDev = new FrmClientesDev(this)).ShowDialog();
+                _frmClientesDev.Dispose();
+            }
         }
 
         public ClienteModel BuscarDado(int idPessoa)

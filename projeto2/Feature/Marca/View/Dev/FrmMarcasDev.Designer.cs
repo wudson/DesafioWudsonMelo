@@ -105,7 +105,7 @@
             // 
             this.gridColumn1.Caption = "Código";
             this.gridColumn1.FieldName = "IdMarca";
-            this.gridColumn1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("gridColumn1.ImageOptions.SvgImage")));
+            this.gridColumn1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("gridColumn1.ImageOptions.Image")));
             this.gridColumn1.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;

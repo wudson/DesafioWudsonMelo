@@ -153,6 +153,16 @@ namespace projeto2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bopermission_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("bopermission_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap boproduct_32x32 {
             get {
                 object obj = ResourceManager.GetObject("boproduct_32x32", resourceCulture);
@@ -353,6 +363,16 @@ namespace projeto2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gridhorizontallines_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("gridhorizontallines_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logout {
             get {
                 object obj = ResourceManager.GetObject("logout", resourceCulture);
@@ -376,6 +396,16 @@ namespace projeto2.Properties {
         internal static System.Drawing.Bitmap package {
             get {
                 object obj = ResourceManager.GetObject("package", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pictureshapeoutlinecolor_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("pictureshapeoutlinecolor_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
