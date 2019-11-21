@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 using projeto2.Feature.Promocao.Controller;
 using projeto2.Feature.Promocao.Model;
 using System;
@@ -6,8 +7,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using DevExpress.XtraGrid.Views.Base;
-using DevExpress.XtraGrid.Views.Grid;
 
 namespace projeto2.Feature.Promocao.View.Dev
 {
@@ -34,7 +33,11 @@ namespace projeto2.Feature.Promocao.View.Dev
         {
             _promocoes = _promocoesController.ListarDados(Filtrar()).ToList();
             dgvPromocoes.DataSource = _promocoes;
+
+            ModificarEnabledDosBotoes(false);
         }
+
+        private void ModificarEnabledDosBotoes(bool enabled) => btnVerProdutos.Enabled = enabled;
 
         private FiltrosPromocaoModel Filtrar()
         {
@@ -59,15 +62,6 @@ namespace projeto2.Feature.Promocao.View.Dev
 
         private void FrmPromocoes_Load(object sender, EventArgs e) => AtualizarGridDePromocoes();
 
-        //private void DgvPromocoes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        //{
-        //    var promocao = _promocoes
-        //        .Where(p => p.NomePromocao.Equals(dgvPromocoes.CurrentRow?.Cells[0].Value.ToString()))
-        //        .ToList();
-
-        //    _promocoesController.AbrirTelaProdutosDaPromocao(promocao);
-        //}
-
         private void FrmPromocoes_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -89,6 +83,22 @@ namespace projeto2.Feature.Promocao.View.Dev
             if (e.Column.FieldName != colStatusPromocao.FieldName) return;
 
             e.Appearance.ForeColor = "Ativa".Equals(e.CellValue) ? Color.Green : Color.Red;
+        }
+
+        private void GvPromocao_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            if (e.FocusedRowHandle < 0) return;
+            ModificarEnabledDosBotoes(true);
+        }
+
+        private void BtnVerProdutos_Click(object sender, EventArgs e)
+        {
+            var promocao = _promocoes
+                    .Where(p => p.NomePromocao.Equals(gvPromocao.GetFocusedRowCellValue("NomePromocao")))
+                    .ToList();
+
+            _promocoesController.AbrirTelaProdutosDaPromocao(promocao);
+            AtualizarGridDePromocoes();
         }
     }
 }

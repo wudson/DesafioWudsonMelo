@@ -212,6 +212,12 @@
     <Compile Include="Feature\Promocao\Dao\PromocaoDao.cs" />
     <Compile Include="Feature\Promocao\Model\FiltrosPromocaoModel.cs" />
     <Compile Include="Feature\Promocao\Model\PromocaoModel.cs" />
+    <Compile Include="Feature\Promocao\View\Dev\FrmProdutosDaPromocaoDev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\Dev\FrmProdutosDaPromocaoDev.Designer.cs">
+      <DependentUpon>FrmProdutosDaPromocaoDev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Promocao\View\Dev\FrmPromocoesDev.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Produto\View\WinForms\RibbonForm1.resx">
       <DependentUpon>RibbonForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Promocao\View\Dev\FrmProdutosDaPromocaoDev.resx">
+      <DependentUpon>FrmProdutosDaPromocaoDev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\Dev\FrmPromocoesDev.resx">
       <DependentUpon>FrmPromocoesDev.cs</DependentUpon>
@@ -477,7 +486,9 @@
   <ItemGroup>
     <None Include="Resources\star.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\show_32x32.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\connection.png" />
   </ItemGroup>

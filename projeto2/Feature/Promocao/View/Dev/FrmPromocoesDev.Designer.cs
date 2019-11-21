@@ -44,6 +44,7 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
             this.grpFiltroPromocao = new DevExpress.XtraEditors.RadioGroup();
+            this.btnVerProdutos = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPromocoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.promocaoModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvPromocao)).BeginInit();
@@ -100,6 +101,7 @@
             this.gvPromocao.OptionsView.EnableAppearanceEvenRow = true;
             this.gvPromocao.OptionsView.ShowIndicator = false;
             this.gvPromocao.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvPromocao_CustomDrawCell);
+            this.gvPromocao.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GvPromocao_FocusedRowChanged);
             // 
             // colNomePromocao
             // 
@@ -240,11 +242,24 @@
             this.grpFiltroPromocao.Size = new System.Drawing.Size(247, 23);
             this.grpFiltroPromocao.TabIndex = 14;
             // 
+            // btnVerProdutos
+            // 
+            this.btnVerProdutos.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnVerProdutos.Appearance.Options.UseBackColor = true;
+            this.btnVerProdutos.ImageOptions.Image = global::projeto2.Properties.Resources.show_32x32;
+            this.btnVerProdutos.Location = new System.Drawing.Point(120, 12);
+            this.btnVerProdutos.Name = "btnVerProdutos";
+            this.btnVerProdutos.Size = new System.Drawing.Size(129, 57);
+            this.btnVerProdutos.TabIndex = 15;
+            this.btnVerProdutos.Text = "Ver produtos [ i ]";
+            this.btnVerProdutos.Click += new System.EventHandler(this.BtnVerProdutos_Click);
+            // 
             // FrmPromocoesDev
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 394);
+            this.Controls.Add(this.btnVerProdutos);
             this.Controls.Add(this.grpFiltroPromocao);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.dgvPromocoes);
@@ -283,5 +298,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colStatusPromocao;
         private DevExpress.XtraEditors.SimpleButton btnSalvar;
         private DevExpress.XtraEditors.RadioGroup grpFiltroPromocao;
+        private DevExpress.XtraEditors.SimpleButton btnVerProdutos;
     }
 }
