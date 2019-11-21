@@ -230,6 +230,12 @@
     <Compile Include="Feature\Promocao\View\Dev\FrmPromocoesDev.Designer.cs">
       <DependentUpon>FrmPromocoesDev.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Promocao\View\Dev\FrmSelecionarProdutosParaPromocao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\Dev\FrmSelecionarProdutosParaPromocao.Designer.cs">
+      <DependentUpon>FrmSelecionarProdutosParaPromocao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Promocao\View\WinForms\FrmCadastroDePromcao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\Dev\FrmPromocoesDev.resx">
       <DependentUpon>FrmPromocoesDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Promocao\View\Dev\FrmSelecionarProdutosParaPromocao.resx">
+      <DependentUpon>FrmSelecionarProdutosParaPromocao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Promocao\View\WinForms\FrmCadastroDePromcao.resx">
       <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>
@@ -578,6 +587,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bosale_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear_32x322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_32x321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
