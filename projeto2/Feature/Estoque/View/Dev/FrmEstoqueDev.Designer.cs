@@ -444,7 +444,7 @@
             this.KeyPreview = true;
             this.Name = "FrmEstoqueDev";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmEstoqueDev";
+            this.Text = "Estoque";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmEstoque_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmEstoque_KeyDown);

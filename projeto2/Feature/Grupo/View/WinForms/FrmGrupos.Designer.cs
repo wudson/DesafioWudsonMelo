@@ -1,4 +1,4 @@
-﻿namespace projeto2.Feature.Grupo.View
+﻿namespace projeto2.Feature.Grupo.View.WinForms
 {
     partial class FrmGrupos
     {

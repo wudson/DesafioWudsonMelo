@@ -122,7 +122,7 @@
             // 
             this.gridColumn2.Caption = "Marca";
             this.gridColumn2.FieldName = "Marca";
-            this.gridColumn2.ImageOptions.Image = global::projeto2.Properties.Resources.star__1_;
+            this.gridColumn2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("gridColumn2.ImageOptions.Image")));
             this.gridColumn2.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
@@ -196,11 +196,11 @@
             this.btnSalvarMarca.Appearance.BackColor = System.Drawing.Color.White;
             this.btnSalvarMarca.Appearance.Options.UseBackColor = true;
             this.btnSalvarMarca.ImageOptions.Image = global::projeto2.Properties.Resources.add_32x321;
-            this.btnSalvarMarca.Location = new System.Drawing.Point(12, 53);
+            this.btnSalvarMarca.Location = new System.Drawing.Point(13, 53);
             this.btnSalvarMarca.Name = "btnSalvarMarca";
-            this.btnSalvarMarca.Size = new System.Drawing.Size(102, 57);
+            this.btnSalvarMarca.Size = new System.Drawing.Size(109, 57);
             this.btnSalvarMarca.TabIndex = 9;
-            this.btnSalvarMarca.Text = "Salvar [ + ]";
+            this.btnSalvarMarca.Text = "Salvar [Enter]";
             this.btnSalvarMarca.Click += new System.EventHandler(this.BtnSalvarMarca_Click);
             // 
             // btnExcluirMarca
@@ -208,9 +208,9 @@
             this.btnExcluirMarca.Appearance.BackColor = System.Drawing.Color.White;
             this.btnExcluirMarca.Appearance.Options.UseBackColor = true;
             this.btnExcluirMarca.ImageOptions.Image = global::projeto2.Properties.Resources.delete_32x32;
-            this.btnExcluirMarca.Location = new System.Drawing.Point(228, 53);
+            this.btnExcluirMarca.Location = new System.Drawing.Point(243, 53);
             this.btnExcluirMarca.Name = "btnExcluirMarca";
-            this.btnExcluirMarca.Size = new System.Drawing.Size(102, 57);
+            this.btnExcluirMarca.Size = new System.Drawing.Size(109, 57);
             this.btnExcluirMarca.TabIndex = 10;
             this.btnExcluirMarca.Text = "Excluir [Del]";
             this.btnExcluirMarca.Click += new System.EventHandler(this.BtnExcluirMarca_Click);
@@ -220,9 +220,9 @@
             this.btnEditar.Appearance.BackColor = System.Drawing.Color.White;
             this.btnEditar.Appearance.Options.UseBackColor = true;
             this.btnEditar.ImageOptions.Image = global::projeto2.Properties.Resources.edit_32x321;
-            this.btnEditar.Location = new System.Drawing.Point(120, 53);
+            this.btnEditar.Location = new System.Drawing.Point(128, 53);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(102, 57);
+            this.btnEditar.Size = new System.Drawing.Size(109, 57);
             this.btnEditar.TabIndex = 11;
             this.btnEditar.Text = "Editar [ F4 ]";
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);

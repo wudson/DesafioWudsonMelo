@@ -1,9 +1,9 @@
-﻿using projeto2.Feature.Grupo.Controller;
-using projeto2.Feature.Grupo.Model;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using projeto2.Feature.Grupo.Controller;
+using projeto2.Feature.Grupo.Model;
 
-namespace projeto2.Feature.Grupo.View
+namespace projeto2.Feature.Grupo.View.WinForms
 {
     public partial class FrmGrupos : Form
     {

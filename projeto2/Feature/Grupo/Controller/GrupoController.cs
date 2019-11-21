@@ -1,7 +1,8 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Grupo.Dao;
 using projeto2.Feature.Grupo.Model;
-using projeto2.Feature.Grupo.View;
+using projeto2.Feature.Grupo.View.Dev;
+using projeto2.Feature.Grupo.View.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +14,22 @@ namespace projeto2.Feature.Grupo.Controller
     {
         private readonly GrupoDao _dao;
         private readonly FrmGrupos _frmGrupos;
+        private readonly FrmGruposDev _frmGruposDev;
 
         public GrupoController()
         {
             _dao = new GrupoDao();
             _frmGrupos = new FrmGrupos(this);
+            _frmGruposDev = new FrmGruposDev(this);
         }
 
-        public void AbrirTelaDeGrupos() =>
-            _frmGrupos.ShowDialog();
+        public void AbrirTelaDeGrupos()
+        {
+            if (!ClasseComVariaveisGlobais.UsarDev)
+                _frmGrupos.ShowDialog();
+            else
+                _frmGruposDev.ShowDialog();
+        }
 
         public void CadastrarGrupo(GrupoModel novoGrupo)
         {

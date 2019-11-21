@@ -125,10 +125,16 @@
     <Compile Include="Feature\Grupo\Controller\GrupoController.cs" />
     <Compile Include="Feature\Grupo\Dao\GrupoDao.cs" />
     <Compile Include="Feature\Grupo\Model\GrupoModel.cs" />
-    <Compile Include="Feature\Grupo\View\FrmGrupos.cs">
+    <Compile Include="Feature\Grupo\View\Dev\FrmGruposDev.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Grupo\View\FrmGrupos.Designer.cs">
+    <Compile Include="Feature\Grupo\View\Dev\FrmGruposDev.Designer.cs">
+      <DependentUpon>FrmGruposDev.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Grupo\View\WinForms\FrmGrupos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Grupo\View\WinForms\FrmGrupos.Designer.cs">
       <DependentUpon>FrmGrupos.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Marca\Controller\MarcaController.cs" />
@@ -280,7 +286,10 @@
     <EmbeddedResource Include="Feature\Estoque\View\WinForms\FrmEstoque.resx">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Grupo\View\FrmGrupos.resx">
+    <EmbeddedResource Include="Feature\Grupo\View\Dev\FrmGruposDev.resx">
+      <DependentUpon>FrmGruposDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Grupo\View\WinForms\FrmGrupos.resx">
       <DependentUpon>FrmGrupos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Marca\View\Dev\FrmMarcasDev.resx">

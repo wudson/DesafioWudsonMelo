@@ -28,7 +28,7 @@ namespace projeto2.Feature.Marca.View.Dev
                 case Keys.Escape:
                     Close();
                     break;
-                case Keys.Add:
+                case Keys.Enter:
                     BtnSalvarMarca_Click(sender, e);
                     break;
                 case Keys.F4:
