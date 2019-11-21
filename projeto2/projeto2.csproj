@@ -110,10 +110,16 @@
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Estoque\Controller\EstoqueDeProdutoController.cs" />
-    <Compile Include="Feature\Estoque\View\FrmEstoque.cs">
+    <Compile Include="Feature\Estoque\View\Dev\FrmEstoqueDev.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Estoque\View\FrmEstoque.Designer.cs">
+    <Compile Include="Feature\Estoque\View\Dev\FrmEstoqueDev.Designer.cs">
+      <DependentUpon>FrmEstoqueDev.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Estoque\View\WinForms\FrmEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Estoque\View\WinForms\FrmEstoque.Designer.cs">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Grupo\Controller\GrupoController.cs" />
@@ -268,7 +274,10 @@
     <EmbeddedResource Include="Feature\Cliente\View\WinForms\FrmCadastroDeCliente.resx">
       <DependentUpon>FrmCadastroDeCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Estoque\View\FrmEstoque.resx">
+    <EmbeddedResource Include="Feature\Estoque\View\Dev\FrmEstoqueDev.resx">
+      <DependentUpon>FrmEstoqueDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Estoque\View\WinForms\FrmEstoque.resx">
       <DependentUpon>FrmEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Grupo\View\FrmGrupos.resx">

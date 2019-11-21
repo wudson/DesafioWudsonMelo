@@ -1,16 +1,15 @@
-﻿using projeto2.Feature.Grupo.Controller;
-using projeto2.Feature.Produto.Controller;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using projeto2.Feature.Estoque.Controller;
 
-namespace projeto2.Feature.Estoque.View
+namespace projeto2.Feature.Estoque.View.Dev
 {
-    public partial class FrmEstoque : Form
+    public partial class FrmEstoqueDev : XtraForm
     {
         private readonly EstoqueDeProdutoController _estoqueDeProdutoController;
 
-        public FrmEstoque(EstoqueDeProdutoController controller)
+        public FrmEstoqueDev(EstoqueDeProdutoController controller)
         {
             InitializeComponent();
             _estoqueDeProdutoController = controller;
@@ -20,32 +19,21 @@ namespace projeto2.Feature.Estoque.View
         {
             dgvEstoque.DataSource = _estoqueDeProdutoController.ListarDados(new Produto.Produto());
             PreencherGrupos();
-            PreencherTipos();
         }
 
         private void PreencherGrupos()
         {
-            txtGrupo.DataSource = new GrupoController().ListarGrupos();
-            txtGrupo.DisplayMember = "Grupo";
-            txtGrupo.ValueMember = "IdGrupo";
-            txtGrupo.Text = string.Empty;
+            txtGrupo.Properties.DataSource = _estoqueDeProdutoController.ListarGrupos();
+            txtGrupo.Properties.NullText = string.Empty;
         }
 
-        private void PreencherTipos()
-        {
-            txtTipo.Items.Clear();
-            txtTipo.Items.Add("Unidade");
-            txtTipo.Items.Add("Caixa");
-            txtTipo.Items.Add("Peso");
-        }
-
-        private void BtnFiltrar_Click(object sender, EventArgs e) => 
+        private void BtnFiltrar_Click(object sender, EventArgs e) =>
             dgvEstoque.DataSource = _estoqueDeProdutoController.ListarDados(Filtrar());
 
         private Produto.Produto Filtrar() =>
             new Produto.Produto
             {
-                NomeProduto = txtPesquisa.Text.Trim(),
+                NomeProduto = txtNome.Text.Trim(),
                 GrupoProduto = { Grupo = txtGrupo.Text.Trim() },
                 TipoProduto = txtTipo.Text.Trim()
             };
@@ -68,13 +56,10 @@ namespace projeto2.Feature.Estoque.View
 
         private void BtnLimpar_Click(object sender, EventArgs e)
         {
-            txtGrupo.Text = string.Empty;
-            txtPesquisa.Text = string.Empty;
+            txtGrupo.EditValue = null;
+            txtNome.Text = string.Empty;
             txtTipo.Text = string.Empty;
             FrmEstoque_Load(sender, e);
         }
-
-        private void DgvEstoque_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) =>
-            e.Value = Propriedade.BuscarPropriedadeComPonto(dgvEstoque, e);
     }
 }

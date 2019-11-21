@@ -235,7 +235,7 @@
             // 
             this.txtRg.Location = new System.Drawing.Point(342, 51);
             this.txtRg.Name = "txtRg";
-            this.txtRg.Properties.MaxLength = 100;
+            this.txtRg.Properties.MaxLength = 15;
             this.txtRg.Size = new System.Drawing.Size(306, 20);
             this.txtRg.TabIndex = 3;
             // 
@@ -354,7 +354,7 @@
             // 
             this.txtBairro.Location = new System.Drawing.Point(342, 185);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Properties.MaxLength = 100;
+            this.txtBairro.Properties.MaxLength = 50;
             this.txtBairro.Size = new System.Drawing.Size(306, 20);
             this.txtBairro.TabIndex = 6;
             // 
@@ -380,7 +380,7 @@
             // 
             this.txtCep.Location = new System.Drawing.Point(11, 50);
             this.txtCep.Name = "txtCep";
-            this.txtCep.Properties.MaxLength = 100;
+            this.txtCep.Properties.MaxLength = 15;
             this.txtCep.Size = new System.Drawing.Size(306, 20);
             this.txtCep.TabIndex = 0;
             // 
@@ -406,7 +406,7 @@
             // 
             this.txtRua.Location = new System.Drawing.Point(11, 140);
             this.txtRua.Name = "txtRua";
-            this.txtRua.Properties.MaxLength = 100;
+            this.txtRua.Properties.MaxLength = 50;
             this.txtRua.Size = new System.Drawing.Size(306, 20);
             this.txtRua.TabIndex = 3;
             // 
@@ -432,7 +432,9 @@
             // 
             this.txtNumero.Location = new System.Drawing.Point(342, 140);
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Properties.MaxLength = 100;
+            this.txtNumero.Properties.Mask.EditMask = "\\d+";
+            this.txtNumero.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtNumero.Properties.MaxLength = 10;
             this.txtNumero.Size = new System.Drawing.Size(306, 20);
             this.txtNumero.TabIndex = 4;
             // 
@@ -448,7 +450,7 @@
             // 
             this.txtComplemento.Location = new System.Drawing.Point(11, 185);
             this.txtComplemento.Name = "txtComplemento";
-            this.txtComplemento.Properties.MaxLength = 100;
+            this.txtComplemento.Properties.MaxLength = 30;
             this.txtComplemento.Size = new System.Drawing.Size(306, 20);
             this.txtComplemento.TabIndex = 5;
             // 

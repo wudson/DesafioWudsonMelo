@@ -186,11 +186,5 @@ namespace projeto2.Feature.Produto.View.Dev
             _cadastroDeProdutoController.AbrirCadastroDeMarca();
             PreencherMarcas();
         }
-
-        private void BtnNovoGrupo_MouseHover(object sender, EventArgs e) =>
-            new ToolTip().SetToolTip(btnNovoGrupo, "Cadastrar novo grupo.");
-
-        private void BtnNovaMarca_MouseHover(object sender, EventArgs e) =>
-            new ToolTip().SetToolTip(btnNovaMarca, "Cadastrar nova marca.");
     }
 }

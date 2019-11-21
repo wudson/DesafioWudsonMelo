@@ -1,4 +1,4 @@
-﻿namespace projeto2.Feature.Estoque.View
+﻿namespace projeto2.Feature.Estoque.View.WinForms
 {
     partial class FrmEstoque
     {

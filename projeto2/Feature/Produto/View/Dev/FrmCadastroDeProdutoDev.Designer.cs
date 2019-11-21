@@ -53,14 +53,14 @@
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.txtGrupo = new DevExpress.XtraEditors.LookUpEdit();
+            this.grupoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtMarca = new DevExpress.XtraEditors.LookUpEdit();
+            this.marcaModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnNovaMarca = new DevExpress.XtraEditors.SimpleButton();
             this.btnNovoGrupo = new DevExpress.XtraEditors.SimpleButton();
             this.btnSalvarCadastroProduto = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancelarCadastroProduto = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
-            this.marcaModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.grupoModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pnlCampos = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtTipo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).BeginInit();
@@ -70,9 +70,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGrupo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grupoModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMarca.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.marcaModelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grupoModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlCampos)).BeginInit();
             this.pnlCampos.SuspendLayout();
             this.SuspendLayout();
@@ -162,7 +162,7 @@
             // 
             this.txtCodigoDeBarras.Location = new System.Drawing.Point(277, 146);
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
-            this.txtCodigoDeBarras.Properties.MaxLength = 25;
+            this.txtCodigoDeBarras.Properties.MaxLength = 20;
             this.txtCodigoDeBarras.Size = new System.Drawing.Size(252, 20);
             this.txtCodigoDeBarras.TabIndex = 6;
             // 
@@ -309,6 +309,10 @@
             this.txtGrupo.Size = new System.Drawing.Size(228, 20);
             this.txtGrupo.TabIndex = 1;
             // 
+            // grupoModelBindingSource
+            // 
+            this.grupoModelBindingSource.DataSource = typeof(projeto2.Feature.Grupo.Model.GrupoModel);
+            // 
             // txtMarca
             // 
             this.txtMarca.Location = new System.Drawing.Point(277, 102);
@@ -324,6 +328,10 @@
             this.txtMarca.Size = new System.Drawing.Size(228, 20);
             this.txtMarca.TabIndex = 3;
             // 
+            // marcaModelBindingSource
+            // 
+            this.marcaModelBindingSource.DataSource = typeof(projeto2.Feature.Marca.Model.MarcaModel);
+            // 
             // btnNovaMarca
             // 
             this.btnNovaMarca.Appearance.BackColor = System.Drawing.Color.White;
@@ -333,8 +341,8 @@
             this.btnNovaMarca.Name = "btnNovaMarca";
             this.btnNovaMarca.Size = new System.Drawing.Size(23, 20);
             this.btnNovaMarca.TabIndex = 4;
+            this.btnNovaMarca.ToolTip = "Cadastrar nova marca.";
             this.btnNovaMarca.Click += new System.EventHandler(this.BtnNovaMarca_Click);
-            this.btnNovaMarca.MouseHover += new System.EventHandler(this.BtnNovaMarca_MouseHover);
             // 
             // btnNovoGrupo
             // 
@@ -345,8 +353,8 @@
             this.btnNovoGrupo.Name = "btnNovoGrupo";
             this.btnNovoGrupo.Size = new System.Drawing.Size(23, 20);
             this.btnNovoGrupo.TabIndex = 2;
+            this.btnNovoGrupo.ToolTip = "Cadastrar novo grupo.";
             this.btnNovoGrupo.Click += new System.EventHandler(this.BtnNovoGrupo_Click);
-            this.btnNovoGrupo.MouseHover += new System.EventHandler(this.BtnNovoGrupo_MouseHover);
             // 
             // btnSalvarCadastroProduto
             // 
@@ -384,14 +392,6 @@
             this.btnEditar.Text = "Salvar [Enter]";
             this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
-            // 
-            // marcaModelBindingSource
-            // 
-            this.marcaModelBindingSource.DataSource = typeof(projeto2.Feature.Marca.Model.MarcaModel);
-            // 
-            // grupoModelBindingSource
-            // 
-            this.grupoModelBindingSource.DataSource = typeof(projeto2.Feature.Grupo.Model.GrupoModel);
             // 
             // pnlCampos
             // 
@@ -452,9 +452,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtValorDeCompra.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFornecedor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGrupo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grupoModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMarca.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.marcaModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grupoModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlCampos)).EndInit();
             this.pnlCampos.ResumeLayout(false);
             this.pnlCampos.PerformLayout();
