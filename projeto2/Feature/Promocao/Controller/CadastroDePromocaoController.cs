@@ -1,11 +1,11 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Promocao.Dao;
 using projeto2.Feature.Promocao.Model;
-using projeto2.Feature.Promocao.View;
+using projeto2.Feature.Promocao.View.Dev;
+using projeto2.Feature.Promocao.View.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using projeto2.Feature.Promocao.View.WinForms;
 
 namespace projeto2.Feature.Promocao.Controller
 {
@@ -13,6 +13,7 @@ namespace projeto2.Feature.Promocao.Controller
     {
         private readonly PromocaoDao _dao;
         private FrmCadastroDePromcao _frmCadastroDePromcao;
+        private FrmCadastroDePromocaoDev _frmCadastroDePromcaoDev;
         private readonly ProdutosAdicionadosNaPromocaoController _produtosAdicionadosNaPromocaoController;
 
         public CadastroDePromocaoController()
@@ -23,11 +24,19 @@ namespace projeto2.Feature.Promocao.Controller
 
         public void AbrirTelaCadastroDePromocao()
         {
-            (_frmCadastroDePromcao = new FrmCadastroDePromcao(this)).ShowDialog();
-            _frmCadastroDePromcao.Dispose();
+            if (!ClasseComVariaveisGlobais.UsarDev)
+            {
+                (_frmCadastroDePromcao = new FrmCadastroDePromcao(this)).ShowDialog();
+                _frmCadastroDePromcao.Dispose();
+            }
+            else
+            {
+                (_frmCadastroDePromcaoDev = new FrmCadastroDePromocaoDev(this)).ShowDialog();
+                _frmCadastroDePromcaoDev.Dispose();
+            }
         }
 
-        public IList<PromocaoModel> RetornarProdutos(List<Produto.Produto> produtos) => 
+        public IList<PromocaoModel> RetornarProdutos(List<Produto.Produto> produtos) =>
             _produtosAdicionadosNaPromocaoController.RetornarProdutos(produtos);
 
         public bool CadastrarDado(PromocaoModel promocao)

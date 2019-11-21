@@ -78,7 +78,7 @@ namespace projeto2.Feature.Promocao.View.Dev
         private void GrpFiltroPromocao_Properties_EditValueChanged(object sender, EventArgs e) => 
             AtualizarGridDePromocoes();
 
-        private void gvPromocao_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        private void GvPromocao_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
             if (e.Column.FieldName != colStatusPromocao.FieldName) return;
 

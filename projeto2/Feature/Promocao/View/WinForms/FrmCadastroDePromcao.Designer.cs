@@ -35,12 +35,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroDePromcao));
             this.btnSelecionarProdutosDaPromocao = new System.Windows.Forms.Button();
             this.dgvProdutosDaPromocao = new System.Windows.Forms.DataGridView();
-            this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PreçoComDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grupoDesconto = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnAplicar = new System.Windows.Forms.Button();
@@ -73,13 +67,19 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.grupoPeriodoENome = new System.Windows.Forms.GroupBox();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorCompraProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorVendaProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreçoComDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.grupoDesconto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesconto)).BeginInit();
             this.grupoItemGratis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPromocaoItemGratis)).BeginInit();
             this.grupoPeriodoENome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSelecionarProdutosDaPromocao
@@ -115,56 +115,6 @@
             this.dgvProdutosDaPromocao.Size = new System.Drawing.Size(710, 294);
             this.dgvProdutosDaPromocao.TabIndex = 6;
             this.dgvProdutosDaPromocao.DataSourceChanged += new System.EventHandler(this.DgvProdutosDaPromocao_DataSourceChanged);
-            // 
-            // idProduto
-            // 
-            this.idProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.idProduto.DataPropertyName = "IdProduto";
-            this.idProduto.HeaderText = "Código";
-            this.idProduto.Name = "idProduto";
-            this.idProduto.ReadOnly = true;
-            this.idProduto.Width = 85;
-            // 
-            // nomeProduto
-            // 
-            this.nomeProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nomeProduto.DataPropertyName = "NomeProduto";
-            this.nomeProduto.HeaderText = "NomeProduto";
-            this.nomeProduto.Name = "nomeProduto";
-            this.nomeProduto.ReadOnly = true;
-            // 
-            // valorCompraProduto
-            // 
-            this.valorCompraProduto.DataPropertyName = "ValorCompraProduto";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.valorCompraProduto.DefaultCellStyle = dataGridViewCellStyle1;
-            this.valorCompraProduto.HeaderText = "Preço de compra";
-            this.valorCompraProduto.Name = "valorCompraProduto";
-            this.valorCompraProduto.ReadOnly = true;
-            // 
-            // valorVendaProduto
-            // 
-            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.valorVendaProduto.HeaderText = "Preço de venda";
-            this.valorVendaProduto.Name = "valorVendaProduto";
-            this.valorVendaProduto.ReadOnly = true;
-            // 
-            // PreçoComDesconto
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.PreçoComDesconto.DefaultCellStyle = dataGridViewCellStyle3;
-            this.PreçoComDesconto.HeaderText = "Preço com desconto";
-            this.PreçoComDesconto.Name = "PreçoComDesconto";
-            this.PreçoComDesconto.ReadOnly = true;
-            // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
             // 
             // grupoDesconto
             // 
@@ -516,6 +466,56 @@
             this.grupoPeriodoENome.TabIndex = 3;
             this.grupoPeriodoENome.TabStop = false;
             // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(projeto2.Feature.Produto.Produto);
+            // 
+            // idProduto
+            // 
+            this.idProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.idProduto.DataPropertyName = "IdProduto";
+            this.idProduto.HeaderText = "Código";
+            this.idProduto.Name = "idProduto";
+            this.idProduto.ReadOnly = true;
+            this.idProduto.Width = 85;
+            // 
+            // nomeProduto
+            // 
+            this.nomeProduto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeProduto.DataPropertyName = "NomeProduto";
+            this.nomeProduto.HeaderText = "Produto";
+            this.nomeProduto.Name = "nomeProduto";
+            this.nomeProduto.ReadOnly = true;
+            // 
+            // valorCompraProduto
+            // 
+            this.valorCompraProduto.DataPropertyName = "ValorCompraProduto";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.valorCompraProduto.DefaultCellStyle = dataGridViewCellStyle1;
+            this.valorCompraProduto.HeaderText = "Preço de compra";
+            this.valorCompraProduto.Name = "valorCompraProduto";
+            this.valorCompraProduto.ReadOnly = true;
+            // 
+            // valorVendaProduto
+            // 
+            this.valorVendaProduto.DataPropertyName = "ValorVendaProduto";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.valorVendaProduto.DefaultCellStyle = dataGridViewCellStyle2;
+            this.valorVendaProduto.HeaderText = "Preço de venda";
+            this.valorVendaProduto.Name = "valorVendaProduto";
+            this.valorVendaProduto.ReadOnly = true;
+            // 
+            // PreçoComDesconto
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.PreçoComDesconto.DefaultCellStyle = dataGridViewCellStyle3;
+            this.PreçoComDesconto.HeaderText = "Preço com desconto";
+            this.PreçoComDesconto.Name = "PreçoComDesconto";
+            this.PreçoComDesconto.ReadOnly = true;
+            // 
             // FrmCadastroDePromcao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -542,7 +542,6 @@
             this.Load += new System.EventHandler(this.FrmCadastroDePromcao_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroDePromcao_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosDaPromocao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.grupoDesconto.ResumeLayout(false);
             this.grupoDesconto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDesconto)).EndInit();
@@ -551,6 +550,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPromocaoItemGratis)).EndInit();
             this.grupoPeriodoENome.ResumeLayout(false);
             this.grupoPeriodoENome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -577,11 +577,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox txtTipoPromocao;
         private System.Windows.Forms.BindingSource produtoBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorCompraProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorVendaProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PreçoComDesconto;
         private System.Windows.Forms.GroupBox grupoItemGratis;
         private System.Windows.Forms.TextBox txtBrinde;
         private System.Windows.Forms.ComboBox txtCompreMenosLeveMais;
@@ -597,5 +592,10 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox grupoPeriodoENome;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorCompraProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorVendaProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreçoComDesconto;
     }
 }

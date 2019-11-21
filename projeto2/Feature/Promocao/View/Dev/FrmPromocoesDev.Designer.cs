@@ -100,7 +100,7 @@
             this.gvPromocao.OptionsPrint.PrintVertLines = false;
             this.gvPromocao.OptionsView.EnableAppearanceEvenRow = true;
             this.gvPromocao.OptionsView.ShowIndicator = false;
-            this.gvPromocao.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvPromocao_CustomDrawCell);
+            this.gvPromocao.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.GvPromocao_CustomDrawCell);
             this.gvPromocao.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.GvPromocao_FocusedRowChanged);
             // 
             // colNomePromocao
