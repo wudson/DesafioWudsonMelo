@@ -188,6 +188,7 @@
             // 
             this.txtMarca.Location = new System.Drawing.Point(12, 27);
             this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Properties.MaxLength = 25;
             this.txtMarca.Size = new System.Drawing.Size(422, 20);
             this.txtMarca.TabIndex = 7;
             // 

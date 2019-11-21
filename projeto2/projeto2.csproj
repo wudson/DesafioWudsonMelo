@@ -212,28 +212,34 @@
     <Compile Include="Feature\Promocao\Dao\PromocaoDao.cs" />
     <Compile Include="Feature\Promocao\Model\FiltrosPromocaoModel.cs" />
     <Compile Include="Feature\Promocao\Model\PromocaoModel.cs" />
-    <Compile Include="Feature\Promocao\View\FrmCadastroDePromcao.cs">
+    <Compile Include="Feature\Promocao\View\Dev\FrmPromocoesDev.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmCadastroDePromcao.Designer.cs">
+    <Compile Include="Feature\Promocao\View\Dev\FrmPromocoesDev.Designer.cs">
+      <DependentUpon>FrmPromocoesDev.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\WinForms\FrmCadastroDePromcao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Promocao\View\WinForms\FrmCadastroDePromcao.Designer.cs">
       <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocao.cs">
+    <Compile Include="Feature\Promocao\View\WinForms\FrmProdutosDaPromocao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocao.Designer.cs">
+    <Compile Include="Feature\Promocao\View\WinForms\FrmProdutosDaPromocao.Designer.cs">
       <DependentUpon>FrmProdutosDaPromocao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.cs">
+    <Compile Include="Feature\Promocao\View\WinForms\FrmProdutosDaPromocaoComDesconto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.Designer.cs">
+    <Compile Include="Feature\Promocao\View\WinForms\FrmProdutosDaPromocaoComDesconto.Designer.cs">
       <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmPromocoes.cs">
+    <Compile Include="Feature\Promocao\View\WinForms\FrmPromocoes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Promocao\View\FrmPromocoes.Designer.cs">
+    <Compile Include="Feature\Promocao\View\WinForms\FrmPromocoes.Designer.cs">
       <DependentUpon>FrmPromocoes.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEntrar.cs">
@@ -319,16 +325,19 @@
     <EmbeddedResource Include="Feature\Produto\View\WinForms\RibbonForm1.resx">
       <DependentUpon>RibbonForm1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Promocao\View\FrmCadastroDePromcao.resx">
+    <EmbeddedResource Include="Feature\Promocao\View\Dev\FrmPromocoesDev.resx">
+      <DependentUpon>FrmPromocoesDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Promocao\View\WinForms\FrmCadastroDePromcao.resx">
       <DependentUpon>FrmCadastroDePromcao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Promocao\View\FrmProdutosDaPromocao.resx">
+    <EmbeddedResource Include="Feature\Promocao\View\WinForms\FrmProdutosDaPromocao.resx">
       <DependentUpon>FrmProdutosDaPromocao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Promocao\View\FrmProdutosDaPromocaoComDesconto.resx">
+    <EmbeddedResource Include="Feature\Promocao\View\WinForms\FrmProdutosDaPromocaoComDesconto.resx">
       <DependentUpon>FrmProdutosDaPromocaoComDesconto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Promocao\View\FrmPromocoes.resx">
+    <EmbeddedResource Include="Feature\Promocao\View\WinForms\FrmPromocoes.resx">
       <DependentUpon>FrmPromocoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEntrar.resx">
@@ -468,10 +477,7 @@
   <ItemGroup>
     <None Include="Resources\star.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Feature\Promocao\View\DevExpress\" />
-    <Folder Include="Feature\Promocao\View\WinForms\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\connection.png" />
   </ItemGroup>

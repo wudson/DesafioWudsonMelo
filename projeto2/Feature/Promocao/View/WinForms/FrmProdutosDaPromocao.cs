@@ -1,9 +1,9 @@
 ﻿using System;
-using projeto2.Feature.Promocao.Model;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using projeto2.Feature.Promocao.Model;
 
-namespace projeto2.Feature.Promocao.View
+namespace projeto2.Feature.Promocao.View.WinForms
 {
     public partial class FrmProdutosDaPromocao : Form
     {

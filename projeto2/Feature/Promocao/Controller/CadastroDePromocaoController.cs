@@ -5,6 +5,7 @@ using projeto2.Feature.Promocao.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using projeto2.Feature.Promocao.View.WinForms;
 
 namespace projeto2.Feature.Promocao.Controller
 {

@@ -1,17 +1,19 @@
-﻿using System;
+﻿using FirebirdSql.Data.FirebirdClient;
+using projeto2.Feature.Promocao.Dao;
+using projeto2.Feature.Promocao.Model;
+using projeto2.Feature.Promocao.View.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using FirebirdSql.Data.FirebirdClient;
-using projeto2.Feature.Promocao.Dao;
-using projeto2.Feature.Promocao.Model;
-using projeto2.Feature.Promocao.View;
+using projeto2.Feature.Promocao.View.Dev;
 
 namespace projeto2.Feature.Promocao.Controller
 {
     public class PromocoesController
     {
         private FrmPromocoes _frmPromocoes;
+        private FrmPromocoesDev _frmPromocoesDev;
         private readonly PromocaoDao _dao;
 
         private readonly CadastroDePromocaoController _cadastroDePromocaoController;
@@ -22,6 +24,7 @@ namespace projeto2.Feature.Promocao.Controller
             _dao = new PromocaoDao();
 
             _frmPromocoes = new FrmPromocoes(this);
+            _frmPromocoesDev = new FrmPromocoesDev(this);
 
             _cadastroDePromocaoController = new CadastroDePromocaoController();
             _produtosDaPromocaoController = new ProdutosDaPromocaoController();
@@ -29,8 +32,16 @@ namespace projeto2.Feature.Promocao.Controller
 
         public void AbrirTelaDePromocao()
         {
-            (_frmPromocoes = new FrmPromocoes(this)).ShowDialog();
-            _frmPromocoes.Dispose();
+            if (!ClasseComVariaveisGlobais.UsarDev)
+            {
+                (_frmPromocoes = new FrmPromocoes(this)).ShowDialog();
+                _frmPromocoes.Dispose();
+            }
+            else
+            {
+                (_frmPromocoesDev = new FrmPromocoesDev(this)).ShowDialog();
+                _frmPromocoesDev.Dispose();
+            }
         }
 
 

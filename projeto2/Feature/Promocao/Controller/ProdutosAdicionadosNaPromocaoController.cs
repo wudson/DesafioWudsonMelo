@@ -6,6 +6,7 @@ using projeto2.Feature.Marca.Model;
 using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Promocao.Model;
 using projeto2.Feature.Promocao.View;
+using projeto2.Feature.Promocao.View.WinForms;
 
 namespace projeto2.Feature.Promocao.Controller
 {

@@ -1,4 +1,4 @@
-﻿namespace projeto2.Feature.Promocao.View
+﻿namespace projeto2.Feature.Promocao.View.WinForms
 {
     partial class FrmCadastroDePromcao
     {

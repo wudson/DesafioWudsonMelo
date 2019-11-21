@@ -1,12 +1,12 @@
-﻿using projeto2.Feature.Promocao.Controller;
-using projeto2.Feature.Promocao.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using projeto2.Feature.Promocao.Controller;
+using projeto2.Feature.Promocao.Model;
 
-namespace projeto2.Feature.Promocao.View
+namespace projeto2.Feature.Promocao.View.WinForms
 {
     public partial class FrmCadastroDePromcao : Form
     {
