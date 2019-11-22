@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using projeto2.Feature.Pedido.Model;
 
-namespace projeto2.Feature.Pedido.View
+namespace projeto2.Feature.Pedido.View.WinForms
 {
     public partial class FrmItensPedido : Form
     {

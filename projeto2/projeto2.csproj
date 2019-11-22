@@ -158,16 +158,22 @@
     <Compile Include="Feature\Pedido\Dao\PedidoDao.cs" />
     <Compile Include="Feature\Pedido\Model\ItemPedidoModel.cs" />
     <Compile Include="Feature\Pedido\Model\PedidoModel.cs" />
-    <Compile Include="Feature\Pedido\View\FrmNovoPedido.cs">
+    <Compile Include="Feature\Pedido\View\Dev\FrmPedidosDev.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Pedido\View\FrmNovoPedido.Designer.cs">
+    <Compile Include="Feature\Pedido\View\Dev\FrmPedidosDev.Designer.cs">
+      <DependentUpon>FrmPedidosDev.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Feature\Pedido\View\WinForms\FrmNovoPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Pedido\View\WinForms\FrmNovoPedido.Designer.cs">
       <DependentUpon>FrmNovoPedido.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feature\Pedido\View\FrmPedidos.cs">
+    <Compile Include="Feature\Pedido\View\WinForms\FrmPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Pedido\View\FrmPedidos.Designer.cs">
+    <Compile Include="Feature\Pedido\View\WinForms\FrmPedidos.Designer.cs">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Pessoa\Dao\PessoaDao.cs" />
@@ -181,10 +187,10 @@
     </Compile>
     <Compile Include="Feature\Produto\Controller\CadastroDeProdutoController.cs" />
     <Compile Include="Feature\Produto\Model\Produto.cs" />
-    <Compile Include="Feature\Pedido\View\FrmItensPedido.cs">
+    <Compile Include="Feature\Pedido\View\WinForms\FrmItensPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feature\Pedido\View\FrmItensPedido.Designer.cs">
+    <Compile Include="Feature\Pedido\View\WinForms\FrmItensPedido.Designer.cs">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Produto\View\Dev\FrmCadastroDeProdutoDev.cs">
@@ -322,13 +328,16 @@
     <EmbeddedResource Include="Feature\Marca\View\WinForms\FrmMarcas.resx">
       <DependentUpon>FrmMarcas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Pedido\View\FrmNovoPedido.resx">
+    <EmbeddedResource Include="Feature\Pedido\View\Dev\FrmPedidosDev.resx">
+      <DependentUpon>FrmPedidosDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Pedido\View\WinForms\FrmNovoPedido.resx">
       <DependentUpon>FrmNovoPedido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Pedido\View\FrmPedidos.resx">
+    <EmbeddedResource Include="Feature\Pedido\View\WinForms\FrmPedidos.resx">
       <DependentUpon>FrmPedidos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feature\Pedido\View\FrmItensPedido.resx">
+    <EmbeddedResource Include="Feature\Pedido\View\WinForms\FrmItensPedido.resx">
       <DependentUpon>FrmItensPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Principal\View\Dev\FrmPrincipalDev.resx">
@@ -603,5 +612,6 @@
   <ItemGroup>
     <None Include="Resources\add_32x323.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

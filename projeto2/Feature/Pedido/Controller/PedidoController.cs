@@ -1,7 +1,8 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Pedido.Dao;
 using projeto2.Feature.Pedido.Model;
-using projeto2.Feature.Pedido.View;
+using projeto2.Feature.Pedido.View.Dev;
+using projeto2.Feature.Pedido.View.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace projeto2.Feature.Pedido.Controller
     {
         private readonly PedidoDao _dao;
         private readonly FrmPedidos _frmPedidos;
+        private readonly FrmPedidosDev _frmPedidosDev;
 
         private readonly NovoPedidoController _novoPedidoController;
         private readonly ItensPedidoController _itensPedidoController;
@@ -21,13 +23,19 @@ namespace projeto2.Feature.Pedido.Controller
         {
             _dao = new PedidoDao();
             _frmPedidos = new FrmPedidos(this);
+            _frmPedidosDev = new FrmPedidosDev(this);
 
             _novoPedidoController = new NovoPedidoController();
             _itensPedidoController = new ItensPedidoController();
         }
 
-        public void AbrirTelaDePedidos() =>
-            _frmPedidos.ShowDialog();
+        public void AbrirTelaDePedidos()
+        {
+            if (!ClasseComVariaveisGlobais.UsarDev)
+                _frmPedidos.ShowDialog();
+            else
+                _frmPedidosDev.ShowDialog();
+        }
 
         public void AbrirTelaDeNovoPedido() => _novoPedidoController.AbrirTelaDeNovoPedido();
 

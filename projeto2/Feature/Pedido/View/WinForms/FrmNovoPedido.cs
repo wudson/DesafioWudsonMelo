@@ -1,14 +1,14 @@
-﻿using projeto2.Feature.Pedido.Controller;
-using projeto2.Feature.Pedido.Model;
-using projeto2.Feature.Produto.Controller;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using projeto2.Feature.Cliente.Model;
+using projeto2.Feature.Pedido.Controller;
+using projeto2.Feature.Pedido.Model;
+using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Promocao.Model;
 
-namespace projeto2.Feature.Pedido.View
+namespace projeto2.Feature.Pedido.View.WinForms
 {
     public partial class FrmNovoPedido : Form
     {

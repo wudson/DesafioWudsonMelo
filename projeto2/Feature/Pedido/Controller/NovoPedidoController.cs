@@ -10,6 +10,7 @@ using projeto2.Feature.Promocao.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using projeto2.Feature.Pedido.View.WinForms;
 
 namespace projeto2.Feature.Pedido.Controller
 {

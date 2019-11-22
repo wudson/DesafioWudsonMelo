@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using projeto2.Feature.Pedido.Controller;
 
-namespace projeto2.Feature.Pedido.View
+namespace projeto2.Feature.Pedido.View.WinForms
 {
     public partial class FrmPedidos : Form
     {

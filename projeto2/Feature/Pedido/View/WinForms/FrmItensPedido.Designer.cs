@@ -1,4 +1,4 @@
-﻿namespace projeto2.Feature.Pedido.View
+﻿namespace projeto2.Feature.Pedido.View.WinForms
 {
     partial class FrmItensPedido
     {
