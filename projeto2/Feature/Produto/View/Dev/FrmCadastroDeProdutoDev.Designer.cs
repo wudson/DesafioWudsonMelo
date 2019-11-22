@@ -62,6 +62,7 @@
             this.btnCancelarCadastroProduto = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
             this.pnlCampos = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtTipo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigoDeBarras.Properties)).BeginInit();
@@ -395,6 +396,7 @@
             // 
             // pnlCampos
             // 
+            this.pnlCampos.Controls.Add(this.labelControl15);
             this.pnlCampos.Controls.Add(this.txtMarca);
             this.pnlCampos.Controls.Add(this.labelControl1);
             this.pnlCampos.Controls.Add(this.txtGrupo);
@@ -430,6 +432,16 @@
             this.pnlCampos.Name = "pnlCampos";
             this.pnlCampos.Size = new System.Drawing.Size(543, 385);
             this.pnlCampos.TabIndex = 30;
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl15.Appearance.Options.UseForeColor = true;
+            this.labelControl15.Location = new System.Drawing.Point(305, 81);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(6, 13);
+            this.labelControl15.TabIndex = 30;
+            this.labelControl15.Text = "*";
             // 
             // FrmCadastroDeProdutoDev
             // 
@@ -497,5 +509,6 @@
         private DevExpress.XtraEditors.LookUpEdit txtMarca;
         private System.Windows.Forms.BindingSource marcaModelBindingSource;
         private DevExpress.XtraEditors.PanelControl pnlCampos;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
     }
 }

@@ -52,6 +52,13 @@ namespace projeto2.Feature.Produto.View.Dev
                 return false;
             }
 
+            if (string.IsNullOrWhiteSpace(txtMarca.Text.Trim()))
+            {
+                MessageBox.Show(@"Campo 'Marca' obrigatório.");
+                txtMarca.Focus();
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(txtTipo.Text.Trim()))
             {
                 MessageBox.Show(@"Campo 'Tipo' obrigatório.");
@@ -95,7 +102,7 @@ namespace projeto2.Feature.Produto.View.Dev
                 },
                 FornecedorProduto = txtFornecedor.Text.Trim(),
                 TipoProduto = txtTipo.Text.Trim(),
-                QuantidadeEstoqueProduto = int.Parse(txtQuantidadeEmEstoque.Text.Trim()),
+                QuantidadeEstoqueProduto = string.IsNullOrWhiteSpace(txtQuantidadeEmEstoque.Text) ? 0 : int.Parse(txtQuantidadeEmEstoque.Text),
                 ValorCompraProduto = double.Parse(txtValorDeCompra.Text.Replace("R$", "")),
                 ValorVendaProduto = double.Parse(txtValorDeVenda.Text.Replace("R$", ""))
             };
