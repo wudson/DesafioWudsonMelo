@@ -183,7 +183,7 @@
             this.btnSelecionarProdutos.Appearance.BackColor = System.Drawing.Color.White;
             this.btnSelecionarProdutos.Appearance.Options.UseBackColor = true;
             this.btnSelecionarProdutos.Enabled = false;
-            this.btnSelecionarProdutos.ImageOptions.Image = global::projeto2.Properties.Resources.add_32x322;
+            this.btnSelecionarProdutos.ImageOptions.Image = global::projeto2.Properties.Resources.add_32x323;
             this.btnSelecionarProdutos.Location = new System.Drawing.Point(521, 33);
             this.btnSelecionarProdutos.Name = "btnSelecionarProdutos";
             this.btnSelecionarProdutos.Size = new System.Drawing.Size(170, 37);

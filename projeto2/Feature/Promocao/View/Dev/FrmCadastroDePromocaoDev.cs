@@ -111,10 +111,11 @@ namespace projeto2.Feature.Promocao.View.Dev
             grpDadosPromocao.Enabled = false;
             grpDesconto.Enabled = false;
             btnSalvar.Enabled = false;
-            btnSelecionarProdutos.Enabled = false;
             dgvProdutosPromocao.DataSource = null;
             txtTipo.EditValue = null;
             _promocao[0].Produtos.Clear();
+            btnSelecionarProdutos.Enabled = false;
+            txtValor.Text = string.Empty;
         }
 
 
@@ -147,10 +148,8 @@ namespace projeto2.Feature.Promocao.View.Dev
             }
         }
 
-        private void TxtTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void TxtTipo_SelectedIndexChanged(object sender, EventArgs e) => 
             btnSelecionarProdutos.Enabled = true;
-        }
 
         private void FrmCadastroDePromocaoDev_Load(object sender, EventArgs e) => 
             grpTipoDesconto.EditValue = @"F";

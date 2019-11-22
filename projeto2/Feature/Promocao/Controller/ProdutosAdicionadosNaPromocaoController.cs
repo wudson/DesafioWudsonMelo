@@ -6,6 +6,7 @@ using projeto2.Feature.Marca.Model;
 using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Promocao.Model;
 using projeto2.Feature.Promocao.View;
+using projeto2.Feature.Promocao.View.Dev;
 using projeto2.Feature.Promocao.View.WinForms;
 
 namespace projeto2.Feature.Promocao.Controller
@@ -24,7 +25,9 @@ namespace projeto2.Feature.Promocao.Controller
         }
 
         public IList<PromocaoModel> RetornarProdutos(List<Produto.Produto> produtos) =>
-            new FrmProdutosDaPromocaoComDesconto(this).RetornarProdutos(produtos);
+            !ClasseComVariaveisGlobais.UsarDev
+                ? new FrmProdutosDaPromocaoComDesconto(this).RetornarProdutos(produtos)
+                : new FrmSelecionarProdutosParaPromocao(this).RetornarProdutos(produtos);
 
         public IEnumerable<MarcaModel> ListarMarcas() => _marcaController.ListarMarcas();
 

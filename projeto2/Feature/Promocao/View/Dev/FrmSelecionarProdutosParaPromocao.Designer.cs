@@ -31,13 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSelecionarProdutosParaPromocao));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.btnEditar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCancelarCadastroProduto = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.txtBuscar = new DevExpress.XtraEditors.TextEdit();
+            this.grpTipoFiltro = new DevExpress.XtraEditors.RadioGroup();
             this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
-            this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
+            this.btnCancelar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLimpar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAdicionarSelecionados = new DevExpress.XtraEditors.SimpleButton();
             this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvProdutosPromocao = new DevExpress.XtraGrid.GridControl();
             this.gvProdutosPromocao = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -48,11 +47,11 @@
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.lstDeProdutos = new DevExpress.XtraEditors.CheckedListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpTipoFiltro.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPromocao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProdutosPromocao)).BeginInit();
@@ -60,93 +59,92 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lstDeProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.textEdit1);
-            this.groupControl1.Controls.Add(this.radioGroup1);
+            this.groupControl1.Controls.Add(this.txtBuscar);
+            this.groupControl1.Controls.Add(this.grpTipoFiltro);
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(258, 105);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Burcar";
             // 
-            // radioGroup1
+            // txtBuscar
             // 
-            this.radioGroup1.Location = new System.Drawing.Point(5, 30);
-            this.radioGroup1.Name = "radioGroup1";
-            this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroup1.Properties.Columns = 3;
-            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            this.txtBuscar.Location = new System.Drawing.Point(11, 69);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(233, 20);
+            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
+            // 
+            // grpTipoFiltro
+            // 
+            this.grpTipoFiltro.Location = new System.Drawing.Point(5, 30);
+            this.grpTipoFiltro.Name = "grpTipoFiltro";
+            this.grpTipoFiltro.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.grpTipoFiltro.Properties.Appearance.Options.UseBackColor = true;
+            this.grpTipoFiltro.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.grpTipoFiltro.Properties.Columns = 3;
+            this.grpTipoFiltro.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem("P", "Produto"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("G", "Grupo"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("M", "Marca")});
-            this.radioGroup1.Size = new System.Drawing.Size(253, 33);
-            this.radioGroup1.TabIndex = 0;
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Location = new System.Drawing.Point(11, 69);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(233, 20);
-            this.textEdit1.TabIndex = 1;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Appearance.BackColor = System.Drawing.Color.White;
-            this.btnEditar.Appearance.Options.UseBackColor = true;
-            this.btnEditar.ImageOptions.Image = global::projeto2.Properties.Resources.apply_32x32;
-            this.btnEditar.Location = new System.Drawing.Point(643, 441);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(121, 57);
-            this.btnEditar.TabIndex = 18;
-            this.btnEditar.Text = "Salvar [Enter]";
-            this.btnEditar.Visible = false;
-            // 
-            // btnCancelarCadastroProduto
-            // 
-            this.btnCancelarCadastroProduto.Appearance.BackColor = System.Drawing.Color.White;
-            this.btnCancelarCadastroProduto.Appearance.Options.UseBackColor = true;
-            this.btnCancelarCadastroProduto.ImageOptions.Image = global::projeto2.Properties.Resources.cancel_32x32;
-            this.btnCancelarCadastroProduto.Location = new System.Drawing.Point(768, 441);
-            this.btnCancelarCadastroProduto.Name = "btnCancelarCadastroProduto";
-            this.btnCancelarCadastroProduto.Size = new System.Drawing.Size(121, 57);
-            this.btnCancelarCadastroProduto.TabIndex = 19;
-            this.btnCancelarCadastroProduto.Text = "Cancelar [Esc]";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.White;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.ImageOptions.Image = global::projeto2.Properties.Resources.cancel_32x321;
-            this.simpleButton1.Location = new System.Drawing.Point(730, 74);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(159, 43);
-            this.simpleButton1.TabIndex = 15;
-            this.simpleButton1.Text = "Limpar produtos [ F10 ]";
+            this.grpTipoFiltro.Properties.EditValueChanged += new System.EventHandler(this.GrpTipoFiltro_Properties_EditValueChanged);
+            this.grpTipoFiltro.Size = new System.Drawing.Size(253, 33);
+            this.grpTipoFiltro.TabIndex = 0;
             // 
             // btnSalvar
             // 
             this.btnSalvar.Appearance.BackColor = System.Drawing.Color.White;
             this.btnSalvar.Appearance.Options.UseBackColor = true;
-            this.btnSalvar.ImageOptions.Image = global::projeto2.Properties.Resources.add_32x321;
-            this.btnSalvar.Location = new System.Drawing.Point(276, 74);
+            this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSalvar.Enabled = false;
+            this.btnSalvar.ImageOptions.Image = global::projeto2.Properties.Resources.apply_32x32;
+            this.btnSalvar.Location = new System.Drawing.Point(643, 441);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(177, 43);
-            this.btnSalvar.TabIndex = 14;
-            this.btnSalvar.Text = "Adicionar selecionados [ + ]";
+            this.btnSalvar.Size = new System.Drawing.Size(121, 57);
+            this.btnSalvar.TabIndex = 18;
+            this.btnSalvar.Text = "Salvar [Enter]";
+            this.btnSalvar.Click += new System.EventHandler(this.BtnProdutosSelecionados_Click);
             // 
-            // listBoxControl1
+            // btnCancelar
             // 
-            this.listBoxControl1.DataSource = this.produtoBindingSource;
-            this.listBoxControl1.DisplayMember = "CodigoDeBarras";
-            this.listBoxControl1.Location = new System.Drawing.Point(12, 123);
-            this.listBoxControl1.Name = "listBoxControl1";
-            this.listBoxControl1.Size = new System.Drawing.Size(258, 375);
-            this.listBoxControl1.TabIndex = 20;
+            this.btnCancelar.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnCancelar.Appearance.Options.UseBackColor = true;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.ImageOptions.Image = global::projeto2.Properties.Resources.cancel_32x32;
+            this.btnCancelar.Location = new System.Drawing.Point(768, 441);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(121, 57);
+            this.btnCancelar.TabIndex = 19;
+            this.btnCancelar.Text = "Cancelar [Esc]";
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnLimpar.Appearance.Options.UseBackColor = true;
+            this.btnLimpar.ImageOptions.Image = global::projeto2.Properties.Resources.cancel_32x321;
+            this.btnLimpar.Location = new System.Drawing.Point(730, 74);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(159, 43);
+            this.btnLimpar.TabIndex = 15;
+            this.btnLimpar.Text = "Limpar produtos [ F10 ]";
+            this.btnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
+            // 
+            // btnAdicionarSelecionados
+            // 
+            this.btnAdicionarSelecionados.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnAdicionarSelecionados.Appearance.Options.UseBackColor = true;
+            this.btnAdicionarSelecionados.ImageOptions.Image = global::projeto2.Properties.Resources.add_32x321;
+            this.btnAdicionarSelecionados.Location = new System.Drawing.Point(276, 74);
+            this.btnAdicionarSelecionados.Name = "btnAdicionarSelecionados";
+            this.btnAdicionarSelecionados.Size = new System.Drawing.Size(177, 43);
+            this.btnAdicionarSelecionados.TabIndex = 14;
+            this.btnAdicionarSelecionados.Text = "Adicionar selecionados [ + ]";
+            this.btnAdicionarSelecionados.Click += new System.EventHandler(this.BtnAdicionarProdutosSelecionadosNaPromocao_Click);
             // 
             // produtoBindingSource
             // 
@@ -169,6 +167,7 @@
             this.dgvProdutosPromocao.TabIndex = 27;
             this.dgvProdutosPromocao.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvProdutosPromocao});
+            this.dgvProdutosPromocao.DataSourceChanged += new System.EventHandler(this.DgvProdutosPromocao_DataSourceChanged);
             // 
             // gvProdutosPromocao
             // 
@@ -278,28 +277,39 @@
             this.repositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
+            // lstDeProdutos
+            // 
+            this.lstDeProdutos.DataSource = this.produtoBindingSource;
+            this.lstDeProdutos.DisplayMember = "NomeProduto";
+            this.lstDeProdutos.Location = new System.Drawing.Point(12, 123);
+            this.lstDeProdutos.Name = "lstDeProdutos";
+            this.lstDeProdutos.Size = new System.Drawing.Size(258, 375);
+            this.lstDeProdutos.TabIndex = 28;
+            this.lstDeProdutos.ValueMember = "IdProduto";
+            // 
             // FrmSelecionarProdutosParaPromocao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 510);
+            this.Controls.Add(this.lstDeProdutos);
             this.Controls.Add(this.dgvProdutosPromocao);
-            this.Controls.Add(this.listBoxControl1);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnCancelarCadastroProduto);
-            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnLimpar);
+            this.Controls.Add(this.btnAdicionarSelecionados);
             this.Controls.Add(this.groupControl1);
             this.IconOptions.Image = global::projeto2.Properties.Resources.salesman__2_;
             this.KeyPreview = true;
             this.Name = "FrmSelecionarProdutosParaPromocao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Selecionar produtos";
+            this.Load += new System.EventHandler(this.FrmProdutosDaPromocaoComDesconto_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmProdutosDaPromocaoComDesconto_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBuscar.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpTipoFiltro.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPromocao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProdutosPromocao)).EndInit();
@@ -307,6 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lstDeProdutos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,13 +325,12 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.RadioGroup radioGroup1;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.RadioGroup grpTipoFiltro;
+        private DevExpress.XtraEditors.TextEdit txtBuscar;
+        private DevExpress.XtraEditors.SimpleButton btnAdicionarSelecionados;
+        private DevExpress.XtraEditors.SimpleButton btnLimpar;
         private DevExpress.XtraEditors.SimpleButton btnSalvar;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton btnEditar;
-        private DevExpress.XtraEditors.SimpleButton btnCancelarCadastroProduto;
-        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
+        private DevExpress.XtraEditors.SimpleButton btnCancelar;
         private System.Windows.Forms.BindingSource produtoBindingSource;
         private DevExpress.XtraGrid.GridControl dgvProdutosPromocao;
         private DevExpress.XtraGrid.Views.Grid.GridView gvProdutosPromocao;
@@ -331,5 +341,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraEditors.CheckedListBoxControl lstDeProdutos;
     }
 }
