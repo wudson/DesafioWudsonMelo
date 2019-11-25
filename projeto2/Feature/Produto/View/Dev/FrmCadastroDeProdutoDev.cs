@@ -165,7 +165,7 @@ namespace projeto2.Feature.Produto.View.Dev
         {
             switch (e.KeyCode)
             {
-                case Keys.Enter:
+                case Keys.F5:
                     CadastrarOuAlterar(sender, e);
                     break;
                 case Keys.Escape:

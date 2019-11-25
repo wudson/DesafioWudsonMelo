@@ -136,7 +136,7 @@ namespace projeto2.Feature.Promocao.View.Dev
                 case Keys.F9:
                     BtnSelecionarProdutosDaPromocao_Click(sender, e);
                     break;
-                case Keys.Enter:
+                case Keys.F5:
                     BtnSalvarPromocao_Click(sender, e);
                     break;
                 case Keys.F7:

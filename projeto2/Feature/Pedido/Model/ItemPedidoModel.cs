@@ -8,6 +8,6 @@
         public Produto.Produto ProdutosPedido { get; set; }
 
         public double PrecoTotal =>
-            Quantidade * ProdutosPedido.ValorVendaProduto;
+            Quantidade * ProdutosPedido.ValorComDesconto;
     }
 }

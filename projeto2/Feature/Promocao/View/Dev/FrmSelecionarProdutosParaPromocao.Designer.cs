@@ -76,6 +76,7 @@
             // 
             this.txtBuscar.Location = new System.Drawing.Point(11, 69);
             this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Properties.MaxLength = 20;
             this.txtBuscar.Size = new System.Drawing.Size(233, 20);
             this.txtBuscar.TabIndex = 1;
             this.txtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
@@ -103,11 +104,11 @@
             this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSalvar.Enabled = false;
             this.btnSalvar.ImageOptions.Image = global::projeto2.Properties.Resources.apply_32x32;
-            this.btnSalvar.Location = new System.Drawing.Point(643, 441);
+            this.btnSalvar.Location = new System.Drawing.Point(641, 441);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(121, 57);
             this.btnSalvar.TabIndex = 18;
-            this.btnSalvar.Text = "Salvar [Enter]";
+            this.btnSalvar.Text = "Salvar [F5]";
             this.btnSalvar.Click += new System.EventHandler(this.BtnProdutosSelecionados_Click);
             // 
             // btnCancelar

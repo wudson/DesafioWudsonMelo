@@ -140,6 +140,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(9, 70);
             this.txtNome.Name = "txtNome";
+            this.txtNome.Properties.MaxLength = 50;
             this.txtNome.Size = new System.Drawing.Size(477, 20);
             this.txtNome.TabIndex = 5;
             this.txtNome.TextChanged += new System.EventHandler(this.TxtNome_TextChanged);
@@ -238,7 +239,7 @@
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(121, 57);
             this.btnSalvar.TabIndex = 24;
-            this.btnSalvar.Text = "Salvar [Enter]";
+            this.btnSalvar.Text = "Salvar [F5]";
             this.btnSalvar.Click += new System.EventHandler(this.BtnSalvarPromocao_Click);
             // 
             // btnCancelar

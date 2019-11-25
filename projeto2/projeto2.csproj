@@ -158,6 +158,12 @@
     <Compile Include="Feature\Pedido\Dao\PedidoDao.cs" />
     <Compile Include="Feature\Pedido\Model\ItemPedidoModel.cs" />
     <Compile Include="Feature\Pedido\Model\PedidoModel.cs" />
+    <Compile Include="Feature\Pedido\View\Dev\FrmItensPedidoDev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Pedido\View\Dev\FrmItensPedidoDev.Designer.cs">
+      <DependentUpon>FrmItensPedidoDev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Pedido\View\Dev\FrmPedidosDev.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Marca\View\WinForms\FrmMarcas.resx">
       <DependentUpon>FrmMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Pedido\View\Dev\FrmItensPedidoDev.resx">
+      <DependentUpon>FrmItensPedidoDev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Pedido\View\Dev\FrmPedidosDev.resx">
       <DependentUpon>FrmPedidosDev.cs</DependentUpon>

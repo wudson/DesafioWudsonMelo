@@ -205,7 +205,7 @@ namespace projeto2.Feature.Promocao.View.Dev
                 case Keys.F10:
                     BtnLimpar_Click(sender, e);
                     break;
-                case Keys.Enter:
+                case Keys.F5:
                     BtnProdutosSelecionados_Click(sender, e);
                     break;
                 case Keys.Escape:

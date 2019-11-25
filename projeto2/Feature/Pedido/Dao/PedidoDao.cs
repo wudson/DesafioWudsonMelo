@@ -74,8 +74,9 @@ namespace projeto2.Feature.Pedido.Dao
 
         public IEnumerable<ItemPedidoModel> BuscarProdutosDoPedido(int idPedido, FbCommand cmd)
         {
-            const string mSql = @"select ip.*, p.* from ITEM_PEDIDO ip 
-                                INNER JOIN PRODUTO as p ON ip.ID_PRODUTO = p.ID_PRODUTO 
+            const string mSql = @"select ip.*, p.*, pm.VALOR_COM_DESCONTO from ITEM_PEDIDO ip 
+                                INNER JOIN PRODUTO as p ON ip.ID_PRODUTO = p.ID_PRODUTO
+                                LEFT JOIN ITEM_PROMOCAO as pm ON p.ID_PRODUTO = pm.ID_PRODUTO
                                 WHERE ip.ID_PEDIDO = @idPedido";
 
             cmd.CommandText = mSql;
@@ -96,7 +97,10 @@ namespace projeto2.Feature.Pedido.Dao
                         IdProduto = Convert.ToInt32(dataReader["ID_PRODUTO"]),
                         NomeProduto = dataReader["NOME_PRODUTO"].ToString(),
                         ValorVendaProduto = Convert.ToDouble(dataReader["VALOR_VENDA_PRODUTO"]),
-                        TipoProduto = dataReader["TIPO_PRODUTO"].ToString()
+                        TipoProduto = dataReader["TIPO_PRODUTO"].ToString(),
+                        ValorComDesconto = Convert.ToDouble(dataReader["VALOR_COM_DESCONTO"] != DBNull.Value
+                            ? dataReader["VALOR_COM_DESCONTO"]
+                            : dataReader["VALOR_VENDA_PRODUTO"])
                     }
                 });
             }

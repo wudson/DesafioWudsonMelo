@@ -119,7 +119,7 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(121, 57);
             this.btnEditar.TabIndex = 4;
-            this.btnEditar.Text = "Salvar [Enter]";
+            this.btnEditar.Text = "Salvar [F5]";
             this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.BtnAlterar_Click);
             // 
@@ -590,7 +590,7 @@
             this.btnSalvarCliente.Name = "btnSalvarCliente";
             this.btnSalvarCliente.Size = new System.Drawing.Size(121, 57);
             this.btnSalvarCliente.TabIndex = 3;
-            this.btnSalvarCliente.Text = "Salvar [Enter]";
+            this.btnSalvarCliente.Text = "Salvar [F5]";
             this.btnSalvarCliente.Click += new System.EventHandler(this.BtnSalvarCadastroCliente_Click);
             // 
             // FrmCadastroDeClienteDev
