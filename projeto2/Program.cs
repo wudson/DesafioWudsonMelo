@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using projeto2.Login;
 
 namespace projeto2
 {
@@ -14,8 +15,10 @@ namespace projeto2
             ClasseComVariaveisGlobais.UsarDevExpress = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmEntrar());
-
+            if(!ClasseComVariaveisGlobais.UsarDev)
+                Application.Run(new FrmEntrar());
+            else 
+                Application.Run(new FrmEntrarDev());
         }
     }
 }

@@ -1,14 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using projeto2.Feature.Principal.View.Dev;
 using projeto2.Feature.Principal.View.WinForms;
 
-namespace projeto2
+namespace projeto2.Login
 {
-    public partial class FrmEntrar : Form
+    public partial class FrmEntrarDev : DevExpress.XtraEditors.XtraForm
     {
-        public FrmEntrar() => InitializeComponent();
+        public FrmEntrarDev() => InitializeComponent();
 
         private void BtnEntrar_Click(object sender, EventArgs e)
         {
@@ -71,12 +79,6 @@ namespace projeto2
                     break;
             }
         }
-
-        private void IconErroUsuario_MouseHover(object sender, EventArgs e) => 
-            new ToolTip().SetToolTip(iconErroUsuario, "Usuario não encontrado.");
-
-        private void IconErroSenha_MouseHover(object sender, EventArgs e) => 
-            new ToolTip().SetToolTip(iconErroSenha, "Senha incorreta.");
 
         private void TxtUsuario_Leave(object sender, EventArgs e)
         {

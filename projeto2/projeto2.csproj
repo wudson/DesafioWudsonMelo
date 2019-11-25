@@ -272,10 +272,10 @@
     <Compile Include="Feature\Promocao\View\WinForms\FrmPromocoes.Designer.cs">
       <DependentUpon>FrmPromocoes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEntrar.cs">
+    <Compile Include="Login\FrmEntrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEntrar.Designer.cs">
+    <Compile Include="Login\FrmEntrar.Designer.cs">
       <DependentUpon>FrmEntrar.cs</DependentUpon>
     </Compile>
     <Compile Include="Feature\Principal\View\WinForms\FrmPrincipal.cs">
@@ -303,6 +303,12 @@
     </Compile>
     <Compile Include="Feature\Produto\View\WinForms\FrmCadastroDeProduto.Designer.cs">
       <DependentUpon>FrmCadastroDeProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\FrmEntrarDev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FrmEntrarDev.Designer.cs">
+      <DependentUpon>FrmEntrarDev.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -385,7 +391,7 @@
     <EmbeddedResource Include="Feature\Promocao\View\WinForms\FrmPromocoes.resx">
       <DependentUpon>FrmPromocoes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEntrar.resx">
+    <EmbeddedResource Include="Login\FrmEntrar.resx">
       <DependentUpon>FrmEntrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Principal\View\WinForms\FrmPrincipal.resx">
@@ -399,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Produto\View\WinForms\FrmProdutos.resx">
       <DependentUpon>FrmProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\FrmEntrarDev.resx">
+      <DependentUpon>FrmEntrarDev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -621,6 +630,17 @@
   <ItemGroup>
     <None Include="Resources\add_32x323.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\apply_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_32x321.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

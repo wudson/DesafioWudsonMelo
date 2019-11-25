@@ -1,4 +1,4 @@
-﻿namespace projeto2
+﻿namespace projeto2.Login
 {
     partial class FrmEntrar
     {
@@ -117,7 +117,7 @@
             // iconErroUsuario
             // 
             this.iconErroUsuario.Image = global::projeto2.Properties.Resources.error16x;
-            this.iconErroUsuario.Location = new System.Drawing.Point(321, 164);
+            this.iconErroUsuario.Location = new System.Drawing.Point(320, 164);
             this.iconErroUsuario.Name = "iconErroUsuario";
             this.iconErroUsuario.Size = new System.Drawing.Size(21, 20);
             this.iconErroUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -129,7 +129,7 @@
             // iconSucessoUsuario
             // 
             this.iconSucessoUsuario.Image = global::projeto2.Properties.Resources.success;
-            this.iconSucessoUsuario.Location = new System.Drawing.Point(321, 164);
+            this.iconSucessoUsuario.Location = new System.Drawing.Point(320, 164);
             this.iconSucessoUsuario.Name = "iconSucessoUsuario";
             this.iconSucessoUsuario.Size = new System.Drawing.Size(21, 20);
             this.iconSucessoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
