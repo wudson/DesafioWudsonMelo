@@ -72,12 +72,12 @@ namespace projeto2.Feature.Produto.Controller
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao cadastrar produto.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao cadastrar produto.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar produto.", @"Erro");
+                XtraMessageBox.Show(@"Problemas ao cadastrar produto.", @"Erro");
                 Console.WriteLine(ex);
             }
             finally
@@ -102,18 +102,18 @@ namespace projeto2.Feature.Produto.Controller
                 cmd.Connection = conn;
                 if (_dao.Alterar(produto, cmd))
                 {
-                    MessageBox.Show(@"Produto alterado com sucesso.", @"Sucesso");
+                    XtraMessageBox.Show(@"Produto alterado com sucesso.", @"Sucesso");
                     return true;
                 }
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao alterar produto.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao alterar produto.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao alterar produto", @"Erro");
+                XtraMessageBox.Show(@"Problemas ao alterar produto", @"Erro");
                 Console.WriteLine(ex);
             }
             finally

@@ -164,6 +164,12 @@
     <Compile Include="Feature\Pedido\View\Dev\FrmItensPedidoDev.Designer.cs">
       <DependentUpon>FrmItensPedidoDev.cs</DependentUpon>
     </Compile>
+    <Compile Include="Feature\Pedido\View\Dev\FrmNovoPedidoDev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Feature\Pedido\View\Dev\FrmNovoPedidoDev.Designer.cs">
+      <DependentUpon>FrmNovoPedidoDev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Pedido\View\Dev\FrmPedidosDev.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Pedido\View\Dev\FrmItensPedidoDev.resx">
       <DependentUpon>FrmItensPedidoDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Feature\Pedido\View\Dev\FrmNovoPedidoDev.resx">
+      <DependentUpon>FrmNovoPedidoDev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Feature\Pedido\View\Dev\FrmPedidosDev.resx">
       <DependentUpon>FrmPedidosDev.cs</DependentUpon>

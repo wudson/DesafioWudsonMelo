@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using projeto2.Feature.Promocao.View.Dev;
 
 namespace projeto2.Feature.Promocao.Controller
@@ -63,18 +64,18 @@ namespace projeto2.Feature.Promocao.Controller
                 cmd.Connection = conn;
                 var promocoes = _dao.Listar(cmd, filtros).ToList();
                 if (promocoes.Count < 1)
-                    MessageBox.Show(@"Nenhuma promoção foi encontrada.");
+                    XtraMessageBox.Show(@"Nenhuma promoção foi encontrada.");
                 else
                     return promocoes;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao listar promoções.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao listar promoções.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao listar promoções.");
+                XtraMessageBox.Show(@"Problemas ao listar promoções.");
                 Console.WriteLine(ex);
             }
             finally

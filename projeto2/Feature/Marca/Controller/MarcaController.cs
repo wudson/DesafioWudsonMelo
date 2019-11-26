@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Marca.Dao;
 using projeto2.Feature.Marca.Model;
@@ -41,16 +42,16 @@ namespace projeto2.Feature.Marca.Controller
                 cmd.Connection = conn;
 
                 if (_dao.Cadastrar(novaMarca, cmd))
-                    MessageBox.Show(@"Marca cadastrada com sucesso.");
+                    XtraMessageBox.Show(@"Marca cadastrada com sucesso.");
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao cadastrar marca.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao cadastrar marca.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar marca");
+                XtraMessageBox.Show(@"Problemas ao cadastrar marca");
                 Console.WriteLine(ex);
             }
             finally
@@ -58,7 +59,6 @@ namespace projeto2.Feature.Marca.Controller
                 cmd.Dispose();
                 conn.Close();
             }
-
         }
 
         public IEnumerable<MarcaModel> ListarMarcas()
@@ -72,18 +72,18 @@ namespace projeto2.Feature.Marca.Controller
 
                 var marcas = _dao.Listar(cmd).ToList();
                 if (marcas.Count < 1)
-                    MessageBox.Show(@"Nenhuma marca foi encontrada.");
+                    XtraMessageBox.Show(@"Nenhuma marca foi encontrada.");
                 else
                     return marcas;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao listar marcas.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao listar marcas.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao listar marcas");
+                XtraMessageBox.Show(@"Problemas ao listar marcas");
                 Console.WriteLine(ex);
             }
             finally
@@ -105,17 +105,17 @@ namespace projeto2.Feature.Marca.Controller
                 cmd.Connection = conn;
 
                 if (_dao.Excluir(idMarca, cmd))
-                    MessageBox.Show(@"Marca excluida com sucesso.");
+                    XtraMessageBox.Show(@"Marca excluida com sucesso.");
                 return true;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao excluir marca.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao excluir marca.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao excluir marcas");
+                XtraMessageBox.Show(@"Problemas ao excluir marcas");
                 Console.WriteLine(ex);
             }
             finally
@@ -137,16 +137,16 @@ namespace projeto2.Feature.Marca.Controller
                 cmd.Connection = conn;
 
                 if (_dao.Alterar(marca, cmd))
-                    MessageBox.Show(@"Marca alterada com sucesso.");
+                    XtraMessageBox.Show(@"Marca alterada com sucesso.");
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao alterar marca.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao alterar marca.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao alterar marca");
+                XtraMessageBox.Show(@"Problemas ao alterar marca");
                 Console.WriteLine(ex);
             }
             finally

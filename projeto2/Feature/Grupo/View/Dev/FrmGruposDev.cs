@@ -69,7 +69,7 @@ namespace projeto2.Feature.Grupo.View.Dev
         private void BtnExcluirGrupo_Click(object sender, EventArgs e)
         {
             if (btnExcluirGrupo.Enabled == false) return;
-            var resultado = MessageBox.Show(@"Deseja excluir essa grupo?", @"grupo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            var resultado = XtraMessageBox.Show(@"Deseja excluir essa grupo?", @"grupo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 
             var idGrupo = Convert.ToInt32(gvGrupos.GetFocusedRowCellValue("IdGrupo"));

@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using projeto2.Feature.Principal.View.Dev;
+﻿using projeto2.Feature.Principal.View.Dev;
 using projeto2.Feature.Principal.View.WinForms;
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace projeto2.Login
 {
@@ -71,7 +63,7 @@ namespace projeto2.Login
         {
             switch (e.KeyCode)
             {
-                case Keys.Enter:
+                case Keys.F5:
                     BtnEntrar_Click(sender, e);
                     break;
                 case Keys.Escape:

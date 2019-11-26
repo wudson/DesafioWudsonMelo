@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace projeto2.Feature.Pedido.Controller
 {
@@ -53,18 +54,18 @@ namespace projeto2.Feature.Pedido.Controller
 
                 var pedidos = _dao.Listar(cmd).ToList();
                 if (pedidos.Count < 1)
-                    MessageBox.Show(@"Nenhum pedido foi encontrado.");
+                    XtraMessageBox.Show(@"Nenhum pedido foi encontrado.");
                 else
                     return pedidos;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao listar pedidos.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao listar pedidos.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao listar pedidos");
+                XtraMessageBox.Show(@"Problemas ao listar pedidos");
                 Console.WriteLine(ex);
             }
             finally
@@ -88,18 +89,18 @@ namespace projeto2.Feature.Pedido.Controller
 
                 var produtos = _dao.BuscarProdutosDoPedido(idPedido, cmd).ToList();
                 if (produtos.Count < 1)
-                    MessageBox.Show(@"Nenhum produto foi encontrado nesse pedido.");
+                    XtraMessageBox.Show(@"Nenhum produto foi encontrado nesse pedido.");
                 else
                     return produtos;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao buscar itens do pedido.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao buscar itens do pedido.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao buscar itens do pedido");
+                XtraMessageBox.Show(@"Problemas ao buscar itens do pedido");
                 Console.WriteLine(ex);
             }
             finally

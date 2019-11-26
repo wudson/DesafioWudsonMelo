@@ -29,7 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnProdutos = new DevExpress.XtraEditors.SimpleButton();
             this.btnClientes = new DevExpress.XtraEditors.SimpleButton();
             this.btnPedidos = new DevExpress.XtraEditors.SimpleButton();
@@ -38,7 +37,6 @@
             this.btnGrupos = new DevExpress.XtraEditors.SimpleButton();
             this.btnPromocoes = new DevExpress.XtraEditors.SimpleButton();
             this.btnSair = new DevExpress.XtraEditors.SimpleButton();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.SuspendLayout();
             // 
             // btnProdutos
@@ -121,10 +119,6 @@
             this.btnSair.Text = "Sair [ Esc ]";
             this.btnSair.Click += new System.EventHandler(this.BtnSair_Click);
             // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "The Bezier";
-            // 
             // FrmPrincipalDev
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -160,6 +154,5 @@
         private DevExpress.XtraEditors.SimpleButton btnGrupos;
         private DevExpress.XtraEditors.SimpleButton btnPromocoes;
         private DevExpress.XtraEditors.SimpleButton btnSair;
-        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }

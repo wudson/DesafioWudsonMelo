@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-using projeto2.Feature.Grupo.Controller;
+﻿using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Grupo.Model;
 using projeto2.Feature.Marca.Controller;
 using projeto2.Feature.Marca.Model;
 using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Promocao.Model;
-using projeto2.Feature.Promocao.View;
 using projeto2.Feature.Promocao.View.Dev;
 using projeto2.Feature.Promocao.View.WinForms;
+using System.Collections.Generic;
 
 namespace projeto2.Feature.Promocao.Controller
 {

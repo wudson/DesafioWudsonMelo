@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace projeto2.Feature.Cliente.Controller
 {
@@ -53,18 +54,18 @@ namespace projeto2.Feature.Cliente.Controller
 
                 var cliente = _dao.Buscar(idPessoa, cmd);
                 if (cliente.IdCliente < 1)
-                    MessageBox.Show(@"Cliente não encontrado.");
+                    XtraMessageBox.Show(@"Cliente não encontrado.");
                 else
                     return cliente;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao buscar cliente.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao buscar cliente.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao buscar cliente");
+                XtraMessageBox.Show(@"Problemas ao buscar cliente");
                 Console.WriteLine(ex);
             }
             finally
@@ -88,20 +89,20 @@ namespace projeto2.Feature.Cliente.Controller
 
                 if (_dao.Excluir(idPessoa, cmd))
                 {
-                    MessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
+                    XtraMessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
                     cmd.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao excluir cliente.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao excluir cliente.");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao excluir cliente");
+                XtraMessageBox.Show(@"Problemas ao excluir cliente");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
@@ -125,18 +126,18 @@ namespace projeto2.Feature.Cliente.Controller
 
                 var clientes = _dao.ListarDados(filtros, cmd).ToList();
                 if (clientes.Count < 1)
-                    MessageBox.Show(@"Nenhum cliente foi encontrado.");
+                    XtraMessageBox.Show(@"Nenhum cliente foi encontrado.");
                 else
                     return clientes;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao listar clientes.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao listar clientes.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao listar clientes");
+                XtraMessageBox.Show(@"Problemas ao listar clientes");
                 Console.WriteLine(ex);
             }
             finally

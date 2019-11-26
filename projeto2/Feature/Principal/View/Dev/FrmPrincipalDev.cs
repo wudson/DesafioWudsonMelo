@@ -22,7 +22,7 @@ namespace projeto2.Feature.Principal.View.Dev
 
         private void BtnSair_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(@"Deseja sair do sistema?", @"Sair", MessageBoxButtons.OKCancel,
+            var result = XtraMessageBox.Show(@"Deseja sair do sistema?", @"Sair", MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
             Hide();
@@ -72,10 +72,5 @@ namespace projeto2.Feature.Principal.View.Dev
             _principalController.AbrirTelaDeEstoqueDeProdutos();
 
         private void BtnPromocoes_Click(object sender, EventArgs e) => _principalController.AbrirTelaDePromocoes();
-
-        private void FrmPrincipalDev_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

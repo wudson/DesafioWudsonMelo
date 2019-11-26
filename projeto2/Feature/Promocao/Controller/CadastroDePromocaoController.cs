@@ -6,6 +6,7 @@ using projeto2.Feature.Promocao.View.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace projeto2.Feature.Promocao.Controller
 {
@@ -51,20 +52,20 @@ namespace projeto2.Feature.Promocao.Controller
 
                 if (_dao.Cadastrar(promocao, cmd))
                 {
-                    MessageBox.Show(@"Promoção cadastrada com sucesso.", @"Sucesso");
+                    XtraMessageBox.Show(@"Promoção cadastrada com sucesso.", @"Sucesso");
                     cmd.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao cadastrar promoção.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao cadastrar promoção.");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar promoção.", @"Erro");
+                XtraMessageBox.Show(@"Problemas ao cadastrar promoção.", @"Erro");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }

@@ -70,7 +70,7 @@ namespace projeto2.Feature.Marca.View.Dev
         {
 
             if (btnExcluirMarca.Enabled == false) return;
-            var resultado = MessageBox.Show(@"Deseja excluir essa marca?", @"Marca", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            var resultado = XtraMessageBox.Show(@"Deseja excluir essa marca?", @"Marca", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 
             var idMarca = Convert.ToInt32(gvMarcas.GetFocusedRowCellValue("IdMarca"));

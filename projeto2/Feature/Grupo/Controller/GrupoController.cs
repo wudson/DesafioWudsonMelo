@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace projeto2.Feature.Grupo.Controller
 {
@@ -41,16 +42,16 @@ namespace projeto2.Feature.Grupo.Controller
                 cmd.Connection = conn;
 
                 if (_dao.Cadastrar(novoGrupo, cmd))
-                    MessageBox.Show(@"Grupo cadastrado com sucesso.");
+                    XtraMessageBox.Show(@"Grupo cadastrado com sucesso.");
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao cadastrar grupo.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao cadastrar grupo.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar grupo");
+                XtraMessageBox.Show(@"Problemas ao cadastrar grupo");
                 Console.WriteLine(ex);
             }
             finally
@@ -71,18 +72,18 @@ namespace projeto2.Feature.Grupo.Controller
 
                 var grupos = _dao.Listar(cmd).ToList();
                 if (grupos.Count < 1)
-                    MessageBox.Show(@"Nenhum grupo foi encontrado.");
+                    XtraMessageBox.Show(@"Nenhum grupo foi encontrado.");
                 else
                     return grupos;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao listar grupos.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao listar grupos.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao listar grupos");
+                XtraMessageBox.Show(@"Problemas ao listar grupos");
                 Console.WriteLine(ex);
             }
             finally
@@ -104,17 +105,17 @@ namespace projeto2.Feature.Grupo.Controller
                 cmd.Connection = conn;
 
                 if (_dao.Excluir(idGrupo, cmd))
-                    MessageBox.Show(@"Grupo excluído com sucesso.");
+                    XtraMessageBox.Show(@"Grupo excluído com sucesso.");
                 return true;
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao excluir grupo.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao excluir grupo.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao excluir grupo");
+                XtraMessageBox.Show(@"Problemas ao excluir grupo");
                 Console.WriteLine(ex);
             }
             finally
@@ -135,16 +136,16 @@ namespace projeto2.Feature.Grupo.Controller
                 cmd.Connection = conn;
 
                 if (_dao.Alterar(grupo, cmd))
-                    MessageBox.Show(@"Grupo alterado com sucesso.");
+                    XtraMessageBox.Show(@"Grupo alterado com sucesso.");
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao alterar grupo.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao alterar grupo.");
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao alterar grupo");
+                XtraMessageBox.Show(@"Problemas ao alterar grupo");
                 Console.WriteLine(ex);
             }
             finally

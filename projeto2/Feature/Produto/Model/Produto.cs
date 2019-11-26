@@ -26,5 +26,8 @@ namespace projeto2.Feature.Produto
 
         public double ValorTotalEstoque =>
             QuantidadeEstoqueProduto * ValorVendaProduto;
+
+        public double ValorTotalProdutoPedido =>
+            QuantidadeProdutoPedido * ValorComDesconto;
     }
 }

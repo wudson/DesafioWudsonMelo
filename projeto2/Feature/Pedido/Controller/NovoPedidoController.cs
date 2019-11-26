@@ -3,14 +3,15 @@ using projeto2.Feature.Cliente.Controller;
 using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Pedido.Dao;
 using projeto2.Feature.Pedido.Model;
-using projeto2.Feature.Pedido.View;
+using projeto2.Feature.Pedido.View.Dev;
+using projeto2.Feature.Pedido.View.WinForms;
 using projeto2.Feature.Produto.Controller;
 using projeto2.Feature.Promocao.Controller;
 using projeto2.Feature.Promocao.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using projeto2.Feature.Pedido.View.WinForms;
+using DevExpress.XtraEditors;
 
 namespace projeto2.Feature.Pedido.Controller
 {
@@ -18,17 +19,27 @@ namespace projeto2.Feature.Pedido.Controller
     {
         private readonly PedidoDao _dao;
         private FrmNovoPedido _frmNovoPedido;
+        private FrmNovoPedidoDev _frmNovoPedidoDev;
 
         public NovoPedidoController()
         {
             _dao = new PedidoDao();
             _frmNovoPedido = new FrmNovoPedido(this);
+            _frmNovoPedidoDev = new FrmNovoPedidoDev(this);
         }
 
         public void AbrirTelaDeNovoPedido()
         {
-            (_frmNovoPedido = new FrmNovoPedido(this)).ShowDialog();
-            _frmNovoPedido.Dispose();
+            if (!ClasseComVariaveisGlobais.UsarDev)
+            {
+                (_frmNovoPedido = new FrmNovoPedido(this)).ShowDialog();
+                _frmNovoPedido.Dispose();
+            }
+            else
+            {
+                (_frmNovoPedidoDev = new FrmNovoPedidoDev(this)).ShowDialog();
+                _frmNovoPedidoDev.Dispose();
+            }
         }
 
         public bool SalvarPedido(PedidoModel pedido)
@@ -50,13 +61,13 @@ namespace projeto2.Feature.Pedido.Controller
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao efetuar pedido.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao efetuar pedido.");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao efetuar pedido");
+                XtraMessageBox.Show(@"Problemas ao efetuar pedido");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }

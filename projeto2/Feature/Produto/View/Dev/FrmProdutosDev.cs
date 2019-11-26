@@ -54,7 +54,7 @@ namespace projeto2.Feature.Produto.View.Dev
         {
             if (!btnExcluir.Enabled) return;
 
-            var resultado = MessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel,
+            var resultado = XtraMessageBox.Show(@"Deseja excluir esse produto?", @"Deletar", MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Information);
             if (!resultado.Equals(DialogResult.OK)) return;
 

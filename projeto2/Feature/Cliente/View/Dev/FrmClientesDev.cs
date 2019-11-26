@@ -71,7 +71,7 @@ namespace projeto2.Feature.Cliente.View.Dev
         {
             if (!btnExcluir.Enabled) return;
 
-            var result = MessageBox.Show(@"Deseja excluir esse cliente?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            var result = XtraMessageBox.Show(@"Deseja excluir esse cliente?", @"Deletar", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (!result.Equals(DialogResult.OK)) return;
 
             if (_clienteController.ExcluirDado(Convert.ToInt32(gvClientes.GetFocusedRowCellValue("IdPessoa"))))
@@ -104,8 +104,6 @@ namespace projeto2.Feature.Cliente.View.Dev
         }
 
         private void BtnFiltrar_Click(object sender, EventArgs e) => AtualizarGridDadosCliente();
-
-        
 
         private void BtnLimpar_Click(object sender, EventArgs e)
         {

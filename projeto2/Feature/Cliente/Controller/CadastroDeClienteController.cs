@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
@@ -59,20 +60,20 @@ namespace projeto2.Feature.Cliente.Controller
 
                 if (_dao.Alterar(cliente, cmd))
                 {
-                    MessageBox.Show(@"Cliente alterado com sucesso.", @"Sucesso");
+                    XtraMessageBox.Show(@"Cliente alterado com sucesso.", @"Sucesso");
                     cmd.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao alterar cliente.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao alterar cliente.");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao alterar cliente");
+                XtraMessageBox.Show(@"Problemas ao alterar cliente");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
@@ -98,20 +99,20 @@ namespace projeto2.Feature.Cliente.Controller
 
                 if (_dao.Cadastrar(cliente, cmd))
                 {
-                    MessageBox.Show(@"Cliente cadastrado com sucesso.", @"Sucesso");
+                    XtraMessageBox.Show(@"Cliente cadastrado com sucesso.", @"Sucesso");
                     cmd.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
-                MessageBox.Show(@"Problemas no banco de dados ao cadastrar cliente.");
+                XtraMessageBox.Show(@"Problemas no banco de dados ao cadastrar cliente.");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(@"Problemas ao cadastrar cliente");
+                XtraMessageBox.Show(@"Problemas ao cadastrar cliente");
                 cmd.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
