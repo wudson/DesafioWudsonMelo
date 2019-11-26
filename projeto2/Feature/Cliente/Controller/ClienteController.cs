@@ -1,4 +1,5 @@
-﻿using FirebirdSql.Data.FirebirdClient;
+﻿using DevExpress.XtraEditors;
+using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Cliente.View.Dev;
@@ -6,8 +7,6 @@ using projeto2.Feature.Cliente.View.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace projeto2.Feature.Cliente.Controller
 {
