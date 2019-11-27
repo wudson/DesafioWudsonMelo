@@ -6,10 +6,11 @@ using projeto2.Feature.Produto.View.Dev;
 using projeto2.Feature.Produto.View.WinForms;
 using System;
 using System.Collections.Generic;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Produto.Controller
 {
-    public class ProdutoController
+    public class ProdutoController : IFrmController
     {
         private readonly FrmProdutos _frmProdutos;
         private readonly FrmProdutosDev _frmProdutosDev;
@@ -29,7 +30,7 @@ namespace projeto2.Feature.Produto.Controller
             _estoqueDeProdutoController = new EstoqueDeProdutoController();
         }
 
-        public void AbrirTelaDeProdutos()
+        public void AbrirTela()
         {
             if (!ClasseComVariaveisGlobais.UsarDev)
                 _frmProdutos.ShowDialog();
@@ -37,7 +38,7 @@ namespace projeto2.Feature.Produto.Controller
                 _frmProdutosDev.ShowDialog();
         }
 
-        public void AbrirTelaDeEstoqueDeProdutos() => _estoqueDeProdutoController.AbrirTelaDeEstoque();
+        public void AbrirTelaDeEstoqueDeProdutos() => _estoqueDeProdutoController.AbrirTela();
 
         public IList<Produto> ListarDados(Produto filtros)
         {

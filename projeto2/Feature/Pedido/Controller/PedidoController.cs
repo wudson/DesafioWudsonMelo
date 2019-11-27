@@ -1,4 +1,5 @@
-﻿using FirebirdSql.Data.FirebirdClient;
+﻿using DevExpress.XtraEditors;
+using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Pedido.Dao;
 using projeto2.Feature.Pedido.Model;
 using projeto2.Feature.Pedido.View.Dev;
@@ -6,12 +7,11 @@ using projeto2.Feature.Pedido.View.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Pedido.Controller
 {
-    public class PedidoController
+    public class PedidoController : IFrmController
     {
         private readonly PedidoDao _dao;
         private readonly FrmPedidos _frmPedidos;
@@ -30,7 +30,7 @@ namespace projeto2.Feature.Pedido.Controller
             _itensPedidoController = new ItensPedidoController();
         }
 
-        public void AbrirTelaDePedidos()
+        public void AbrirTela()
         {
             if (!ClasseComVariaveisGlobais.UsarDev)
                 _frmPedidos.ShowDialog();
@@ -38,7 +38,7 @@ namespace projeto2.Feature.Pedido.Controller
                 _frmPedidosDev.ShowDialog();
         }
 
-        public void AbrirTelaDeNovoPedido() => _novoPedidoController.AbrirTelaDeNovoPedido();
+        public void AbrirTelaDeNovoPedido() => _novoPedidoController.AbrirTela();
 
         public void AbrirTelaParaExibirItensDoPedido(IEnumerable<ItemPedidoModel> pedido) =>
             _itensPedidoController.AbrirTelaParaExibirItensDoPedido(pedido);

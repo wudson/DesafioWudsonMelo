@@ -8,10 +8,11 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using projeto2.Feature.Promocao.View.Dev;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Promocao.Controller
 {
-    public class PromocoesController
+    public class PromocoesController : IFrmController
     {
         private FrmPromocoes _frmPromocoes;
         private FrmPromocoesDev _frmPromocoesDev;
@@ -31,7 +32,7 @@ namespace projeto2.Feature.Promocao.Controller
             _produtosDaPromocaoController = new ProdutosDaPromocaoController();
         }
 
-        public void AbrirTelaDePromocao()
+        public void AbrirTela()
         {
             if (!ClasseComVariaveisGlobais.UsarDev)
             {
@@ -45,13 +46,12 @@ namespace projeto2.Feature.Promocao.Controller
             }
         }
 
-
         public void AbrirTelaProdutosDaPromocao(List<PromocaoModel> promocao) => 
             _produtosDaPromocaoController.AbrirTelaComProdutosDaPromocao(promocao);
 
         public void AbrirTelaCadastroDePromocao()
         {
-            _cadastroDePromocaoController.AbrirTelaCadastroDePromocao();
+            _cadastroDePromocaoController.AbrirTela();
         }
 
         public IEnumerable<PromocaoModel> ListarDados(FiltrosPromocaoModel filtros)

@@ -29,18 +29,18 @@ namespace projeto2.Feature.Principal.Controller
            _promocoesController = new PromocoesController();
         }
 
-        public void AbrirTelaDeProdutos() => _produtoController.AbrirTelaDeProdutos();
+        public void AbrirTelaDeProdutos() => _produtoController.AbrirTela();
 
-        public void AbrirTelaDeClientes() => _clienteController.AbrirTelaDeClientes();
+        public void AbrirTelaDeClientes() => _clienteController.AbrirTela();
 
-        public void AbrirTelaDeEstoqueDeProdutos() => _estoqueDeProdutoController.AbrirTelaDeEstoque();
+        public void AbrirTelaDeEstoqueDeProdutos() => _estoqueDeProdutoController.AbrirTela();
 
-        public void AbrirTelaDeMarcas() => _marcaController.AbrirTelaDeMarcas();
+        public void AbrirTelaDeMarcas() => _marcaController.AbrirTela();
 
-        public void AbrirTelaDeGrupos() => _grupoController.AbrirTelaDeGrupos();
+        public void AbrirTelaDeGrupos() => _grupoController.AbrirTela();
 
-        public void AbrirTelaDePedidos() => _pedidoController.AbrirTelaDePedidos();
+        public void AbrirTelaDePedidos() => _pedidoController.AbrirTela();
 
-        public void AbrirTelaDePromocoes() => _promocoesController.AbrirTelaDePromocao();
+        public void AbrirTelaDePromocoes() => _promocoesController.AbrirTela();
     }
 }

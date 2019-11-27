@@ -172,9 +172,7 @@
             this.gvProdutos.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "OrderID", null, "")});
             this.gvProdutos.Name = "gvProdutos";
-            this.gvProdutos.OptionsBehavior.AllowPixelScrolling = DevExpress.Utils.DefaultBoolean.True;
             this.gvProdutos.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.Formatted;
-            this.gvProdutos.OptionsDetail.EnableMasterViewMode = false;
             this.gvProdutos.OptionsPrint.EnableAppearanceEvenRow = true;
             this.gvProdutos.OptionsPrint.PrintSelectedRowsOnly = true;
             this.gvProdutos.OptionsPrint.PrintVertLines = false;

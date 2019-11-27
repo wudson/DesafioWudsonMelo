@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Marca.Dao;
 using projeto2.Feature.Marca.Model;
-using projeto2.Feature.Marca.View.WinForms;
 using projeto2.Feature.Marca.View.Dev;
+using projeto2.Feature.Marca.View.WinForms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Marca.Controller
 {
-    public class MarcaController
+    public class MarcaController : IFrmController
     {
         private readonly MarcaDao _dao;
         private readonly FrmMarcas _frmMarcas;
@@ -24,7 +24,7 @@ namespace projeto2.Feature.Marca.Controller
             _frmMarcasDev = new FrmMarcasDev(this);
         }
 
-        public void AbrirTelaDeMarcas()
+        public void AbrirTela()
         {
             if (!ClasseComVariaveisGlobais.UsarDev)
                 _frmMarcas.ShowDialog();

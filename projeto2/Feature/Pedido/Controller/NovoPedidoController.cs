@@ -12,10 +12,11 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Pedido.Controller
 {
-    public class NovoPedidoController
+    public class NovoPedidoController : IFrmController
     {
         private readonly PedidoDao _dao;
         private FrmNovoPedido _frmNovoPedido;
@@ -28,7 +29,7 @@ namespace projeto2.Feature.Pedido.Controller
             _frmNovoPedidoDev = new FrmNovoPedidoDev(this);
         }
 
-        public void AbrirTelaDeNovoPedido()
+        public void AbrirTela()
         {
             if (!ClasseComVariaveisGlobais.UsarDev)
             {

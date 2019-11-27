@@ -4,10 +4,11 @@ using projeto2.Feature.Produto.Controller;
 using System.Collections.Generic;
 using projeto2.Feature.Grupo.Controller;
 using projeto2.Feature.Grupo.Model;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Estoque.Controller
 {
-    public class EstoqueDeProdutoController
+    public class EstoqueDeProdutoController : IFrmController
     {
         private FrmEstoque _frmEstoqueProdutos;
         private FrmEstoqueDev _frmEstoqueProdutosDev;
@@ -22,7 +23,7 @@ namespace projeto2.Feature.Estoque.Controller
             _grupoController = new GrupoController();
         }
 
-        public void AbrirTelaDeEstoque()
+        public void AbrirTela()
         {
             if (!ClasseComVariaveisGlobais.UsarDev)
             {

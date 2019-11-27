@@ -1,16 +1,16 @@
-﻿using FirebirdSql.Data.FirebirdClient;
+﻿using DevExpress.XtraEditors;
+using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Promocao.Dao;
 using projeto2.Feature.Promocao.Model;
 using projeto2.Feature.Promocao.View.Dev;
 using projeto2.Feature.Promocao.View.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Promocao.Controller
 {
-    public class CadastroDePromocaoController
+    public class CadastroDePromocaoController : IFrmController
     {
         private readonly PromocaoDao _dao;
         private FrmCadastroDePromcao _frmCadastroDePromcao;
@@ -23,7 +23,7 @@ namespace projeto2.Feature.Promocao.Controller
             _produtosAdicionadosNaPromocaoController = new ProdutosAdicionadosNaPromocaoController();
         }
 
-        public void AbrirTelaCadastroDePromocao()
+        public void AbrirTela()
         {
             if (!ClasseComVariaveisGlobais.UsarDev)
             {

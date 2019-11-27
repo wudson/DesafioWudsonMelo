@@ -6,10 +6,11 @@ using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Cliente.View.Dev;
 using projeto2.Feature.Cliente.View.WinForms;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Cliente.Controller
 {
-    public class CadastroDeClienteController
+    public class CadastroDeClienteController : IFrmController
     {
         private readonly ClienteDao _dao;
         private FrmCadastroDeCliente _frmCadastroDeCliente;

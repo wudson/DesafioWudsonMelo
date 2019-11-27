@@ -7,10 +7,11 @@ using projeto2.Feature.Cliente.View.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Cliente.Controller
 {
-    public class ClienteController
+    public class ClienteController : IFrmController
     {
         private readonly ClienteDao _dao;
         private FrmClientes _frmClientes;
@@ -28,7 +29,7 @@ namespace projeto2.Feature.Cliente.Controller
             _cadastroDeClienteController = new CadastroDeClienteController();
         }
 
-        public void AbrirTelaDeClientes()
+        public void AbrirTela()
         {
             if (!ClasseComVariaveisGlobais.UsarDev)
             {

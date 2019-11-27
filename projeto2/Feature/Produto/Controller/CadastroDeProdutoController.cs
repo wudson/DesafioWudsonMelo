@@ -9,11 +9,11 @@ using projeto2.Feature.Produto.View.Dev;
 using projeto2.Feature.Produto.View.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using projeto2.Interfaces;
 
 namespace projeto2.Feature.Produto.Controller
 {
-    public class CadastroDeProdutoController
+    public class CadastroDeProdutoController : IFrmController
     {
         private readonly ProdutoDao _dao;
         private FrmCadastroDeProduto _frmCadastroDeProdutos;
@@ -124,8 +124,8 @@ namespace projeto2.Feature.Produto.Controller
             return false;
         }
 
-        public void AbrirCadastroDeGrupo() => _grupoController.AbrirTelaDeGrupos();
+        public void AbrirCadastroDeGrupo() => _grupoController.AbrirTela();
 
-        public void AbrirCadastroDeMarca() => _marcaController.AbrirTelaDeMarcas();
+        public void AbrirCadastroDeMarca() => _marcaController.AbrirTela();
     }
 }
