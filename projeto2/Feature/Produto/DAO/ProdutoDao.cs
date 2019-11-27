@@ -33,7 +33,7 @@ namespace projeto2.Feature.Produto.Dao
             return true;
         }
 
-        public Produto Buscar(int idProduto, FbCommand cmd)
+        public virtual Produto Buscar(int idProduto, FbCommand cmd)
         {
             const string mSql = @"SELECT p.*, g.Grupo, m.Marca FROM Produto p
                                 INNER JOIN Grupo AS g ON p.Id_Grupo = g.Id_Grupo
@@ -83,7 +83,7 @@ namespace projeto2.Feature.Produto.Dao
             return true;
         }
 
-        public IList<Produto> Listar(Produto filtros, FbCommand cmd)
+        public virtual IList<Produto> Listar(Produto filtros, FbCommand cmd)
         {
             var sql = new StringBuilder();
             sql.Append(@"Select p.*, ip.VALOR_COM_DESCONTO, m.MARCA, g.GRUPO from PRODUTO p 

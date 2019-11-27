@@ -15,13 +15,15 @@ namespace projeto2.Feature.Produto.Controller
         private readonly FrmProdutos _frmProdutos;
         private readonly FrmProdutosDev _frmProdutosDev;
         private readonly ProdutoDao _dao;
+        private readonly bool _teste;
 
         private readonly CadastroDeProdutoController _cadastroDeProdutoController;
         private readonly EstoqueDeProdutoController _estoqueDeProdutoController;
 
-        public ProdutoController()
-        { 
-            _dao = new ProdutoDao();
+        public ProdutoController(ProdutoDao dao = null, bool teste = false)
+        {
+            _dao = dao ?? new ProdutoDao();
+            _teste = teste;
 
             _frmProdutos = new FrmProdutos(this);
             _frmProdutosDev = new FrmProdutosDev(this);
@@ -46,8 +48,14 @@ namespace projeto2.Feature.Produto.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
+
                 var produtos = _dao.Listar(filtros, cmd);
                 if (produtos.Count < 1)
                     XtraMessageBox.Show(@"Nenhum produto foi encontrado.");
@@ -66,7 +74,7 @@ namespace projeto2.Feature.Produto.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 
@@ -79,8 +87,13 @@ namespace projeto2.Feature.Produto.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
                 var produto = _dao.Buscar(idProduto, cmd);
                 if (produto.IdProduto < 1)
                     XtraMessageBox.Show(@"Produto não encontrado.");
@@ -99,7 +112,7 @@ namespace projeto2.Feature.Produto.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
             return new Produto();
