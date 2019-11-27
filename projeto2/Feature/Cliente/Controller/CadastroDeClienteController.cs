@@ -1,12 +1,11 @@
-﻿using System;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Cliente.Dao;
 using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Cliente.View.Dev;
 using projeto2.Feature.Cliente.View.WinForms;
 using projeto2.Interfaces;
+using System;
 
 namespace projeto2.Feature.Cliente.Controller
 {
@@ -16,10 +15,7 @@ namespace projeto2.Feature.Cliente.Controller
         private FrmCadastroDeCliente _frmCadastroDeCliente;
         private FrmCadastroDeClienteDev _frmCadastroDeClienteDev;
 
-        public CadastroDeClienteController()
-        {
-            _dao = new ClienteDao();
-        }
+        public CadastroDeClienteController() => _dao = new ClienteDao();
 
         public void AbrirTela()
         {

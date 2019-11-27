@@ -87,9 +87,7 @@ namespace projeto2.Feature.Pedido.Controller
         public IEnumerable<ClienteModel> ListarClientes() =>
             new ClienteController().ListarDados(new FiltrosClienteModel());
 
-        public IEnumerable<PromocaoModel> BuscarPromocoesAtivas(FiltrosPromocaoModel filtros)
-        {
-            return new PromocoesController().ListarDados(filtros);
-        }
+        public IEnumerable<PromocaoModel> BuscarPromocoesAtivas(FiltrosPromocaoModel filtros) => 
+            new PromocoesController().ListarDados(filtros);
     }
 }

@@ -49,10 +49,8 @@ namespace projeto2.Feature.Promocao.Controller
         public void AbrirTelaProdutosDaPromocao(List<PromocaoModel> promocao) => 
             _produtosDaPromocaoController.AbrirTelaComProdutosDaPromocao(promocao);
 
-        public void AbrirTelaCadastroDePromocao()
-        {
+        public void AbrirTelaCadastroDePromocao() => 
             _cadastroDePromocaoController.AbrirTela();
-        }
 
         public IEnumerable<PromocaoModel> ListarDados(FiltrosPromocaoModel filtros)
         {
