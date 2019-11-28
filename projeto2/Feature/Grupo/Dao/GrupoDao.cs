@@ -7,7 +7,7 @@ namespace projeto2.Feature.Grupo.Dao
 {
     public class GrupoDao
     {
-        public bool Cadastrar(GrupoModel grupo, FbCommand cmd)
+        public virtual bool Cadastrar(GrupoModel grupo, FbCommand cmd)
         {
             const string mSql = @"INSERT into GRUPO (GRUPO) Values(@grupo)";
 
@@ -19,7 +19,7 @@ namespace projeto2.Feature.Grupo.Dao
             return true;
         }
 
-        public IEnumerable<GrupoModel> Listar(FbCommand cmd)
+        public virtual IEnumerable<GrupoModel> Listar(FbCommand cmd)
         {
             const string mSql = @"Select * from GRUPO";
 
@@ -36,7 +36,7 @@ namespace projeto2.Feature.Grupo.Dao
             return grupos;
         }
 
-        public bool Excluir(int idGrupo, FbCommand cmd)
+        public virtual bool Excluir(int idGrupo, FbCommand cmd)
         {
             const string mSql = "DELETE from GRUPO Where ID_GRUPO = @id";
             cmd.CommandText = mSql;
@@ -46,7 +46,7 @@ namespace projeto2.Feature.Grupo.Dao
             return true;
         }
 
-        public bool Alterar(GrupoModel grupo, FbCommand cmd)
+        public virtual bool Alterar(GrupoModel grupo, FbCommand cmd)
         {
             const string mSql = @"UPDATE GRUPO set GRUPO = @grupo WHERE ID_GRUPO = @id";
 

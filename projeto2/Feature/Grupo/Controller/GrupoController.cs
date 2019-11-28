@@ -16,10 +16,12 @@ namespace projeto2.Feature.Grupo.Controller
         private readonly GrupoDao _dao;
         private readonly FrmGrupos _frmGrupos;
         private readonly FrmGruposDev _frmGruposDev;
+        private readonly bool _teste;
 
-        public GrupoController()
+        public GrupoController(GrupoDao dao = null, bool teste = false)
         {
-            _dao = new GrupoDao();
+            _dao = dao ?? new GrupoDao();
+            _teste = teste;
             _frmGrupos = new FrmGrupos(this);
             _frmGruposDev = new FrmGruposDev(this);
         }
@@ -32,17 +34,22 @@ namespace projeto2.Feature.Grupo.Controller
                 _frmGruposDev.ShowDialog();
         }
 
-        public void CadastrarGrupo(GrupoModel novoGrupo)
+        public bool CadastrarGrupo(GrupoModel novoGrupo)
         {
             var conn = Conexao.GetInstancia();
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 if (_dao.Cadastrar(novoGrupo, cmd))
-                    XtraMessageBox.Show(@"Grupo cadastrado com sucesso.");
+                    return true;
             }
             catch (FbException ex)
             {
@@ -56,9 +63,11 @@ namespace projeto2.Feature.Grupo.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
+
+            return false;
         }
 
         public IEnumerable<GrupoModel> ListarGrupos()
@@ -67,8 +76,13 @@ namespace projeto2.Feature.Grupo.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 var grupos = _dao.Listar(cmd).ToList();
                 if (grupos.Count < 1)
@@ -88,7 +102,7 @@ namespace projeto2.Feature.Grupo.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 
@@ -101,8 +115,13 @@ namespace projeto2.Feature.Grupo.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 if (_dao.Excluir(idGrupo, cmd))
                     XtraMessageBox.Show(@"Grupo excluído com sucesso.");
@@ -120,23 +139,28 @@ namespace projeto2.Feature.Grupo.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
             return false;
         }
 
-        public void AlterarGrupo(GrupoModel grupo)
+        public bool AlterarGrupo(GrupoModel grupo)
         {
             var conn = Conexao.GetInstancia();
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 if (_dao.Alterar(grupo, cmd))
-                    XtraMessageBox.Show(@"Grupo alterado com sucesso.");
+                    return true;
             }
             catch (FbException ex)
             {
@@ -150,17 +174,22 @@ namespace projeto2.Feature.Grupo.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
+
+            return false;
         }
 
         public void AlterarOuCadastrarGrupo(GrupoModel grupo)
         {
             if (grupo.IdGrupo > 0)
-                AlterarGrupo(grupo);
-            else 
-                CadastrarGrupo(grupo);
+            {
+                if (AlterarGrupo(grupo))
+                    XtraMessageBox.Show(@"Grupo alterado com sucesso.");
+            }
+            else if (CadastrarGrupo(grupo))
+                XtraMessageBox.Show(@"Grupo cadastrado com sucesso.");
         }
     }
 }

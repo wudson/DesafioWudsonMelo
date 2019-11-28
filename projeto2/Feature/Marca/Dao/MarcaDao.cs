@@ -7,7 +7,7 @@ namespace projeto2.Feature.Marca.Dao
 {
     public class MarcaDao
     {
-        public bool Cadastrar(MarcaModel marca, FbCommand cmd)
+        public virtual bool Cadastrar(MarcaModel marca, FbCommand cmd)
         {
 
             const string mSql = @"INSERT into MARCA (MARCA) Values(@marca)";
@@ -19,7 +19,7 @@ namespace projeto2.Feature.Marca.Dao
             return true;
         }
 
-        public IEnumerable<MarcaModel> Listar(FbCommand cmd)
+        public virtual IEnumerable<MarcaModel> Listar(FbCommand cmd)
         {
             const string mSql = @"Select * from MARCA";
 
@@ -38,7 +38,7 @@ namespace projeto2.Feature.Marca.Dao
             return marcas;
         }
 
-        public bool Excluir(int idMarca, FbCommand cmd)
+        public virtual bool Excluir(int idMarca, FbCommand cmd)
         {
             const string mSql = "DELETE from MARCA Where ID_MARCA = @id";
 
@@ -49,7 +49,7 @@ namespace projeto2.Feature.Marca.Dao
             return true;
         }
 
-        public bool Alterar(MarcaModel marca, FbCommand cmd)
+        public virtual bool Alterar(MarcaModel marca, FbCommand cmd)
         {
             const string mSql = @"UPDATE MARCA set MARCA = @marca WHERE ID_MARCA = @id";
 

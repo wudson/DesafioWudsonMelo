@@ -14,8 +14,13 @@ namespace projeto2.Feature.Cliente.Controller
         private readonly ClienteDao _dao;
         private FrmCadastroDeCliente _frmCadastroDeCliente;
         private FrmCadastroDeClienteDev _frmCadastroDeClienteDev;
+        private readonly bool _teste;
 
-        public CadastroDeClienteController() => _dao = new ClienteDao();
+        public CadastroDeClienteController(ClienteDao dao = null, bool teste = false)
+        {
+            _dao = dao ?? new ClienteDao();
+            _teste = teste;
+        }
 
         public void AbrirTela()
         {
@@ -51,32 +56,37 @@ namespace projeto2.Feature.Cliente.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.Transaction = conn.BeginTransaction();
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Transaction = conn.BeginTransaction();
+                }
 
                 if (_dao.Alterar(cliente, cmd))
                 {
                     XtraMessageBox.Show(@"Cliente alterado com sucesso.", @"Sucesso");
-                    cmd.Transaction.Commit();
+                    cmd?.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
                 XtraMessageBox.Show(@"Problemas no banco de dados ao alterar cliente.");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(@"Problemas ao alterar cliente");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
             return false;
@@ -90,32 +100,37 @@ namespace projeto2.Feature.Cliente.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.Transaction = conn.BeginTransaction();
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Transaction = conn.BeginTransaction();
+                }
 
                 if (_dao.Cadastrar(cliente, cmd))
                 {
                     XtraMessageBox.Show(@"Cliente cadastrado com sucesso.", @"Sucesso");
-                    cmd.Transaction.Commit();
+                    cmd?.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
                 XtraMessageBox.Show(@"Problemas no banco de dados ao cadastrar cliente.");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(@"Problemas ao cadastrar cliente");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 

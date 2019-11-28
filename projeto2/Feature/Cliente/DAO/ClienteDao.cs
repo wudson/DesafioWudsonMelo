@@ -9,7 +9,7 @@ namespace projeto2.Feature.Cliente.Dao
 {
     public class ClienteDao
     {
-        public bool Cadastrar(ClienteModel cliente, FbCommand cmd)
+        public virtual bool Cadastrar(ClienteModel cliente, FbCommand cmd)
         {
 
             cmd.Parameters.Add("@dataCadastro", FbDbType.Date).Value = cliente.DataCadastroCliente;
@@ -127,7 +127,7 @@ namespace projeto2.Feature.Cliente.Dao
 
         }
 
-        public bool Alterar(ClienteModel cliente, FbCommand cmd)
+        public virtual bool Alterar(ClienteModel cliente, FbCommand cmd)
         {
             const string mSql = @"Update CLIENTE set DATA_EDICAO_CLIENTE = @dataEdicao WHERE ID_PESSOA = @id";
 

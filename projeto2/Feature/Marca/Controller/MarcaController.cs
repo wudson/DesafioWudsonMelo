@@ -16,10 +16,12 @@ namespace projeto2.Feature.Marca.Controller
         private readonly MarcaDao _dao;
         private readonly FrmMarcas _frmMarcas;
         private readonly FrmMarcasDev _frmMarcasDev;
+        private readonly bool _teste;
 
-        public MarcaController()
+        public MarcaController(MarcaDao dao = null, bool teste = false)
         {
-            _dao = new MarcaDao();
+            _dao = dao ?? new MarcaDao();
+            _teste = teste;
             _frmMarcas = new FrmMarcas(this);
             _frmMarcasDev = new FrmMarcasDev(this);
         }
@@ -32,17 +34,22 @@ namespace projeto2.Feature.Marca.Controller
                 _frmMarcasDev.ShowDialog();
         }
 
-        public void CadastrarMarca(MarcaModel novaMarca)
+        public bool CadastrarMarca(MarcaModel novaMarca)
         {
             var conn = Conexao.GetInstancia();
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 if (_dao.Cadastrar(novaMarca, cmd))
-                    XtraMessageBox.Show(@"Marca cadastrada com sucesso.");
+                    return true;
             }
             catch (FbException ex)
             {
@@ -56,9 +63,11 @@ namespace projeto2.Feature.Marca.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
+
+            return false;
         }
 
         public IEnumerable<MarcaModel> ListarMarcas()
@@ -67,8 +76,13 @@ namespace projeto2.Feature.Marca.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 var marcas = _dao.Listar(cmd).ToList();
                 if (marcas.Count < 1)
@@ -88,7 +102,7 @@ namespace projeto2.Feature.Marca.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 
@@ -101,8 +115,13 @@ namespace projeto2.Feature.Marca.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 if (_dao.Excluir(idMarca, cmd))
                     XtraMessageBox.Show(@"Marca excluida com sucesso.");
@@ -120,24 +139,29 @@ namespace projeto2.Feature.Marca.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 
             return false;
         }
 
-        public void AlterarMarca(MarcaModel marca)
+        public bool AlterarMarca(MarcaModel marca)
         {
             var conn = Conexao.GetInstancia();
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 if (_dao.Alterar(marca, cmd))
-                    XtraMessageBox.Show(@"Marca alterada com sucesso.");
+                    return true;
             }
             catch (FbException ex)
             {
@@ -151,17 +175,22 @@ namespace projeto2.Feature.Marca.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
+
+            return false;
         }
 
         public void AlterarOuCadastrarMarca(MarcaModel marca)
         {
-            if(marca.IdMarca > 0)
-                AlterarMarca(marca);
-            else
-                CadastrarMarca(marca);
+            if (marca.IdMarca > 0)
+            {
+                if (AlterarMarca(marca))
+                    XtraMessageBox.Show(@"Marca alterada com sucesso.");
+            }
+            else if (CadastrarMarca(marca))
+                XtraMessageBox.Show(@"Marca cadastrada com sucesso.");
         }
     }
 }

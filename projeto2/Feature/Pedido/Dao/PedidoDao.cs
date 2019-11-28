@@ -8,7 +8,7 @@ namespace projeto2.Feature.Pedido.Dao
 {
     public class PedidoDao
     {
-        public bool Cadastrar(PedidoModel pedido, FbCommand cmd)
+        public virtual bool Cadastrar(PedidoModel pedido, FbCommand cmd)
         {
             const string mSql = @"INSERT into PEDIDO (DATA_PEDIDO, VALOR_TOTAL_PEDIDO, ID_CLIENTE) 
                                     Values(@data, @valorT, @idCli) RETURNING ID_PEDIDO";
@@ -45,7 +45,7 @@ namespace projeto2.Feature.Pedido.Dao
             return true;
         }
 
-        public IEnumerable<PedidoModel> Listar(FbCommand cmd)
+        public virtual IEnumerable<PedidoModel> Listar(FbCommand cmd)
         {
             const string mSql = @"Select pedido.*, p.* from PEDIDO pedido 
                                 INNER JOIN CLIENTE as c ON pedido.ID_CLIENTE = c.ID_CLIENTE
@@ -72,7 +72,7 @@ namespace projeto2.Feature.Pedido.Dao
             return pedidos;
         }
 
-        public IEnumerable<ItemPedidoModel> BuscarProdutosDoPedido(int idPedido, FbCommand cmd)
+        public virtual IEnumerable<ItemPedidoModel> BuscarProdutosDoPedido(int idPedido, FbCommand cmd)
         {
             const string mSql = @"select ip.*, p.*, pm.VALOR_COM_DESCONTO from ITEM_PEDIDO ip 
                                 INNER JOIN PRODUTO as p ON ip.ID_PRODUTO = p.ID_PRODUTO

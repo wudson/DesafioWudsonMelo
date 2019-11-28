@@ -10,7 +10,7 @@ namespace projeto2.Feature.Promocao.Dao
 {
     public class PromocaoDao
     {
-        public bool Cadastrar(PromocaoModel promocao, FbCommand cmd)
+        public virtual bool Cadastrar(PromocaoModel promocao, FbCommand cmd)
         {
             const string mSql = @"INSERT into promocao (NOME_PROMOCAO, TIPO_PROMOCAO, STATUS_PROMOCAO, 
                                 DATA_INICIO_PROMOCAO, DATA_FIM_PROMOCAO) 
@@ -50,7 +50,7 @@ namespace projeto2.Feature.Promocao.Dao
             }
         }
 
-        public IEnumerable<PromocaoModel> Listar(FbCommand cmd, FiltrosPromocaoModel filtros)
+        public virtual IEnumerable<PromocaoModel> Listar(FbCommand cmd, FiltrosPromocaoModel filtros)
         {
             var sql = new StringBuilder();
             sql.Append(@"Select * from PROMOCAO");

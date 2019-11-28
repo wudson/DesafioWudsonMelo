@@ -21,10 +21,12 @@ namespace projeto2.Feature.Pedido.Controller
         private readonly PedidoDao _dao;
         private FrmNovoPedido _frmNovoPedido;
         private FrmNovoPedidoDev _frmNovoPedidoDev;
+        private readonly bool _teste;
 
-        public NovoPedidoController()
+        public NovoPedidoController(PedidoDao dao = null, bool teste = false)
         {
-            _dao = new PedidoDao();
+            _dao = dao ?? new PedidoDao();
+            _teste = teste;
             _frmNovoPedido = new FrmNovoPedido(this);
             _frmNovoPedidoDev = new FrmNovoPedidoDev(this);
         }
@@ -49,32 +51,37 @@ namespace projeto2.Feature.Pedido.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.Transaction = conn.BeginTransaction();
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Transaction = conn.BeginTransaction();
+                }
 
                 if (_dao.Cadastrar(pedido, cmd))
                 {
                     MessageBox.Show(@"Pedido efetuado com sucesso.", @"Sucesso");
-                    cmd.Transaction.Commit();
+                    cmd?.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
                 XtraMessageBox.Show(@"Problemas no banco de dados ao efetuar pedido.");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(@"Problemas ao efetuar pedido");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 

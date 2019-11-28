@@ -1,14 +1,13 @@
-﻿using FirebirdSql.Data.FirebirdClient;
+﻿using DevExpress.XtraEditors;
+using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Promocao.Dao;
 using projeto2.Feature.Promocao.Model;
+using projeto2.Feature.Promocao.View.Dev;
 using projeto2.Feature.Promocao.View.WinForms;
+using projeto2.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using projeto2.Feature.Promocao.View.Dev;
-using projeto2.Interfaces;
 
 namespace projeto2.Feature.Promocao.Controller
 {
@@ -17,13 +16,15 @@ namespace projeto2.Feature.Promocao.Controller
         private FrmPromocoes _frmPromocoes;
         private FrmPromocoesDev _frmPromocoesDev;
         private readonly PromocaoDao _dao;
+        private readonly bool _teste;
 
         private readonly CadastroDePromocaoController _cadastroDePromocaoController;
         private readonly ProdutosDaPromocaoController _produtosDaPromocaoController;
 
-        public PromocoesController()
+        public PromocoesController(PromocaoDao dao = null, bool teste = false)
         {
-            _dao = new PromocaoDao();
+            _dao = dao ?? new PromocaoDao();
+            _teste = teste;
 
             _frmPromocoes = new FrmPromocoes(this);
             _frmPromocoesDev = new FrmPromocoesDev(this);
@@ -58,8 +59,13 @@ namespace projeto2.Feature.Promocao.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
                 var promocoes = _dao.Listar(cmd, filtros).ToList();
                 if (promocoes.Count < 1)
                     XtraMessageBox.Show(@"Nenhuma promoção foi encontrada.");
@@ -78,7 +84,7 @@ namespace projeto2.Feature.Promocao.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 

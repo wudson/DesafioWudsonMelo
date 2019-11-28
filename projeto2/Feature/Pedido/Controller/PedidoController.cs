@@ -16,13 +16,15 @@ namespace projeto2.Feature.Pedido.Controller
         private readonly PedidoDao _dao;
         private readonly FrmPedidos _frmPedidos;
         private readonly FrmPedidosDev _frmPedidosDev;
+        private readonly bool _teste;
 
         private readonly NovoPedidoController _novoPedidoController;
         private readonly ItensPedidoController _itensPedidoController;
 
-        public PedidoController()
+        public PedidoController(PedidoDao dao = null, bool teste = false)
         {
-            _dao = new PedidoDao();
+            _dao = dao ?? new PedidoDao();
+            _teste = teste;
             _frmPedidos = new FrmPedidos(this);
             _frmPedidosDev = new FrmPedidosDev(this);
 
@@ -49,8 +51,13 @@ namespace projeto2.Feature.Pedido.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 var pedidos = _dao.Listar(cmd).ToList();
                 if (pedidos.Count < 1)
@@ -70,7 +77,7 @@ namespace projeto2.Feature.Pedido.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 
@@ -79,13 +86,17 @@ namespace projeto2.Feature.Pedido.Controller
 
         public IEnumerable<ItemPedidoModel> BuscarProdutosPedido(int idPedido)
         {
-
             var conn = Conexao.GetInstancia();
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 var produtos = _dao.BuscarProdutosDoPedido(idPedido, cmd).ToList();
                 if (produtos.Count < 1)
@@ -106,7 +117,7 @@ namespace projeto2.Feature.Pedido.Controller
             finally
             {
                 conn.Close();
-                cmd.Dispose();
+                cmd?.Dispose();
             }
 
             return new List<ItemPedidoModel>();

@@ -13,13 +13,15 @@ namespace projeto2.Feature.Promocao.Controller
     public class CadastroDePromocaoController : IFrmController
     {
         private readonly PromocaoDao _dao;
+        private readonly bool _teste;
         private FrmCadastroDePromcao _frmCadastroDePromcao;
         private FrmCadastroDePromocaoDev _frmCadastroDePromcaoDev;
         private readonly ProdutosAdicionadosNaPromocaoController _produtosAdicionadosNaPromocaoController;
 
-        public CadastroDePromocaoController()
+        public CadastroDePromocaoController(PromocaoDao dao = null, bool teste = false)
         {
-            _dao = new PromocaoDao();
+            _dao = dao ?? new PromocaoDao();
+            _teste = teste;
             _produtosAdicionadosNaPromocaoController = new ProdutosAdicionadosNaPromocaoController();
         }
 
@@ -46,32 +48,38 @@ namespace projeto2.Feature.Promocao.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.Transaction = conn.BeginTransaction();
+                if (_teste)
+                    cmd = null;
+                else
+                {
+
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Transaction = conn.BeginTransaction();
+                }
 
                 if (_dao.Cadastrar(promocao, cmd))
                 {
                     XtraMessageBox.Show(@"Promoção cadastrada com sucesso.", @"Sucesso");
-                    cmd.Transaction.Commit();
+                    cmd?.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
                 XtraMessageBox.Show(@"Problemas no banco de dados ao cadastrar promoção.");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(@"Problemas ao cadastrar promoção.", @"Erro");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
             return false;
