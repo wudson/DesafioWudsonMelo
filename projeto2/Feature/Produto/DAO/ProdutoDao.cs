@@ -9,7 +9,7 @@ namespace projeto2.Feature.Produto.Dao
 {
     public class ProdutoDao
     {
-        public bool Cadastrar(Produto produto, FbCommand cmd)
+        public virtual bool Cadastrar(Produto produto, FbCommand cmd)
         {
             const string mSql = @"INSERT into PRODUTO (NOME_PRODUTO, ID_GRUPO, ID_MARCA, TIPO_PRODUTO, 
                                   QUANTIDADE_ESTOQUE_PRODUTO, VALOR_COMPRA_PRODUTO, VALOR_VENDA_PRODUTO, 
@@ -72,7 +72,7 @@ namespace projeto2.Feature.Produto.Dao
             return produto;
         }
 
-        public bool Excluir(int idProduto, FbCommand cmd)
+        public virtual bool Excluir(int idProduto, FbCommand cmd)
         {
             const string mSql = "DELETE from PRODUTO Where ID_PRODUTO= @id";
             cmd.CommandText = mSql;
@@ -147,9 +147,8 @@ namespace projeto2.Feature.Produto.Dao
             return produtos;
         }
 
-        public bool Alterar(Produto produto, FbCommand cmd)
+        public virtual bool Alterar(Produto produto, FbCommand cmd)
         {
-
             const string mSql = @"Update PRODUTO set NOME_PRODUTO = @nome, ID_GRUPO = @grupo, 
                                     ID_MARCA = @marca, TIPO_PRODUTO = @tipo, QUANTIDADE_ESTOQUE_PRODUTO = @estoque, 
                                     VALOR_COMPRA_PRODUTO = @compra, VALOR_VENDA_PRODUTO = @venda, 

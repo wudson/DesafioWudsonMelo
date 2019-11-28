@@ -124,8 +124,13 @@ namespace projeto2.Feature.Produto.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
                 if (_dao.Excluir(idProduto, cmd))
                 {
                     XtraMessageBox.Show(@"Produto excluido com sucesso.", @"Sucesso");
@@ -144,7 +149,7 @@ namespace projeto2.Feature.Produto.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 

@@ -25,7 +25,7 @@ namespace projeto2.Feature.Cliente.Dao
             return true;
         }
 
-        public ClienteModel Buscar(int idCliente, FbCommand cmd)
+        public virtual ClienteModel Buscar(int idCliente, FbCommand cmd)
         {
             const string mSql = @"Select c.*, p.* from CLIENTE c
                                 INNER JOIN PESSOA as p ON c.ID_PESSOA = p.ID_PESSOA
@@ -61,7 +61,7 @@ namespace projeto2.Feature.Cliente.Dao
             return cliente;
         }
 
-        public IEnumerable<ClienteModel> ListarDados(FiltrosClienteModel filtros, FbCommand cmd)
+        public virtual IEnumerable<ClienteModel> ListarDados(FiltrosClienteModel filtros, FbCommand cmd)
         {
             var sql = new StringBuilder();
             sql.Append(@"Select c.*, p.* from CLIENTE c
@@ -114,7 +114,7 @@ namespace projeto2.Feature.Cliente.Dao
             return listaClientes;
         }
 
-        public bool Excluir(int idPessoa, FbCommand cmd)
+        public virtual bool Excluir(int idPessoa, FbCommand cmd)
         {
             const string mSql = "DELETE from CLIENTE Where ID_PESSOA= @id";
 

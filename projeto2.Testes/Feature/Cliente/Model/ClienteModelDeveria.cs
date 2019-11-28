@@ -36,33 +36,7 @@ namespace projeto2.Testes.Feature.Cliente.Model
                 EstadoPessoa = modelBase.EstadoPessoa
             };
 
-            modelAlvo.IdCliente
-                .Should()
-                .Be(modelBase.IdCliente, " porque, na model, há uma conta de subtração e adição nessa variável");
-
-            modelAlvo.DataCadastroCliente
-                .Should()
-                .BeSameDateAs(modelBase.DataCadastroCliente);
-
-            Assert.NotNull(modelAlvo.IdCliente.ToString());
-            Assert.NotNull(modelAlvo.DataCadastroCliente.ToString(CultureInfo.InvariantCulture));
-            Assert.NotNull(modelAlvo.DataEdicaoCliente.ToString(CultureInfo.InvariantCulture));
-            Assert.NotNull(modelAlvo.NascimentoPessoa.ToString(CultureInfo.InvariantCulture));
-            Assert.NotNull(modelAlvo.IdPessoa.ToString());
-            Assert.NotNull(modelAlvo.NumeroPessoa.ToString());
-            Assert.NotNull(modelAlvo.CidadePessoa);
-            Assert.NotNull(modelAlvo.CelularPessoa);
-            Assert.NotNull(modelAlvo.CepPessoa);
-            Assert.NotNull(modelAlvo.TelefonePessoa);
-            Assert.NotNull(modelAlvo.NomePessoa);
-            Assert.NotNull(modelAlvo.EmailPessoa);
-            Assert.NotNull(modelAlvo.EstadoPessoa);
-            Assert.NotNull(modelAlvo.BairroPessoa);
-            Assert.NotNull(modelAlvo.SexoPessoa);
-            Assert.NotNull(modelAlvo.ComplementoPessoa);
-            Assert.NotNull(modelAlvo.RuaPessoa);
-            Assert.NotNull(modelAlvo.RgPessoa);
-            Assert.NotNull(modelAlvo.CpfPessoa);
+            modelAlvo.Should().BeEquivalentTo(modelBase);
         }
 
         public static IEnumerable<object[]> CriarDadosParaInstaniarCorretamente() =>
@@ -94,18 +68,5 @@ namespace projeto2.Testes.Feature.Cliente.Model
                     }
                 }
             };
-
-        [Fact]
-        public void TesteModelFiltrosCliente()
-        {
-            var filtro = new FiltrosClienteModel
-            {
-                DataInicio = "2019 / 11 / 25",
-                DataFim = "2019 / 11 / 26"
-            };
-
-            Assert.NotNull(filtro.DataInicio);
-            Assert.NotNull(filtro.DataFim);
-        }
     }
 }

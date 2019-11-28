@@ -16,12 +16,14 @@ namespace projeto2.Feature.Cliente.Controller
         private readonly ClienteDao _dao;
         private FrmClientes _frmClientes;
         private FrmClientesDev _frmClientesDev;
+        private readonly bool _teste;
 
         private readonly CadastroDeClienteController _cadastroDeClienteController;
 
-        public ClienteController()
+        public ClienteController(ClienteDao dao = null, bool teste = false)
         {
-            _dao = new ClienteDao();
+            _dao = dao ?? new ClienteDao();
+            _teste = teste;
 
             _frmClientes = new FrmClientes(this);
             _frmClientesDev = new FrmClientesDev(this);
@@ -49,8 +51,13 @@ namespace projeto2.Feature.Cliente.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 var cliente = _dao.Buscar(idPessoa, cmd);
                 if (cliente.IdCliente < 1)
@@ -70,7 +77,7 @@ namespace projeto2.Feature.Cliente.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 
@@ -83,32 +90,37 @@ namespace projeto2.Feature.Cliente.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
-                cmd.Transaction = conn.BeginTransaction();
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.Transaction = conn.BeginTransaction();
+                }
 
                 if (_dao.Excluir(idPessoa, cmd))
                 {
                     XtraMessageBox.Show(@"Cliente excluido com sucesso.", @"Sucesso");
-                    cmd.Transaction.Commit();
+                    cmd?.Transaction.Commit();
                     return true;
                 }
             }
             catch (FbException ex)
             {
                 XtraMessageBox.Show(@"Problemas no banco de dados ao excluir cliente.");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(@"Problemas ao excluir cliente");
-                cmd.Transaction.Rollback();
+                cmd?.Transaction.Rollback();
                 Console.WriteLine(ex);
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 
@@ -121,8 +133,13 @@ namespace projeto2.Feature.Cliente.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
 
                 var clientes = _dao.ListarDados(filtros, cmd).ToList();
                 if (clientes.Count < 1)
@@ -142,7 +159,7 @@ namespace projeto2.Feature.Cliente.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
 

@@ -20,10 +20,12 @@ namespace projeto2.Feature.Produto.Controller
         private FrmCadastroDeProdutoDev _frmCadastroDeProdutosDev;
         private readonly GrupoController _grupoController;
         private readonly MarcaController _marcaController;
+        private readonly bool _teste;
 
-        public CadastroDeProdutoController()
+        public CadastroDeProdutoController(ProdutoDao dao = null, bool teste = false)
         {
-            _dao = new ProdutoDao();
+            _dao = dao ?? new ProdutoDao();
+            _teste = teste;
             _marcaController = new MarcaController();
             _grupoController = new GrupoController();
         }
@@ -62,8 +64,13 @@ namespace projeto2.Feature.Produto.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
                 if (_dao.Cadastrar(produto, cmd))
                 {
                     XtraMessageBox.Show(@"Produto cadastrado com sucesso.", @"Sucesso");
@@ -82,7 +89,7 @@ namespace projeto2.Feature.Produto.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
             return false;
@@ -98,8 +105,13 @@ namespace projeto2.Feature.Produto.Controller
             var cmd = new FbCommand();
             try
             {
-                conn.Open();
-                cmd.Connection = conn;
+                if (_teste)
+                    cmd = null;
+                else
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                }
                 if (_dao.Alterar(produto, cmd))
                 {
                     XtraMessageBox.Show(@"Produto alterado com sucesso.", @"Sucesso");
@@ -118,7 +130,7 @@ namespace projeto2.Feature.Produto.Controller
             }
             finally
             {
-                cmd.Dispose();
+                cmd?.Dispose();
                 conn.Close();
             }
             return false;

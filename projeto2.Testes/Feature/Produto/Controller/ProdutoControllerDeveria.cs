@@ -69,5 +69,20 @@ namespace projeto2.Testes.Feature.Produto.Controller
                         }
                 }
             };
+
+        [Theory]
+        [InlineData(1, true)]
+        public void ExcluirDadoCorretamente(int idProduto, bool retornoEsperado)
+        {
+            var mockProdutoDao = new Mock<ProdutoDao>();
+            mockProdutoDao.Setup(m => m.Excluir(idProduto, null)).Returns(retornoEsperado);
+
+            var produtoController = new ProdutoController(mockProdutoDao.Object, true);
+
+            var retorno = produtoController.ExcluirDado(idProduto);
+
+            retorno.Should()
+                .Be(retornoEsperado);
+        }
     }
 }
