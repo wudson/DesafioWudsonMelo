@@ -1,7 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using projeto2.Feature.Pessoa.Model;
-using System;
-using projeto2.Feature.Cliente.Model;
 
 namespace projeto2.Feature.Pessoa.Dao
 {
@@ -16,6 +14,14 @@ namespace projeto2.Feature.Pessoa.Dao
                                 @numero, @bairro) RETURNING Id_PESSOA";
             cmd.CommandText = mSql;
 
+            cmd = AdicionarParametrosDeCadastro(pessoa, cmd);
+
+            var idpessoa = int.Parse(cmd.ExecuteScalar().ToString());
+            return idpessoa;
+        }
+
+        public FbCommand AdicionarParametrosDeCadastro(PessoaModel pessoa, FbCommand cmd)
+        {
             cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = pessoa.NomePessoa;
             cmd.Parameters.Add("@email", FbDbType.VarChar).Value = pessoa.EmailPessoa;
             cmd.Parameters.Add("@cpf", FbDbType.VarChar).Value = pessoa.CpfPessoa;
@@ -31,9 +37,7 @@ namespace projeto2.Feature.Pessoa.Dao
             cmd.Parameters.Add("@complemento", FbDbType.VarChar).Value = pessoa.ComplementoPessoa;
             cmd.Parameters.Add("@numero", FbDbType.Integer).Value = pessoa.NumeroPessoa;
             cmd.Parameters.Add("@bairro", FbDbType.VarChar).Value = pessoa.BairroPessoa;
-
-            var idpessoa = int.Parse(cmd.ExecuteScalar().ToString());
-            return idpessoa;
+            return cmd;
         }
 
         public bool Excluir(int idPessoa, FbCommand cmd)
@@ -58,6 +62,15 @@ namespace projeto2.Feature.Pessoa.Dao
             cmd.CommandText = mSql;
 
             cmd.Parameters["@id"].Value = pessoa.IdPessoa;
+            cmd = AdicionarParametrosDeEdicao(pessoa, cmd);
+
+            cmd.ExecuteNonQuery();
+
+            return true;
+        }
+
+        public FbCommand AdicionarParametrosDeEdicao(PessoaModel pessoa, FbCommand cmd)
+        {
             cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = pessoa.NomePessoa;
             cmd.Parameters.Add("@email", FbDbType.VarChar).Value = pessoa.EmailPessoa;
             cmd.Parameters.Add("@cpf", FbDbType.VarChar).Value = pessoa.CpfPessoa;
@@ -73,10 +86,7 @@ namespace projeto2.Feature.Pessoa.Dao
             cmd.Parameters.Add("@complemento", FbDbType.VarChar).Value = pessoa.ComplementoPessoa;
             cmd.Parameters.Add("@numero", FbDbType.Integer).Value = pessoa.NumeroPessoa;
             cmd.Parameters.Add("@bairro", FbDbType.VarChar).Value = pessoa.BairroPessoa;
-
-            cmd.ExecuteNonQuery();
-
-            return true;
+            return cmd;
         }
     }
 }

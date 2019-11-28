@@ -18,6 +18,15 @@ namespace projeto2.Feature.Produto.Dao
 
             cmd.CommandText = mSql;
 
+            cmd = AdicionarParametrosDeCadastroNoFbCommand(produto, cmd);
+
+            cmd.ExecuteNonQuery();
+
+            return true;
+        }
+
+        public FbCommand AdicionarParametrosDeCadastroNoFbCommand(Produto produto, FbCommand cmd)
+        {
             cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
             cmd.Parameters.Add("@grupo", FbDbType.Integer).Value = produto.GrupoProduto.IdGrupo;
             cmd.Parameters.Add("@marca", FbDbType.Integer).Value = produto.MarcaProduto.IdMarca;
@@ -28,9 +37,7 @@ namespace projeto2.Feature.Produto.Dao
             cmd.Parameters.Add("@fornecedor", FbDbType.VarChar).Value = produto.FornecedorProduto;
             cmd.Parameters.Add("@codigo", FbDbType.VarChar).Value = produto.CodigoDeBarras;
 
-            cmd.ExecuteNonQuery();
-
-            return true;
+            return cmd;
         }
 
         public virtual Produto Buscar(int idProduto, FbCommand cmd)
@@ -42,7 +49,7 @@ namespace projeto2.Feature.Produto.Dao
 
             cmd.CommandText = mSql;
 
-            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idProduto;
+            cmd = AdicionarParametrosDeBuscaNoFbCommand(idProduto, cmd);
 
             var dataReader = cmd.ExecuteReader();
             var produto = new Produto();
@@ -72,15 +79,27 @@ namespace projeto2.Feature.Produto.Dao
             return produto;
         }
 
+        public FbCommand AdicionarParametrosDeBuscaNoFbCommand(int idProduto, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idProduto;
+            return cmd;
+        }
+
         public virtual bool Excluir(int idProduto, FbCommand cmd)
         {
             const string mSql = "DELETE from PRODUTO Where ID_PRODUTO= @id";
             cmd.CommandText = mSql;
 
-            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idProduto;
+            cmd = AdicionarParametrosDeExclusaoNoFbCommand(idProduto, cmd);
             cmd.ExecuteNonQuery();
 
             return true;
+        }
+
+        public FbCommand AdicionarParametrosDeExclusaoNoFbCommand(int idProduto, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idProduto;
+            return cmd;
         }
 
         public virtual IList<Produto> Listar(Produto filtros, FbCommand cmd)
@@ -106,10 +125,7 @@ namespace projeto2.Feature.Produto.Dao
 
             cmd.CommandText = sql.ToString();
 
-            cmd.Parameters.Add("@prod", FbDbType.VarChar).Value = $"{filtros.NomeProduto}%";
-            cmd.Parameters.Add("@codigo", FbDbType.VarChar).Value = $"{filtros.CodigoDeBarras}%";
-            cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = filtros.GrupoProduto.Grupo;
-            cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = filtros.TipoProduto;
+            cmd = AdicionarParametrosDeListagemNoFbCommand(filtros, cmd);
 
             var dataReader = cmd.ExecuteReader();
             var produtos = new List<Produto>();
@@ -147,6 +163,15 @@ namespace projeto2.Feature.Produto.Dao
             return produtos;
         }
 
+        public FbCommand AdicionarParametrosDeListagemNoFbCommand(Produto filtros, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@prod", FbDbType.VarChar).Value = $"{filtros.NomeProduto}%";
+            cmd.Parameters.Add("@codigo", FbDbType.VarChar).Value = $"{filtros.CodigoDeBarras}%";
+            cmd.Parameters.Add("@grupo", FbDbType.VarChar).Value = filtros.GrupoProduto.Grupo;
+            cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = filtros.TipoProduto;
+            return cmd;
+        }
+
         public virtual bool Alterar(Produto produto, FbCommand cmd)
         {
             const string mSql = @"Update PRODUTO set NOME_PRODUTO = @nome, ID_GRUPO = @grupo, 
@@ -157,6 +182,14 @@ namespace projeto2.Feature.Produto.Dao
 
             cmd.CommandText = mSql;
 
+            cmd = AdicionarParametrosDeEdicaoNoFbCommand(produto, cmd);
+
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+
+        public FbCommand AdicionarParametrosDeEdicaoNoFbCommand(Produto produto, FbCommand cmd)
+        {
             cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = produto.NomeProduto;
             cmd.Parameters.Add("@grupo", FbDbType.Integer).Value = produto.GrupoProduto.IdGrupo;
             cmd.Parameters.Add("@marca", FbDbType.Integer).Value = produto.MarcaProduto.IdMarca;
@@ -167,9 +200,7 @@ namespace projeto2.Feature.Produto.Dao
             cmd.Parameters.Add("@fornecedor", FbDbType.VarChar).Value = produto.FornecedorProduto;
             cmd.Parameters.Add("@codigo", FbDbType.VarChar).Value = produto.CodigoDeBarras;
             cmd.Parameters.Add("@id", FbDbType.Integer).Value = produto.IdProduto;
-
-            cmd.ExecuteNonQuery();
-            return true;
+            return cmd;
         }
     }
 }

@@ -141,6 +141,7 @@
             this.gvProdutos.OptionsView.EnableAppearanceEvenRow = true;
             this.gvProdutos.OptionsView.ShowFooter = true;
             this.gvProdutos.OptionsView.ShowIndicator = false;
+            this.gvProdutos.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.GvProdutos_RowStyle);
             // 
             // colIdProduto
             // 
@@ -325,6 +326,7 @@
             this.lsProdutos.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.lsProdutos.OptionsView.EnableAppearanceEvenRow = true;
             this.lsProdutos.OptionsView.ShowIndicator = false;
+            this.lsProdutos.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.LsProdutos_RowStyle);
             // 
             // colIdProduto1
             // 

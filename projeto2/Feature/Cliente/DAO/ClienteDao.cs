@@ -12,8 +12,7 @@ namespace projeto2.Feature.Cliente.Dao
         public virtual bool Cadastrar(ClienteModel cliente, FbCommand cmd)
         {
 
-            cmd.Parameters.Add("@dataCadastro", FbDbType.Date).Value = cliente.DataCadastroCliente;
-            cmd.Parameters.Add("@dataEdicao", FbDbType.Date).Value = cliente.DataEdicaoCliente;
+            cmd = AdicionarParametrosDeCadastro(cliente, cmd);
             cmd.Parameters.Add("@id_pessoa", FbDbType.Integer).Value = new PessoaDao().Cadastrar(cliente, cmd);
 
             const string mSql = @"INSERT into CLIENTE (DATA_CADASTRO_CLIENTE, DATA_EDICAO_CLIENTE, ID_PESSOA) 
@@ -23,6 +22,13 @@ namespace projeto2.Feature.Cliente.Dao
             cmd.ExecuteNonQuery();
 
             return true;
+        }
+
+        public FbCommand AdicionarParametrosDeCadastro(ClienteModel cliente, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@dataCadastro", FbDbType.Date).Value = cliente.DataCadastroCliente;
+            cmd.Parameters.Add("@dataEdicao", FbDbType.Date).Value = cliente.DataEdicaoCliente;
+            return cmd;
         }
 
         public virtual ClienteModel Buscar(int idCliente, FbCommand cmd)
@@ -77,10 +83,7 @@ namespace projeto2.Feature.Cliente.Dao
             cmd.CommandText = sql.ToString();
             var listaClientes = new List<ClienteModel>();
 
-            cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = $"{filtros.NomePessoa}%";
-            cmd.Parameters.Add("@cidade", FbDbType.VarChar).Value = filtros.CidadePessoa;
-            cmd.Parameters.Add("@dataI", FbDbType.Date).Value = filtros.DataInicio;
-            cmd.Parameters.Add("@dataF", FbDbType.Date).Value = filtros.DataFim;
+            cmd = AdicionarParametrosDeListagem(filtros, cmd);
 
             var dataReader = cmd.ExecuteReader();
 
@@ -114,6 +117,15 @@ namespace projeto2.Feature.Cliente.Dao
             return listaClientes;
         }
 
+        public FbCommand AdicionarParametrosDeListagem(FiltrosClienteModel filtros, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = $"{filtros.NomePessoa}%";
+            cmd.Parameters.Add("@cidade", FbDbType.VarChar).Value = filtros.CidadePessoa;
+            cmd.Parameters.Add("@dataI", FbDbType.Date).Value = filtros.DataInicio;
+            cmd.Parameters.Add("@dataF", FbDbType.Date).Value = filtros.DataFim;
+            return cmd;
+        }
+
         public virtual bool Excluir(int idPessoa, FbCommand cmd)
         {
             const string mSql = "DELETE from CLIENTE Where ID_PESSOA= @id";
@@ -133,11 +145,17 @@ namespace projeto2.Feature.Cliente.Dao
 
             cmd.CommandText = mSql;
 
-            cmd.Parameters.Add("@id", FbDbType.Integer).Value = cliente.IdPessoa;
-            cmd.Parameters.Add("@dataEdicao", FbDbType.Date).Value = cliente.DataEdicaoCliente;
+            cmd = AdicionarParametrosDeEdicao(cliente, cmd);
             cmd.ExecuteNonQuery();
 
             return new PessoaDao().Alterar(cliente, cmd);
+        }
+
+        public FbCommand AdicionarParametrosDeEdicao(ClienteModel cliente, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = cliente.IdPessoa;
+            cmd.Parameters.Add("@dataEdicao", FbDbType.Date).Value = cliente.DataEdicaoCliente;
+            return cmd;
         }
     }
 }

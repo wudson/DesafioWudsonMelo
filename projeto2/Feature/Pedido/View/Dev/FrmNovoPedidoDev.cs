@@ -5,8 +5,10 @@ using projeto2.Feature.Pedido.Model;
 using projeto2.Feature.Promocao.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace projeto2.Feature.Pedido.View.Dev
 {
@@ -163,6 +165,16 @@ namespace projeto2.Feature.Pedido.View.Dev
         private void LstProdutos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Tab) dgvProdutos.Focus();
+        }
+
+        private void LsProdutos_RowStyle(object sender, RowStyleEventArgs e)
+        {
+               
+        }
+
+        private void GvProdutos_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            //e.Appearance.ForeColor = Color.LimeGreen;
         }
     }
 }
