@@ -354,8 +354,11 @@
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtGrupo.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Grupo", "Grupo", 39, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.txtGrupo.Properties.DataSource = this.grupoModelBindingSource;
             this.txtGrupo.Properties.DisplayMember = "Grupo";
+            this.txtGrupo.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.StartsWith;
             this.txtGrupo.Properties.ValueMember = "IdGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(262, 20);
             this.txtGrupo.TabIndex = 19;

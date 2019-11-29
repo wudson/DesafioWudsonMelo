@@ -30,17 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroDePromocaoDev));
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtPorcentagem = new DevExpress.XtraEditors.TextEdit();
             this.txtTipo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtDataInicio = new DevExpress.XtraEditors.DateEdit();
             this.txtDataFim = new DevExpress.XtraEditors.DateEdit();
-            this.txtValor = new DevExpress.XtraEditors.TextEdit();
             this.txtNome = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.grpTipoDesconto = new DevExpress.XtraEditors.RadioGroup();
             this.btnAplicar = new DevExpress.XtraEditors.SimpleButton();
             this.btnSelecionarProdutos = new DevExpress.XtraEditors.SimpleButton();
             this.grpDesconto = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.txtValor = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -64,17 +66,19 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.grpDadosPromocao = new DevExpress.XtraEditors.GroupControl();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPorcentagem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTipo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataFim.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataFim.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtValor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpTipoDesconto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpDesconto)).BeginInit();
             this.grpDesconto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPromocao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProdutosPromocao)).BeginInit();
@@ -86,12 +90,18 @@
             this.grpDadosPromocao.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textEdit1
+            // txtPorcentagem
             // 
-            this.textEdit1.Location = new System.Drawing.Point(5, 73);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(137, 20);
-            this.textEdit1.TabIndex = 0;
+            this.txtPorcentagem.EditValue = "";
+            this.txtPorcentagem.Location = new System.Drawing.Point(17, 73);
+            this.txtPorcentagem.Name = "txtPorcentagem";
+            this.txtPorcentagem.Properties.Mask.EditMask = "\\d{1,3}%";
+            this.txtPorcentagem.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtPorcentagem.Properties.Mask.SaveLiteral = false;
+            this.txtPorcentagem.Size = new System.Drawing.Size(137, 20);
+            this.txtPorcentagem.TabIndex = 0;
+            this.txtPorcentagem.Visible = false;
+            this.txtPorcentagem.Leave += new System.EventHandler(this.TxtPorcentagem_Leave);
             // 
             // txtTipo
             // 
@@ -101,6 +111,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtTipo.Properties.Items.AddRange(new object[] {
             "Desconto"});
+            this.txtTipo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txtTipo.Size = new System.Drawing.Size(356, 20);
             this.txtTipo.TabIndex = 1;
             this.txtTipo.SelectedIndexChanged += new System.EventHandler(this.TxtTipo_SelectedIndexChanged);
@@ -128,13 +139,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtDataFim.Size = new System.Drawing.Size(142, 20);
             this.txtDataFim.TabIndex = 3;
-            // 
-            // txtValor
-            // 
-            this.txtValor.Location = new System.Drawing.Point(5, 73);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(137, 20);
-            this.txtValor.TabIndex = 4;
             // 
             // txtNome
             // 
@@ -166,6 +170,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("P", "Porcentagem")});
             this.grpTipoDesconto.Size = new System.Drawing.Size(184, 37);
             this.grpTipoDesconto.TabIndex = 18;
+            this.grpTipoDesconto.EditValueChanged += new System.EventHandler(this.GrpTipoDesconto_EditValueChanged);
             // 
             // btnAplicar
             // 
@@ -194,16 +199,52 @@
             // 
             // grpDesconto
             // 
+            this.grpDesconto.Controls.Add(this.labelControl11);
+            this.grpDesconto.Controls.Add(this.labelControl10);
+            this.grpDesconto.Controls.Add(this.groupControl4);
+            this.grpDesconto.Controls.Add(this.txtValor);
             this.grpDesconto.Controls.Add(this.grpTipoDesconto);
             this.grpDesconto.Controls.Add(this.btnAplicar);
-            this.grpDesconto.Controls.Add(this.txtValor);
-            this.grpDesconto.Controls.Add(this.textEdit1);
+            this.grpDesconto.Controls.Add(this.txtPorcentagem);
             this.grpDesconto.Enabled = false;
             this.grpDesconto.Location = new System.Drawing.Point(16, 77);
             this.grpDesconto.Name = "grpDesconto";
             this.grpDesconto.Size = new System.Drawing.Size(800, 100);
             this.grpDesconto.TabIndex = 20;
             this.grpDesconto.Text = "Desconto";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Location = new System.Drawing.Point(524, 76);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(242, 13);
+            this.labelControl10.TabIndex = 35;
+            this.labelControl10.Text = "Preço com desconto menor que o preço de compra";
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Appearance.BackColor = System.Drawing.Color.Red;
+            this.groupControl4.Appearance.Options.UseBackColor = true;
+            this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.groupControl4.Location = new System.Drawing.Point(505, 76);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(13, 12);
+            this.groupControl4.TabIndex = 34;
+            this.groupControl4.Text = "groupControl4";
+            // 
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(17, 73);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Properties.DisplayFormat.FormatString = "c2";
+            this.txtValor.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtValor.Properties.Mask.EditMask = "c2";
+            this.txtValor.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtValor.Properties.MaxLength = 7;
+            this.txtValor.Size = new System.Drawing.Size(137, 20);
+            this.txtValor.TabIndex = 33;
             // 
             // labelControl2
             // 
@@ -491,6 +532,16 @@
             this.grpDadosPromocao.TabIndex = 32;
             this.grpDadosPromocao.Text = "groupControl1";
             // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl11.Appearance.Options.UseForeColor = true;
+            this.labelControl11.Location = new System.Drawing.Point(64, 3);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(6, 13);
+            this.labelControl11.TabIndex = 32;
+            this.labelControl11.Text = "*";
+            // 
             // FrmCadastroDePromocaoDev
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,17 +564,19 @@
             this.Text = "Cadastro de promoção";
             this.Load += new System.EventHandler(this.FrmCadastroDePromocaoDev_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroDePromcao_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPorcentagem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTipo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataFim.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataFim.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtValor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNome.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpTipoDesconto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grpDesconto)).EndInit();
             this.grpDesconto.ResumeLayout(false);
+            this.grpDesconto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutosPromocao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProdutosPromocao)).EndInit();
@@ -541,11 +594,10 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtPorcentagem;
         private DevExpress.XtraEditors.ComboBoxEdit txtTipo;
         private DevExpress.XtraEditors.DateEdit txtDataInicio;
         private DevExpress.XtraEditors.DateEdit txtDataFim;
-        private DevExpress.XtraEditors.TextEdit txtValor;
         private DevExpress.XtraEditors.TextEdit txtNome;
         private DevExpress.XtraEditors.SimpleButton btnSelecionarProdutos;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -575,5 +627,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.GroupControl grpDadosPromocao;
+        private DevExpress.XtraEditors.TextEdit txtValor;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
     }
 }

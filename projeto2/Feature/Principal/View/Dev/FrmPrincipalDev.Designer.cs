@@ -41,6 +41,8 @@
             // 
             // btnProdutos
             // 
+            this.btnProdutos.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnProdutos.Appearance.Options.UseBackColor = true;
             this.btnProdutos.ImageOptions.Image = global::projeto2.Properties.Resources.barcode;
             this.btnProdutos.Location = new System.Drawing.Point(12, 12);
             this.btnProdutos.Name = "btnProdutos";
@@ -51,6 +53,8 @@
             // 
             // btnClientes
             // 
+            this.btnClientes.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnClientes.Appearance.Options.UseBackColor = true;
             this.btnClientes.ImageOptions.Image = global::projeto2.Properties.Resources.star;
             this.btnClientes.Location = new System.Drawing.Point(12, 180);
             this.btnClientes.Name = "btnClientes";
@@ -61,6 +65,8 @@
             // 
             // btnPedidos
             // 
+            this.btnPedidos.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnPedidos.Appearance.Options.UseBackColor = true;
             this.btnPedidos.ImageOptions.Image = global::projeto2.Properties.Resources.connection;
             this.btnPedidos.Location = new System.Drawing.Point(433, 96);
             this.btnPedidos.Name = "btnPedidos";
@@ -71,6 +77,8 @@
             // 
             // btnEstoque
             // 
+            this.btnEstoque.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnEstoque.Appearance.Options.UseBackColor = true;
             this.btnEstoque.ImageOptions.Image = global::projeto2.Properties.Resources.price_tag;
             this.btnEstoque.Location = new System.Drawing.Point(223, 96);
             this.btnEstoque.Name = "btnEstoque";
@@ -81,6 +89,8 @@
             // 
             // btnMarcas
             // 
+            this.btnMarcas.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnMarcas.Appearance.Options.UseBackColor = true;
             this.btnMarcas.ImageOptions.Image = global::projeto2.Properties.Resources.package;
             this.btnMarcas.Location = new System.Drawing.Point(12, 96);
             this.btnMarcas.Name = "btnMarcas";
@@ -91,6 +101,8 @@
             // 
             // btnGrupos
             // 
+            this.btnGrupos.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnGrupos.Appearance.Options.UseBackColor = true;
             this.btnGrupos.ImageOptions.Image = global::projeto2.Properties.Resources.shopping_cart;
             this.btnGrupos.Location = new System.Drawing.Point(433, 12);
             this.btnGrupos.Name = "btnGrupos";
@@ -101,6 +113,8 @@
             // 
             // btnPromocoes
             // 
+            this.btnPromocoes.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnPromocoes.Appearance.Options.UseBackColor = true;
             this.btnPromocoes.ImageOptions.Image = global::projeto2.Properties.Resources.teamwork;
             this.btnPromocoes.Location = new System.Drawing.Point(223, 12);
             this.btnPromocoes.Name = "btnPromocoes";
@@ -111,6 +125,8 @@
             // 
             // btnSair
             // 
+            this.btnSair.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnSair.Appearance.Options.UseBackColor = true;
             this.btnSair.ImageOptions.Image = global::projeto2.Properties.Resources.logout;
             this.btnSair.Location = new System.Drawing.Point(223, 180);
             this.btnSair.Name = "btnSair";

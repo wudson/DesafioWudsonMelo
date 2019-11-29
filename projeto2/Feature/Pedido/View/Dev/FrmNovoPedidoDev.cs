@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Base;
 using projeto2.Feature.Cliente.Model;
 using projeto2.Feature.Pedido.Controller;
 using projeto2.Feature.Pedido.Model;
@@ -8,7 +9,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using DevExpress.XtraGrid.Views.Grid;
 
 namespace projeto2.Feature.Pedido.View.Dev
 {
@@ -167,14 +167,18 @@ namespace projeto2.Feature.Pedido.View.Dev
             if (e.KeyCode == Keys.Tab) dgvProdutos.Focus();
         }
 
-        private void LsProdutos_RowStyle(object sender, RowStyleEventArgs e)
+        private void LsProdutos_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
-               
+            var nomeProduto = lsProdutos.GetRowCellValue(e.RowHandle, lsProdutos.Columns[colNomeProduto1.FieldName]).ToString();
+            if(_promocoes.Any(p => p.Produtos.Any(pr => pr.NomeProduto == nomeProduto)))
+                e.Appearance.ForeColor = Color.Green;
         }
 
-        private void GvProdutos_RowStyle(object sender, RowStyleEventArgs e)
+        private void GvProdutos_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
-            //e.Appearance.ForeColor = Color.LimeGreen;
+            var nomeProduto = lsProdutos.GetRowCellValue(e.RowHandle, lsProdutos.Columns[colNomeProduto.FieldName]).ToString();
+            if (_promocoes.Any(p => p.Produtos.Any(pr => pr.NomeProduto == nomeProduto)))
+                e.Appearance.ForeColor = Color.Green;
         }
     }
 }

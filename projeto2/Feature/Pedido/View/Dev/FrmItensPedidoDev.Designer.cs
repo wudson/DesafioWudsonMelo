@@ -145,6 +145,8 @@
             this.colPrecoTotal.OptionsColumn.ReadOnly = true;
             this.colPrecoTotal.OptionsFilter.AllowAutoFilter = false;
             this.colPrecoTotal.OptionsFilter.AllowFilter = false;
+            this.colPrecoTotal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PrecoTotal", "{0:c2}")});
             this.colPrecoTotal.Visible = true;
             this.colPrecoTotal.VisibleIndex = 6;
             this.colPrecoTotal.Width = 104;
@@ -260,7 +262,7 @@
             this.KeyPreview = true;
             this.Name = "FrmItensPedidoDev";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmItensPedidoDev";
+            this.Text = "Itens do pedido";
             this.Load += new System.EventHandler(this.FrmItensPedido_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmItensPedido_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPedido)).EndInit();

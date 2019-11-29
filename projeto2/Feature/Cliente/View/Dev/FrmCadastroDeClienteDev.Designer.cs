@@ -145,7 +145,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(11, 51);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Properties.MaxLength = 100;
+            this.txtNome.Properties.MaxLength = 70;
             this.txtNome.Size = new System.Drawing.Size(306, 20);
             this.txtNome.TabIndex = 0;
             // 
@@ -338,7 +338,11 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(11, 48);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Properties.MaxLength = 100;
+            this.txtEmail.Properties.Mask.EditMask = "[A-Za-z0-9](([_\\.\\-]?[a-zA-Z0-9]+))@([A-Za-z0-9]+)(([\\.\\-]?[a-zA-Z0-9]+))\\.([A-Za" +
+    "-z]{2,})";
+            this.txtEmail.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtEmail.Properties.Mask.ShowPlaceHolders = false;
+            this.txtEmail.Properties.MaxLength = 40;
             this.txtEmail.Size = new System.Drawing.Size(306, 20);
             this.txtEmail.TabIndex = 0;
             // 
@@ -354,7 +358,7 @@
             // 
             this.txtBairro.Location = new System.Drawing.Point(342, 185);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Properties.MaxLength = 50;
+            this.txtBairro.Properties.MaxLength = 35;
             this.txtBairro.Size = new System.Drawing.Size(306, 20);
             this.txtBairro.TabIndex = 6;
             // 
@@ -380,6 +384,9 @@
             // 
             this.txtCep.Location = new System.Drawing.Point(11, 50);
             this.txtCep.Name = "txtCep";
+            this.txtCep.Properties.Mask.EditMask = "\\d{5}-\\d{3}";
+            this.txtCep.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtCep.Properties.Mask.ShowPlaceHolders = false;
             this.txtCep.Properties.MaxLength = 15;
             this.txtCep.Size = new System.Drawing.Size(306, 20);
             this.txtCep.TabIndex = 0;
@@ -406,7 +413,7 @@
             // 
             this.txtRua.Location = new System.Drawing.Point(11, 140);
             this.txtRua.Name = "txtRua";
-            this.txtRua.Properties.MaxLength = 50;
+            this.txtRua.Properties.MaxLength = 35;
             this.txtRua.Size = new System.Drawing.Size(306, 20);
             this.txtRua.TabIndex = 3;
             // 

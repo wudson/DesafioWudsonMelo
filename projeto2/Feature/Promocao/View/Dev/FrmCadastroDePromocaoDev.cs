@@ -4,6 +4,7 @@ using projeto2.Feature.Promocao.Controller;
 using projeto2.Feature.Promocao.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -39,44 +40,41 @@ namespace projeto2.Feature.Promocao.View.Dev
 
         private void BtnAplicar_Click(object sender, EventArgs e)
         {
-            AplicarDescontoNosProdutosSelecionados();
+            if (btnAplicar.Enabled == false) return;
+            if ((string) grpTipoDesconto.EditValue == "F")
+                AplicarDescontoFixoNosProdutosSelecionados();
+            else
+                AplicarDescontoPorcentagemNosProdutosSelecionados();
 
+            dgvProdutosPromocao.DataSource = null;
+            dgvProdutosPromocao.DataSource = _promocao[0].Produtos;
             grpDadosPromocao.Enabled = true;
         }
 
-        private void AplicarDescontoNosProdutosSelecionados()
+        private void AplicarDescontoFixoNosProdutosSelecionados()
         {
-            if (btnAplicar.Enabled == false) return;
             if (string.IsNullOrWhiteSpace(txtValor.Text)) return;
 
             foreach (var produto in _promocao[0].Produtos)
             {
-                if ((string) grpTipoDesconto.EditValue == "F")
-                    produto.ValorComDesconto =
-                        double.Parse(produto.ValorVendaProduto.ToString(CultureInfo.InvariantCulture)) -
-                        double.Parse(txtValor.Text);
-                else
-                    produto.ValorComDesconto =
-                        double.Parse(produto.ValorVendaProduto.ToString(CultureInfo.InvariantCulture)) -
-                        double.Parse(produto.ValorVendaProduto.ToString(CultureInfo.InvariantCulture)) *
-                        double.Parse(txtValor.Text) / 100;
+                produto.ValorComDesconto =
+                    double.Parse(produto.ValorVendaProduto.ToString(CultureInfo.InvariantCulture)) -
+                    double.Parse(txtValor.Text.Replace("R$", ""));
             }
-
-            dgvProdutosPromocao.DataSource = null;
-            dgvProdutosPromocao.DataSource = _promocao[0].Produtos;
-
-            //MudarCorValorComDesconto();
         }
 
-        //private void MudarCorValorComDesconto()
-        //{
-        //    for (var i = 0; i < dgvProdutosDaPromocao.RowCount; i++)
-        //        dgvProdutosDaPromocao.Rows[i].Cells["PreçoComDesconto"].Style.ForeColor =
-        //            double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["PreçoComDesconto"].Value.ToString()) >=
-        //            double.Parse(dgvProdutosDaPromocao.Rows[i].Cells["valorCompraProduto"].Value.ToString())
-        //                ? Color.Green
-        //                : Color.Red;
-        //}
+        private void AplicarDescontoPorcentagemNosProdutosSelecionados()
+        {
+            if (string.IsNullOrWhiteSpace(txtPorcentagem.Text)) return;
+
+            foreach (var produto in _promocao[0].Produtos)
+            {
+                produto.ValorComDesconto =
+                    double.Parse(produto.ValorVendaProduto.ToString(CultureInfo.InvariantCulture)) -
+                    double.Parse(produto.ValorVendaProduto.ToString(CultureInfo.InvariantCulture)) *
+                    double.Parse(txtPorcentagem.Text.Replace("%", "")) / 100;
+            }
+        }
 
         private void BtnSalvarPromocao_Click(object sender, EventArgs e)
         {
@@ -148,17 +146,42 @@ namespace projeto2.Feature.Promocao.View.Dev
             }
         }
 
-        private void TxtTipo_SelectedIndexChanged(object sender, EventArgs e) => 
+        private void TxtTipo_SelectedIndexChanged(object sender, EventArgs e) =>
             btnSelecionarProdutos.Enabled = true;
 
-        private void FrmCadastroDePromocaoDev_Load(object sender, EventArgs e) => 
+        private void FrmCadastroDePromocaoDev_Load(object sender, EventArgs e) =>
             grpTipoDesconto.EditValue = @"F";
 
         private void GvProdutosPromocao_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
-            //if (e.Column.FieldName != colDesconto.FieldName) return;
+            var precoCompra = double.Parse(gvProdutosPromocao.GetRowCellValue(e.RowHandle, gvProdutosPromocao.Columns[colValorCompraProduto.FieldName]).ToString());
+            var precoDesconto = double.Parse(gvProdutosPromocao.GetRowCellValue(e.RowHandle, gvProdutosPromocao.Columns[colDesconto.FieldName]).ToString());
 
-            //e.Appearance.ForeColor = e.CellValue > (e.Column.) ? Color.Green : Color.Red;
+            if(precoDesconto < precoCompra)
+                e.Appearance.ForeColor = Color.Red;
+        }
+
+        private void TxtPorcentagem_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPorcentagem.Text)) return;
+            if (int.Parse(txtPorcentagem.Text.Replace("%", "")) > 100)
+                txtPorcentagem.Text = @"100%";
+        }
+
+        private void GrpTipoDesconto_EditValueChanged(object sender, EventArgs e)
+        {
+            if ((string) grpTipoDesconto.EditValue == "F")
+            {
+                txtPorcentagem.Visible = false;
+                txtValor.Visible = true;
+                txtPorcentagem.Text = string.Empty;
+            }
+            else
+            {
+                txtPorcentagem.Visible = true;
+                txtValor.Visible = false;
+                txtValor.EditValue = null;
+            }
         }
     }
 }

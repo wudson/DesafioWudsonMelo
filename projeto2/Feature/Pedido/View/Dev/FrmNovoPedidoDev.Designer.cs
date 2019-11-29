@@ -67,6 +67,8 @@
             this.clienteModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvProdutos)).BeginInit();
@@ -91,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.clienteModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvProdutos
@@ -141,7 +144,7 @@
             this.gvProdutos.OptionsView.EnableAppearanceEvenRow = true;
             this.gvProdutos.OptionsView.ShowFooter = true;
             this.gvProdutos.OptionsView.ShowIndicator = false;
-            this.gvProdutos.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.GvProdutos_RowStyle);
+            this.gvProdutos.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.GvProdutos_CustomDrawCell);
             // 
             // colIdProduto
             // 
@@ -326,7 +329,7 @@
             this.lsProdutos.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.lsProdutos.OptionsView.EnableAppearanceEvenRow = true;
             this.lsProdutos.OptionsView.ShowIndicator = false;
-            this.lsProdutos.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.LsProdutos_RowStyle);
+            this.lsProdutos.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.LsProdutos_CustomDrawCell);
             // 
             // colIdProduto1
             // 
@@ -339,6 +342,10 @@
             this.colNomeProduto1.FieldName = "NomeProduto";
             this.colNomeProduto1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("colNomeProduto1.ImageOptions.Image")));
             this.colNomeProduto1.Name = "colNomeProduto1";
+            this.colNomeProduto1.OptionsColumn.AllowEdit = false;
+            this.colNomeProduto1.OptionsColumn.AllowFocus = false;
+            this.colNomeProduto1.OptionsFilter.AllowAutoFilter = false;
+            this.colNomeProduto1.OptionsFilter.AllowFilter = false;
             this.colNomeProduto1.Visible = true;
             this.colNomeProduto1.VisibleIndex = 1;
             // 
@@ -524,6 +531,8 @@
             // groupControl3
             // 
             this.groupControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.groupControl3.Controls.Add(this.labelControl2);
+            this.groupControl3.Controls.Add(this.groupControl4);
             this.groupControl3.Controls.Add(this.labelControl1);
             this.groupControl3.Controls.Add(this.lstProdutos);
             this.groupControl3.Controls.Add(this.txtCliente);
@@ -537,6 +546,27 @@
             this.groupControl3.Size = new System.Drawing.Size(1363, 591);
             this.groupControl3.TabIndex = 1;
             this.groupControl3.Text = "groupControl3";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.ForestGreen;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
+            this.labelControl2.Location = new System.Drawing.Point(31, 18);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(110, 13);
+            this.labelControl2.TabIndex = 31;
+            this.labelControl2.Text = "Produtos em promoção";
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Appearance.BackColor = System.Drawing.Color.LimeGreen;
+            this.groupControl4.Appearance.Options.UseBackColor = true;
+            this.groupControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.groupControl4.Location = new System.Drawing.Point(12, 18);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(13, 12);
+            this.groupControl4.TabIndex = 30;
+            this.groupControl4.Text = "groupControl4";
             // 
             // FrmNovoPedidoDev
             // 
@@ -578,6 +608,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -621,5 +652,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colValorComDesconto1;
         private DevExpress.XtraGrid.Columns.GridColumn colQuantidadeProdutoPedido1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
     }
 }

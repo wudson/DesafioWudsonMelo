@@ -2,6 +2,7 @@
 using projeto2.Feature.Cliente.Controller;
 using projeto2.Feature.Cliente.Model;
 using System;
+using System.Net.Mail;
 using System.Windows.Forms;
 
 namespace projeto2.Feature.Cliente.View.Dev
@@ -77,7 +78,7 @@ namespace projeto2.Feature.Cliente.View.Dev
                 return false;
             }
 
-            if ((string) grpSexo.EditValue != "M" && (string) grpSexo.EditValue != "F")
+            if ((string)grpSexo.EditValue != "M" && (string)grpSexo.EditValue != "F")
             {
                 MessageBox.Show(@"Campo 'Sexo' obrigatório.");
                 grpSexo.Focus();

@@ -50,7 +50,7 @@
             this.labelControl1.Location = new System.Drawing.Point(87, 28);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(87, 45);
-            this.labelControl1.TabIndex = 0;
+            this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Login";
             // 
             // txtUsuario
@@ -58,7 +58,7 @@
             this.txtUsuario.Location = new System.Drawing.Point(27, 124);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(212, 20);
-            this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.TabIndex = 0;
             this.txtUsuario.Leave += new System.EventHandler(this.TxtUsuario_Leave);
             // 
             // txtSenha
@@ -68,14 +68,14 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Properties.UseSystemPasswordChar = true;
             this.txtSenha.Size = new System.Drawing.Size(212, 20);
-            this.txtSenha.TabIndex = 2;
+            this.txtSenha.TabIndex = 1;
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(27, 177);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(30, 13);
-            this.labelControl2.TabIndex = 3;
+            this.labelControl2.TabIndex = 5;
             this.labelControl2.Text = "Senha";
             // 
             // labelControl3
@@ -88,11 +88,13 @@
             // 
             // btnEntrar
             // 
+            this.btnEntrar.Appearance.BackColor = System.Drawing.Color.White;
+            this.btnEntrar.Appearance.Options.UseBackColor = true;
             this.btnEntrar.ImageOptions.Image = global::projeto2.Properties.Resources.apply_32x321;
             this.btnEntrar.Location = new System.Drawing.Point(84, 238);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(98, 35);
-            this.btnEntrar.TabIndex = 8;
+            this.btnEntrar.TabIndex = 2;
             this.btnEntrar.Text = "Entrar [F5]";
             this.btnEntrar.Click += new System.EventHandler(this.BtnEntrar_Click);
             // 
@@ -103,7 +105,7 @@
             this.iconErroSenha.Name = "iconErroSenha";
             this.iconErroSenha.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.iconErroSenha.Size = new System.Drawing.Size(21, 19);
-            this.iconErroSenha.TabIndex = 7;
+            this.iconErroSenha.TabIndex = 8;
             this.iconErroSenha.Visible = false;
             // 
             // iconErroUsuario
@@ -123,7 +125,7 @@
             this.iconSucessoUsuario.Name = "iconSucessoUsuario";
             this.iconSucessoUsuario.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.iconSucessoUsuario.Size = new System.Drawing.Size(21, 19);
-            this.iconSucessoUsuario.TabIndex = 5;
+            this.iconSucessoUsuario.TabIndex = 7;
             this.iconSucessoUsuario.Visible = false;
             // 
             // defaultLookAndFeel1
