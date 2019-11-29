@@ -72,9 +72,10 @@
             this.repositoryItemSpinEdit1,
             this.repositoryItemTextEdit1});
             this.dgvMarcas.Size = new System.Drawing.Size(728, 217);
-            this.dgvMarcas.TabIndex = 5;
+            this.dgvMarcas.TabIndex = 4;
             this.dgvMarcas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvMarcas});
+            this.dgvMarcas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvMarcas_KeyDown);
             // 
             // marcaModelBindingSource
             // 
@@ -181,7 +182,7 @@
             this.labelControl1.Location = new System.Drawing.Point(12, 7);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(31, 14);
-            this.labelControl1.TabIndex = 6;
+            this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "Marca";
             // 
             // txtMarca
@@ -190,7 +191,7 @@
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Properties.MaxLength = 25;
             this.txtMarca.Size = new System.Drawing.Size(422, 20);
-            this.txtMarca.TabIndex = 7;
+            this.txtMarca.TabIndex = 0;
             // 
             // btnSalvarMarca
             // 
@@ -200,7 +201,7 @@
             this.btnSalvarMarca.Location = new System.Drawing.Point(13, 53);
             this.btnSalvarMarca.Name = "btnSalvarMarca";
             this.btnSalvarMarca.Size = new System.Drawing.Size(109, 57);
-            this.btnSalvarMarca.TabIndex = 9;
+            this.btnSalvarMarca.TabIndex = 1;
             this.btnSalvarMarca.Text = "Salvar [Enter]";
             this.btnSalvarMarca.Click += new System.EventHandler(this.BtnSalvarMarca_Click);
             // 
@@ -212,7 +213,7 @@
             this.btnExcluirMarca.Location = new System.Drawing.Point(243, 53);
             this.btnExcluirMarca.Name = "btnExcluirMarca";
             this.btnExcluirMarca.Size = new System.Drawing.Size(109, 57);
-            this.btnExcluirMarca.TabIndex = 10;
+            this.btnExcluirMarca.TabIndex = 3;
             this.btnExcluirMarca.Text = "Excluir [Del]";
             this.btnExcluirMarca.Click += new System.EventHandler(this.BtnExcluirMarca_Click);
             // 
@@ -224,7 +225,7 @@
             this.btnEditar.Location = new System.Drawing.Point(128, 53);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(109, 57);
-            this.btnEditar.TabIndex = 11;
+            this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Editar [ F4 ]";
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
@@ -235,7 +236,7 @@
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(62, 21);
-            this.txtId.TabIndex = 14;
+            this.txtId.TabIndex = 6;
             this.txtId.Text = "0";
             this.txtId.Visible = false;
             // 

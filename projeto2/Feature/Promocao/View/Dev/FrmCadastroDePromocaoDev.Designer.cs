@@ -40,6 +40,7 @@
             this.btnAplicar = new DevExpress.XtraEditors.SimpleButton();
             this.btnSelecionarProdutos = new DevExpress.XtraEditors.SimpleButton();
             this.grpDesconto = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.txtValor = new DevExpress.XtraEditors.TextEdit();
@@ -66,7 +67,6 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.grpDadosPromocao = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorcentagem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTipo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDataInicio.Properties.CalendarTimeProperties)).BeginInit();
@@ -113,7 +113,7 @@
             "Desconto"});
             this.txtTipo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txtTipo.Size = new System.Drawing.Size(356, 20);
-            this.txtTipo.TabIndex = 1;
+            this.txtTipo.TabIndex = 0;
             this.txtTipo.SelectedIndexChanged += new System.EventHandler(this.TxtTipo_SelectedIndexChanged);
             // 
             // txtDataInicio
@@ -126,7 +126,7 @@
             this.txtDataInicio.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtDataInicio.Size = new System.Drawing.Size(142, 20);
-            this.txtDataInicio.TabIndex = 2;
+            this.txtDataInicio.TabIndex = 0;
             // 
             // txtDataFim
             // 
@@ -138,7 +138,7 @@
             this.txtDataFim.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtDataFim.Size = new System.Drawing.Size(142, 20);
-            this.txtDataFim.TabIndex = 3;
+            this.txtDataFim.TabIndex = 1;
             // 
             // txtNome
             // 
@@ -146,7 +146,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Properties.MaxLength = 50;
             this.txtNome.Size = new System.Drawing.Size(477, 20);
-            this.txtNome.TabIndex = 5;
+            this.txtNome.TabIndex = 2;
             this.txtNome.TextChanged += new System.EventHandler(this.TxtNome_TextChanged);
             // 
             // labelControl1
@@ -154,7 +154,7 @@
             this.labelControl1.Location = new System.Drawing.Point(16, 23);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(20, 13);
-            this.labelControl1.TabIndex = 17;
+            this.labelControl1.TabIndex = 7;
             this.labelControl1.Text = "Tipo";
             // 
             // grpTipoDesconto
@@ -169,7 +169,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem("F", "Valor fixo"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("P", "Porcentagem")});
             this.grpTipoDesconto.Size = new System.Drawing.Size(184, 37);
-            this.grpTipoDesconto.TabIndex = 18;
+            this.grpTipoDesconto.TabIndex = 0;
             this.grpTipoDesconto.EditValueChanged += new System.EventHandler(this.GrpTipoDesconto_EditValueChanged);
             // 
             // btnAplicar
@@ -180,7 +180,7 @@
             this.btnAplicar.Location = new System.Drawing.Point(174, 69);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(86, 27);
-            this.btnAplicar.TabIndex = 19;
+            this.btnAplicar.TabIndex = 2;
             this.btnAplicar.Text = "Aplicar [ F7 ]";
             this.btnAplicar.Click += new System.EventHandler(this.BtnAplicar_Click);
             // 
@@ -193,7 +193,7 @@
             this.btnSelecionarProdutos.Location = new System.Drawing.Point(521, 33);
             this.btnSelecionarProdutos.Name = "btnSelecionarProdutos";
             this.btnSelecionarProdutos.Size = new System.Drawing.Size(170, 37);
-            this.btnSelecionarProdutos.TabIndex = 16;
+            this.btnSelecionarProdutos.TabIndex = 1;
             this.btnSelecionarProdutos.Text = "Selecionar produtos [ F9 ]";
             this.btnSelecionarProdutos.Click += new System.EventHandler(this.BtnSelecionarProdutosDaPromocao_Click);
             // 
@@ -210,8 +210,18 @@
             this.grpDesconto.Location = new System.Drawing.Point(16, 77);
             this.grpDesconto.Name = "grpDesconto";
             this.grpDesconto.Size = new System.Drawing.Size(800, 100);
-            this.grpDesconto.TabIndex = 20;
+            this.grpDesconto.TabIndex = 2;
             this.grpDesconto.Text = "Desconto";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl11.Appearance.Options.UseForeColor = true;
+            this.labelControl11.Location = new System.Drawing.Point(64, 3);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(6, 13);
+            this.labelControl11.TabIndex = 3;
+            this.labelControl11.Text = "*";
             // 
             // labelControl10
             // 
@@ -220,7 +230,7 @@
             this.labelControl10.Location = new System.Drawing.Point(524, 76);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(242, 13);
-            this.labelControl10.TabIndex = 35;
+            this.labelControl10.TabIndex = 5;
             this.labelControl10.Text = "Preço com desconto menor que o preço de compra";
             // 
             // groupControl4
@@ -231,7 +241,7 @@
             this.groupControl4.Location = new System.Drawing.Point(505, 76);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(13, 12);
-            this.groupControl4.TabIndex = 34;
+            this.groupControl4.TabIndex = 4;
             this.groupControl4.Text = "groupControl4";
             // 
             // txtValor
@@ -244,14 +254,14 @@
             this.txtValor.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtValor.Properties.MaxLength = 7;
             this.txtValor.Size = new System.Drawing.Size(137, 20);
-            this.txtValor.TabIndex = 33;
+            this.txtValor.TabIndex = 1;
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(9, 51);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(27, 13);
-            this.labelControl2.TabIndex = 21;
+            this.labelControl2.TabIndex = 7;
             this.labelControl2.Text = "Nome";
             // 
             // labelControl3
@@ -259,7 +269,7 @@
             this.labelControl3.Location = new System.Drawing.Point(9, 6);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(25, 13);
-            this.labelControl3.TabIndex = 22;
+            this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Início";
             // 
             // labelControl4
@@ -267,7 +277,7 @@
             this.labelControl4.Location = new System.Drawing.Point(183, 6);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(16, 13);
-            this.labelControl4.TabIndex = 23;
+            this.labelControl4.TabIndex = 5;
             this.labelControl4.Text = "Fim";
             // 
             // btnSalvar
@@ -279,7 +289,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(570, 495);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(121, 57);
-            this.btnSalvar.TabIndex = 24;
+            this.btnSalvar.TabIndex = 4;
             this.btnSalvar.Text = "Salvar [F5]";
             this.btnSalvar.Click += new System.EventHandler(this.BtnSalvarPromocao_Click);
             // 
@@ -292,7 +302,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(695, 495);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(121, 57);
-            this.btnCancelar.TabIndex = 25;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar [Esc]";
             // 
             // dgvProdutosPromocao
@@ -309,7 +319,7 @@
             this.repositoryItemSpinEdit1,
             this.repositoryItemTextEdit1});
             this.dgvProdutosPromocao.Size = new System.Drawing.Size(830, 283);
-            this.dgvProdutosPromocao.TabIndex = 26;
+            this.dgvProdutosPromocao.TabIndex = 6;
             this.dgvProdutosPromocao.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvProdutosPromocao});
             // 
@@ -467,7 +477,7 @@
             this.labelControl5.Location = new System.Drawing.Point(741, 3);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(77, 13);
-            this.labelControl5.TabIndex = 27;
+            this.labelControl5.TabIndex = 9;
             this.labelControl5.Text = "( * ) Obrigatório";
             // 
             // labelControl9
@@ -477,7 +487,7 @@
             this.labelControl9.Location = new System.Drawing.Point(36, 21);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(6, 13);
-            this.labelControl9.TabIndex = 28;
+            this.labelControl9.TabIndex = 8;
             this.labelControl9.Text = "*";
             // 
             // labelControl6
@@ -487,7 +497,7 @@
             this.labelControl6.Location = new System.Drawing.Point(33, 4);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(6, 13);
-            this.labelControl6.TabIndex = 29;
+            this.labelControl6.TabIndex = 4;
             this.labelControl6.Text = "*";
             // 
             // labelControl7
@@ -497,7 +507,7 @@
             this.labelControl7.Location = new System.Drawing.Point(35, 50);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(6, 13);
-            this.labelControl7.TabIndex = 30;
+            this.labelControl7.TabIndex = 8;
             this.labelControl7.Text = "*";
             // 
             // labelControl8
@@ -507,7 +517,7 @@
             this.labelControl8.Location = new System.Drawing.Point(198, 4);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(6, 13);
-            this.labelControl8.TabIndex = 31;
+            this.labelControl8.TabIndex = 6;
             this.labelControl8.Text = "*";
             // 
             // grpDadosPromocao
@@ -529,18 +539,8 @@
             this.grpDadosPromocao.Name = "grpDadosPromocao";
             this.grpDadosPromocao.ShowCaption = false;
             this.grpDadosPromocao.Size = new System.Drawing.Size(564, 93);
-            this.grpDadosPromocao.TabIndex = 32;
+            this.grpDadosPromocao.TabIndex = 3;
             this.grpDadosPromocao.Text = "groupControl1";
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl11.Appearance.Options.UseForeColor = true;
-            this.labelControl11.Location = new System.Drawing.Point(64, 3);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(6, 13);
-            this.labelControl11.TabIndex = 32;
-            this.labelControl11.Text = "*";
             // 
             // FrmCadastroDePromocaoDev
             // 

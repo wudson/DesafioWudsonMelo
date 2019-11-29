@@ -114,6 +114,7 @@
             this.dgvProdutos.TabIndex = 2;
             this.dgvProdutos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvProdutos});
+            this.dgvProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvProdutos_KeyDown);
             // 
             // produtoBindingSource
             // 

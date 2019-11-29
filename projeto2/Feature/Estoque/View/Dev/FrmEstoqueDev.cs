@@ -19,6 +19,7 @@ namespace projeto2.Feature.Estoque.View.Dev
         {
             dgvEstoque.DataSource = _estoqueDeProdutoController.ListarDados(new Produto.Produto());
             PreencherGrupos();
+            txtNome.Focus();
         }
 
         private void PreencherGrupos()
@@ -60,6 +61,11 @@ namespace projeto2.Feature.Estoque.View.Dev
             txtNome.Text = string.Empty;
             txtTipo.Text = string.Empty;
             FrmEstoque_Load(sender, e);
+        }
+
+        private void DgvEstoque_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab) txtNome.Focus();
         }
     }
 }

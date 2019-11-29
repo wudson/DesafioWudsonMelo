@@ -117,9 +117,10 @@
             this.repositoryItemSpinEdit1,
             this.repositoryItemTextEdit1});
             this.dgvEstoque.Size = new System.Drawing.Size(556, 758);
-            this.dgvEstoque.TabIndex = 7;
+            this.dgvEstoque.TabIndex = 0;
             this.dgvEstoque.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvEstoque});
+            this.dgvEstoque.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvEstoque_KeyDown);
             // 
             // produtoBindingSource
             // 
@@ -345,7 +346,7 @@
             this.groupControl1.Location = new System.Drawing.Point(556, 0);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(291, 758);
-            this.groupControl1.TabIndex = 19;
+            this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Filtros";
             // 
             // txtGrupo
@@ -361,7 +362,7 @@
             this.txtGrupo.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.StartsWith;
             this.txtGrupo.Properties.ValueMember = "IdGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(262, 20);
-            this.txtGrupo.TabIndex = 19;
+            this.txtGrupo.TabIndex = 1;
             // 
             // grupoModelBindingSource
             // 
@@ -372,7 +373,7 @@
             this.labelControl3.Location = new System.Drawing.Point(8, 146);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(20, 13);
-            this.labelControl3.TabIndex = 18;
+            this.labelControl3.TabIndex = 7;
             this.labelControl3.Text = "Tipo";
             // 
             // txtTipo
@@ -386,7 +387,7 @@
             "Peso",
             "Unidade"});
             this.txtTipo.Size = new System.Drawing.Size(262, 20);
-            this.txtTipo.TabIndex = 17;
+            this.txtTipo.TabIndex = 2;
             // 
             // btnFiltrar
             // 
@@ -396,7 +397,7 @@
             this.btnFiltrar.Location = new System.Drawing.Point(40, 660);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(107, 36);
-            this.btnFiltrar.TabIndex = 16;
+            this.btnFiltrar.TabIndex = 3;
             this.btnFiltrar.Text = "Filtrar [Enter]";
             this.btnFiltrar.Click += new System.EventHandler(this.BtnFiltrar_Click);
             // 
@@ -408,7 +409,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(153, 660);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(107, 36);
-            this.btnLimpar.TabIndex = 15;
+            this.btnLimpar.TabIndex = 4;
             this.btnLimpar.Text = "Limpar [F10]";
             this.btnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
             // 
@@ -417,7 +418,7 @@
             this.labelControl2.Location = new System.Drawing.Point(8, 93);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(29, 13);
-            this.labelControl2.TabIndex = 5;
+            this.labelControl2.TabIndex = 6;
             this.labelControl2.Text = "Grupo";
             // 
             // labelControl1
@@ -425,7 +426,7 @@
             this.labelControl1.Location = new System.Drawing.Point(8, 41);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(27, 13);
-            this.labelControl1.TabIndex = 1;
+            this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "Nome";
             // 
             // txtNome

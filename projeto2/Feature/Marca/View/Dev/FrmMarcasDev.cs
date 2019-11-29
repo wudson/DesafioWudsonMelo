@@ -19,7 +19,11 @@ namespace projeto2.Feature.Marca.View.Dev
             _marcaModel = new MarcaModel();
         }
 
-        private void FrmMarcasDev_Load(object sender, EventArgs e) => ListarMarcas();
+        private void FrmMarcasDev_Load(object sender, EventArgs e)
+        {
+            ListarMarcas();
+            txtMarca.Focus();
+        }
 
         private void FrmMarcas_KeyDown(object sender, KeyEventArgs e)
         {
@@ -91,6 +95,11 @@ namespace projeto2.Feature.Marca.View.Dev
         {
             if (e.FocusedRowHandle < 0) return;
             ModificarEnabledDosBotoes(true);
+        }
+
+        private void DgvMarcas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab) txtMarca.Focus();
         }
     }
 }

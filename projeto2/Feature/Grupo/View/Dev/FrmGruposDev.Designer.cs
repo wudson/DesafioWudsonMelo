@@ -62,7 +62,7 @@
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(62, 21);
-            this.txtId.TabIndex = 21;
+            this.txtId.TabIndex = 6;
             this.txtId.Text = "0";
             this.txtId.Visible = false;
             // 
@@ -74,7 +74,7 @@
             this.btnEditar.Location = new System.Drawing.Point(126, 53);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(108, 57);
-            this.btnEditar.TabIndex = 20;
+            this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Editar [ F4 ]";
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
@@ -86,7 +86,7 @@
             this.btnExcluirGrupo.Location = new System.Drawing.Point(240, 53);
             this.btnExcluirGrupo.Name = "btnExcluirGrupo";
             this.btnExcluirGrupo.Size = new System.Drawing.Size(108, 57);
-            this.btnExcluirGrupo.TabIndex = 19;
+            this.btnExcluirGrupo.TabIndex = 3;
             this.btnExcluirGrupo.Text = "Excluir [Del]";
             this.btnExcluirGrupo.Click += new System.EventHandler(this.BtnExcluirGrupo_Click);
             // 
@@ -98,7 +98,7 @@
             this.btnSalvarGrupo.Location = new System.Drawing.Point(12, 53);
             this.btnSalvarGrupo.Name = "btnSalvarGrupo";
             this.btnSalvarGrupo.Size = new System.Drawing.Size(108, 57);
-            this.btnSalvarGrupo.TabIndex = 18;
+            this.btnSalvarGrupo.TabIndex = 1;
             this.btnSalvarGrupo.Text = "Salvar [Enter]";
             this.btnSalvarGrupo.Click += new System.EventHandler(this.BtnSalvarGrupo_Click);
             // 
@@ -108,7 +108,7 @@
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Properties.MaxLength = 25;
             this.txtGrupo.Size = new System.Drawing.Size(422, 20);
-            this.txtGrupo.TabIndex = 17;
+            this.txtGrupo.TabIndex = 0;
             // 
             // labelControl1
             // 
@@ -118,7 +118,7 @@
             this.labelControl1.Location = new System.Drawing.Point(12, 7);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(33, 14);
-            this.labelControl1.TabIndex = 16;
+            this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "Grupo";
             // 
             // dgvGrupos
@@ -136,9 +136,10 @@
             this.repositoryItemSpinEdit1,
             this.repositoryItemTextEdit1});
             this.dgvGrupos.Size = new System.Drawing.Size(728, 217);
-            this.dgvGrupos.TabIndex = 15;
+            this.dgvGrupos.TabIndex = 4;
             this.dgvGrupos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvGrupos});
+            this.dgvGrupos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvGrupos_KeyDown);
             // 
             // grupoModelBindingSource
             // 

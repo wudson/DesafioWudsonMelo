@@ -97,9 +97,10 @@
             this.repositoryItemSpinEdit1,
             this.repositoryItemTextEdit1});
             this.dgvClientes.Size = new System.Drawing.Size(470, 675);
-            this.dgvClientes.TabIndex = 16;
+            this.dgvClientes.TabIndex = 1;
             this.dgvClientes.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvClientes});
+            this.dgvClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvClientes_KeyDown);
             // 
             // clienteModelBindingSource
             // 
@@ -299,7 +300,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(12, 15);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(102, 57);
-            this.btnSalvar.TabIndex = 12;
+            this.btnSalvar.TabIndex = 0;
             this.btnSalvar.Text = "Novo [ + ]";
             this.btnSalvar.Click += new System.EventHandler(this.BtnCadastrar_Click);
             // 
@@ -311,7 +312,7 @@
             this.btnEditar.Location = new System.Drawing.Point(120, 15);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(102, 57);
-            this.btnEditar.TabIndex = 14;
+            this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "Editar [ F4 ]";
             this.btnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
@@ -323,7 +324,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(228, 15);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(102, 57);
-            this.btnExcluir.TabIndex = 13;
+            this.btnExcluir.TabIndex = 2;
             this.btnExcluir.Text = "Excluir [Del]";
             this.btnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
@@ -337,7 +338,7 @@
             this.gpcBotoes.Name = "gpcBotoes";
             this.gpcBotoes.ShowCaption = false;
             this.gpcBotoes.Size = new System.Drawing.Size(761, 83);
-            this.gpcBotoes.TabIndex = 17;
+            this.gpcBotoes.TabIndex = 0;
             // 
             // groupControl1
             // 
@@ -352,7 +353,7 @@
             this.groupControl1.Location = new System.Drawing.Point(470, 83);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(291, 675);
-            this.groupControl1.TabIndex = 18;
+            this.groupControl1.TabIndex = 2;
             this.groupControl1.Text = "Filtros";
             // 
             // btnFiltrar
@@ -363,7 +364,7 @@
             this.btnFiltrar.Location = new System.Drawing.Point(40, 578);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(107, 36);
-            this.btnFiltrar.TabIndex = 16;
+            this.btnFiltrar.TabIndex = 5;
             this.btnFiltrar.Text = "Filtrar [Enter]";
             this.btnFiltrar.Click += new System.EventHandler(this.BtnFiltrar_Click);
             // 
@@ -375,7 +376,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(153, 578);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(107, 36);
-            this.btnLimpar.TabIndex = 15;
+            this.btnLimpar.TabIndex = 6;
             this.btnLimpar.Text = "Limpar [F10]";
             this.btnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
             // 
@@ -388,7 +389,7 @@
             this.groupControl2.Location = new System.Drawing.Point(5, 152);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(281, 117);
-            this.groupControl2.TabIndex = 6;
+            this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "Data de cadastro";
             // 
             // labelControl3
@@ -396,7 +397,7 @@
             this.labelControl3.Location = new System.Drawing.Point(8, 71);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(17, 13);
-            this.labelControl3.TabIndex = 7;
+            this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Até";
             // 
             // labelControl4
@@ -404,7 +405,7 @@
             this.labelControl4.Location = new System.Drawing.Point(8, 28);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(13, 13);
-            this.labelControl4.TabIndex = 8;
+            this.labelControl4.TabIndex = 2;
             this.labelControl4.Text = "De";
             // 
             // txtDataInicio
@@ -417,7 +418,7 @@
             this.txtDataInicio.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtDataInicio.Size = new System.Drawing.Size(262, 20);
-            this.txtDataInicio.TabIndex = 3;
+            this.txtDataInicio.TabIndex = 0;
             // 
             // txtDataFim
             // 
@@ -429,14 +430,14 @@
             this.txtDataFim.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtDataFim.Size = new System.Drawing.Size(262, 20);
-            this.txtDataFim.TabIndex = 4;
+            this.txtDataFim.TabIndex = 1;
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(8, 93);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(33, 13);
-            this.labelControl2.TabIndex = 5;
+            this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "Cidade";
             // 
             // txtCidade
@@ -451,14 +452,14 @@
             "Angra dos Reis",
             "Rio de Janeiro"});
             this.txtCidade.Size = new System.Drawing.Size(262, 20);
-            this.txtCidade.TabIndex = 2;
+            this.txtCidade.TabIndex = 1;
             // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(8, 41);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(27, 13);
-            this.labelControl1.TabIndex = 1;
+            this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "Nome";
             // 
             // txtNome

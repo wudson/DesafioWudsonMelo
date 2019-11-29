@@ -164,7 +164,7 @@ namespace projeto2.Feature.Pedido.View.Dev
 
         private void LstProdutos_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Tab) dgvProdutos.Focus();
+            if (e.KeyCode == Keys.Tab) txtCliente.Focus();
         }
 
         private void LsProdutos_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
@@ -179,6 +179,11 @@ namespace projeto2.Feature.Pedido.View.Dev
             var nomeProduto = lsProdutos.GetRowCellValue(e.RowHandle, lsProdutos.Columns[colNomeProduto.FieldName]).ToString();
             if (_promocoes.Any(p => p.Produtos.Any(pr => pr.NomeProduto == nomeProduto)))
                 e.Appearance.ForeColor = Color.Green;
+        }
+
+        private void DgvProdutos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab) btnSalvar.Focus();
         }
     }
 }

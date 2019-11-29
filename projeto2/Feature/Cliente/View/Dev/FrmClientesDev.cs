@@ -118,5 +118,10 @@ namespace projeto2.Feature.Cliente.View.Dev
             txtCidade.Text = string.Empty;
             txtNome.Text = string.Empty;
         }
+
+        private void DgvClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab) txtNome.Focus();
+        }
     }
 }

@@ -19,7 +19,11 @@ namespace projeto2.Feature.Grupo.View.Dev
             _grupoModel = new GrupoModel();
         }
 
-        private void FrmGruposDev_Load(object sender, EventArgs e) => ListarGrupos();
+        private void FrmGruposDev_Load(object sender, EventArgs e)
+        {
+            ListarGrupos();
+            txtGrupo.Focus();
+        }
 
         private void FrmGrupos_KeyDown(object sender, KeyEventArgs e)
         {
@@ -90,6 +94,11 @@ namespace projeto2.Feature.Grupo.View.Dev
         {
             if (e.FocusedRowHandle < 0) return;
             ModificarEnabledDosBotoes(true);
+        }
+
+        private void DgvGrupos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab) txtGrupo.Focus();
         }
     }
 }
