@@ -15,15 +15,22 @@ namespace projeto2.Feature.Pedido.Dao
 
             cmd.CommandText = mSql;
 
-            cmd.Parameters.Add("@idCli", FbDbType.Integer).Value = pedido.Cliente.IdCliente;
-            cmd.Parameters.Add("@data", FbDbType.Date).Value = pedido.DataPedido;
-            cmd.Parameters.Add("@valorT", FbDbType.Date).Value = pedido.PrecoTotalPedido;
+            cmd = AdicionarParametrosDeCadastro(pedido, cmd);
 
             pedido.IdPedido = int.Parse(cmd.ExecuteScalar().ToString());
 
             return CadastrarProdutosDoPedido(pedido, cmd);
 
         }
+
+        public FbCommand AdicionarParametrosDeCadastro(PedidoModel pedido, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@idCli", FbDbType.Integer).Value = pedido.Cliente.IdCliente;
+            cmd.Parameters.Add("@data", FbDbType.Date).Value = pedido.DataPedido;
+            cmd.Parameters.Add("@valorT", FbDbType.Date).Value = pedido.PrecoTotalPedido;
+            return cmd;
+        }
+
         private static bool CadastrarProdutosDoPedido(PedidoModel pedido, FbCommand cmd)
         {
             const string mSql = @"INSERT into ITEM_PEDIDO (ID_PRODUTO, ID_PEDIDO, QUANTIDADE) 

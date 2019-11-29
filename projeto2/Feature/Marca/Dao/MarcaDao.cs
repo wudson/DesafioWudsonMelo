@@ -13,10 +13,16 @@ namespace projeto2.Feature.Marca.Dao
             const string mSql = @"INSERT into MARCA (MARCA) Values(@marca)";
 
             cmd.CommandText = mSql;
-            cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca.Marca;
+            cmd = AdicionarParametrosDeCadastro(marca, cmd);
             cmd.ExecuteNonQuery();
 
             return true;
+        }
+
+        public FbCommand AdicionarParametrosDeCadastro(MarcaModel marca, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca.Marca;
+            return cmd;
         }
 
         public virtual IEnumerable<MarcaModel> Listar(FbCommand cmd)
@@ -43,10 +49,16 @@ namespace projeto2.Feature.Marca.Dao
             const string mSql = "DELETE from MARCA Where ID_MARCA = @id";
 
             cmd.CommandText = mSql;
-            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idMarca;
+            cmd = AdicionarParametrosDeExclusao(idMarca, cmd);
             cmd.ExecuteNonQuery();
 
             return true;
+        }
+
+        public FbCommand AdicionarParametrosDeExclusao(int idMarca, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = idMarca;
+            return cmd;
         }
 
         public virtual bool Alterar(MarcaModel marca, FbCommand cmd)
@@ -55,11 +67,17 @@ namespace projeto2.Feature.Marca.Dao
 
             cmd.CommandText = mSql;
 
-            cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca.Marca;
-            cmd.Parameters.Add("@id", FbDbType.Integer).Value = marca.IdMarca;
+            cmd = AdicionarParametrosDeEdicao(marca, cmd);
 
             cmd.ExecuteNonQuery();
             return true;
+        }
+
+        public FbCommand AdicionarParametrosDeEdicao(MarcaModel marca, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@marca", FbDbType.VarChar).Value = marca.Marca;
+            cmd.Parameters.Add("@id", FbDbType.Integer).Value = marca.IdMarca;
+            return cmd;
         }
     }
 }

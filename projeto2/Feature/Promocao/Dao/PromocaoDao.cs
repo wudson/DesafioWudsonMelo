@@ -18,17 +18,23 @@ namespace projeto2.Feature.Promocao.Dao
 
             cmd.CommandText = mSql;
 
-            cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = promocao.NomePromocao;
-            cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = promocao.TipoPromocao;
-            cmd.Parameters.Add("@status", FbDbType.VarChar).Value = promocao.StatusPromocao;
-            cmd.Parameters.Add("@dataInicio", FbDbType.Date).Value = promocao.DataInicio;
-            cmd.Parameters.Add("@dataFim", FbDbType.Date).Value = promocao.DataFim;
+            cmd = AdicionarParametrosDeCadastro(promocao, cmd);
 
             promocao.IdPromocao = int.Parse(cmd.ExecuteScalar().ToString());
 
             CadastrarProdutosDaPromocao(promocao, cmd);
 
             return true;
+        }
+
+        public FbCommand AdicionarParametrosDeCadastro(PromocaoModel promocao, FbCommand cmd)
+        {
+            cmd.Parameters.Add("@nome", FbDbType.VarChar).Value = promocao.NomePromocao;
+            cmd.Parameters.Add("@tipo", FbDbType.VarChar).Value = promocao.TipoPromocao;
+            cmd.Parameters.Add("@status", FbDbType.VarChar).Value = promocao.StatusPromocao;
+            cmd.Parameters.Add("@dataInicio", FbDbType.Date).Value = promocao.DataInicio;
+            cmd.Parameters.Add("@dataFim", FbDbType.Date).Value = promocao.DataFim;
+            return cmd;
         }
 
         private static void CadastrarProdutosDaPromocao(PromocaoModel promocao, FbCommand cmd)
